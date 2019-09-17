@@ -13,7 +13,8 @@ require('moment').locale('zh-cn');
  * @constructor
  */
 var Init = function () {
-    return (React.createElement(antd_1.ConfigProvider, { locale: zh_CN_1.default }, "\u8FD9\u662F\u4E24\u4E2A\u4E2Ademo"));
+    return (React.createElement(antd_1.ConfigProvider, { locale: zh_CN_1.default },
+        React.createElement(antd_1.Button, null, "\u8FD9\u662F\u4E24\u4E2A\u4E2Ademo")));
 };
 // 打印LOG信息
 console.info("%cthisme : %c 代码托管于github.com/chenmoand/thisme", "background: black;\n" +

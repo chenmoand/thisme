@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, Button } from 'antd';
 import zhCN from 'antd/es/locale-provider/zh_CN';
 import 'moment/locale/zh-cn';
 import './style/globle-index.less'
@@ -15,7 +15,9 @@ require('moment').locale('zh-cn');
 const Init:React.FC = () => {
     return(
         <ConfigProvider locale={zhCN}>
-            这是两个个demo
+            <Button>
+                这是两个个demo
+            </Button>
         </ConfigProvider>
     )
 };

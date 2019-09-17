@@ -17,19 +17,34 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'latest']
+                    presets: ['@babel/env', '@babel/react'],
+                    cacheDirectory: true,
+                    plugins: [["import", { libraryName: "antd", style: "css"}]]
                 }
             },
             {
                 test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader'
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/env', '@babel/react', '@babel/typescript'],
+                            cacheDirectory: true,
+                            plugins: [["import", { libraryName: "antd", style: "css"}]]
+                        }
+                    },
+                    {loader: 'awesome-typescript-loader'}
+                ]
+
             },
             {
                 test: /\.less?$/,
+                exclude: /node_modules/,
                 use: [
                     {loader: 'style-loader'},
                     {loader: 'css-loader'},
