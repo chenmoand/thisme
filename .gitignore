@@ -21,6 +21,8 @@ buildNumber.properties
 ### Example user template template
 ### Example user template
 
+chenmo
+
 # IntelliJ project files
 .idea
 *.iml
