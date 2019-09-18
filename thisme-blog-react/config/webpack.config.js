@@ -66,15 +66,8 @@ module.exports = {
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: 'images/[hash:6].[ext]',
-                            fallback: 'file-loader',
-                            publicPath: './'
-                        }
-                    },
+                    'url-loader?limit=10000',
+                    'img-loader'
                 ]
             }
         ]

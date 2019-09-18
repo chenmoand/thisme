@@ -13,3 +13,7 @@
 * [\<simple-react-app\>](./simple-react-app)  一个简单的 webpack + react启动配置
 * [\<thisme-blog-react\>](./thisme-blog-react) 一个为自己而写的react小项目
 
+### Help?  ```可能会对你有帮助!```
+
+*  [\<REAL.md\>](./REAL.md)  一个记录遇到问题解决方法的一个文档
+
