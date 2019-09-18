@@ -60,13 +60,7 @@ module.exports = {
                 test: /\.css?$/,
                 use:[
                     {loader: 'style-loader'},
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            publicPath: '/',
-                        }
-                    }
+                    {loader: 'css-loader',}
                 ]
             },
             {
