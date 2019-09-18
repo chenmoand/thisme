@@ -33,12 +33,12 @@ module.exports = {
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['@babel/env', '@babel/react', '@babel/typescript'],
+                            presets: ['@babel/env', '@babel/typescript', '@babel/react'],
                             cacheDirectory: true,
                             plugins: [["import", { libraryName: "antd", style: "css"}]]
                         }
                     },
-                    {loader: 'awesome-typescript-loader'}
+                    // {loader: 'awesome-typescript-loader'}
                 ]
 
             },
