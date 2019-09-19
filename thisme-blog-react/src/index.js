@@ -6,6 +6,7 @@ var antd_1 = require("antd");
 var zh_CN_1 = require("antd/es/locale-provider/zh_CN");
 require("moment/locale/zh-cn");
 require("./style/globle-index.less");
+var markdown_edit_1 = require("./editor/markdown-edit");
 require('moment').locale('zh-cn');
 /**
  * 真实的开始
@@ -14,7 +15,7 @@ require('moment').locale('zh-cn');
  */
 var Init = function () {
     return (React.createElement(antd_1.ConfigProvider, { locale: zh_CN_1.default },
-        React.createElement(antd_1.Button, null, "\u8FD9\u662F\u4E24\u4E2A\u4E2Ademo")));
+        React.createElement(markdown_edit_1.default, { source: "" })));
 };
 // 打印LOG信息
 console.info("%cthisme : %c 代码托管于github.com/chenmoand/thisme", "background: black;\n" +
