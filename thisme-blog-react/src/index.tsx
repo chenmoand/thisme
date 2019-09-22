@@ -6,7 +6,8 @@ import 'moment/locale/zh-cn';
 import './style/globle-index.less'
 import Markdown from "./editor/markdown-edit";
 
-require('moment').locale('zh-cn');
+require('moment').locale('zh-cn'); // 设置为中文
+
 
 /**
  * 真实的开始
@@ -18,8 +19,11 @@ const Init:React.FC = () => {
         <ConfigProvider locale={zhCN}>
 
             <Markdown
-                source={``}
+                source={`> java\n\n> 哈哈哈  \n\n \`\`\`java
+public static void main(String[] args)
+\`\`\``}
             />
+
         </ConfigProvider>
     )
 };

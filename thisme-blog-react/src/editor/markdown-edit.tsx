@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown';
 
 import toc from 'remark-toc';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/github.css';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { darcula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import '../style/markdown.less'
 
 const { useEffect } = React;
@@ -41,22 +41,21 @@ interface CodeBlackProps {
  * @constructor
  */
 export const CodeBlack:React.FC<CodeBlackProps> = props => {
-
-    /*// 每次都渲染代码
-    useEffect(()=> {
-        hljs.highlightBlock();
-    });*/
-
-
+    {/*<pre> 另一种实现方式
+        <code
+            ref={hljs.highlightBlock}
+            className={`language-${props.language}`}
+        >
+        {props.value}
+        </code>
+    </pre>*/}
     return(
-        <pre>
-            <code
-                ref={hljs.highlightBlock}
-                className={`language-${props.language}`}
-            >
-                {props.value}
-            </code>
-        </pre>
+        <SyntaxHighlighter
+            language={props.language}
+            style={darcula}
+        >
+            {props.value}
+        </SyntaxHighlighter>
     )
 };
 
