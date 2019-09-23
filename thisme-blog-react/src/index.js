@@ -6,7 +6,6 @@ var antd_1 = require("antd");
 var zh_CN_1 = require("antd/es/locale-provider/zh_CN");
 require("moment/locale/zh-cn");
 require("./style/globle-index.less");
-var markdown_edit_1 = require("./editor/markdown-edit");
 require('moment').locale('zh-cn'); // 设置为中文
 /**
  * 真实的开始
@@ -14,8 +13,7 @@ require('moment').locale('zh-cn'); // 设置为中文
  * @constructor
  */
 var Init = function () {
-    return (React.createElement(antd_1.ConfigProvider, { locale: zh_CN_1.default },
-        React.createElement(markdown_edit_1.default, { source: "> java\n\n> \u54C8\u54C8\u54C8  \n\n ```java\npublic static void main(String[] args)\n```" })));
+    return (React.createElement(antd_1.ConfigProvider, { locale: zh_CN_1.default }));
 };
 // 打印LOG信息
 console.info("%cthisme : %c 代码托管于github.com/chenmoand/thisme", "background: black;\n" +

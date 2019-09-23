@@ -6,7 +6,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import '../style/markdown.less'
 
-const { useEffect } = React;
+// const { useEffect } = React;
 
 interface MarkdownProps {
     source : string,
@@ -58,5 +58,3 @@ export const CodeBlack:React.FC<CodeBlackProps> = props => {
         </SyntaxHighlighter>
     )
 };
-
-

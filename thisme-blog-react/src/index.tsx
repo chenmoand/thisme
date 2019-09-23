@@ -4,7 +4,6 @@ import { ConfigProvider, Button } from 'antd';
 import zhCN from 'antd/es/locale-provider/zh_CN';
 import 'moment/locale/zh-cn';
 import './style/globle-index.less'
-import Markdown from "./editor/markdown-edit";
 
 require('moment').locale('zh-cn'); // 设置为中文
 
@@ -18,11 +17,6 @@ const Init:React.FC = () => {
     return(
         <ConfigProvider locale={zhCN}>
 
-            <Markdown
-                source={`> java\n\n> 哈哈哈  \n\n \`\`\`java
-public static void main(String[] args)
-\`\`\``}
-            />
 
         </ConfigProvider>
     )
