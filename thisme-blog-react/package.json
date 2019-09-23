@@ -13,7 +13,9 @@
     "antd": "^3.23.3",
     "highlight.js": "^9.15.10",
     "react-markdown": "^4.2.2",
+    "react-redux": "^7.1.1",
     "react-syntax-highlighter": "^11.0.2",
+    "redux": "^4.0.4",
     "remark-toc": "^6.0.0"
   },
   "devDependencies": {
