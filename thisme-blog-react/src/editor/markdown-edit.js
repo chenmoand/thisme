@@ -6,7 +6,10 @@ var remark_toc_1 = require("remark-toc");
 var react_syntax_highlighter_1 = require("react-syntax-highlighter");
 var hljs_1 = require("react-syntax-highlighter/dist/esm/styles/hljs");
 require("../style/markdown.less");
+<<<<<<< HEAD
 var useEffect = React.useEffect;
+=======
+>>>>>>> 不小心误删了重新一下
 /**
  * 一个配置好的Markdown组件
  * @author chenmo
