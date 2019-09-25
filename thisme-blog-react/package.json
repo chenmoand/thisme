@@ -10,6 +10,7 @@
     "build:prod": "webpack --config ./config/webpack.prod.config"
   },
   "dependencies": {
+    "@types/react-redux": "^7.1.2",
     "antd": "^3.23.3",
     "highlight.js": "^9.15.10",
     "react-markdown": "^4.2.2",
