@@ -17,19 +17,34 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'latest']
+                    presets: ['@babel/env', '@babel/react'],
+                    cacheDirectory: true,
+                    plugins: [["import", { libraryName: "antd", style: "css"}]]
                 }
             },
             {
                 test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader'
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/env', '@babel/typescript', '@babel/react'],
+                            cacheDirectory: true,
+                            plugins: [["import", { libraryName: "antd", style: "css"}]]
+                        }
+                    },
+                    // {loader: 'awesome-typescript-loader'}
+                ]
+
             },
             {
                 test: /\.less?$/,
+                exclude: /node_modules/,
                 use: [
                     {loader: 'style-loader'},
                     {loader: 'css-loader'},
@@ -45,27 +60,14 @@ module.exports = {
                 test: /\.css?$/,
                 use:[
                     {loader: 'style-loader'},
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            publicPath: '/',
-                        }
-                    }
+                    {loader: 'css-loader',}
                 ]
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: 'images/[hash:6].[ext]',
-                            fallback: 'file-loader',
-                            publicPath: './'
-                        }
-                    },
+                    'url-loader?limit=10000',
+                    'img-loader'
                 ]
             }
         ]

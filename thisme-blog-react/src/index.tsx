@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux'
-import { ConfigProvider, Button } from 'antd';
-import zhCN from 'antd/es/locale-provider/zh_CN';
+import { BrowserRouter } from 'react-router-dom';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/es/locale/zh_CN';
 import 'moment/locale/zh-cn';
 import './style/globle-index.less'
 import { DevStore } from "./redux/store";
@@ -23,7 +24,9 @@ const Init:React.FC = () => {
     return(
         <Provider store={DevStore}>
             <ConfigProvider locale={zhCN}>
-                <ChickTest />
+                <BrowserRouter>
+                    <ChickTest />
+                </BrowserRouter>
             </ConfigProvider>
         </Provider>
     )

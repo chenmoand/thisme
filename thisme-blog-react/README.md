@@ -1,6 +1,6 @@
 # thisme-blog-react 
 
-> 对[\<simple-react-app\>](../simple-react-app)的扩展, 在运行前保证你有```node``` 和```antd``` 
+> 对[\<simple-react-app\>](../simple-react-app)的扩展, 在运行前保证你有```node``` 和```yarn``` 
 
 #### Command
 

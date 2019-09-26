@@ -16,3 +16,4 @@ gen
 
 build
 node_modules
+src/**/*.map
