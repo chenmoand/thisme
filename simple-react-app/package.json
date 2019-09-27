@@ -5,7 +5,7 @@
   "author": "chenmo",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --config ./config/devServer.config",
+    "start": "webpack-dev-server  --config ./config/devServer.config",
     "build:dev": "webpack --config ./config/webpack.dev.config",
     "build:prod": "webpack --config ./config/webpack.prod.config"
   },
@@ -41,6 +41,7 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "moment": "^2.24.0",
+    "open-browser-webpack-plugin": "^0.0.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "style-loader": "^1.0.0",

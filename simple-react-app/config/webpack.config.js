@@ -1,6 +1,7 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 const path = require('path');
 
@@ -78,6 +79,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './static/index.html'
+        }),
+        new OpenBrowserPlugin({
+            url : 'http://localhost:8080'
         })
     ]
 };

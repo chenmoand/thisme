@@ -10,6 +10,8 @@
 
 #### Installed and Configuration
 
+* ```webpack``` 基础的配置都在config文件里面
+
 * ```react-redux```  在 src/redux里面有配置,并且在test有样例
 * ```moment``` 设置了中文
 * ```antd``` 配置了按需加载
