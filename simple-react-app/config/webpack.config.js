@@ -1,7 +1,7 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
 
 const path = require('path');
 

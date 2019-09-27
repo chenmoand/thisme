@@ -774,6 +774,13 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@juexro/open-browser-webpack-plugin@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/@juexro/open-browser-webpack-plugin/download/@juexro/open-browser-webpack-plugin-1.0.2.tgz#c4960801d4c325cf584cc1cd464f3bf985a434b4"
+  integrity sha1-xJYIAdTDJc9YTMHNRk87+YWkNLQ=
+  dependencies:
+    open "^0.0.5"
+
 "@types/anymatch@*":
   version "1.3.1"
   resolved "https://registry.npm.taobao.org/@types/anymatch/download/@types/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
@@ -4199,14 +4206,7 @@ once@^1.3.0, once@^1.3.1, once@^1.4.0:
   dependencies:
     wrappy "1"
 
-open-browser-webpack-plugin@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.npm.taobao.org/open-browser-webpack-plugin/download/open-browser-webpack-plugin-0.0.5.tgz#5e6dc6f8b8797331e212985de218572d84c0521f"
-  integrity sha1-Xm3G+Lh5czHiEphd4hhXLYTAUh8=
-  dependencies:
-    open "0.0.5"
-
-open@0.0.5:
+open@^0.0.5:
   version "0.0.5"
   resolved "https://registry.npm.taobao.org/open/download/open-0.0.5.tgz#42c3e18ec95466b6bf0dc42f3a2945c3f0cad8fc"
   integrity sha1-QsPhjslUZra/DcQvOilFw/DK2Pw=
