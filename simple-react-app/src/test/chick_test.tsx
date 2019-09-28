@@ -1,5 +1,6 @@
 import * as React from "react";
 import {connect} from "react-redux";
+import {Button} from "antd";
 
 
 interface ChickTestProps {
@@ -13,8 +14,9 @@ interface ChickTestProps {
 const ChickTest: React.FC<ChickTestProps> = props => {
     return(
         <div>
-            {props.value}
-            <button onClick={props.setValue}>改变数字</button>
+            <Button onClick={props.setValue}>
+                改变数字{props.value}
+            </Button>
         </div>
     )
 };
