@@ -12,6 +12,7 @@
 
 * [\<simple-react-app\>](./simple-react-app)  一个简单的 webpack + react启动配置
 * [\<thisme-blog-react\>](./thisme-blog-react) 一个为自己而写的react小项目
+* [\<chenmo\>](./chenmo) 上课所写的java代码
 
 ### Help?  ```可能会对你有帮助!```
 
