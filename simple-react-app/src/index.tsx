@@ -8,9 +8,9 @@ import zhCN from 'antd/es/locale/zh_CN';
 import 'moment/locale/zh-cn';
 import './style/globle-index.less'
 import { DevStore } from "./redux/store";
+import App from "./App";
 
 
-import AppTest from "./test/app-test";
 
 require('moment').locale('zh-cn'); // 设置为中文
 
@@ -25,7 +25,7 @@ const Init:React.FC = () => {
         <Provider store={DevStore}>
             <ConfigProvider locale={zhCN}>
                 <BrowserRouter>
-                    <AppTest />
+                    <App />
                 </BrowserRouter>
             </ConfigProvider>
         </Provider>

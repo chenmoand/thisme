@@ -7,13 +7,16 @@ const path = require('path');
 
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: ['react-hot-loader/patch', './src'],
     output:{
         path: path.resolve(__dirname, '../build'),
         filename: '[name].[hash].js'
     },
     resolve: {
-        extensions : ['.ts', '.tsx', '.js', '/jsx']
+        extensions : ['.ts', '.tsx', '.js', '/jsx'],
+        alias: {
+            'react-dom': '@hot-loader/react-dom',
+        },
     },
     module: {
         rules: [
@@ -24,7 +27,7 @@ module.exports = {
                 query: {
                     presets: ['@babel/env', '@babel/react'],
                     cacheDirectory: true,
-                    plugins: [["import", { libraryName: "antd", style: "css"}]]
+                    plugins: ['react-hot-loader/babel',["import", { libraryName: "antd", style: "css"}]]
                 }
             },
             {
@@ -36,7 +39,7 @@ module.exports = {
                         options: {
                             presets: ['@babel/env', '@babel/typescript', '@babel/react'],
                             cacheDirectory: true,
-                            plugins: [["import", { libraryName: "antd", style: "css"}]]
+                            plugins: ['react-hot-loader/babel',["import", { libraryName: "antd", style: "css"}]]
                         }
                     },
                     // {loader: 'awesome-typescript-loader'}

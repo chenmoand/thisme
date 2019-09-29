@@ -4,6 +4,7 @@ const devServer = {
     mode: 'development',
     devServer: {
         host: '0.0.0.0',
+        hot: true,
         inline: true,
         port: 8080,
         contentBase: 'static/index.html',

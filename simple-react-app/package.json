@@ -20,7 +20,6 @@
     "remark-toc": "^6.0.0"
   },
   "devDependencies": {
-    "open": "^6.4.0",
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
@@ -32,6 +31,8 @@
     "@types/react-redux": "^7.1.2",
     "@types/react-router-dom": "^5.1.0",
     "@types/react-syntax-highlighter": "^11.0.0",
+    "react-hot-loader": "^4.12.14",
+    "@hot-loader/react-dom": "^16.9.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-import": "^1.12.1",
@@ -43,6 +44,7 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "moment": "^2.24.0",
+    "open": "^6.4.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "style-loader": "^1.0.0",
