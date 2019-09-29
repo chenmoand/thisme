@@ -13,4 +13,4 @@ const devServer = {
 };
 
 
-module.exports= {...config, ...devServer };
+module.exports = {...config, ...devServer };

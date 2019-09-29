@@ -7,4 +7,4 @@ const devConfig = {
     mode: 'development',
 };
 
-module.exports= {...config, ...devConfig };
+module.exports = {...config, ...devConfig };

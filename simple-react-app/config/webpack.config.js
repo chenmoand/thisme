@@ -5,7 +5,10 @@ const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
 
 const path = require('path');
 
-
+/**
+ * 这是所有webpack的所有父类
+ * @author chenmo
+ */
 module.exports = {
     entry: ['react-hot-loader/patch', './src'],
     output:{
