@@ -18,12 +18,17 @@ export const ConnectRedux = (mapStateToProps, mapDisPatchToProps, Component) => 
  * @param Component
  */
 export const ConnectRouter = (mapStateToProps, mapDisPatchToProps, Component) => {
-    // @ts-ignore
-    return withRouter(connect(mapStateToProps, mapDisPatchToProps)(Component));
+    // 这样写会报类型错误, 强迫症的我!!!
+    // return withRouter(connect(mapStateToProps, mapDisPatchToProps)(Component));
+    return ConnectRedux(mapStateToProps, mapDisPatchToProps, withRouter(Component));
 };
 
 /**
- * 模拟RouterProps传进来的参数
+ * 模拟RouterProps传进来的参数,
+ * 如果有其他Props请继承这个RouterProps 例如
+ *  interface Props extends RouterProps {
+ *      src: string
+ *  }
  */
 export interface RouterProps {
     history : History,

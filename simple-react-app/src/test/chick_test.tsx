@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Button} from "antd";
-import Com, {ConnectRedux} from "../util/ComponentUtil";
+import {ConnectRedux} from "../util/ComponentUtil";
 
 interface ChickTestProps {
     value: number,

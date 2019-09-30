@@ -18,7 +18,8 @@ exports.ConnectRedux = function (mapStateToProps, mapDisPatchToProps, Component)
  * @param Component
  */
 exports.ConnectRouter = function (mapStateToProps, mapDisPatchToProps, Component) {
-    // @ts-ignore
-    return react_router_dom_1.withRouter(react_redux_1.connect(mapStateToProps, mapDisPatchToProps)(Component));
+    // 这样写会报类型错误, 强迫症的我!!!
+    // return withRouter(connect(mapStateToProps, mapDisPatchToProps)(Component));
+    return exports.ConnectRedux(mapStateToProps, mapDisPatchToProps, react_router_dom_1.withRouter(Component));
 };
 //# sourceMappingURL=ComponentUtil.js.map
