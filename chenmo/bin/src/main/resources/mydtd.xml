@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE web-app SYSTEM "web-app_2_3.dtd">
+<web-app version="1.0-res">
+    <servlet>
+        <servlet-name>java</servlet-name>
+        <servlet-class>java.io.File</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>php</servlet-name>
+        <url-pattern>http://404.com</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>/hello</welcome-file>
+    </welcome-file-list>
+</web-app>

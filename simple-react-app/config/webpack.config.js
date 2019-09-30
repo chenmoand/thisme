@@ -76,7 +76,14 @@ module.exports = {
                     'url-loader?limit=10000',
                     'img-loader'
                 ]
+            },
+            {
+                test: /\.(ttf|eto|woff|woff2|svg)$/,
+                use:[
+                    'file-loader'
+                ]
             }
+
         ]
     },
     plugins: [
