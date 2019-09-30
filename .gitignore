@@ -135,3 +135,10 @@ simple-react-app/src/test/rou_test.js
 simple-react-app/src/test/rou_test.tsx
 thisme-blog-react/src/redux/reducers/mainReducer.js
 thisme-blog-react/src/test/chick_test.js
+.project
+.settings/
+bin/.project
+bin/.settings/
+bin/pom.xml
+bin/src/main/resources/
+bin/src/test/

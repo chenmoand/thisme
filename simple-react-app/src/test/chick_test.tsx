@@ -1,7 +1,6 @@
 import * as React from "react";
-import {connect} from "react-redux";
 import {Button} from "antd";
-
+import Com, {ConnectRedux} from "../util/ComponentUtil";
 
 interface ChickTestProps {
     value: number,
@@ -15,7 +14,7 @@ const ChickTest: React.FC<ChickTestProps> = props => {
     return(
         <div>
             <Button onClick={props.setValue}>
-                改变数字{props.value}
+                祁凯牛秧歌{props.value}次
             </Button>
         </div>
     )
@@ -24,7 +23,7 @@ const ChickTest: React.FC<ChickTestProps> = props => {
 /**
  * 链接组件,他会自动注入到我们的props上
  */
-export default connect(
+export default ConnectRedux(
     state => {
         // @ts-ignore
         return {value: state.mainReducer.count};
@@ -34,5 +33,6 @@ export default connect(
         return {
             setValue: () => dispatch({type: 'ADD'})
         };
-    }
-)(ChickTest);
+    },
+    ChickTest
+);

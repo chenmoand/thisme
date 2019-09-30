@@ -4,17 +4,21 @@
 >
 > 这个帮你简化了不必要的操作, 这个是由```webpack```  + ```React``` + ```TypeScript``` 的产物, 至于出现问题可以提出,或者自行修改
 
+#### Install
+
+* ```yarn``` 安装好所有库
+
 #### Command
 
 * ```yarn start``` 启动服务默认端口8080
 * ```yarn build:dev``` 开发者模式构建
-* ```yarn build:pord``` 生产环境构建(需要改index.html的源)
+* ```yarn build:pord``` 生产环境构建(需要改index.html的js源)
 
-#### Installed and Configuration
+#### Installed and Configuration 
 
 * ```webpack``` 基础的配置都在config文件里面
 * ```react-redux```  在 src/redux里面有配置,并且在test有样例
 * ```moment``` 设置了中文
 * ```antd``` 配置了按需加载
 * ```Markdown``` 配置好了Markdown组件
-* ```react-hot-loader``` 热部署范围在以App.tsx为基点
+* ```react-hot-loader``` 热部署范围在以**App.tsx**为基点
