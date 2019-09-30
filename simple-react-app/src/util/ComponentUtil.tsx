@@ -13,6 +13,7 @@ export const ConnectRedux = (mapStateToProps, mapDisPatchToProps, Component) => 
 
 /**
  * 转换成持有Redux和Router的组件
+ * 有关网址https://reacttraining.com/react-router/web/guides/redux-integration
  * @param mapStateToProps
  * @param mapDisPatchToProps
  * @param Component
@@ -26,9 +27,9 @@ export const ConnectRouter = (mapStateToProps, mapDisPatchToProps, Component) =>
 /**
  * 模拟RouterProps传进来的参数,
  * 如果有其他Props请继承这个RouterProps 例如
- *  interface Props extends RouterProps {
- *      src: string
- *  }
+ * interface Props extends RouterProps {
+ *     src: string
+ * }
  */
 export interface RouterProps {
     history : History,

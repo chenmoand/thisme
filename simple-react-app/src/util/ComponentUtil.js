@@ -13,6 +13,7 @@ exports.ConnectRedux = function (mapStateToProps, mapDisPatchToProps, Component)
 };
 /**
  * 转换成持有Redux和Router的组件
+ * 有关网址https://reacttraining.com/react-router/web/guides/redux-integration
  * @param mapStateToProps
  * @param mapDisPatchToProps
  * @param Component
