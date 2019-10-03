@@ -1,8 +1,11 @@
 import * as React from "react";
+import {connect} from "react-redux";
 
 interface TitleProps {
     src: string,
     html?: true,
+    domain: string,
+    setDomain: (string) => void,
 }
 
 /**
@@ -11,9 +14,9 @@ interface TitleProps {
  * @param props
  */
 const Title: React.FC<TitleProps> = props => {
-    const { src, html } = props;
-    document.title = src + " | Brageast.com";
-
+    const { src, html, domain, setDomain } = props;
+    setDomain("brageast.com");
+    document.title = src + " | " + domain;
     return(
         <>
             {html? src : ""}
@@ -21,4 +24,11 @@ const Title: React.FC<TitleProps> = props => {
     )
 };
 
-export default Title;
+export default connect(state => {
+    // @ts-ignore
+    return { domain : state.mainReducer.domain };
+}, dispatch=> {
+    return {
+        setDomain: str => dispatch({type: "DOMAIN", content : str})
+    }
+})(Title);

@@ -4,21 +4,34 @@
  */
 export interface MainState{
     count : number,
+    domain : string,
+
 }
 
 /**
  * 初始化state
  */
 const init:MainState = {
-    count : 100
+    count : 100,
+    domain: 'Example.com'
 };
 
-export default function mainReducer(state:MainState = init, action):MainState {
+/**
+ * 用于修改的指令操作
+ */
+export interface MainAction {
+    type: string,
+    content?: any
+}
+
+export default function mainReducer(state:MainState = init, action:MainAction):MainState {
     switch (action.type) {
         case 'ADD':
-            return {count : state.count + 1};
+            return  {...state, count : state.count + 1};
         case 'DEL':
-            return {count : state.count - 1};
+            return {...state, count : state.count - 1};
+        case 'DOMAIN':
+            return {...state, domain : action.content };
         default:
             return state;
     }

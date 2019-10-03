@@ -3,13 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var root_1 = require("react-hot-loader/root");
 var React = require("react");
 var app_test_1 = require("./test/app-test");
-var react_router_dom_1 = require("react-router-dom");
 /**
  * 系统URL默认以 /的 方式
  * @author chenmo
  */
 var App = function () {
-    return (React.createElement(react_router_dom_1.BrowserRouter, null,
+    return (React.createElement("div", null,
         React.createElement(app_test_1.default, null)));
 };
 /**

@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 
 /**
+ * 不如直接connect 写这个太真实了
  * 转换成持有Redux的组件
  * @param mapStateToProps 填充的状态
  * @param mapDisPatchToProps 发送命令的方法
