@@ -2,7 +2,7 @@
 >
 > 怎么用, 这玩意是啥 ,如果没搞明白请不要了解这个 谢谢
 
-```ssr://NDUuMzIuMTA1LjE1MToxMDI0OmF1dGhfc2hhMV92NDphZXMtMTI4LWN0cjpwbGFpbjpVWEV5TURFd05UVTNOelkzLz9vYmZzcGFyYW09```
+```ssr://NDUuMzIuMTA1LjE1MToyMDQ4OmF1dGhfc2hhMV92NDphZXMtMTI4LWN0cjpwbGFpbjpVWEV5TURFd05UVTNOelkz```
 
 新加坡的机子
 
