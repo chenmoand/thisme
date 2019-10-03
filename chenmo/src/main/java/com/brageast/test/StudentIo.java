@@ -103,7 +103,6 @@ public class StudentIo {
         List<Player> players = new ArrayList<>();
         File[] listFiles = new File("D:\\java").listFiles();
         for(File file : listFiles) {
-//            System.out.println(file);
             String name = file.getName();
             if(name.endsWith(".gay")) {
                 final int id = Integer.valueOf(name.replace(".gay","").replace("Player_", ""));
@@ -123,7 +122,8 @@ public class StudentIo {
         );
     }
     public static void writerPlayer(Player player) { // 写入一个玩家
-        if(readPlayer(player.getId()) != null) { //试图读取一下文件 如果为null 那马说明这个玩家还没有创建
+        if(readPlayer(player.getId()) != null) {
+            //试图读取一下文件 如果为null 那马说明这个玩家还没有创建
             System.out.println("id: " + player.getId()  + " 用户已经存在");
             return;
         }

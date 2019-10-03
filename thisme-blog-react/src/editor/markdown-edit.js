@@ -2,10 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ReactMarkdown = require("react-markdown");
-var remark_toc_1 = require("remark-toc");
 var react_syntax_highlighter_1 = require("react-syntax-highlighter");
 var hljs_1 = require("react-syntax-highlighter/dist/esm/styles/hljs");
 require("../style/markdown.less");
+// const { useEffect } = React;
+var toc = require('remark-toc');
 /**
  * 一个配置好的Markdown组件
  * @author chenmo
@@ -13,7 +14,7 @@ require("../style/markdown.less");
  */
 var Markdown = function (props) {
     return (React.createElement("div", null,
-        React.createElement(ReactMarkdown, { skipHtml: false, source: props.source, renderers: { code: exports.CodeBlack }, plugins: [remark_toc_1.default] })));
+        React.createElement(ReactMarkdown, { skipHtml: false, source: props.source, renderers: { code: exports.CodeBlack }, plugins: [toc] })));
 };
 exports.default = Markdown;
 /**

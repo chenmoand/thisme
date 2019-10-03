@@ -1,18 +1,25 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
 
 const path = require('path');
 
-
+/**
+ * 这是所有webpack的所有父类
+ * @author chenmo
+ */
 module.exports = {
-    entry: './src/index.tsx',
+    entry: ['react-hot-loader/patch', './src'],
     output:{
         path: path.resolve(__dirname, '../build'),
         filename: '[name].[hash].js'
     },
     resolve: {
-        extensions : ['.ts', '.tsx', '.js', '/jsx']
+        extensions : ['.ts', '.tsx', '.js', '/jsx'],
+        alias: {
+            'react-dom': '@hot-loader/react-dom',
+        },
     },
     module: {
         rules: [
@@ -23,7 +30,7 @@ module.exports = {
                 query: {
                     presets: ['@babel/env', '@babel/react'],
                     cacheDirectory: true,
-                    plugins: [["import", { libraryName: "antd", style: "css"}]]
+                    plugins: ['react-hot-loader/babel',["import", { libraryName: "antd", style: "css"}]]
                 }
             },
             {
@@ -35,7 +42,7 @@ module.exports = {
                         options: {
                             presets: ['@babel/env', '@babel/typescript', '@babel/react'],
                             cacheDirectory: true,
-                            plugins: [["import", { libraryName: "antd", style: "css"}]]
+                            plugins: ['react-hot-loader/babel',["import", { libraryName: "antd", style: "css"}]]
                         }
                     },
                     // {loader: 'awesome-typescript-loader'}
@@ -69,7 +76,14 @@ module.exports = {
                     'url-loader?limit=10000',
                     'img-loader'
                 ]
+            },
+            {
+                test: /\.(ttf|eto|woff|woff2|svg)$/,
+                use:[
+                    'file-loader'
+                ]
             }
+
         ]
     },
     plugins: [
@@ -78,6 +92,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './static/index.html'
+        }),
+        new OpenBrowserPlugin({
+            url : 'http://localhost:8080'
         })
     ]
 };

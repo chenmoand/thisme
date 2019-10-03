@@ -2,15 +2,16 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter} from 'react-router-dom';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import 'moment/locale/zh-cn';
 import './style/globle-index.less'
 import { DevStore } from "./redux/store";
+import App from "./App";
+import Title from "./component/title";
 
 
-import ChickTest from "./test/chick_test";
 
 require('moment').locale('zh-cn'); // 设置为中文
 
@@ -24,9 +25,10 @@ const Init:React.FC = () => {
     return(
         <Provider store={DevStore}>
             <ConfigProvider locale={zhCN}>
-                <BrowserRouter>
-                    <ChickTest />
-                </BrowserRouter>
+                <HashRouter>
+                    <Title src={"chenmo的个人博客~代码摸鱼者 "}/>
+                    <App />
+                </HashRouter>
             </ConfigProvider>
         </Provider>
     )

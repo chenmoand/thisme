@@ -7,4 +7,4 @@ const prodConfig = {
 
 };
 // 合并两个config
-module.exports= {...config, ...prodConfig };
+module.exports = {...config, ...prodConfig };

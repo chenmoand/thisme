@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown';
 
-import toc from 'remark-toc';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import '../style/markdown.less'
 
 // const { useEffect } = React;
+const toc = require('remark-toc');
 
 interface MarkdownProps {
     source : string,

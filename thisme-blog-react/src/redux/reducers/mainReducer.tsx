@@ -2,18 +2,18 @@
  * 初始声明state类型
  *
  */
-export interface mainRedInterFace {
+export interface MainState{
     count : number,
 }
 
 /**
  * 初始化state
  */
-const init:mainRedInterFace = {
+const init:MainState = {
     count : 100
 };
 
-export default function mainReducer(state:mainRedInterFace = init, action) {
+export default function mainReducer(state:MainState = init, action):MainState {
     switch (action.type) {
         case 'ADD':
             return {count : state.count + 1};

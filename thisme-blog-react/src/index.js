@@ -9,7 +9,8 @@ var zh_CN_1 = require("antd/es/locale/zh_CN");
 require("moment/locale/zh-cn");
 require("./style/globle-index.less");
 var store_1 = require("./redux/store");
-var chick_test_1 = require("./test/chick_test");
+var App_1 = require("./App");
+var title_1 = require("./component/title");
 require('moment').locale('zh-cn'); // 设置为中文
 /**
  * 真实的开始
@@ -19,8 +20,9 @@ require('moment').locale('zh-cn'); // 设置为中文
 var Init = function () {
     return (React.createElement(react_redux_1.Provider, { store: store_1.DevStore },
         React.createElement(antd_1.ConfigProvider, { locale: zh_CN_1.default },
-            React.createElement(react_router_dom_1.BrowserRouter, null,
-                React.createElement(chick_test_1.default, null)))));
+            React.createElement(react_router_dom_1.HashRouter, null,
+                React.createElement(title_1.default, { src: "chenmo的个人博客~代码摸鱼者 " }),
+                React.createElement(App_1.default, null)))));
 };
 // 打印LOG信息
 console.info("%cthisme : %c 代码托管于github.com/chenmoand/thisme", "background: black;\n" +
