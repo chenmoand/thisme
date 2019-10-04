@@ -1,0 +1,14 @@
+{
+  "name": "thisme",
+  "version": "1.0.0",
+  "repository": "https://github.com/chenmoand/thisme.git",
+  "author": "chenmo",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "web" : "cd thisme-blog-react && yarn build:prod && gh-pages -d build"
+  },
+  "dependencies": {
+    "gh-pages": "^2.1.1"
+  }
+}
