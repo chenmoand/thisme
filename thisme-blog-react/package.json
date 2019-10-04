@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server  --config ./config/devServer.config",
-    "build:dev": "webpack --config ./config/webpack.dev.config",
-    "build:prod": "webpack --config ./config/webpack.prod.config"
+    "build:dev": "webpack --config ./config/webpack.dev.config && node ./config/copyConfig",
+    "build:prod": "webpack --config ./config/webpack.prod.config && node ./config/copyConfig"
   },
   "dependencies": {
     "antd": "^3.23.3",
