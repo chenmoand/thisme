@@ -12,9 +12,9 @@ var store_1 = require("./redux/store");
 var App_1 = require("./App");
 require('moment').locale('zh-cn'); // 设置为中文
 /**
- * 真实的开始
+ * 不需要动这个, 如果后期有需要可以将HashRouter替换成BrowserRouter
+ * 有兴趣的点个star, 真实的点star量啊!!!!
  * @author chenmo
- * @constructor
  */
 var Init = function () {
     return (React.createElement(react_redux_1.Provider, { store: store_1.DevStore },

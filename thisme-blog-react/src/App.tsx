@@ -1,5 +1,6 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
+import NavigationMenu from "./menu/NavigationMenu";
 
 
 /**
@@ -9,7 +10,9 @@ import * as React from 'react';
 const App:React.FC = () => {
     return(
         <div>
-            测试
+            <NavigationMenu
+                className={""}
+            />
         </div>
     )
 };

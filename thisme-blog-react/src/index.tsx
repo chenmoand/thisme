@@ -15,9 +15,9 @@ import App from "./App";
 require('moment').locale('zh-cn'); // 设置为中文
 
 /**
- * 真实的开始
+ * 不需要动这个, 如果后期有需要可以将HashRouter替换成BrowserRouter
+ * 有兴趣的点个star, 真实的点star量啊!!!!
  * @author chenmo
- * @constructor
  */
 const Init:React.FC = () => {
     return(

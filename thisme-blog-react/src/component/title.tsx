@@ -8,7 +8,7 @@ interface TitleProps {
     src: string,
     html?: true,
     domain: string,
-    setDomain: (string) => void,
+    setDomain: (str: string) => void,
 }
 
 /**
