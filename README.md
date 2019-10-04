@@ -8,6 +8,8 @@
 
 ``` git clone https://github.com/chenmoand/thisme.git ``` 
 
+``` yarn ```
+
 ### Modules 
 
 * [\<simple-react-app\>](./simple-react-app)  一个简单的 webpack + react启动配置
@@ -19,3 +21,6 @@
 *  [\<REAL.md\>](./REAL.md)  一个记录遇到问题解决方法的一个文档
 *  [\<ssr.md\>](./doc/ssr.md)  一个酸酸乳的分享地址
 
+#### Command
+
+* ```yarn web``` 将thisme-blog-react构建并且提交githubPage
