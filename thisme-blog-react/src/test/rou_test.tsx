@@ -8,7 +8,7 @@ import Title from "../component/title";
  * @constructor
  */
 const Rou:React.FC = props => {
-    console.log(props);
+    // console.log(props);
     return(
         <div>
             <Title src={"测试哈哈哈"} html/>

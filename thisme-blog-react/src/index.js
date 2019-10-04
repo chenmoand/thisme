@@ -10,7 +10,6 @@ require("moment/locale/zh-cn");
 require("./style/globle-index.less");
 var store_1 = require("./redux/store");
 var App_1 = require("./App");
-var title_1 = require("./component/title");
 require('moment').locale('zh-cn'); // 设置为中文
 /**
  * 真实的开始
@@ -21,7 +20,6 @@ var Init = function () {
     return (React.createElement(react_redux_1.Provider, { store: store_1.DevStore },
         React.createElement(antd_1.ConfigProvider, { locale: zh_CN_1.default },
             React.createElement(react_router_dom_1.HashRouter, null,
-                React.createElement(title_1.default, { src: "chenmo的个人博客~代码摸鱼者 " }),
                 React.createElement(App_1.default, null)))));
 };
 // 打印LOG信息

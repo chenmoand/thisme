@@ -1,7 +1,10 @@
 import * as React from "react";
 import {connect} from "react-redux";
 
+
 interface TitleProps {
+    style?: React.CSSProperties,
+    className?: string,
     src: string,
     html?: true,
     domain: string,
@@ -14,13 +17,16 @@ interface TitleProps {
  * @param props
  */
 const Title: React.FC<TitleProps> = props => {
-    const { src, html, domain, setDomain } = props;
+    const { src, html, domain, setDomain, style, className } = props;
     setDomain("brageast.com");
     document.title = src + " | " + domain;
     return(
-        <>
+        <div
+            className={className}
+            style={style}
+        >
             {html? src : ""}
-        </>
+        </div>
     )
 };
 

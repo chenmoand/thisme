@@ -9,12 +9,10 @@ import 'moment/locale/zh-cn';
 import './style/globle-index.less'
 import { DevStore } from "./redux/store";
 import App from "./App";
-import Title from "./component/title";
 
 
 
 require('moment').locale('zh-cn'); // 设置为中文
-
 
 /**
  * 真实的开始
@@ -26,7 +24,6 @@ const Init:React.FC = () => {
         <Provider store={DevStore}>
             <ConfigProvider locale={zhCN}>
                 <HashRouter>
-                    <Title src={"chenmo的个人博客~代码摸鱼者 "}/>
                     <App />
                 </HashRouter>
             </ConfigProvider>
