@@ -9,7 +9,7 @@ fs.readdir('./static', (err ,date) => {
     date.forEach(val => {
         if(val !== 'index.html') {
             fs.copyFile(`./static/${val}`, `./build/${val}`, err1 => {
-                if(err) console.log(err);
+                if(err1) console.log(err1);
             })
         }
     })
