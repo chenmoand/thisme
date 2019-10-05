@@ -1,6 +1,8 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import NavigationMenu from "./menu/NavigationMenu";
+import {Button} from "rsuite";
+import 'rsuite/lib/styles/index.less'
 
 
 /**
@@ -10,9 +12,13 @@ import NavigationMenu from "./menu/NavigationMenu";
 const App:React.FC = () => {
     return(
         <div>
-            <NavigationMenu
-                className={""}
-            />
+            {/*<NavigationMenu*/}
+            {/*    className={""}*/}
+            {/*/>*/}
+            <Button>
+                java
+            </Button>
+
         </div>
     )
 };

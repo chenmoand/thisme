@@ -6,6 +6,8 @@ var react_redux_1 = require("react-redux");
 var react_router_dom_1 = require("react-router-dom");
 var antd_1 = require("antd");
 var zh_CN_1 = require("antd/es/locale/zh_CN");
+var rsuite_1 = require("rsuite");
+var zh_CN_2 = require("rsuite/lib/IntlProvider/locales/zh_CN");
 require("moment/locale/zh-cn");
 require("./style/globle-index.less");
 var store_1 = require("./redux/store");
@@ -19,8 +21,9 @@ require('moment').locale('zh-cn'); // 设置为中文
 var Init = function () {
     return (React.createElement(react_redux_1.Provider, { store: store_1.DevStore },
         React.createElement(antd_1.ConfigProvider, { locale: zh_CN_1.default },
-            React.createElement(react_router_dom_1.HashRouter, null,
-                React.createElement(App_1.default, null)))));
+            React.createElement(rsuite_1.IntlProvider, { locale: zh_CN_2.default },
+                React.createElement(react_router_dom_1.HashRouter, null,
+                    React.createElement(App_1.default, null))))));
 };
 // 打印LOG信息
 console.info("%cthisme : %c 代码托管于github.com/chenmoand/thisme", "background: black;\n" +

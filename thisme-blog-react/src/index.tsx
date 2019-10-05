@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'
 import { HashRouter} from 'react-router-dom';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
+import {IntlProvider} from "rsuite";
+import zh_CN from 'rsuite/lib/IntlProvider/locales/zh_CN';
 import 'moment/locale/zh-cn';
 import './style/globle-index.less'
 import { DevStore } from "./redux/store";
@@ -23,9 +25,11 @@ const Init:React.FC = () => {
     return(
         <Provider store={DevStore}>
             <ConfigProvider locale={zhCN}>
-                <HashRouter>
-                    <App />
-                </HashRouter>
+                <IntlProvider locale={zh_CN}>
+                    <HashRouter>
+                        <App />
+                    </HashRouter>
+                </IntlProvider>
             </ConfigProvider>
         </Provider>
     )

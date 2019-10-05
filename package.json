@@ -6,9 +6,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "web" : "cd thisme-blog-react && yarn build:prod && gh-pages -d build"
+    "web": "cd thisme-blog-react && yarn build:prod && gh-pages -d build"
   },
   "dependencies": {
     "gh-pages": "^2.1.1"
-  }
+  },
+  "devDependencies": {}
 }

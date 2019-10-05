@@ -1,7 +1,8 @@
-const { CheckerPlugin } = require('awesome-typescript-loader');
+// const { CheckerPlugin } = require('awesome-typescript-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const path = require('path');
 
@@ -28,9 +29,17 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['@babel/env', '@babel/react'],
+                    presets: [
+                        '@babel/env',
+                        ["rsuite", { "style": true, "theme": "dark" }],
+                        '@babel/react',
+                    ],
                     cacheDirectory: true,
-                    plugins: ['react-hot-loader/babel',["import", { libraryName: "antd", style: "css"}]]
+                    plugins: [
+                        'react-hot-loader/babel',
+                        // 'lodash',
+                        ["import", { libraryName: "antd", style: "css"}]
+                    ]
                 }
             },
             {
@@ -40,9 +49,18 @@ module.exports = {
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['@babel/env', '@babel/typescript', '@babel/react'],
+                            presets: [
+                                '@babel/env',
+                                // ["rsuite", { "style": true, "theme": "dark" }],
+                                '@babel/typescript',
+                                '@babel/react',
+                            ],
                             cacheDirectory: true,
-                            plugins: ['react-hot-loader/babel',["import", { libraryName: "antd", style: "css"}]]
+                            plugins: [
+                                // 'lodash',
+                                'react-hot-loader/babel',
+                                ["import", { libraryName: "antd", style: "css"}],
+                            ]
                         }
                     },
                     // {loader: 'awesome-typescript-loader'}
@@ -87,7 +105,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new CheckerPlugin(),
+        new LodashModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
