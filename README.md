@@ -10,7 +10,9 @@
 
 ``` git clone https://github.com/chenmoand/thisme.git ``` 
 
-``` yarn ```
+``` yarn ``` 安装前置
+
+```yarn global add webpack webpack-cli webpack-dev-server```
 
 ### Modules 
 
