@@ -22,8 +22,8 @@ class IThread implements Runnable {
     private static Integer i = 100;
     @Override
     public void run() {
-        while (i > 0) {
-            synchronized (i) {
+        synchronized (this) {
+            while (i > 0) {
                 i--;
                 System.out.println(i);
                 if(i == 0 && b) {

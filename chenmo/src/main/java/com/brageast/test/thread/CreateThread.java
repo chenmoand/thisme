@@ -8,12 +8,15 @@ import java.util.concurrent.*;
 public class CreateThread {
 
     public static void main(String[] args) {
-        new IThread().start(); // 第一种
+        // 第一种
+        new IThread().start();
         System.out.println("---------------------------");
-        new Thread(new IRunnable()).start(); //第二种
+        //第二种
+        new Thread(new IRunnable()).start();
         System.out.println("---------------------------");
         final FutureTask<String> target = new FutureTask<>(new ICallable());
-        new Thread(target).start(); // 第三种
+        // 第三种
+        new Thread(target).start();
         System.out.println("---------------------------");
         try {
             System.out.println(target.get());
@@ -21,7 +24,8 @@ public class CreateThread {
             e.printStackTrace();
         }
         System.out.println("---------------------------");
-        final ExecutorService executorService = Executors.newFixedThreadPool(3); //第四种方法
+        //第四种方法
+        final ExecutorService executorService = Executors.newFixedThreadPool(3);
         executorService.submit(new IThread());
         executorService.submit(new IRunnable());
         executorService.submit(target);

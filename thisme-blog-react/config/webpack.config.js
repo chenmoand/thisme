@@ -51,7 +51,7 @@ module.exports = {
                         options: {
                             presets: [
                                 '@babel/env',
-                                // ["rsuite", { "style": true, "theme": "dark" }],
+                                ["rsuite", { "style": true, "theme": "dark" }],
                                 '@babel/typescript',
                                 '@babel/react',
                             ],
@@ -69,7 +69,7 @@ module.exports = {
             },
             {
                 test: /\.less?$/,
-                exclude: /node_modules/,
+                // exclude: /node_modules/,
                 use: [
                     {loader: 'style-loader'},
                     {
@@ -82,6 +82,7 @@ module.exports = {
                         loader: 'less-loader',
                         options:{
                             paths: [path.resolve(__dirname, 'node_modules')],
+                            javascriptEnabled: true,
                         }
                     },
                     // {loader: 'postcss-loader'},

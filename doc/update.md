@@ -2,3 +2,5 @@
 
 * 19.10.5 加入了```rsuite``` 组件库,并且设置了按需加载,antd的顶部菜单个人觉得不大美观,更像是做商城用的!
 
+* 19.10.8 因为```webpack```的less配置问题``` exclude: /node_modules/```删掉了这个, 导致modules的less文件不能加载 
+
