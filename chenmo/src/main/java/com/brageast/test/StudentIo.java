@@ -7,7 +7,10 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class StudentIo {
-    private final static String FILE_URL = "D:\\java\\Player_"; // 信息存储地址
+    /**
+     * 信息存储地址
+     */
+    private final static String FILE_URL = "D:\\java\\Player_";
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args)  {
         writerPlayer(new Player(1,"沉默",20,"男"));
@@ -16,7 +19,8 @@ public class StudentIo {
         sayInfo();
         loop:while (true) {
             switch (scanner.nextInt()) {
-                case 1: // 查看所有人的信息
+                case 1:
+                    // 查看所有人的信息
                     getAllPlayer().forEach(System.out::println);
                     sayInfo();
                     break;
@@ -25,7 +29,8 @@ public class StudentIo {
                     sayInfo();
                     break;
                 case 3:
-                    writerPlayer(Objects.requireNonNull(addPlayer())); // 添加一个玩家
+                    // 添加一个玩家
+                    writerPlayer(Objects.requireNonNull(addPlayer()));
                     sayInfo();
                     break;
                 case 4:

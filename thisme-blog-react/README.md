@@ -1,7 +1,8 @@
 # thisme-blog-react 
 
 > 对[\<simple-react-app\>](../simple-react-app)的扩展, 在运行前保证你有```node``` 和```yarn```, 
-> 更是我要完成的小站目标,有兴趣点个star 
+> 更是我要完成的小站目标,有兴趣点个star  , 由于我的```webpack```和```webpack-dev-server```
+> 是全局安装的, 请自行安装
 
 #### Command
 

@@ -1,7 +1,7 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import NavigationMenu from "./menu/NavigationMenu";
-import { Button } from 'antd';
+// import { Button } from 'antd';
 import 'rsuite/lib/styles/index.less';
 
 
@@ -12,12 +12,9 @@ import 'rsuite/lib/styles/index.less';
 const App:React.FC = () => {
     return(
         <div>
-            {/*<NavigationMenu*/}
-            {/*    className={""}*/}
-            {/*/>*/}
-            <Button>
-                java
-            </Button>
+            <NavigationMenu>
+                Brageast.com
+            </NavigationMenu>
 
         </div>
     )

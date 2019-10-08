@@ -31,13 +31,12 @@ module.exports = {
                 query: {
                     presets: [
                         '@babel/env',
-                        ["rsuite", { "style": true, "theme": "dark" }],
+                        ["rsuite", { "style": true}],
                         '@babel/react',
                     ],
                     cacheDirectory: true,
                     plugins: [
                         'react-hot-loader/babel',
-                        // 'lodash',
                         ["import", { libraryName: "antd", style: "css"}]
                     ]
                 }
@@ -51,32 +50,26 @@ module.exports = {
                         options: {
                             presets: [
                                 '@babel/env',
-                                ["rsuite", { "style": true, "theme": "dark" }],
+                                ["rsuite", { "style": true}],
                                 '@babel/typescript',
                                 '@babel/react',
                             ],
                             cacheDirectory: true,
                             plugins: [
-                                // 'lodash',
                                 'react-hot-loader/babel',
                                 ["import", { libraryName: "antd", style: "css"}],
                             ]
                         }
                     },
-                    // {loader: 'awesome-typescript-loader'}
                 ]
 
             },
             {
                 test: /\.less?$/,
-                // exclude: /node_modules/,
                 use: [
                     {loader: 'style-loader'},
                     {
                         loader: 'css-loader',
-                        // options: {
-                        //     modules: true
-                        // }
                     },
                     {
                         loader: 'less-loader',
@@ -85,7 +78,6 @@ module.exports = {
                             javascriptEnabled: true,
                         }
                     },
-                    // {loader: 'postcss-loader'},
                 ]
             },
             {
@@ -93,7 +85,6 @@ module.exports = {
                 use:[
                     {loader: 'style-loader'},
                     {loader: 'css-loader',},
-                    // {loader: 'postcss-loader'},
                 ]
             },
             {
