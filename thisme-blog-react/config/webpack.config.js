@@ -72,20 +72,27 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {loader: 'style-loader'},
-                    {loader: 'css-loader'},
+                    {
+                        loader: 'css-loader',
+                        // options: {
+                        //     modules: true
+                        // }
+                    },
                     {
                         loader: 'less-loader',
                         options:{
                             paths: [path.resolve(__dirname, 'node_modules')],
                         }
                     },
+                    // {loader: 'postcss-loader'},
                 ]
             },
             {
-                test: /\.css?$/,
+                test: /\.css$/,
                 use:[
                     {loader: 'style-loader'},
-                    {loader: 'css-loader',}
+                    {loader: 'css-loader',},
+                    // {loader: 'postcss-loader'},
                 ]
             },
             {

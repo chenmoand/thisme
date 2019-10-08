@@ -1,8 +1,8 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import NavigationMenu from "./menu/NavigationMenu";
-import {Button} from "rsuite";
-import 'rsuite/lib/styles/index.less'
+import { Button } from 'antd';
+import 'rsuite/lib/styles/index.less';
 
 
 /**

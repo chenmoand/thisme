@@ -21,7 +21,10 @@ class IdeaThread implements Runnable {
         try {
             for(int i = 1; i <= 30; i ++) {
                 System.out.println("兔子走了" + i + "米" );
-                if(i % 10 == 0 ) Thread.sleep(11000); // 1秒跑10秒休息
+                if(i % 10 == 0 ) {
+                    // 1秒跑10秒休息
+                    Thread.sleep(11000);
+                }
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -43,7 +46,8 @@ class EclipseThread implements Runnable {
 
             if(i % 20 == 0 ) {
                 try {
-                    Thread.sleep(2000); // 1秒跑1秒休息
+                    // 1秒跑1秒休息
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
