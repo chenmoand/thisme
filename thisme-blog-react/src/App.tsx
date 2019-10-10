@@ -1,8 +1,8 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import NavigationMenu from "./menu/NavigationMenu";
-// import { Button } from 'antd';
 import 'rsuite/lib/styles/index.less';
+import Configuration from "./component/configuration";
 
 
 /**
@@ -11,12 +11,14 @@ import 'rsuite/lib/styles/index.less';
  */
 const App:React.FC = () => {
     return(
-        <div>
+        <Configuration
+            // url={"https://example.com"}
+        >
             <NavigationMenu>
                 Brageast.com
             </NavigationMenu>
 
-        </div>
+        </Configuration>
     )
 };
 /**

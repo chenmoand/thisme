@@ -3,7 +3,6 @@ import {BaseProps} from "../util/PropsUtil";
 import {NavLink} from "react-router-dom";
 import {Navbar} from "rsuite";
 import Nav from "rsuite/lib/Nav";
-import {Icon} from "antd";
 
 /**
  * 基础道具
