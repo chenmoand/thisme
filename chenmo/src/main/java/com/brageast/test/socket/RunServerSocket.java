@@ -1,23 +1,26 @@
 package com.brageast.test.socket;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class RunServerSocket {
     public static void main(String[] args) {
         try (final ServerSocket serverSocket = new ServerSocket(2048);
-             final Socket accept = serverSocket.accept()) {
+             final Socket accept = serverSocket.accept();
+             final InputStream inputStream = accept.getInputStream();
+             BufferedReader bufferedReader = new BufferedReader(
+                     new InputStreamReader(inputStream)
+             )) {
             serverSocket.setReuseAddress(true);
 
-            final InputStream inputStream = accept.getInputStream();
-            final StringBuilder stringBuilder = new StringBuilder();
-            byte[] bytes = new byte[1024];
-            while (inputStream.read(bytes) != -1) {
-                stringBuilder.append(new String(bytes));
+            String str;
+            while ((str = bufferedReader.readLine()) != null) {
+                System.out.println(str);
             }
-            System.out.println(stringBuilder);
         } catch (IOException e) {
             e.printStackTrace();
         }
