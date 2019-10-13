@@ -31,6 +31,6 @@ exports.CodeBlack = function (props) {
         </code>
     </pre>*/
     }
-    return (React.createElement(react_syntax_highlighter_1.default, { language: props.language, style: hljs_1.darcula }, props.value));
+    return (React.createElement(react_syntax_highlighter_1.default, { language: props.language, style: hljs_1.darcula, showLineNumbers: true }, props.value));
 };
 //# sourceMappingURL=markdown-edit.js.map

@@ -3,6 +3,8 @@ import * as React from 'react';
 import NavigationMenu from "./menu/NavigationMenu";
 import 'rsuite/lib/styles/index.less';
 import Configuration from "./component/configuration";
+import {BackTop} from "antd";
+// import Markdown from "./editor/markdown-edit";
 
 
 /**
@@ -12,12 +14,14 @@ import Configuration from "./component/configuration";
 const App:React.FC = () => {
     return(
         <Configuration
-            // url={"https://example.com"}
+            url={"https://example.com"}
         >
-            <NavigationMenu>
-                Brageast.com
+            <NavigationMenu className={"navigationMenu"}>
+                <div className={"text-logo"}>
+                    &#60;Brageast | 沉默&#62;
+                </div>
             </NavigationMenu>
-
+            <BackTop /> {/*回到顶部组件*/}
         </Configuration>
     )
 };

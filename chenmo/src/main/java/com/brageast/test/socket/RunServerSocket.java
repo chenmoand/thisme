@@ -16,7 +16,6 @@ public class RunServerSocket {
                      new InputStreamReader(inputStream)
              )) {
             serverSocket.setReuseAddress(true);
-
             String str;
             while ((str = bufferedReader.readLine()) != null) {
                 System.out.println(str);

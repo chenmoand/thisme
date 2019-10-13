@@ -7,7 +7,6 @@ import java.lang.reflect.Method;
 public class Demo2 {
 
     public static void main(String[] args) {
-
         try {
             Class<?> aClass = Class.forName("com.brageast.test.entity.Cat");
             final Constructor<?> declaredConstructor = aClass.getDeclaredConstructor(String.class, String.class, int.class);
@@ -37,4 +36,5 @@ public class Demo2 {
             e.printStackTrace();
         }
     }
+
 }

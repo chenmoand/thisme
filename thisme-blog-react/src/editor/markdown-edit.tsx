@@ -53,6 +53,7 @@ export const CodeBlack:React.FC<CodeBlackProps> = props => {
         <SyntaxHighlighter
             language={props.language}
             style={darcula}
+            showLineNumbers={true}
         >
             {props.value}
         </SyntaxHighlighter>

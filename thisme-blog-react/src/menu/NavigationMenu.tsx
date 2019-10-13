@@ -11,6 +11,12 @@ interface NavigationMenuProps extends BaseProps {
 
 }
 
+/**
+ * <Nav.Item>标签和<NavLink>其中的a冲突了
+ * a标签不能包含a标签,不过无上大雅.用 <object>解决了
+ * @param props
+ * @constructor
+ */
 const NavigationMenu: React.FC<NavigationMenuProps> = props => {
     return(
         <Navbar
@@ -20,19 +26,29 @@ const NavigationMenu: React.FC<NavigationMenuProps> = props => {
             <Navbar.Header>
                 {props.children}
             </Navbar.Header>
-            <Navbar.Body>
+            <Navbar.Body
+                className={"navbar-body"}
+            >
                 <Nav>
                     <Nav.Item>
-                        <NavLink to={"index"}>首页</NavLink>
+                        <object>
+                            <NavLink to={"index"}>首页</NavLink>
+                        </object>
                     </Nav.Item>
                     <Nav.Item>
-                        <NavLink to={"index"}>目录</NavLink>
+                        <object>
+                            <NavLink to={"index"}>目录</NavLink>
+                        </object>
                     </Nav.Item>
                     <Nav.Item>
-                        <NavLink to={"index"}>更新</NavLink>
+                        <object>
+                            <NavLink to={"index"}>更新</NavLink>
+                        </object>
                     </Nav.Item>
                     <Nav.Item>
-                        <NavLink to={"index"}>关于我</NavLink>
+                        <object>
+                            <NavLink to={"index"}>关于我</NavLink>
+                        </object>
                     </Nav.Item>
                 </Nav>
             </Navbar.Body>
