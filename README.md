@@ -1,10 +1,8 @@
-# thisme ```coder``` 这个代码很真实
+# thisme ```coder``` 不一样的代码
 
-> 真实! 作为一个强迫症,我因为我代码写的太烂而感到真实; 
+> 样例 : https://new.brageast.com
 >
-> 状态不佳? 来写代码吧! 演示网站 https://new.brageast.com
->
-> 有关前端的项目默认没安装```webpack```的东西请自行安装,因为我的是全局安装
+> 看了不咋地用了都说好(滑稽
 
 ### Install
 

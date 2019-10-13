@@ -1,13 +1,17 @@
 package com.brageast.test.entity;
 
+import com.brageast.test.reflection.Val;
+
 public class Cat {
     /**
      * 品牌
      */
+    @Val("五菱宏光")
     private String brand;
     /**
      * 颜色
      */
+    @Val("紫色")
     private String color;
     /**
      * 轮胎数量
