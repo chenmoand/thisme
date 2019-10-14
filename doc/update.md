@@ -4,3 +4,5 @@
 
 * 19.10.8 因为```webpack```的less配置问题``` exclude: /node_modules/```删掉了这个, 导致modules的less文件不能加载 
 
+* 19.10.14```babel-preset-rsuite```的按需加载在pord模式不管用, 我还是手动导入把~~皂化弄人~~ 啊
+

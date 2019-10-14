@@ -23,7 +23,6 @@ public class Demo2 {
             final Field[] declaredFields = aClass.getDeclaredFields();
             for(Field field : declaredFields) {
                 field.setAccessible(true);
-//                field.get
                 final Val annotation = field.getAnnotation(Val.class);
                 if(annotation == null) {
                     continue;

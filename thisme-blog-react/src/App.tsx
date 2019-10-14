@@ -3,10 +3,10 @@ import * as React from 'react';
 import NavigationMenu from "./menu/NavigationMenu";
 import 'rsuite/lib/styles/index.less';
 import Configuration from "./component/configuration";
-import {BackTop} from "antd";
+import { Input ,BackTop} from "antd";
 // import Markdown from "./editor/markdown-edit";
 
-
+const { Search } = Input;
 /**
  * 系统URL默认以 /的 方式
  * @author chenmo
@@ -17,6 +17,12 @@ const App:React.FC = () => {
             url={"https://example.com"}
         >
             <NavigationMenu className={"navigationMenu"}>
+                <Search
+                    placeholder="搜索"
+                    onSearch={value => console.log(value)}
+                    style={{ width: 200 }}
+                    className={"nav-search"}
+                />
                 <div className={"text-logo"}>
                     &#60;Brageast | 沉默&#62;
                 </div>

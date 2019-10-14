@@ -62,12 +62,21 @@ body {
   }
 }
 .text-logo{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /*css3   transform 实现*/
-  transform: translate(-50%, -50%);
+  .CenterVertically();
 }
 .navigationMenu {
   position: relative;
+}
+.nav-search {
+  float: left;
+  margin-left: 10em !important;
+  margin-top: 0.8em !important;
+}
+// 垂直左右居中
+.CenterVertically() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+/*css3   transform 实现*/
+  transform: translate(-50%, -50%);
 }

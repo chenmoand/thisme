@@ -30,8 +30,8 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     presets: [
-                        '@babel/env',
                         ["rsuite", { "style": true}],
+                        '@babel/env',
                         '@babel/react',
                     ],
                     cacheDirectory: true,
@@ -49,8 +49,8 @@ module.exports = {
                         loader: 'babel-loader',
                         options: {
                             presets: [
-                                '@babel/env',
                                 ["rsuite", { "style": true}],
+                                '@babel/env',
                                 '@babel/typescript',
                                 '@babel/react',
                             ],
