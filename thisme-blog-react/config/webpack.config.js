@@ -30,7 +30,7 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     presets: [
-                        ["rsuite", { "style": true}],
+                        // ["rsuite", { "style": true}],
                         '@babel/env',
                         '@babel/react',
                     ],
@@ -49,7 +49,7 @@ module.exports = {
                         loader: 'babel-loader',
                         options: {
                             presets: [
-                                ["rsuite", { "style": true}],
+                                // ["rsuite", { "style": true}],
                                 '@babel/env',
                                 '@babel/typescript',
                                 '@babel/react',
@@ -74,7 +74,7 @@ module.exports = {
                     {
                         loader: 'less-loader',
                         options:{
-                            paths: [path.resolve(__dirname, 'node_modules')],
+                            // paths: [path.resolve(__dirname, 'node_modules')],
                             javascriptEnabled: true,
                         }
                     },

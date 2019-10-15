@@ -1,6 +1,6 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
-import NavigationMenu from "./menu/NavigationMenu";
+import { RsuiteNavigationMenu } from "./menu/NavigationMenu";
 import 'rsuite/lib/styles/index.less';
 import Configuration from "./component/configuration";
 import { Input ,BackTop} from "antd";
@@ -16,7 +16,7 @@ const App:React.FC = () => {
         <Configuration
             url={"https://example.com"}
         >
-            <NavigationMenu className={"navigationMenu"}>
+            <RsuiteNavigationMenu className={"navigationMenu"}>
                 <Search
                     placeholder="搜索"
                     onSearch={value => console.log(value)}
@@ -26,7 +26,7 @@ const App:React.FC = () => {
                 <div className={"text-logo"}>
                     &#60;Brageast | 沉默&#62;
                 </div>
-            </NavigationMenu>
+            </RsuiteNavigationMenu>
             <BackTop /> {/*回到顶部组件*/}
         </Configuration>
     )

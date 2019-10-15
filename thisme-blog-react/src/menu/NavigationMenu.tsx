@@ -4,7 +4,8 @@ import {NavLink} from "react-router-dom";
 import { Navbar } from "rsuite";
 import Nav from "rsuite/lib/Nav";
 
-
+require("rsuite/lib/Navbar/styles");
+require("rsuite/lib/Nav/styles");
 /**
  * 基础道具
  */
@@ -18,7 +19,7 @@ interface NavigationMenuProps extends BaseProps {
  * @param props
  * @constructor
  */
-const NavigationMenu: React.FC<NavigationMenuProps> = props => {
+export const RsuiteNavigationMenu: React.FC<NavigationMenuProps> = props => {
     return(
         <Navbar
             style={props.style}
@@ -56,15 +57,12 @@ const NavigationMenu: React.FC<NavigationMenuProps> = props => {
         </Navbar>
     )
 };
-
-export default NavigationMenu;
-
 /**
  * 19/10/4  顶部菜单不用React的!
  * 19/10/8  弃用
  * @param props
  */
-const OldNavigationMenu:React.FC<NavigationMenuProps> = props => {
+const DivNavigationMenu:React.FC<NavigationMenuProps> = props => {
     return(
         <div
             style={props.style}
