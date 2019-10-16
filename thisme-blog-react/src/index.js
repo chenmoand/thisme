@@ -19,7 +19,7 @@ require('moment').locale('zh-cn'); // 设置为中文
  * @author chenmo
  */
 var Init = function () {
-    return (React.createElement(react_redux_1.Provider, { store: store_1.PordStore },
+    return (React.createElement(react_redux_1.Provider, { store: store_1.DevStore },
         React.createElement(antd_1.ConfigProvider, { locale: zh_CN_1.default },
             React.createElement(rsuite_1.IntlProvider, { locale: zh_CN_2.default },
                 React.createElement(react_router_dom_1.HashRouter, null,
