@@ -1,35 +1,48 @@
 package com.brageast.chemo;
 
-import java.util.Comparator;
+import java.util.Arrays;
 
 public class QuickSort {
     public static void main(String[] args) {
-       /* Demo3.sort(123,12414,3525435,4656324,3241412,5325);*/
-        Comparator<Integer> comparator = Integer::compareTo;
+        final int[] ints = {87, 3, 7, 13, 87, 5, 4};
+        sort(ints);
+        System.out.println(Arrays.toString(ints));
     }
-}
-/*
-class Demo3 {
+    public static void sort(int[] arr) {
+        sort(arr, 0);
+    }
+    private static void sort(int[] arr, int index) {
+        int length = arr.length - 1;
+        int right = index;
+        //TODO 排序
+        for(int i = 0; i <= length; i++) {
 
-    public static int[] sort(int... arr) {
-        if(arr.length <= 1 ) {
-            return arr;
-        }
-        int len = arr.length - 1;
-        int cen = len / 2;
-        int index = cen;
-        int val = arr[cen];
-        for(int i = 0; i <= len; i ++) {
-            if (i == index) continue;
-            if (val > arr[i]) {
-                int nval = val;
-                int nindex = i + 1;
-                if(nindex == len + 1 || nindex == 1) {continue;}
-                arr[index] = arr[nindex];
-                arr[nindex] = nval;
-                index = nindex;
+            if(arr[index] >= arr[i]) {
+                if(getAbsolute(index - i) == 1) {
+                    int j = arr[i];
+                    arr[i] =  arr[index];
+                    arr[index] = j;
+                    index = i;
+                } else if(arr[i] - arr[index] == 0) {
+                    index = i;
+                } else {
+                    int j = arr[index + 1];
+                    arr[index + 1] =  arr[index];
+                    arr[index] = j;
+                    int k = arr[i];
+                    arr[index + 1] = arr[i];
+                    arr[i] = k;
+                    index += 1;
+                }
+            } else {
+                right = i;
             }
         }
-        return arr;
     }
-}*/
+    public static int getAbsolute(int i) {
+        if(i > 0) {
+            return i;
+        }
+        return - i;
+    }
+}

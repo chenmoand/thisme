@@ -13,6 +13,7 @@
     "antd": "^3.23.3",
     "axios": "^0.19.0",
     "highlight.js": "^9.15.10",
+    "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",
     "react": "^16.9.0",
     "react-ace": "^7.0.4",
