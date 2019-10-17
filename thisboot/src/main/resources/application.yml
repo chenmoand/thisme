@@ -1,0 +1,15 @@
+spring:
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
+    check-template: false
+  webflux:
+    static-path-pattern: /templates/**
+#  data:
+#    mongodb:
+#      host: jd.brageast.com
