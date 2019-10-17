@@ -16,7 +16,9 @@ const App:React.FC = () => {
         <Configuration
             url={"https://example.com"}
         >
-            <RsuiteNavigationMenu className={"navigationMenu"}>
+            <RsuiteNavigationMenu
+                className={"navigationMenu"}
+            >
                 <Search
                     placeholder="搜索"
                     onSearch={value => console.log(value)}

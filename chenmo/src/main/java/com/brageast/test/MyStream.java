@@ -14,7 +14,6 @@ public class MyStream {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     public static void copyfile() throws Exception {
 
