@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
@@ -16,19 +17,16 @@ import reactor.core.publisher.Mono;
  * @author chenmo
  */
 @Slf4j
-//@Component
-@Controller
+@Component
+//@Controller
 public class IndexController {
-    @Value("classpath:/templates/index.html")
-    private Resource index;
+//    @Value("classpath:/templates/index.html")
+//    private Resource index;
 
-    /*public Mono<ServerResponse> doIndex(ServerRequest request) {
+    public Mono<ServerResponse> doIndex(ServerRequest request) {
         return ServerResponse.ok().
                 contentType(MediaType.TEXT_HTML).
-                syncBody(index);
-    }*/
-    @RequestMapping("/")
-    public String doIndex(){
-        return "index";
+                render("index.html");
     }
+
 }

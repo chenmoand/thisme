@@ -9,7 +9,7 @@ spring:
     enabled: true
     check-template: false
   webflux:
-    static-path-pattern: /templates/**
+    static-path-pattern: classpath:/static/**
 #  data:
 #    mongodb:
 #      host: jd.brageast.com

@@ -1,11 +1,11 @@
 package com.brageast.blog.thisboot;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
+/**
+ * 新版本吧junit包排除了
+ */
 @SpringBootTest
 public class ThisbootApplicationTests {
 
