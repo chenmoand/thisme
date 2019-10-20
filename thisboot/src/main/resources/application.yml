@@ -1,7 +1,4 @@
 spring:
-  jackson:
-    date-format: yyyy-MM-dd
-    time-zone: GMT+8
   thymeleaf:
     cache: false
     prefix: classpath:/templates/

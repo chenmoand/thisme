@@ -3,7 +3,6 @@ package com.brageast.blog.thisboot.config;
 import com.brageast.blog.thisboot.controller.IndexController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.Resource;
 import org.springframework.http.CacheControl;
 import org.springframework.web.reactive.config.EnableWebFlux;
 import org.springframework.web.reactive.config.ResourceHandlerRegistry;
@@ -14,7 +13,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.reactive.resource.EncodedResourceResolver;
-import org.springframework.web.reactive.resource.PathResourceResolver;
 import org.springframework.web.reactive.resource.VersionResourceResolver;
 import org.thymeleaf.spring5.view.reactive.ThymeleafReactiveViewResolver;
 
@@ -32,10 +30,10 @@ public class WebFluxConfig implements WebFluxConfigurer {
     private final ThymeleafReactiveViewResolver thymeleafReactiveViewResolver;
     private final IndexController indexController;
 
-    public WebFluxConfig(IndexController indexController, ThymeleafReactiveViewResolver thymeleafReactiveViewResolver/*, ResourceUrlProvider resourceUrlProvider*/) {
+
+    public WebFluxConfig(IndexController indexController, ThymeleafReactiveViewResolver thymeleafReactiveViewResolver) {
         this.indexController = indexController;
         this.thymeleafReactiveViewResolver = thymeleafReactiveViewResolver;
-        /*this.resourceUrlProvider = resourceUrlProvider;*/
     }
 
     @Bean
@@ -58,23 +56,17 @@ public class WebFluxConfig implements WebFluxConfigurer {
 
     /**
      * 将一些css 和 js 所加载
+     * 2019/10/20 終於能加載靜態js資源了
      * https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-config-static-resources
      * @param registry
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("classpath:/static/")
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/static/")
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
                 .resourceChain(true)
                 .addResolver(new EncodedResourceResolver())
                 .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"));
-        /*Map<String, ResourceWebHandler> map = new HashMap<>();
-        List<ResourceResolver> list = new ArrayList<>();
-        list.add(new EncodedResourceResolver());
-        final ResourceWebHandler resourceWebHandler = new ResourceWebHandler();
-        resourceWebHandler.setResourceResolvers(list);
-        map.put("static", resourceWebHandler);
-        resourceUrlProvider.registerHandlers(map);
-        registry.setResourceUrlProvider(resourceUrlProvider);*/
     }
 }
