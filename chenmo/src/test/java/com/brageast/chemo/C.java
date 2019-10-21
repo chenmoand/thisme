@@ -9,7 +9,7 @@ public class C {
         final int[] ints = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         System.out.println(
                 "位于数组的arr[" +
-                        findValue(ints, 2)
+                        findValue(ints, 9)
                         + "]"
         );
     }
@@ -19,6 +19,7 @@ public class C {
         int end = arr.length -1;
 
         while (start <= end){
+            System.out.println("当前区间为: [" + start + "," + end + "]");
             int middle = (start + end) / 2;
             if(key < arr[middle] ){
                 end = middle - 1;

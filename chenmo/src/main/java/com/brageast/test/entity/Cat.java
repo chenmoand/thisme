@@ -1,7 +1,9 @@
 package com.brageast.test.entity;
 
 import com.brageast.test.reflection.Val;
+import lombok.Builder;
 
+@Builder
 public class Cat {
     /**
      * 品牌
