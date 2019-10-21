@@ -5,8 +5,6 @@ spring:
     suffix: .html
     enabled: true
     check-template: false
-  webflux:
-    static-path-pattern: classpath:/static/**
 #  data:
 #    mongodb:
 #      host: jd.brageast.com
