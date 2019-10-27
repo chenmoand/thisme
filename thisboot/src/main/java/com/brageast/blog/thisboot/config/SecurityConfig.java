@@ -8,6 +8,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @Configuration
 @EnableWebFluxSecurity
+//@EnableOAuth2Sso
 public class SecurityConfig {
 
     /**

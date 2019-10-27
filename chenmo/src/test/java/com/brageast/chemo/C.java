@@ -1,17 +1,42 @@
 package com.brageast.chemo;
 
-/**
- * 百度获取的
- */
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtField;
+import javassist.CtMethod;
+
+import java.lang.reflect.Method;
+
+
 public class C {
 
     public static void main(String[] args) {
-        final int[] ints = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        System.out.println(
-                "位于数组的arr[" +
-                        findValue(ints, 9)
-                        + "]"
-        );
+        ClassPool classPool = ClassPool.getDefault();
+        try {
+            final CtClass ctClass = classPool.getCtClass("com.brageast.chemo.Player");
+//            ctClass.toClass()
+            final CtMethod getName = ctClass.getDeclaredMethod("getName");
+            final CtField name = CtField.make("private String name;", ctClass);
+            CtMethod setName = CtMethod.make("public String setName(String name){return null;}", ctClass);
+            ctClass.addField(name);
+            setName.setBody("return this.name = $1;");
+            ctClass.addMethod(setName);
+            getName.setBody("return this.name;");
+            ctClass.writeFile("d:/java/test");
+            final Class<?> aClass = ctClass.toClass();
+            final Method getName1 = aClass.getMethod("getName");
+            final Method setName1 = aClass.getDeclaredMethod("setName", String.class);
+            final Object obj = aClass.newInstance();
+            Player player = new Player();
+            player.setName("java");
+            setName1.invoke(player,"珍妮");
+            System.out.println(getName1.invoke(player));
+            System.out.println(player.getClass());
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static int findValue(int[] arr ,int key){
