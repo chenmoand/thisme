@@ -5,33 +5,38 @@ import javassist.CtClass;
 import javassist.CtField;
 import javassist.CtMethod;
 
-import java.lang.reflect.Method;
-
 
 public class C {
 
     public static void main(String[] args) {
+        Player player1 = new Player();
         ClassPool classPool = ClassPool.getDefault();
+
         try {
             final CtClass ctClass = classPool.getCtClass("com.brageast.chemo.Player");
+//            ctClass.stopPruning(true);
 //            ctClass.toClass()
             final CtMethod getName = ctClass.getDeclaredMethod("getName");
             final CtField name = CtField.make("private String name;", ctClass);
-            CtMethod setName = CtMethod.make("public String setName(String name){return null;}", ctClass);
+            CtMethod setName = ctClass.getDeclaredMethod("setName");
             ctClass.addField(name);
-            setName.setBody("return this.name = $1;");
-            ctClass.addMethod(setName);
+            setName.setBody("this.name = $1;");
+//            ctClass.addMethod(setName);
             getName.setBody("return this.name;");
-            ctClass.writeFile("d:/java/test");
-            final Class<?> aClass = ctClass.toClass();
-            final Method getName1 = aClass.getMethod("getName");
-            final Method setName1 = aClass.getDeclaredMethod("setName", String.class);
-            final Object obj = aClass.newInstance();
+//            ctClass.detach();
+//            ctClass.defrost();
+//            ctClass.writeFile("d:/java/test");
+            ctClass.toClass();
+//            ctClass.defrost();
+//            final Method getName1 = aClass.getMethod("getName");
+//            final Method setName1 = aClass.getDeclaredMethod("setName", String.class);
+//            final Object obj = aClass.newInstance();
             Player player = new Player();
+//            setName1.invoke(player,"珍妮");
             player.setName("java");
-            setName1.invoke(player,"珍妮");
-            System.out.println(getName1.invoke(player));
+//            System.out.println(getName1.invoke(player));
             System.out.println(player.getClass());
+            System.out.println(player.getName());
 
 
         } catch (Exception e) {

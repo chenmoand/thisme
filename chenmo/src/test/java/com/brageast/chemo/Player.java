@@ -6,6 +6,7 @@ public class Player {
         return null;
     }
 
-    public void setName(String java) {
+    public void setName(String name) {
     }
+
 }
