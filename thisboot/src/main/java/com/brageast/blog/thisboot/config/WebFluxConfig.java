@@ -1,6 +1,7 @@
 package com.brageast.blog.thisboot.config;
 
 import com.brageast.blog.thisboot.controller.IndexController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
@@ -27,14 +28,12 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 public class WebFluxConfig implements WebFluxConfigurer {
 
-    private final ThymeleafReactiveViewResolver thymeleafReactiveViewResolver;
-    private final IndexController indexController;
+    @Autowired(required = false)
+    private ThymeleafReactiveViewResolver thymeleafReactiveViewResolver;
+    @Autowired
+    private IndexController indexController;
 
 
-    public WebFluxConfig(IndexController indexController, ThymeleafReactiveViewResolver thymeleafReactiveViewResolver) {
-        this.indexController = indexController;
-        this.thymeleafReactiveViewResolver = thymeleafReactiveViewResolver;
-    }
 
     @Bean
     public RouterFunction<ServerResponse> webFluxRoutesRegister() {

@@ -5,6 +5,6 @@ spring:
     suffix: .html
     enabled: true
     check-template: false
-#  data:
-#    mongodb:
-#      host: jd.brageast.com
+  data:
+    mongodb:
+      uri: mongodb+srv://chenmo:www.brageast.com@cluster0-jbhpo.mongodb.net/test
