@@ -9,9 +9,8 @@ import {IntlProvider} from "rsuite";
 import zh_CN from 'rsuite/lib/IntlProvider/locales/zh_CN';
 import 'moment/locale/zh-cn';
 import './style/globle-index.less'
-import { DevStore as Store } from "./redux/store";
+import { PordStore as Store } from "./redux/store";
 import App from "./App";
-
 
 
 require('moment').locale('zh-cn'); // 设置为中文

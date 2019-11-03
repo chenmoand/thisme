@@ -5,15 +5,19 @@
 export interface MainState{
     count : number,
     domain : string,
+    webType : WebType,
 
 }
+// 页面大小
+type WebType = "Big" | "Small" | "in";
 
 /**
  * 初始化state
  */
 const init:MainState = {
     count : 100,
-    domain: 'Example.com'
+    domain: 'Example.com',
+    webType : "Big",
 };
 
 /**

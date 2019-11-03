@@ -9,6 +9,7 @@ interface ConfigurationProps {
  * @param props
  */
 const Configuration:React.FC<ConfigurationProps> = props => {
+
     return(
         <>
             {props.children}

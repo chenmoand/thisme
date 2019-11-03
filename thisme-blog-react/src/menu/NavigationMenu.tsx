@@ -16,6 +16,7 @@ interface NavigationMenuProps extends BaseProps {
 /**
  * <Nav.Item>标签和<NavLink>其中的a冲突了
  * a标签不能包含a标签,不过无上大雅.用 <object>解决了
+ * 2019/11/3 这个库是真的有毒不加载styles
  * @param props
  * @constructor
  */
@@ -47,7 +48,11 @@ export const RsuiteNavigationMenu: React.FC<NavigationMenuProps> = props => {
                             <NavLink to={"index"}>更新</NavLink>
                         </object>
                     </Nav.Item>
-                    <Nav.Item>
+                    <Nav.Item
+                        style={{
+                            width: 80
+                        }}
+                    >
                         <object>
                             <NavLink to={"index"}>关于我</NavLink>
                         </object>
