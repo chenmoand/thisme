@@ -3,6 +3,8 @@ import {BaseProps} from "../util/PropsUtil";
 import {NavLink} from "react-router-dom";
 import { Navbar } from "rsuite";
 import Nav from "rsuite/lib/Nav";
+import {WebType} from "../redux/reducers/mainReducer";
+import {connect} from "react-redux";
 
 require("rsuite/lib/Navbar/styles");
 require("rsuite/lib/Nav/styles");
@@ -10,7 +12,7 @@ require("rsuite/lib/Nav/styles");
  * 基础道具
  */
 interface NavigationMenuProps extends BaseProps {
-
+    webType : WebType,
 }
 
 /**
@@ -62,6 +64,18 @@ export const RsuiteNavigationMenu: React.FC<NavigationMenuProps> = props => {
         </Navbar>
     )
 };
+
+
+export default connect(
+    state => {
+        // @ts-ignore
+        const { mainReducer } = state;
+        return {
+            webType : mainReducer.webType
+        };
+    }, null
+)(RsuiteNavigationMenu);
+
 /**
  * 19/10/4  顶部菜单不用React的!
  * 19/10/8  弃用

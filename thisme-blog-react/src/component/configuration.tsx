@@ -13,19 +13,24 @@ interface ConfigurationProps {
  * @param props
  */
 const Configuration:React.FC<ConfigurationProps> = props => {
+
     const { setWebType } = props;
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-device-width: 1224px)'
     });
     const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' });
 
+    // 判断页面大小
     if(isDesktopOrLaptop) {
         if(isBigScreen) {
+            // 台式电脑
             setWebType(WebType.BIG);
         } else {
+            // 笔记本
             setWebType(WebType.IN);
         }
     } else {
+        // 手机
         setWebType(WebType.SMALL);
     }
     return(
