@@ -10,6 +10,8 @@
     "build:prod": "webpack --config ./config/webpack.prod.config && node ./config/copyConfig"
   },
   "dependencies": {
+    "@types/react-responsive": "^8.0.1",
+    "@types/redux-logger": "^3.0.7",
     "antd": "^3.23.3",
     "axios": "^0.19.0",
     "highlight.js": "^9.15.10",
@@ -57,6 +59,8 @@
     "open": "^6.4.0",
     "postcss-loader": "^3.0.0",
     "react-hot-loader": "^4.12.14",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
     "style-loader": "^1.0.0",
     "typescript": "^3.6.3",
     "url-loader": "^2.1.0",

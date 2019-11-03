@@ -3,21 +3,24 @@
  *
  */
 export interface MainState{
-    count : number,
     domain : string,
     webType : WebType,
 
 }
 // 页面大小
-type WebType = "Big" | "Small" | "in";
+// export type WebType = "Big" | "Small" | "in";
+export enum WebType {
+    BIG,
+    SMALL,
+    IN
+}
 
 /**
  * 初始化state
  */
 const init:MainState = {
-    count : 100,
-    domain: 'Example.com',
-    webType : "Big",
+    domain : 'Example.com',
+    webType : WebType.BIG,
 };
 
 /**
@@ -30,12 +33,10 @@ export interface MainAction {
 
 export default function mainReducer(state:MainState = init, action:MainAction):MainState {
     switch (action.type) {
-        case 'ADD':
-            return  {...state, count : state.count + 1};
-        case 'DEL':
-            return {...state, count : state.count - 1};
         case 'DOMAIN':
             return {...state, domain : action.content };
+        case 'WEBTYPE':
+            return {...state, webType : action.content };
         default:
             return state;
     }
