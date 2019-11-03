@@ -19,20 +19,42 @@ interface NavigationMenuProps extends BaseProps {
  * <Nav.Item>标签和<NavLink>其中的a冲突了
  * a标签不能包含a标签,不过无上大雅.用 <object>解决了
  * 2019/11/3 这个库是真的有毒不加载styles
+ * 2019/11/3 Rsuite 太难用了 再见了您内
  * @param props
  * @constructor
  */
 export const RsuiteNavigationMenu: React.FC<NavigationMenuProps> = props => {
+    const { webType } = props;
+    const T = () : boolean => {
+        switch (webType) {
+            case WebType.BIG:
+            case WebType.IN:
+                return true;
+            case WebType.SMALL:
+            default:
+                return false;
+        }
+    };
     return(
         <Navbar
             style={props.style}
             className={props.className}
         >
             <Navbar.Header>
-                {props.children}
+                { T()? props.children : ''}
+                <div className={"text-logo"}
+                    style={T() ? {} : {
+
+                    }}
+                >
+                    &#60;Brageast | 沉默&#62;
+                </div>
             </Navbar.Header>
             <Navbar.Body
-                className={"navbar-body"}
+                className={`navbar-body` }
+                style={T() ? {} : {
+                    display: "none"
+                }}
             >
                 <Nav>
                     <Nav.Item>

@@ -1,9 +1,9 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
-import { RsuiteNavigationMenu as TopMenu } from "./menu/NavigationMenu";
 import 'rsuite/lib/styles/index.less';
 import Configuration from "./component/configuration";
 import { Input ,BackTop} from "antd";
+import TopMenu from "./menu/TopMenu";
 // import Markdown from "./editor/markdown-edit";
 
 const { Search } = Input;
@@ -16,19 +16,7 @@ const App:React.FC = () => {
         <Configuration
             url={"https://example.com"}
         >
-            <TopMenu
-                className={"navigationMenu"}
-            >
-                <Search
-                    placeholder="搜索"
-                    onSearch={value => console.log(value)}
-                    style={{ width: 200 }}
-                    className={"nav-search"}
-                />
-                <div className={"text-logo"}>
-                    &#60;Brageast | 沉默&#62;
-                </div>
-            </TopMenu>
+            <TopMenu />
             <BackTop /> {/*回到顶部组件*/}
         </Configuration>
     )
