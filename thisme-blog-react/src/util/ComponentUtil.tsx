@@ -30,11 +30,13 @@ export const ConnectRouter = (mapStateToProps, mapDisPatchToProps, Component) =>
 
 /**
  * 已经弃用,,,因为我看了Router的index自带props
+ * import {RouterProps} from "react-router";
  * 模拟RouterProps传进来的参数,
  * 如果有其他Props请继承这个RouterProps 例如
  * interface Props extends RouterProps {
  *     src: string
  * }
+ * @deprecated
  */
 export interface RouterProps {
     history : History,

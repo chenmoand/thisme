@@ -1,7 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import {viewSize} from "../util/ViewUtil";
-import {Avatar, Col, Menu, Row, Input} from "antd";
+import {Avatar, Col, Menu, Row, Input, Icon} from "antd";
 import {NavLink} from "react-router-dom";
 import "../style/menu.less"
 
@@ -27,7 +27,7 @@ const TopMenu: React.FC<TopMenuProps> = props => {
                     <div className={"avatar-name"} >chenmo</div>
                 </div>
             </Col>
-            <Col offset={webType ? 0 : 5} span={webType ? 10 : 3} >
+            <Col offset={webType ? 0 : 6} span={webType ? 10 : 2} >
                 <ThisMenu webType={webType} />
             </Col>
             <Col offset={webType ? 2 : 0} span={webType ? 6 : 0} >
@@ -62,6 +62,7 @@ const ThisMenu: React.FC<ThisMenuProps> = props => {
     return(
         <Menu
             mode={"horizontal"}
+            overflowedIndicator={<Icon type="switcher" />}
         >
             <Item >
                 <NavLink to={"/"}>首页</NavLink>

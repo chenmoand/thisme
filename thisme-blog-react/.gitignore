@@ -16,4 +16,7 @@ gen
 
 build
 node_modules
+
+### IDEA 会自动编译, 所以不上传他
 src/**/*.map
+src/**/*.js
