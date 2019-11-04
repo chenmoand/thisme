@@ -19,7 +19,7 @@ export enum WebType {
  * 初始化state
  */
 const init:MainState = {
-    domain : 'Example.com',
+    domain : 'Brageast.com',
     webType : WebType.BIG,
 };
 

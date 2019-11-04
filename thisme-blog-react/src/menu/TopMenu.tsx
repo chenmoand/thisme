@@ -1,9 +1,9 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import {viewSize} from "../util/ViewUtil";
-import {Col, Menu, Row} from "antd";
-import Link from "../router/link";
+import {Avatar, Col, Menu, Row, Input} from "antd";
 import {NavLink} from "react-router-dom";
+import "../style/menu.less"
 
 
 interface TopMenuProps {
@@ -14,24 +14,28 @@ const TopMenu: React.FC<TopMenuProps> = props => {
     const { webType } = props;
     return(
         <Row
-            style={webType ? {height : 63} : {height : 64}}
+            style={{height : 48, backgroundColor: "#FFF", }}
             type={"flex"}
-            justify={webType ? "start" : "center"}
+            justify={"start"}
         >
-            <Col
-                offset={2} span={4}
-            >
-                logo
+            <Col offset={webType ? 2 : 10} span={webType ? 4 : 6} >
+                <div style={{marginTop: 6, height : 48}}>
+                    <Avatar src={"https://avatars2.githubusercontent.com/u/37534392"}
+                            style={{float: "left"}}
+                            alt={"CM"}
+                    />
+                    <div className={"avatar-name"} >chenmo</div>
+                </div>
             </Col>
-            <Col
-                offset={0} span={10}
-            >
+            <Col offset={webType ? 0 : 5} span={webType ? 10 : 3} >
                 <ThisMenu webType={webType} />
             </Col>
-            <Col
-                offset={2} span={6}
-            >
-                search
+            <Col offset={webType ? 2 : 0} span={webType ? 6 : 0} >
+                <Input.Search
+                    placeholder="搜索"
+                    onSearch={value => console.log(value)}
+                    style={{ width: 200, marginTop : 8 }}
+                />
             </Col>
 
         </Row>
@@ -56,12 +60,20 @@ const ThisMenu: React.FC<ThisMenuProps> = props => {
     const { webType } = props;
     const { Item }  = Menu;
     return(
-        <Menu mode={"horizontal"}>
-            <Item>
+        <Menu
+            mode={"horizontal"}
+        >
+            <Item >
                 <NavLink to={"/"}>首页</NavLink>
             </Item>
             <Item>
                 <NavLink to={"/directory"}>目录</NavLink>
+            </Item>
+            <Item>
+                <NavLink to={"/update"}>更新</NavLink>
+            </Item>
+            <Item>
+                <NavLink to={"/about"}>关于我</NavLink>
             </Item>
         </Menu>
     );

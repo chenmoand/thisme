@@ -18,7 +18,7 @@ interface TitleProps {
  */
 const Title: React.FC<TitleProps> = props => {
     const { src, html, domain, setDomain, style, className } = props;
-    setDomain("brageast.com");
+    // setDomain("brageast.com");
     document.title = src + " | " + domain;
     return(
         <div
@@ -32,7 +32,9 @@ const Title: React.FC<TitleProps> = props => {
 
 export default connect(state => {
     // @ts-ignore
-    return { domain : state.indexReducer.domain };
+    const { indexReducer } = state;
+    // @ts-ignore
+    return { domain : indexReducer.domain };
 }, dispatch=> {
     return {
         setDomain: str => dispatch({type: "DOMAIN", content : str})

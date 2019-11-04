@@ -12,10 +12,14 @@ export const PageTop:React.FC = () => {
 export const PageBody:React.FC = () => {
     return(
         <Switch>
-            <Route
-                exact path={['/', 'index', 'index.html']}
-                component={null}
-            />
+                <Route
+                    exact path={['/', 'index', 'index.html']}
+                    component={null}
+                />
+                <Route
+                    exact path={['directory']}
+                    component={null}
+                />
         </Switch>
     )
 };

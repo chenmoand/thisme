@@ -4,6 +4,7 @@ import 'rsuite/lib/styles/index.less';
 import Configuration from "./component/configuration";
 import {BackTop} from "antd";
 import TopMenu from "./menu/TopMenu";
+import {PageBody} from "./router/page-switch";
 // import Markdown from "./editor/markdown-edit";
 
 /**
@@ -16,6 +17,7 @@ const App:React.FC = () => {
             url={"https://example.com"}
         >
             <TopMenu />
+            <PageBody />
             <BackTop /> {/*回到顶部组件*/}
         </Configuration>
     )
