@@ -2,11 +2,10 @@ import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import 'rsuite/lib/styles/index.less';
 import Configuration from "./component/configuration";
-import { Input ,BackTop} from "antd";
+import {BackTop} from "antd";
 import TopMenu from "./menu/TopMenu";
 // import Markdown from "./editor/markdown-edit";
 
-const { Search } = Input;
 /**
  * 系统URL默认以 /的 方式
  * @author chenmo

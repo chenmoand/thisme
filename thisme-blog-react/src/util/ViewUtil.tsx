@@ -1,4 +1,4 @@
-import {WebType} from "../redux/reducers/mainReducer";
+import {WebType} from "../redux/reducers/IndexReducer";
 
 /**
  * 获取视图的大小

@@ -5,8 +5,6 @@ import { Provider } from 'react-redux'
 import { HashRouter} from 'react-router-dom';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
-import {IntlProvider} from "rsuite";
-import zh_CN from 'rsuite/lib/IntlProvider/locales/zh_CN';
 import 'moment/locale/zh-cn';
 import './style/globle-index.less'
 import { DevStore as Store } from "./redux/store";
@@ -24,17 +22,15 @@ const Init:React.FC = () => {
     return(
         <Provider store={Store}>
             <ConfigProvider locale={zhCN}>
-                <IntlProvider locale={zh_CN}>
                     <HashRouter>
                         <App />
                     </HashRouter>
-                </IntlProvider>
             </ConfigProvider>
         </Provider>
     )
 };
 // 打印LOG信息
-console.info("%cthisme : %c 代码托管于github.com/chenmoand/thisme",
+console.info("%cThisMe : %c 代码托管于github.com/chenmoand/thisme",
     "background: black;\n" +
     "            font-family: \"Arial Black\", serif;\n" +
     "            color: #ffd498;\n" +

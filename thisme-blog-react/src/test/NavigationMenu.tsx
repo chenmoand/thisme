@@ -3,7 +3,7 @@ import {BaseProps} from "../util/PropsUtil";
 import {NavLink} from "react-router-dom";
 import { Navbar } from "rsuite";
 import Nav from "rsuite/lib/Nav";
-import {WebType} from "../redux/reducers/mainReducer";
+import {WebType} from "../redux/reducers/IndexReducer";
 import {connect} from "react-redux";
 
 require("rsuite/lib/Navbar/styles");
@@ -91,9 +91,9 @@ export const RsuiteNavigationMenu: React.FC<NavigationMenuProps> = props => {
 export default connect(
     state => {
         // @ts-ignore
-        const { mainReducer } = state;
+        const { indexReducer } = state;
         return {
-            webType : mainReducer.webType
+            webType : indexReducer.webType
         };
     }, null
 )(RsuiteNavigationMenu);

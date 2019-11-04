@@ -31,7 +31,7 @@ export interface MainAction {
     content?: any
 }
 
-export default function mainReducer(state:MainState = init, action:MainAction):MainState {
+export default function indexReducer(state:MainState = init, action:MainAction):MainState {
     switch (action.type) {
         case 'DOMAIN':
             return {...state, domain : action.content };

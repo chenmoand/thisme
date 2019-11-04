@@ -32,7 +32,7 @@ const Title: React.FC<TitleProps> = props => {
 
 export default connect(state => {
     // @ts-ignore
-    return { domain : state.mainReducer.domain };
+    return { domain : state.indexReducer.domain };
 }, dispatch=> {
     return {
         setDomain: str => dispatch({type: "DOMAIN", content : str})

@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var mainReducer_1 = require("./reducers/mainReducer");
+var IndexReducer_1 = require("./reducers/IndexReducer");
 var redux_1 = require("redux");
 var redux_thunk_1 = require("redux-thunk");
 var redux_devtools_extension_1 = require("redux-devtools-extension");
 var redux_logger_1 = require("redux-logger");
 var reducers = {
-    mainReducer: mainReducer_1.default
+    indexReducer: IndexReducer_1.default
 };
 // 使用日志打印方法， collapsed让action折叠
 var loggerMiddleware = redux_logger_1.createLogger({ collapsed: true });
