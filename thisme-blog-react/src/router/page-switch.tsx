@@ -6,11 +6,15 @@ import Update from "./page/update";
 import About from "./page/about";
 import {BaseProps} from "../util/PropsUtil";
 
-
+/**
+ * 页面分发组件
+ * @param props
+ * @constructor
+ */
 export const PageBody:React.FC<BaseProps> = props => {
     const { className, style } = props;
     return(
-        <div style={{marginTop : "1.5em", ...style}}
+        <div style={{marginTop : "2em", ...style}}
              className={className}
         >
             <Switch>

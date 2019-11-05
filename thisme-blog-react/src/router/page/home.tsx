@@ -1,10 +1,13 @@
 import * as React from "react";
+import {Col, Row} from "antd";
 
 const Home: React.FC = props => {
     return(
-        <div>
-            test4
-        </div>
+        <Row>
+            <Col >
+
+            </Col>
+        </Row>
     );
 };
 

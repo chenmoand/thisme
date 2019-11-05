@@ -37,6 +37,6 @@ export default connect(state => {
     return { domain : indexReducer.domain };
 }, dispatch=> {
     return {
-        setDomain: str => dispatch({type: "DOMAIN", content : str})
+        setDomain: str => dispatch({type: "DOMAIN", content: str})
     }
 })(Title);

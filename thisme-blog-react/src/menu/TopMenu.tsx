@@ -10,6 +10,7 @@ interface TopMenuProps {
     webType: boolean,
 }
 
+
 const TopMenu: React.FC<TopMenuProps> = props => {
     const { webType } = props;
     return(
@@ -18,7 +19,10 @@ const TopMenu: React.FC<TopMenuProps> = props => {
             type={"flex"}
             justify={"start"}
         >
-            <Col offset={webType ? 2 : 10} span={webType ? 4 : 6} >
+            <Col offset={webType ? 2 : 8}
+                 span={webType ? 4 : 8}
+                 order={webType ? 0 : 1}
+            >
                 <div style={{marginTop: 6, height : 48}}>
                     <Avatar src={"https://avatars2.githubusercontent.com/u/37534392"}
                             style={{float: "left"}}
@@ -27,14 +31,20 @@ const TopMenu: React.FC<TopMenuProps> = props => {
                     <div className={"avatar-name"} >chenmo</div>
                 </div>
             </Col>
-            <Col offset={webType ? 0 : 6} span={webType ? 10 : 2} >
+            <Col offset={webType ? 0 : 0}
+                 span={webType ? 10 : 1}
+                 order={webType ? 1 : 0}
+            >
                 <ThisMenu webType={webType} />
             </Col>
-            <Col offset={webType ? 2 : 0} span={webType ? 6 : 0} >
+            <Col offset={webType ? 2 : 4}
+                 span={webType ? 6 : 3}
+                 order={2}
+            >
                 <Input.Search
                     placeholder="搜索"
                     onSearch={value => console.log(value)}
-                    style={{ width: 200, marginTop : 8 }}
+                    style={{ width: `${webType ? "200px" : "9em"}`, marginTop : 8 }}
                 />
             </Col>
 

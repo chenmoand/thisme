@@ -19,7 +19,29 @@ const Configuration:React.FC<ConfigurationProps> = props => {
         query: '(min-device-width: 1224px)'
     });
     const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' });
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 844px)' });
+    return(
+        <WebSize
+            isDesktopOrLaptop={isDesktopOrLaptop}
+            isBigScreen={isBigScreen}
+            setWebType={setWebType}
+            isTabletOrMobile={isTabletOrMobile}
+        >
+            {props.children}
+        </WebSize>
+    )
+};
 
+interface WebSizeProps {
+    setWebType: (webType : WebType) => void,
+    isDesktopOrLaptop : boolean,
+    isBigScreen : boolean,
+    isTabletOrMobile : boolean,
+}
+
+
+const WebSize:React.FC<WebSizeProps> = props => {
+    const { children , isDesktopOrLaptop, isBigScreen, setWebType, isTabletOrMobile } = props;
     // 判断页面大小
     if(isDesktopOrLaptop) {
         if(isBigScreen) {
@@ -32,13 +54,19 @@ const Configuration:React.FC<ConfigurationProps> = props => {
     } else {
         // 手机
         setWebType(WebType.SMALL);
+
+    }
+    if(isTabletOrMobile) {
+        setWebType(WebType.SMALL)
     }
     return(
         <>
-            {props.children}
+            {children}
         </>
     )
 };
+
+
 export default connect(
 
     null,
