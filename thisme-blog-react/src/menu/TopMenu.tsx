@@ -19,7 +19,7 @@ const TopMenu: React.FC<TopMenuProps> = props => {
             type={"flex"}
             justify={"start"}
         >
-            <Col offset={webType ? 2 : 8}
+            <Col offset={webType ? 2 : 6}
                  span={webType ? 4 : 8}
                  order={webType ? 0 : 1}
             >
@@ -37,8 +37,8 @@ const TopMenu: React.FC<TopMenuProps> = props => {
             >
                 <ThisMenu webType={webType} />
             </Col>
-            <Col offset={webType ? 2 : 4}
-                 span={webType ? 6 : 3}
+            <Col offset={webType ? 2 : 0}
+                 span={webType ? 6 : 9}
                  order={2}
             >
                 <Input.Search

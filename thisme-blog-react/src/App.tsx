@@ -5,6 +5,7 @@ import Configuration from "./component/configuration";
 import {BackTop} from "antd";
 import TopMenu from "./menu/TopMenu";
 import {PageBody} from "./router/page-switch";
+import PageBottom from "./component/page-bottom";
 // import Markdown from "./editor/markdown-edit";
 
 /**
@@ -19,6 +20,7 @@ const App:React.FC = () => {
             <TopMenu />
             <PageBody />
             <BackTop /> {/*回到顶部组件*/}
+            <PageBottom />
         </Configuration>
     )
 };

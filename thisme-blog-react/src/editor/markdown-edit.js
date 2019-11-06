@@ -1,20 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ReactMarkdown = require("react-markdown");
+var ReactMarkdown = require("react-markdown/with-html");
 var react_syntax_highlighter_1 = require("react-syntax-highlighter");
 var hljs_1 = require("react-syntax-highlighter/dist/esm/styles/hljs");
 require("../style/markdown.less");
-// const { useEffect } = React;
-var toc = require('remark-toc');
 /**
  * 一个配置好的Markdown组件
  * @author chenmo
  * @param props
  */
 var Markdown = function (props) {
-    return (React.createElement("div", null,
-        React.createElement(ReactMarkdown, { skipHtml: false, source: props.source, renderers: { code: exports.CodeBlack }, plugins: [toc] })));
+    return (React.createElement("div", { className: "text-markdown" },
+        React.createElement(ReactMarkdown, { skipHtml: false, source: props.source, renderers: { code: exports.CodeBlack }, plugins: [
+                [
+                    require('remark-toc'),
+                    { heading: "目录" }
+                ],
+            ], escapeHtml: false })));
 };
 exports.default = Markdown;
 /**

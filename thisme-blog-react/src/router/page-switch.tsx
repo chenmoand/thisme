@@ -4,6 +4,7 @@ import Home from "./page/home";
 import Directory from "./page/directory";
 import Update from "./page/update";
 import About from "./page/about";
+import Status from "./page/status";
 import {BaseProps} from "../util/PropsUtil";
 
 /**
@@ -33,6 +34,10 @@ export const PageBody:React.FC<BaseProps> = props => {
                     <Route
                         exact path={['/about']}
                         component={About}
+                    />
+                    <Route
+                        path={['/**']}
+                        component={Status}
                     />
             </Switch>
         </div>
