@@ -1,12 +1,9 @@
 import * as React from 'react';
-import * as ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown/with-html';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import '../style/markdown.less'
-
-// const { useEffect } = React;
-const toc = require('remark-toc');
+import '../style/markdown.less';
 
 interface MarkdownProps {
     source : string,
@@ -19,12 +16,18 @@ interface MarkdownProps {
  */
 const Markdown:React.FC<MarkdownProps> = props =>  {
     return(
-        <div>
+        <div className={"text-markdown"}>
             <ReactMarkdown
                 skipHtml={false}
                 source={props.source}
                 renderers={{code : CodeBlack}}
-                plugins={[toc]}
+                plugins={[
+                    [
+                        require('remark-toc'),
+                        {heading : "目录"}]
+                    ,]
+                }
+                escapeHtml={false}
             />
         </div>
     )

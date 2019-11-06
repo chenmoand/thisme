@@ -6,10 +6,11 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server  --config ./config/devServer.config",
-    "build:dev": "webpack --config ./config/webpack.dev.config && node ./config/copyConfig",
     "build:prod": "webpack --config ./config/webpack.prod.config && node ./config/copyConfig"
   },
   "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "@types/react-document-title": "^2.0.3",
     "@types/react-responsive": "^8.0.1",
     "@types/redux-logger": "^3.0.7",
@@ -18,9 +19,7 @@
     "highlight.js": "^9.15.10",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",
-    "react": "^16.9.0",
     "react-ace": "^7.0.4",
-    "react-dom": "^16.9.0",
     "react-markdown": "^4.2.2",
     "react-redux": "^7.1.1",
     "react-responsive": "^8.0.1",
