@@ -6,7 +6,6 @@ import {BackTop} from "antd";
 import TopMenu from "./menu/TopMenu";
 import {PageBody} from "./router/page-switch";
 import PageBottom from "./component/page-bottom";
-// import Markdown from "./editor/markdown-edit";
 
 /**
  * 系统URL默认以 /的 方式

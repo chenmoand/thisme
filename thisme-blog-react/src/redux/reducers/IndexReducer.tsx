@@ -1,11 +1,14 @@
+import {Article} from "../../util/PropsUtil";
+
 /**
  * 初始声明state类型
  *
  */
 export interface MainState{
-    domain : string,
-    webType : WebType,
-
+    domain: string,
+    webType: WebType,
+    pageArticle?: Map<number, Article[]>,
+    currentPage: number,
 }
 // 页面大小
 // export type WebType = "Big" | "Small" | "in";
@@ -21,6 +24,7 @@ export enum WebType {
 const init:MainState = {
     domain : 'Brageast.com',
     webType : WebType.BIG,
+    currentPage : 1,
 };
 
 /**
