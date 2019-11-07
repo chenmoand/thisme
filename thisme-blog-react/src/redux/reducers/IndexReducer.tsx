@@ -1,4 +1,4 @@
-import {Article} from "../../util/PropsUtil";
+import {Article, PageArticle} from "../../util/PropsUtil";
 
 /**
  * 初始声明state类型
@@ -7,7 +7,7 @@ import {Article} from "../../util/PropsUtil";
 export interface MainState{
     domain: string,
     webType: WebType,
-    pageArticle?: Map<number, Article[]>,
+    pageArticle: Map<number, Article[]>,
     currentPage: number,
 }
 // 页面大小
@@ -24,6 +24,7 @@ export enum WebType {
 const init:MainState = {
     domain : 'Brageast.com',
     webType : WebType.BIG,
+    pageArticle: undefined,
     currentPage : 1,
 };
 
@@ -36,11 +37,17 @@ export interface MainAction {
 }
 
 export default function indexReducer(state:MainState = init, action:MainAction):MainState {
+    const { content } = action;
     switch (action.type) {
         case 'DOMAIN':
-            return {...state, domain : action.content };
+            return {...state, domain : content };
         case 'WEBTYPE':
-            return {...state, webType : action.content };
+            return {...state, webType : content };
+        case 'PAGE_ARTICLE':
+            let page_Article: PageArticle = content;
+            return {
+                ...state, pageArticle : state.pageArticle.set(page_Article.page, page_Article.articles)
+            };
         default:
             return state;
     }

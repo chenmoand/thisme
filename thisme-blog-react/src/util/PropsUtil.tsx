@@ -22,7 +22,8 @@ export interface Article {
     ArticleId: number, // 文章序号
     Title: string, // 标题
     Label: string[], // 标签
-    Classify : string, // 分类
+    Classify: string, // 分类
+    Describe: string, // 描述
     StartDate: Date, // 发布日期
     UpDate: Date, // 更新日期
     Author: string, // 作者

@@ -1,27 +1,8 @@
 import * as React from "react";
 import {Col, Row} from "antd";
-import Markdown from "../../editor/markdown-edit";
 import {connect} from "react-redux";
 import {viewSize} from "../../util/ViewUtil";
-
-
-const text = `
-### 目录
-
-### 测试2
-111
-
-#### 测试3
-111
-
-##### test
-2312
-
-## 测试4
-1111
-
-> 232124
-` ;
+import AppTest from "../../test/app-test";
 
 
 interface HomeProps {
@@ -41,8 +22,7 @@ const Home: React.FC<HomeProps> = props => {
             <Col
                 offset={2} span={webType ? 14 : 20}
             >
-                <Markdown source={text}
-                />
+                <AppTest />
             </Col>
             <Col
                 offset={webType ? 1 : 0} span={webType ? 6 : 0}
