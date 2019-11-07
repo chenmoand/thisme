@@ -1,9 +1,9 @@
 import * as React from "react";
-import {RouterProps, withRouter} from "react-router";
+import {RouteComponentProps, withRouter} from "react-router";
 import {Button, Result} from "antd";
 import {NavLink} from "react-router-dom";
 
-const Status:React.FC<RouterProps> = props => {
+const Status:React.FC<RouteComponentProps> = props => {
 
     return(
         <div>

@@ -1,4 +1,5 @@
 import {Article, PageArticle} from "../../util/PropsUtil";
+import {Map} from "immutable";
 
 /**
  * 初始声明state类型
@@ -9,6 +10,7 @@ export interface MainState{
     webType: WebType,
     pageArticle: Map<number, Article[]>,
     currentPage: number,
+    currentArticle?: Article,
 }
 // 页面大小
 // export type WebType = "Big" | "Small" | "in";
@@ -24,7 +26,7 @@ export enum WebType {
 const init:MainState = {
     domain : 'Brageast.com',
     webType : WebType.BIG,
-    pageArticle: undefined,
+    pageArticle: Map<number, Article[]>(),
     currentPage : 1,
 };
 
@@ -40,9 +42,11 @@ export default function indexReducer(state:MainState = init, action:MainAction):
     const { content } = action;
     switch (action.type) {
         case 'DOMAIN':
-            return {...state, domain : content };
+            return {...state, domain: content };
         case 'WEBTYPE':
-            return {...state, webType : content };
+            return {...state, webType: content };
+        case 'CURRENT_PAGE':
+            return {...state, currentPage: content };
         case 'PAGE_ARTICLE':
             let page_Article: PageArticle = content;
             return {

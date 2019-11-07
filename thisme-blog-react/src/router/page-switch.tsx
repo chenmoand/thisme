@@ -1,11 +1,12 @@
 import * as React from "react";
 import {Route, Switch} from "react-router";
+import {BaseProps} from "../util/PropsUtil";
 import Home from "./page/home";
 import Directory from "./page/directory";
 import Update from "./page/update";
 import About from "./page/about";
 import Status from "./page/status";
-import {BaseProps} from "../util/PropsUtil";
+import Article from "./page/article";
 
 /**
  * 页面分发组件
@@ -34,6 +35,10 @@ export const PageBody:React.FC<BaseProps> = props => {
                     <Route
                         exact path={['/about']}
                         component={About}
+                    />
+                    <Route
+                        path={['/article/**']}
+                        component={Article}
                     />
                     <Route
                         path={['/**']}

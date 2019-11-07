@@ -33,7 +33,7 @@ export const ConnectRouter = (mapStateToProps, mapDisPatchToProps, Component) =>
  * import {RouterProps} from "react-router";
  * 模拟RouterProps传进来的参数,
  * 如果有其他Props请继承这个RouterProps 例如
- * interface Props extends RouterProps {
+ * interface Props extends RouteComponentProps {
  *     src: string
  * }
  * @deprecated
@@ -47,7 +47,7 @@ export interface RouterProps {
 
 interface History {
     atction : string,
-    block : any, // any 猜不出来 大部分是方法
+    block : any,
     createHeref: any ,
     go : any,
     goBack : any,

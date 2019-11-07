@@ -1,6 +1,7 @@
 import * as React from "react";
-import {SimpleArticle} from "../component/article-list";
+import {ArticleList$, SimpleArticle} from "../component/article-list";
 import {Article} from "../util/PropsUtil";
+import {Map} from "immutable";
 
 
 
@@ -10,7 +11,9 @@ const article:Article = {
     Chick: 0,
     Classify: "java",
     Content: "java",
-    Describe: "java",
+    Describe: "javajavajavajavajavajavajavajavajavajavajavajava" +
+        "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava" +
+        "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava",
     Label: ["java"],
     Reply: {
         ReplyId: 1,
@@ -27,9 +30,16 @@ const article:Article = {
 };
 
 const AppTest:React.FC = () => {
+    const pa:Map<number, Article[]> = Map<number, Article[]>();
     return(
         <div>
-            <SimpleArticle article={article} />
+            <ArticleList$
+                currentPage={1}
+                maxPage={1}
+                setPageArticle={undefined}
+                pageArticles={pa.set(1, [article, article, article])}
+            />
+
         </div>
     )
 };
