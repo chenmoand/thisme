@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const path = require('path');
 
@@ -112,6 +113,15 @@ module.exports = {
         }),
         new OpenBrowserPlugin({
             url : 'http://localhost:8080'
-        })
+        }),
+        new CompressionPlugin({
+            filename: '[path].br[query]',
+            algorithm: 'brotliCompress',
+            test: /\.(js|css|html|svg)$/,
+            compressionOptions: { level: 11 },
+            threshold: 10240,
+            minRatio: 0.8,
+            deleteOriginalAssets: false,
+        }),
     ]
 };

@@ -12,13 +12,13 @@ interface ArticleProps extends RouteComponentProps, BaseProps{
     setCurrentArticle: (article: Article) => void;
 }
 
-const Article:React.FC<ArticleProps> = props => {
+const Article$:React.FC<ArticleProps> = props => {
     const { currentArticle, setCurrentArticle, location } = props;
     // 是否显示加载组件
-    const [ loding, setLoding ] = useState(false);
-
+    const [ loding, setLoding ] = useState(true);
+	console.log(props);
     if(currentArticle != undefined && equalPath(location.pathname, currentArticle.Url) ) {
-        setLoding(true);
+        setLoding(false);
     } else {
         //TODO 发送AJAX请求 (暂时占位置?)
     }
@@ -44,5 +44,5 @@ export default ConnectRouter(
             setCurrentArticle: (article: Article) => dispatch({type: "CURRENT_PAGE", content: article}),
         }
     },
-    Article
+    Article$
 );
