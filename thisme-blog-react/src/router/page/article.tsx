@@ -6,6 +6,7 @@ import {equalPath} from "../../util/RouterUtil";
 import {ConnectRouter} from "../../util/ComponentUtil";
 import {Article, BaseProps} from "../../util/PropsUtil";
 import {CompleteArticle} from "../../component/article-list";
+import BodySyle from "../../component/body-style";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps{
@@ -26,9 +27,13 @@ const Article$:React.FC<ArticleProps> = props => {
 
     return(
         <div className={"page-Article"}>
-            <Skeleton loading={loding} title paragraph active={true}>
-                <CompleteArticle article={currentArticle} />
-            </Skeleton>
+            <BodySyle
+                left={
+                    <Skeleton loading={loding} title paragraph={{ rows: 8 }} active={true}>
+                        <CompleteArticle article={currentArticle} />
+                    </Skeleton>
+                }
+            />
         </div>
     );
 };
