@@ -4,9 +4,8 @@ import {connect} from "react-redux";
 import {viewSize} from "../util/ViewUtil";
 
 
-
 export interface BodyStyleProps {
-    left: React.ReactNode,
+    left?: React.ReactNode,
     right?: React.ReactNode,
     webType: boolean,
 }
