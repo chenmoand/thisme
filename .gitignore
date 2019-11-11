@@ -128,7 +128,6 @@ simple-react-app/src/redux/store.js
 simple-react-app/src/test/app-test.js
 simple-react-app/src/test/chick_test.js
 simple-react-app/src/test/rou_test.js
-thisme-blog-react/src/redux/reducers/mainReducer.js
 thisme-blog-react/src/test/chick_test.js
 .project
 .settings/

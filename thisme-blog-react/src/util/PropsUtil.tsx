@@ -30,7 +30,7 @@ export interface Article {
     Content: string, // 内容
     Chick: number, // 点击次数
     Url: string, // 地址
-    Reply: Reply,
+    Replys: Reply[],
 }
 
 /**

@@ -20,9 +20,6 @@ import reactor.core.publisher.Mono;
 @Component
 //@Controller
 public class IndexController {
-//    @Value("classpath:/templates/index.html")
-//    private Resource index;
-
     public Mono<ServerResponse> doIndex(ServerRequest request) {
         return ServerResponse.ok().
                 contentType(MediaType.TEXT_HTML).

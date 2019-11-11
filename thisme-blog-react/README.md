@@ -27,7 +27,7 @@
   * img 图片文件夹
   * menu 菜单文件
   * redux 状态组件
-  * reducers  主要状态目录
+    * reducers  主要状态目录
   * router 路由组件
     * page 页面组件
   * style 样式文件夹
