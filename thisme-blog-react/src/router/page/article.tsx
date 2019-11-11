@@ -1,10 +1,11 @@
 import * as React from "react";
-import {ConnectRouter} from "../../util/ComponentUtil";
-import {RouteComponentProps} from "react-router";
-import {Article, BaseProps} from "../../util/PropsUtil";
-import {equalPath} from "../../util/RouterUtil";
 import {useState} from "react";
 import {Skeleton} from "antd";
+import {RouteComponentProps} from "react-router";
+import {equalPath} from "../../util/RouterUtil";
+import {ConnectRouter} from "../../util/ComponentUtil";
+import {Article, BaseProps} from "../../util/PropsUtil";
+import {CompleteArticle} from "../../component/article-list";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps{
@@ -26,7 +27,7 @@ const Article$:React.FC<ArticleProps> = props => {
     return(
         <div className={"page-Article"}>
             <Skeleton loading={loding} title paragraph active={true}>
-                test
+                <CompleteArticle article={currentArticle} />
             </Skeleton>
         </div>
     );

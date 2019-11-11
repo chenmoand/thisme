@@ -4,6 +4,10 @@ import {connect} from "react-redux";
 import {Button, Descriptions, Divider} from "antd";
 import {NavLink} from "react-router-dom";
 import {Map} from "immutable";
+import {articlePath} from "../util/RouterUtil";
+
+const {Item} = Descriptions;
+
 
 interface SimpleArticleProps extends BaseProps {
     article: Article,
@@ -21,7 +25,6 @@ export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
         Classify, Label, Describe,
         Url
     } = article;
-    const {Item} = Descriptions;
     return (
         <div className={className} style={style}>
             <Descriptions title={Title} column={4}>
@@ -32,12 +35,35 @@ export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
                 <Item label={"描述"} span={4}> {Describe}</Item>
                 <Item span={3}>{}</Item>
                 <Item>
-                    <Button><NavLink to={Url}>点击阅读</NavLink></Button>
+                    <Button><NavLink to={articlePath(Url)}>点击阅读</NavLink></Button>
                 </Item>
             </Descriptions>
         </div>
     );
 };
+
+interface CompleteArticleProps extends BaseProps {
+    article: Article,
+}
+
+export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
+    const {article, className, style} = props;
+    const {
+        Title, Author, StartDate,
+        Classify, Label, Url
+    } = article;
+    return(
+        <div className={className} style={style}>
+            <Descriptions title={Title} column={4}>
+                <Item label={"作者"}> {Author} </Item>
+                <Item label={"日期"}> {StartDate} </Item>
+                <Item label={"类别"}> {Classify} </Item>
+                <Item label={"标签"}> {Label} </Item>
+            </Descriptions>
+        </div>
+    );
+};
+
 
 interface ArticleListProps extends BaseProps {
     currentPage: number,

@@ -25,7 +25,7 @@ const article:Article = {
     StartDate: undefined,
     Title: "java",
     UpDate: undefined,
-    Url: "/str"
+    Url: "str"
 
 };
 

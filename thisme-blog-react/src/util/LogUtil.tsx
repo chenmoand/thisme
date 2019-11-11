@@ -1,3 +1,4 @@
+import * as React from "react";
 
 // 打印LOG信息
 export const whiteLogo = (): void => {
@@ -11,4 +12,5 @@ export const whiteLogo = (): void => {
         "            color: #fff;\n" +
         "            padding: 6px;"
     );
+    console.info("React构建版本为:", React.version )
 };
