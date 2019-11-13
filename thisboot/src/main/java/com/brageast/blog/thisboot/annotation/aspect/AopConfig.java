@@ -1,4 +1,4 @@
-package com.brageast.blog.thisboot.annotation.config;
+package com.brageast.blog.thisboot.annotation.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

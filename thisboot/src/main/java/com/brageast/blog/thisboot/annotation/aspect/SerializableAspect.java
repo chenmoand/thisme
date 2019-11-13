@@ -1,17 +1,16 @@
-package com.brageast.blog.thisboot.annotation.config;
+package com.brageast.blog.thisboot.annotation.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Slf4j
 @Component
-@Profile({"dev", "test", "prod"})
-public class SerializableConfig implements AopConfig {
+//@Profile({"dev", "test", "prod"})
+public class SerializableAspect implements AopConfig {
 
     private static final String NAME = "Serializable()";
 

@@ -3,6 +3,7 @@ package com.brageast.blog.thisboot.entity;
 import com.brageast.blog.thisboot.annotation.Serializable;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
@@ -15,8 +16,7 @@ import java.util.Date;
  */
 @Data
 @Builder
-@Document
-@Serializable
+@Document(collection = "Article")
 public class Article {
     @Id
     private int ArticleId;
