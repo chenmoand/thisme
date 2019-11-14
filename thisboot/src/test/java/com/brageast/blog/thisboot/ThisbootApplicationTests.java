@@ -1,6 +1,7 @@
 package com.brageast.blog.thisboot;
 
 import com.brageast.blog.thisboot.entity.Article;
+import com.brageast.blog.thisboot.entity.Reply;
 import com.brageast.blog.thisboot.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -22,12 +23,15 @@ public class ThisbootApplicationTests {
 
     @Test
     public void contextLoads() {
-        final Mono<Article> insert = articleService.insert(Article.builder()
-                .ArticleId(2).Author("chenmo").Chick(10).Classify("java").Label(new String[]{"java"}).Describe("java")
-                .Title("java").UpDate(new Date()).StartDate(new Date()).Replys(null)
+        /*final Mono<Article> insert = articleService.insert(Article.builder()
+                .Author("chenmo").Chick(10).Classify("java").Label(new String[]{"java"}).Describe("java")
+                .Title("java").UpDate(new Date()).StartDate(new Date()).Replys(new Reply[]{Reply.builder().Name("java").build()})
                 .build()
         );
-        log.info(insert.block().toString());
+        insert.doOnNext(System.out::println);*/
+//        System.out.println(insert.block().toString());
+
+
     }
 
 }

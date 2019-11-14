@@ -15,11 +15,12 @@ import java.util.Date;
  * @author chenmo
  */
 @Data
-@Builder
+//@Builder
 @Document(collection = "Article")
+@NoArgsConstructor
 public class Article {
     @Id
-    private int ArticleId;
+    private String ArticleId;
     private String Title;
     private String[] Label;
     private String Classify;
@@ -29,6 +30,6 @@ public class Article {
     private String Author;
     private String Content;
     private Integer Chick;
-    private String Url;
     private Reply[] Replys;
+
 }

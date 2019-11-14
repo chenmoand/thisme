@@ -15,7 +15,7 @@ import java.util.Date;
 @Document
 public class Reply {
     @Id
-    private int ReplyId;
+    private String ReplyId;
     private String Name;
     private Date StartDate;
     private Date UpDate;

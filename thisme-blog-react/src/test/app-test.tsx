@@ -15,13 +15,13 @@ const article:Article = {
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava",
     Label: ["java"],
-    Reply: {
+    Replys: [{
         ReplyId: 1,
         Name: "chenmo", // 姓名
         StartDate: undefined, // 发布日期
         UpDate: undefined, // 更新日期
         Content: "java", // 内容
-    },
+    }],
     StartDate: undefined,
     Title: "java",
     UpDate: undefined,

@@ -20,7 +20,8 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         //TODO 暂时先放行全部
-        http.authorizeExchange()
+        http.csrf().disable()
+                .authorizeExchange()
                 .pathMatchers("/**")
                 .permitAll();
         return http.build();

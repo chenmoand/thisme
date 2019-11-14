@@ -22,8 +22,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * WebFlux的配置
- * @author chenmo
  *
+ * @author chenmo
  */
 @EnableWebFlux
 @Configuration
@@ -46,11 +46,21 @@ public class WebFluxConfig implements WebFluxConfigurer {
                 route(RequestPredicates.GET("/"), indexController::doIndex);
     }
 
+    /*@Bean
+    public ThymeleafReactiveViewResolver thymeleafReactiveViewResolver(ReactiveWebApplicationContext applicationContext) {
+        ThymeleafReactiveViewResolver thymeleafViewResolver = new ThymeleafReactiveViewResolver();
+        thymeleafViewResolver.setApplicationContext(applicationContext);
+        thymeleafViewResolver.setRedirectViewProvider(RedirectView::new);
+        thymeleafViewResolver.setTemplateEngine(new SpringWebFluxTemplateEngine());
+        return thymeleafViewResolver;
+    }*/
+
     /**
      * 注册视图
      * 2019/10/17 这视图问题磨了我一下午,要没有IDEA,估计我的灵魂已经祭天
      * 谷歌浏览器强转的翻译看官网很蛋疼!!!
      * https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-config-view-resolvers
+     *
      * @param registry
      */
     @Override
@@ -62,6 +72,7 @@ public class WebFluxConfig implements WebFluxConfigurer {
      * 将一些css 和 js 所加载
      * 2019/10/20 終於能加載靜態js資源了
      * https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-config-static-resources
+     *
      * @param registry
      */
     @Override

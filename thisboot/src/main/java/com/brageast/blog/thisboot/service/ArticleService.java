@@ -5,9 +5,13 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface ArticleService {
-    Flux<Article> limitShow(int limit);
+    Flux<Article> limitShow(int page, int size);
+
+    Mono<Article> insert(Mono<Article> article);
 
     Mono<Article> insert(Article article);
 
-    void show();
+    Flux<Article> show();
+
+
 }
