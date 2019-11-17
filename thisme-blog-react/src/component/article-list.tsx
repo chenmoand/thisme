@@ -21,21 +21,21 @@ interface SimpleArticleProps extends BaseProps {
 export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
     const {article, className, style} = props;
     const {
-        Title, Author, StartDate,
-        Classify, Label, Describe,
-        Url
+        title, author, startDate,
+        classify, label, describe,
+        articleId
     } = article;
     return (
         <div className={className} style={style}>
-            <Descriptions title={Title} column={4}>
-                <Item label={"作者"}> {Author} </Item>
-                <Item label={"日期"}> {StartDate} </Item>
-                <Item label={"类别"}> {Classify} </Item>
-                <Item label={"标签"}> {Label[0]} </Item>
-                <Item label={"描述"} span={4}> {Describe}</Item>
+            <Descriptions title={title} column={4}>
+                <Item label={"作者"}> {author} </Item>
+                <Item label={"日期"}> {startDate} </Item>
+                <Item label={"类别"}> {classify} </Item>
+                <Item label={"标签"}> {label[0]} </Item>
+                <Item label={"描述"} span={4}> {describe}</Item>
                 <Item span={3}>{}</Item>
                 <Item>
-                    <Button><NavLink to={articlePath(Url)}>点击阅读</NavLink></Button>
+                    <Button><NavLink to={articlePath(articleId)}>点击阅读</NavLink></Button>
                 </Item>
             </Descriptions>
         </div>
@@ -49,16 +49,16 @@ interface CompleteArticleProps extends BaseProps {
 export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
     const {article, className, style} = props;
     const {
-        Title, Author, StartDate,
-        Classify, Label, Url
+        title, author, startDate,
+        classify, label,
     } = article;
     return(
         <div className={className} style={style}>
-            <Descriptions title={Title} column={4}>
-                <Item label={"作者"}> {Author} </Item>
-                <Item label={"日期"}> {StartDate} </Item>
-                <Item label={"类别"}> {Classify} </Item>
-                <Item label={"标签"}> {Label} </Item>
+            <Descriptions title={title} column={4}>
+                <Item label={"作者"}> {author} </Item>
+                <Item label={"日期"}> {startDate} </Item>
+                <Item label={"类别"}> {classify} </Item>
+                <Item label={"标签"}> {label} </Item>
             </Descriptions>
         </div>
     );

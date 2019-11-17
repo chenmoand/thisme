@@ -6,27 +6,25 @@ import {Map} from "immutable";
 
 
 const article:Article = {
-    ArticleId: 0,
-    Author: "chenmo",
-    Chick: 0,
-    Classify: "java",
-    Content: "java",
-    Describe: "javajavajavajavajavajavajavajavajavajavajavajava" +
+    articleId: "demo",
+    author: "chenmo",
+    chick: 0,
+    classify: "java",
+    content: "java",
+    describe: "javajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava",
-    Label: ["java"],
-    Replys: [{
-        ReplyId: 1,
-        Name: "chenmo", // 姓名
-        StartDate: undefined, // 发布日期
-        UpDate: undefined, // 更新日期
-        Content: "java", // 内容
+    label: ["java"],
+    replys: [{
+        replyId: "demo",
+        name: "chenmo", // 姓名
+        startDate: new Date(), // 发布日期
+        upDate: new Date(), // 更新日期
+        content: "java", // 内容
     }],
-    StartDate: undefined,
-    Title: "java",
-    UpDate: undefined,
-    Url: "str"
-
+    startDate: undefined,
+    title: "java",
+    upDate: undefined,
 };
 
 const AppTest:React.FC = () => {

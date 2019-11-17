@@ -2,6 +2,7 @@ package com.brageast.blog.thisboot.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,9 +16,10 @@ import java.util.Date;
 @Document
 public class Reply {
     @Id
-    private String ReplyId;
-    private String Name;
-    private Date StartDate;
-    private Date UpDate;
-    private String Content;
+    private String replyId;
+    private String name;
+    @CreatedDate
+    private Date startDate;
+    private Date upDate;
+    private String content;
 }

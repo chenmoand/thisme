@@ -23,6 +23,7 @@ public class ArticleController {
     }
 
     @PostMapping("/addArticle")
+    @ResponseBody
     public Mono<Article> addArticle(@RequestBody Article article) {
         System.out.println(article);
         return articleService.insert(article);

@@ -19,7 +19,7 @@ const Article$: React.FC<ArticleProps> = props => {
     // 是否显示加载组件
     const [loding, setLoding] = useState(true);
     console.log(props);
-    if (currentArticle != undefined && equalPath(location.pathname, currentArticle.Url)) {
+    if (currentArticle != undefined && equalPath(location.pathname, currentArticle.articleId)) {
         setLoding(false);
     } else {
         //TODO 发送AJAX请求 (暂时占位置?)

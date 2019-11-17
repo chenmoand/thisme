@@ -19,27 +19,26 @@ export interface PageArticle {
  * 文章属性
  */
 export interface Article {
-    ArticleId: number, // 文章序号
-    Title: string, // 标题
-    Label: string[], // 标签
-    Classify: string, // 分类
-    Describe: string, // 描述
-    StartDate: Date, // 发布日期
-    UpDate: Date, // 更新日期
-    Author: string, // 作者
-    Content: string, // 内容
-    Chick: number, // 点击次数
-    Url: string, // 地址
-    Replys: Reply[],
+    articleId: string, // 文章序号
+    title: string, // 标题
+    label: string[], // 标签
+    classify: string, // 分类
+    describe: string, // 描述
+    startDate: Date, // 发布日期
+    upDate: Date, // 更新日期
+    author: string, // 作者
+    content: string, // 内容
+    chick: number, // 点击次数
+    replys: Reply[],
 }
 
 /**
  * 回复属性
  */
 export interface Reply {
-    ReplyId: number,
-    Name: string, // 姓名
-    StartDate: Date, // 发布日期
-    UpDate: Date, // 更新日期
-    Content: string, // 内容
+    replyId: string,
+    name: string, // 姓名
+    startDate: Date, // 发布日期
+    upDate: Date, // 更新日期
+    content: string, // 内容
 }
