@@ -24,12 +24,12 @@ export interface Article {
     label: string[], // 标签
     classify: string, // 分类
     describe: string, // 描述
-    startDate: Date, // 发布日期
-    upDate: Date, // 更新日期
+    startDate?: Date, // 发布日期
+    upDate?: Date, // 更新日期
     author: string, // 作者
     content: string, // 内容
     chick: number, // 点击次数
-    replys: Reply[],
+    replys?: Reply[],
 }
 
 /**

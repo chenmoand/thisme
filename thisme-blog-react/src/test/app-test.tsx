@@ -4,7 +4,6 @@ import {Article} from "../util/PropsUtil";
 import {Map} from "immutable";
 
 
-
 const article:Article = {
     articleId: "demo",
     author: "chenmo",

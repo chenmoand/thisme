@@ -2,6 +2,8 @@ package com.brageast.blog.thisboot.controller;
 
 import com.brageast.blog.thisboot.entity.Article;
 import com.brageast.blog.thisboot.service.ArticleService;
+import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,15 +25,25 @@ public class ArticleController {
     }
 
     @PostMapping("/addArticle")
-    @ResponseBody
-    public Mono<Article> addArticle(@RequestBody Article article) {
-        System.out.println(article);
-        return articleService.insert(article);
+    public Mono<Boolean> addArticle(@RequestBody Article article) {
+        return articleService.
+                insert(article).
+                log().hasElement();
     }
 
     @GetMapping("/getPageArticle")
     public Flux<Article> getPageArticle(@RequestParam(defaultValue = "1") int page,
                                         @RequestParam(defaultValue = "10") int size) {
         return articleService.limitShow(page, size);
+    }
+
+    @DeleteMapping("/deleteArticle")
+    public Mono<DeleteResult> deleteArticle (String id) {
+        return articleService.delete(id);
+    }
+
+    @PutMapping("/updateArticle")
+    public Mono<UpdateResult> updateArticle(@RequestBody Article article) {
+        return articleService.update(article);
     }
 }

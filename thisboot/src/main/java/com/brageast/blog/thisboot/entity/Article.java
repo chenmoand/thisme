@@ -1,9 +1,7 @@
 package com.brageast.blog.thisboot.entity;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -24,7 +22,6 @@ public class Article {
     private String[] label;
     private String classify;
     private String describe;
-    @CreatedDate
     private Date startDate;
     private Date upDate;
     private String author;

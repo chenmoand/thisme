@@ -18,7 +18,6 @@ public class Reply {
     @Id
     private String replyId;
     private String name;
-    @CreatedDate
     private Date startDate;
     private Date upDate;
     private String content;

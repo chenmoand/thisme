@@ -33,6 +33,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
@@ -96,11 +100,11 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
             <version>3.26.0-GA</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>
