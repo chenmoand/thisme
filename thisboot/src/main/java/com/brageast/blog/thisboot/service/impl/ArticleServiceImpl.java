@@ -16,8 +16,6 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Date;
 
 @Slf4j
@@ -67,6 +65,11 @@ public class ArticleServiceImpl implements ArticleService {
         update.set("upDate", new Date());
 
         return reactiveMongoTemplate.updateFirst(doId(article.getArticleId()), update, Article.class);
+    }
+
+    @Override
+    public Mono<Article> findArticleId(String articleId) {
+        return reactiveMongoTemplate.findOne(doId(articleId), Article.class);
     }
 
     private Query doId(String id ) {

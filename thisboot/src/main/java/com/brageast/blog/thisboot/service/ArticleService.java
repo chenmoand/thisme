@@ -18,4 +18,6 @@ public interface ArticleService {
     Mono<DeleteResult> delete(String id);
 
     Mono<UpdateResult> update(Article article);
+
+    Mono<Article> findArticleId(String articleId);
 }

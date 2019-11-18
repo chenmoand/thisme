@@ -1,10 +1,12 @@
 import * as React from "react";
 import {Article, BaseProps, PageArticle} from "../util/PropsUtil";
 import {connect} from "react-redux";
-import {Button, Descriptions, Divider} from "antd";
+import {Button, Descriptions, Divider, Pagination} from "antd";
 import {NavLink} from "react-router-dom";
 import {Map} from "immutable";
 import {articlePath} from "../util/RouterUtil";
+import axios from "axios";
+import {setRequestUrl} from "../util/ApiUrl";
 
 const {Item} = Descriptions;
 
@@ -69,7 +71,8 @@ interface ArticleListProps extends BaseProps {
     currentPage: number,
     maxPage: number,
     pageArticles: Map<number, Article[]>,
-    setPageArticle: (pa: PageArticle) => void;
+    setPageArticle: (pa: PageArticle) => void,
+    setCurrentPage: (num: number) => void,
 }
 
 /**
@@ -80,12 +83,21 @@ interface ArticleListProps extends BaseProps {
 export const ArticleList$: React.FC<ArticleListProps> = props => {
     const {
         className, maxPage, pageArticles,
-        currentPage, setPageArticle, style
+        currentPage, setPageArticle, style,
+        setCurrentPage
     } = props;
 
     let articles: Article[] = pageArticles.get(currentPage);
     if (articles === undefined) {
-        //TODO 发送AJAX并加入到Redux上
+        axios.get(setRequestUrl(`getPageArticle?page=${currentPage}&size=10`))
+            .then(res => {
+                const { data } = res;
+                setPageArticle({
+                    page: currentPage,
+                    articles: data
+                });
+            })
+            .catch(console.log);
     }
 
     return (
@@ -103,6 +115,11 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
                     )
                 })
             }
+            <Pagination onChange={(page) => setCurrentPage(page)}
+                        style={{textAlign: "center"}} hideOnSinglePage={true}
+                        //TODO  maxPage? 暂时占位置
+                        simple defaultCurrent={1} total={maxPage}
+            />
         </div>
     );
 };
@@ -118,7 +135,8 @@ export const ArticleList = connect(
     },
     dispatch => {
         return {
-            setPageArticle: (pa: PageArticle) => dispatch({type: "PAGE_ARTICLE", content: pa})
+            setPageArticle: (pa: PageArticle) => dispatch({type: "PAGE_ARTICLE", content: pa}),
+            setCurrentPage: (num: number) => dispatch({type: "CURRENT_PAGE", content: num})
         }
     }
 )(ArticleList$);

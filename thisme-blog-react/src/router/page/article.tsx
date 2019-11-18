@@ -7,6 +7,8 @@ import {ConnectRouter} from "../../util/ComponentUtil";
 import {Article, BaseProps} from "../../util/PropsUtil";
 import {CompleteArticle} from "../../component/article-list";
 import BodySyle from "../../component/body-style";
+import axios from "axios";
+import {setRequestUrl} from "../../util/ApiUrl";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps {
@@ -18,11 +20,17 @@ const Article$: React.FC<ArticleProps> = props => {
     const {currentArticle, setCurrentArticle, location} = props;
     // 是否显示加载组件
     const [loding, setLoding] = useState(true);
-    console.log(props);
+    // console.log(props);
     if (currentArticle != undefined && equalPath(location.pathname, currentArticle.articleId)) {
         setLoding(false);
     } else {
-        //TODO 发送AJAX请求 (暂时占位置?)
+        //TODO 发送AJAX请求 (articleId暂时为null?)
+        axios.get(setRequestUrl(`getArticle?articleId=${null}`))
+            .then(res => {
+                setCurrentArticle(res.data);
+                setLoding(true);
+            })
+            .catch(console.log);
     }
 
     return (

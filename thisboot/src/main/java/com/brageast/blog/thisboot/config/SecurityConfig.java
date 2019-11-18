@@ -1,5 +1,6 @@
 package com.brageast.blog.thisboot.config;
 
+import org.springframework.boot.autoconfigure.security.reactive.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -22,6 +23,8 @@ public class SecurityConfig {
         //TODO 暂时先放行全部
         http.csrf().disable()
                 .authorizeExchange()
+                .matchers(PathRequest.toStaticResources().atCommonLocations())
+                .permitAll()
                 .pathMatchers("/**")
                 .permitAll();
         return http.build();

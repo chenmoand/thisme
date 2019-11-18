@@ -24,6 +24,11 @@ public class ArticleController {
         return articleService.show();
     }
 
+    @GetMapping("/getArticle")
+    public Mono<Article> getArticle(String articleId) {
+        return articleService.findArticleId(articleId);
+    }
+
     @PostMapping("/addArticle")
     public Mono<Boolean> addArticle(@RequestBody Article article) {
         return articleService.
