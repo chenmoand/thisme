@@ -1,6 +1,6 @@
 import * as React from "react";
-import AppTest from "../../test/app-test";
 import BodySyle from "../../component/body-style";
+import AppTest from "../../test/app-test";
 
 
 interface HomeProps {

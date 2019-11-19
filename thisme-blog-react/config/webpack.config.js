@@ -112,7 +112,7 @@ module.exports = {
             template: './static/index.html'
         }),
         new OpenBrowserPlugin({
-            url : 'http://localhost:8080'
+            url : 'http://localhost:8888'
         }),
         new CompressionPlugin({
             filename: '[path].br[query]',

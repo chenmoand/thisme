@@ -14,6 +14,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @Component
 @RestController
+@CrossOrigin
 public class ArticleController {
 
     @Autowired

@@ -29,17 +29,13 @@ export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
     } = article;
     return (
         <div className={className} style={style}>
-            <Descriptions title={title} column={4}>
-                <Item label={"作者"}> {author} </Item>
+                {/*<Item label={"作者"}> {author} </Item>
                 <Item label={"日期"}> {startDate} </Item>
                 <Item label={"类别"}> {classify} </Item>
                 <Item label={"标签"}> {label[0]} </Item>
                 <Item label={"描述"} span={4}> {describe}</Item>
-                <Item span={3}>{}</Item>
-                <Item>
-                    <Button><NavLink to={articlePath(articleId)}>点击阅读</NavLink></Button>
-                </Item>
-            </Descriptions>
+                <Item span={3}>{}</Item>*/}
+            <Button><NavLink to={articlePath(articleId)}>点击阅读</NavLink></Button>
         </div>
     );
 };
@@ -103,7 +99,7 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
     return (
         <div className={"article-list " + className} style={style}>
             {
-                articles.map((item, index) => {
+                articles && articles.map((item, index) => {
                     return (
                         <React.Fragment key={index}>
                             <SimpleArticle
