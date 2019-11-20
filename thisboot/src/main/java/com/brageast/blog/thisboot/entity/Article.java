@@ -2,6 +2,7 @@ package com.brageast.blog.thisboot.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,7 +18,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Article {
     @Id
-    private String articleId;
+    private ObjectId articleId;
     private String title;
     private String[] label;
     private String classify;

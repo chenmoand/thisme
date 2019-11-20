@@ -6,6 +6,7 @@ import com.brageast.blog.thisboot.util.EntityUtil;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
@@ -52,8 +53,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Mono<DeleteResult> delete(String id) {
-        return reactiveMongoTemplate.remove(doId(id), Article.class);
+    public Mono<DeleteResult> delete(ObjectId id) {
+        return reactiveMongoTemplate.remove(doId(id.toString()), Article.class);
     }
 
     @Override
@@ -64,12 +65,12 @@ public class ArticleServiceImpl implements ArticleService {
         );
         update.set("upDate", new Date());
 
-        return reactiveMongoTemplate.updateFirst(doId(article.getArticleId()), update, Article.class);
+        return reactiveMongoTemplate.updateFirst(doId(article.getArticleId().toString()), update, Article.class);
     }
 
     @Override
-    public Mono<Article> findArticleId(String articleId) {
-        return reactiveMongoTemplate.findOne(doId(articleId), Article.class);
+    public Mono<Article> findById(ObjectId articleId) {
+        return reactiveMongoTemplate.findOne(doId(articleId.toString()), Article.class);
     }
 
     private Query doId(String id ) {

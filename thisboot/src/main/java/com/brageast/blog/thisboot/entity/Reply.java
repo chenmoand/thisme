@@ -15,10 +15,12 @@ import java.util.Date;
 @Builder
 @Document
 public class Reply {
-    @Id
-    private String replyId;
     private String name;
     private Date startDate;
     private Date upDate;
     private String content;
+    /**
+     * 多重回复
+     */
+    private Reply[] replys;
 }

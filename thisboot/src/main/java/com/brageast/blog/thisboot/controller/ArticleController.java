@@ -5,6 +5,7 @@ import com.brageast.blog.thisboot.service.ArticleService;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,8 @@ public class ArticleController {
     }
 
     @GetMapping("/getArticle")
-    public Mono<Article> getArticle(String articleId) {
-        return articleService.findArticleId(articleId);
+    public Mono<Article> getArticle(ObjectId articleId) {
+        return articleService.findById(articleId);
     }
 
     @PostMapping("/addArticle")
@@ -44,7 +45,7 @@ public class ArticleController {
     }
 
     @DeleteMapping("/deleteArticle")
-    public Mono<DeleteResult> deleteArticle (String id) {
+    public Mono<DeleteResult> deleteArticle (ObjectId id) {
         return articleService.delete(id);
     }
 
