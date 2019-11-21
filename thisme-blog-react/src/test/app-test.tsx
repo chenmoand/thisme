@@ -2,6 +2,7 @@ import * as React from "react";
 import {Article} from "../util/PropsUtil";
 import {Map} from "immutable";
 import Item from "../component/item";
+import {CompleteArticle, SimpleArticle} from "../component/article-list";
 
 
 const article:Article = {
@@ -21,18 +22,17 @@ const article:Article = {
         upDate: new Date(), // 更新日期
         content: "java", // 内容
     }],
-    startDate: undefined,
+    startDate: new Date(),
     title: "java",
-    upDate: undefined,
+    upDate: new Date(),
+    articleType: "ORIGINAL",
 };
 
 const AppTest:React.FC = () => {
     const pa:Map<number, Article[]> = Map<number, Article[]>();
     return(
         <div>
-            <Item label={"测试"} icon={"swap"} >
-                这是一个测试喵喵喵
-            </Item>
+            <CompleteArticle article={article} />
         </div>
     )
 };

@@ -22,13 +22,18 @@ public class SecurityConfig {
      */
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-        //TODO 暂时先放行全部
+        // 关闭默认的配置
         http.csrf().disable()
-                .authorizeExchange()
+            .formLogin().disable()
+            .httpBasic().disable();
+
+        //TODO 暂时先放行全部
+        http.authorizeExchange()
                 .matchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
                 .pathMatchers("/**")
                 .permitAll();
+
         return http.build();
     }
 }

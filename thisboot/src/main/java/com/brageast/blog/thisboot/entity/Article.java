@@ -29,5 +29,10 @@ public class Article {
     private String content;
     private Integer chick;
     private Reply[] replys;
+    private ArticleType articleType;
 
+    public enum ArticleType {
+        /* 原创 */ORIGINAL,
+        /* 转载 */REPRINT;
+    }
 }

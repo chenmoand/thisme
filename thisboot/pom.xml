@@ -12,7 +12,7 @@
     <artifactId>thisboot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>thisboot</name>
-    <description>Demo project for Spring Boot</description>
+    <description>沉默blog的后端!</description>
 
     <properties>
         <java.version>1.8</java.version>

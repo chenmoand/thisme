@@ -1,15 +1,16 @@
 import * as React from "react";
 import {Article, BaseProps, PageArticle} from "../util/PropsUtil";
 import {connect} from "react-redux";
-import {Button, Descriptions, Divider, Pagination} from "antd";
+import {Button, Divider, Pagination} from "antd";
 import {NavLink} from "react-router-dom";
 import {Map} from "immutable";
 import {articlePath} from "../util/RouterUtil";
 import axios from "axios";
 import {setRequestUrl} from "../util/ApiUrl";
+import Item from "./item";
+import Markdown from "../editor/markdown-edit";
 
-const {Item} = Descriptions;
-
+const moment = require("moment");
 
 interface SimpleArticleProps extends BaseProps {
     article: Article,
@@ -28,14 +29,24 @@ export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
         articleId
     } = article;
     return (
-        <div className={className} style={style}>
-                {/*<Item label={"作者"}> {author} </Item>
-                <Item label={"日期"}> {startDate} </Item>
-                <Item label={"类别"}> {classify} </Item>
-                <Item label={"标签"}> {label[0]} </Item>
-                <Item label={"描述"} span={4}> {describe}</Item>
-                <Item span={3}>{}</Item>*/}
-            <Button><NavLink to={articlePath(articleId)}>点击阅读</NavLink></Button>
+        <div className={className}
+             style={{
+                padding: 5,
+            ...style}}>
+            <div style={{paddingBottom: 5}}>
+                <NavLink to={articlePath(articleId)}>{title}</NavLink>
+            </div>
+            <Item label={"作者"} icon={"user"} >{author}</Item>
+            <Item label={"类别"} icon={"fire"}>{classify}</Item>
+            <Item label={"标签"} icon={"tag"}>{label[0]}</Item>
+            <Item label={"日期"} icon={"calendar"} >{moment(startDate).format("LL")}</Item>
+            <div style={{
+                whiteSpace: "normal", wordBreak: "break-all", wordWrap: "break-word",
+                marginTop: 5, marginBottom: 5
+            }}>{describe}</div>
+            <Button style={{float: "right"}}>
+                <NavLink to={articlePath(articleId)}>点击阅读</NavLink>
+            </Button>
         </div>
     );
 };
@@ -48,16 +59,16 @@ export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
     const {article, className, style} = props;
     const {
         title, author, startDate,
-        classify, label,
+        classify, label, content
     } = article;
     return(
         <div className={className} style={style}>
-            <Descriptions title={title} column={4}>
-                <Item label={"作者"}> {author} </Item>
-                <Item label={"日期"}> {startDate} </Item>
-                <Item label={"类别"}> {classify} </Item>
-                <Item label={"标签"}> {label} </Item>
-            </Descriptions>
+            <h3 style={{paddingBottom: 5}}>{title}</h3>
+            <Item label={"作者"} icon={"user"} >{author}</Item>
+            <Item label={"类别"} icon={"fire"}>{classify}</Item>
+            <Item label={"标签"} icon={"tag"}>{label[0]}</Item>
+            <Item label={"日期"} icon={"calendar"} >{moment(startDate).format("LL")}</Item>
+            <Markdown source={content}/>
         </div>
     );
 };

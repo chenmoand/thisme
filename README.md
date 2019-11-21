@@ -1,14 +1,12 @@
-# thisme ```coder``` 佛系求星星
+# thisme ```coder``` 有点骚的玩意
 
-> 成果样例 : https://new.brageast.com
+> 一个正在施工的网页(Blog) : https://new.brageast.com
+>
+> 第一次下载后请先尝试```yarn deploy:yarn```
 
-### Install
+### Download
 
 ``` git clone https://github.com/chenmoand/thisme.git ``` 
-
-``` yarn ``` 安装前置
-
-```yarn global add webpack webpack-cli webpack-dev-server```
 
 ### Modules 
 
@@ -25,5 +23,7 @@
 ###  Command
 
 * ```yarn web``` 将thisme-blog-react构建并且提交githubPage
+* ```yarn deploy:yarn```  用yarn的方式下载项目所需要的依赖
+* ```npm deploy:npm``` 用npm的方式下载项目所需要的依赖 
 
 

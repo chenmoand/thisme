@@ -30,7 +30,10 @@ export interface Article {
     content: string, // 内容
     chick: number, // 点击次数
     replys?: Reply[],
+    articleType: ArticleType, // 文章类型
 }
+
+export type ArticleType = 'ORIGINAL' | 'REPRINT';
 
 /**
  * 回复属性

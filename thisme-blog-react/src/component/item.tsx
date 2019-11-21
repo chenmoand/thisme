@@ -18,20 +18,20 @@ const Item: React.FC<ItemProps> = props => {
     } = props;
 
     return(
-        <div className={"thime-itme " + className} style={{
+        <span className={`thime-itme ${className}`} style={{
             ...style
         }}>
             <span style={
                 {
-                    marginRight: indentation == undefined ? 8 : indentation,
-                    fontSize: 14, fontWeight: "bolder"
+                    marginRight: indentation == undefined ? 4 : indentation,
+                    fontSize: 12, fontWeight: "bolder"
                 }
             }>
                 <ItemIcon icon={icon} />
                 {label + ":"}
             </span>
             {children == null ? onChildrenNull : children}
-        </div>
+        </span>
     );
 
 };
