@@ -8,7 +8,7 @@ const PageBottom: React.FC = props => {
             justify={"center"}
         >
             <Divider style={{height: 2}} />
-            <span style={{textAlign: "center"}}>
+            <span style={{textAlign: "center", paddingBottom: 15}}>
                 页面托管于<a href="https://github.com/chenmoand/thisme"> Github.com</a><br />
                 <a href="/">Brageast.com</a> @ 2019 · ChenMo 版权所有<br />
                 冀ICP备18025254号-1

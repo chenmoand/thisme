@@ -1,8 +1,7 @@
 import * as React from "react";
 import {Article} from "../util/PropsUtil";
 import {Map} from "immutable";
-import Item from "../component/item";
-import {CompleteArticle, SimpleArticle} from "../component/article-list";
+import {CompleteArticle} from "../component/article-list";
 
 
 const article:Article = {
@@ -10,7 +9,7 @@ const article:Article = {
     author: "chenmo",
     chick: 0,
     classify: "java",
-    content: "java",
+    content: "```java \n 关羽温酒斩祁凯 \n public void say() { \n } \n ``` \n\nzhi哈哈哈哈哈",
     describe: "javajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava",
@@ -23,7 +22,7 @@ const article:Article = {
         content: "java", // 内容
     }],
     startDate: new Date(),
-    title: "java",
+    title: "我乃上将祁凯可斩上将华雄",
     upDate: new Date(),
     articleType: "ORIGINAL",
 };

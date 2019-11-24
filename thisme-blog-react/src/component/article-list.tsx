@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Article, BaseProps, PageArticle} from "../util/PropsUtil";
 import {connect} from "react-redux";
-import {Button, Divider, Pagination} from "antd";
+import {Button, Divider, Pagination, Tag} from "antd";
 import {NavLink} from "react-router-dom";
 import {Map} from "immutable";
 import {articlePath} from "../util/RouterUtil";
@@ -9,6 +9,7 @@ import axios from "axios";
 import {setRequestUrl} from "../util/ApiUrl";
 import Item from "./item";
 import Markdown from "../editor/markdown-edit";
+import {doArticleType} from "../util/ViewUtil";
 
 const moment = require("moment");
 
@@ -59,11 +60,13 @@ export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
     const {article, className, style} = props;
     const {
         title, author, startDate,
-        classify, label, content
+        classify, label, content,
+        articleType
     } = article;
     return(
         <div className={className} style={style}>
             <h3 style={{paddingBottom: 5}}>{title}</h3>
+            <Tag color={"red"} >{doArticleType(articleType)}</Tag>
             <Item label={"作者"} icon={"user"} >{author}</Item>
             <Item label={"类别"} icon={"fire"}>{classify}</Item>
             <Item label={"标签"} icon={"tag"}>{label[0]}</Item>
