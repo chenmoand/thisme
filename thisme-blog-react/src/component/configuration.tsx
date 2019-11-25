@@ -5,22 +5,22 @@ import {WebType} from "../redux/reducers/IndexReducer";
 
 interface ConfigurationProps {
     url?: string,
-    setWebType: (webType : WebType) => void,
+    setWebType: (webType: WebType) => void,
 }
 
 /**
  * 用于初始化配置
  * @param props
  */
-const Configuration:React.FC<ConfigurationProps> = props => {
+const Configuration: React.FC<ConfigurationProps> = props => {
 
-    const { setWebType } = props;
+    const {setWebType} = props;
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-device-width: 1224px)'
     });
-    const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' });
-    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 844px)' });
-    return(
+    const isBigScreen = useMediaQuery({query: '(min-device-width: 1824px)'});
+    const isTabletOrMobile = useMediaQuery({query: '(max-width: 844px)'});
+    return (
         <>
             <WebSize
                 isDesktopOrLaptop={isDesktopOrLaptop}
@@ -30,14 +30,14 @@ const Configuration:React.FC<ConfigurationProps> = props => {
             />
             {props.children}
         </>
-)
+    )
 };
 
 interface WebSizeProps {
-    setWebType: (webType : WebType) => void,
-    isDesktopOrLaptop : boolean,
-    isBigScreen : boolean,
-    isTabletOrMobile : boolean,
+    setWebType: (webType: WebType) => void,
+    isDesktopOrLaptop: boolean,
+    isBigScreen: boolean,
+    isTabletOrMobile: boolean,
 }
 
 /**
@@ -46,11 +46,11 @@ interface WebSizeProps {
  * @param props
  * @constructor
  */
-const WebSize:React.FC<WebSizeProps> = props => {
-    const { children , isDesktopOrLaptop, isBigScreen, setWebType, isTabletOrMobile } = props;
+const WebSize: React.FC<WebSizeProps> = props => {
+    const {children, isDesktopOrLaptop, isBigScreen, setWebType, isTabletOrMobile} = props;
     // 判断页面大小
-    if(isDesktopOrLaptop) {
-        if(isBigScreen) {
+    if (isDesktopOrLaptop) {
+        if (isBigScreen) {
             // 台式电脑
             setWebType(WebType.BIG);
         } else {
@@ -62,10 +62,10 @@ const WebSize:React.FC<WebSizeProps> = props => {
         setWebType(WebType.SMALL);
 
     }
-    if(isTabletOrMobile) {
+    if (isTabletOrMobile) {
         setWebType(WebType.SMALL)
     }
-    return(
+    return (
         <>
             {children}
         </>
@@ -74,12 +74,11 @@ const WebSize:React.FC<WebSizeProps> = props => {
 
 
 export default connect(
-
     null,
     dispatch => {
         // @ts-ignore
         return {
-            setWebType : (webType: WebType) => dispatch({type: 'WEBTYPE', content: webType}),
+            setWebType: (webType: WebType) => dispatch({type: 'WEBTYPE', content: webType}),
         }
     }
 )(Configuration);

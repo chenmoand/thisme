@@ -12,7 +12,7 @@ export interface BodyStyleProps {
 
 const BodySyle: React.FC<BodyStyleProps> = props => {
 
-    const { left, right, webType } = props;
+    const {left, right, webType} = props;
 
     return (
         <Row
@@ -22,12 +22,12 @@ const BodySyle: React.FC<BodyStyleProps> = props => {
             <Col
                 offset={2} span={webType ? 14 : 20}
             >
-                { left }
+                {left}
             </Col>
             <Col
                 offset={webType ? 1 : 0} span={webType ? 6 : 0}
             >
-                { right }
+                {right}
             </Col>
             <Col span={webType ? 1 : 2}/>
         </Row>
@@ -37,9 +37,9 @@ const BodySyle: React.FC<BodyStyleProps> = props => {
 export default connect(
     state => {
         // @ts-ignore
-        const { indexReducer } = state;
+        const {indexReducer} = state;
         return {
-            webType : viewSize(indexReducer.webType),
+            webType: viewSize(indexReducer.webType),
         };
     }, null
 )(BodySyle);

@@ -3,6 +3,8 @@
 > 一个正在施工的网页(Blog) : https://new.brageast.com
 >
 > 第一次下载后请先尝试```yarn deploy:yarn```
+>
+> ![例子](doc/img/截图.png)
 
 ### Download
 

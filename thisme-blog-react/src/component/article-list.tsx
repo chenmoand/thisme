@@ -1,18 +1,18 @@
 import * as React from "react";
-import {Article, BaseProps, PageArticle} from "../util/PropsUtil";
 import {connect} from "react-redux";
-import {Button, Divider, Pagination, Result, Tag} from "antd";
 import {NavLink} from "react-router-dom";
-import {Map} from "immutable";
-import {articlePath} from "../util/RouterUtil";
+import {useEffect, useState} from "react";
 import axios from "axios";
+import {Map} from "immutable";
+import {Button, Divider, Pagination, Tag} from "antd";
+import {Article, BaseProps, PageArticle} from "../util/PropsUtil";
+import {articlePath} from "../util/RouterUtil";
 import {setRequestUrl} from "../util/ApiUrl";
 import Item from "./item";
 import Markdown from "../editor/markdown-edit";
 import {doArticleType} from "../util/ViewUtil";
-import {useEffect, useState} from "react";
 import Assert from "../util/Assert";
-import wait from "../img/wait.png"
+import Wait from "./wait";
 
 const moment = require("moment");
 
@@ -44,7 +44,7 @@ export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
             <Item label={"作者"} icon={"user"}>{author}</Item>
             <Item label={"类别"} icon={"fire"}>{classify}</Item>
             <Item label={"标签"} icon={"tag"}>
-                <Assert text={label} index={0} doEmpty={"NULL"} />
+                <Assert text={label} index={0} doEmpty={"NULL"}/>
             </Item>
             <Item label={"日期"} icon={"calendar"}>{moment(startDate).format("LL")}</Item>
             <div style={{
@@ -77,7 +77,7 @@ export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
             <Item label={"作者"} icon={"user"}>{author}</Item>
             <Item label={"类别"} icon={"fire"}>{classify}</Item>
             <Item label={"标签"} icon={"tag"}>
-                <Assert text={label} index={0} doEmpty={"NULL"} />
+                <Assert text={label} index={0} doEmpty={"NULL"}/>
             </Item>
             <Item label={"日期"} icon={"calendar"}>{moment(startDate).format("LL")}</Item>
             <Markdown source={content}/>
@@ -107,7 +107,7 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
     } = props;
 
     // 防止多次点击请求按钮导致发送一堆请求的状态
-    const [ isclick, setClick ] = useState(false);
+    const [isclick, setClick] = useState(false);
     // 得到页面的文章数组
     let articles: Article[] = pageArticles.get(currentPage);
     // 发送请求的方法
@@ -121,7 +121,7 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
                         page: currentPage,
                         articles: data
                     });
-                    console.log(data);
+                    // console.log(data);
                 })
                 .catch(err => {
                     console.log(err);
@@ -135,27 +135,25 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
         <div className={"article-list " + className} style={style}>
             {
                 articles != null ? articles.map((item, index) => {
-                    return (
-                        <React.Fragment key={index}>
-                            <SimpleArticle
-                                article={item}
-                                className={"simple-article"}
-                            />
-                            <Divider style={{height: 2}}/>
-                        </React.Fragment>
-                    )
-                }) :
-                <Result
-                    title={"wait"}
-                    icon={<img src={wait}/>}
-                    subTitle={isclick ? "正在向服务器拉取数据" :  "服务器请求失败,请点击尝试"}
-                    extra={<Button type="primary" onClick={doArticles} disabled={isclick} >拉取请求</Button>}
-                />
+                        return (
+                            <React.Fragment key={index}>
+                                <SimpleArticle
+                                    article={item}
+                                    className={"simple-article"}
+                                />
+                                <Divider style={{height: 2}}/>
+                            </React.Fragment>
+                        )
+                    }) :
+                    <Wait onClick={doArticles} isClick={isclick}/>
             }
-            <Pagination onChange={(page) => setCurrentPage(page)}
-                        style={{textAlign: "center"}} hideOnSinglePage={true}
-                        //TODO  maxPage? 暂时占位置
-                        simple defaultCurrent={1} total={maxPage}
+            <Pagination
+                onChange={(page) => setCurrentPage(page)}
+                style={{
+                    textAlign: "center", padding: "6px 0"
+                }}
+                //TODO  maxPage? 暂时占位置
+                simple defaultCurrent={1} total={maxPage}
             />
         </div>
     );

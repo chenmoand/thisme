@@ -17,25 +17,25 @@ interface TitleProps {
  * @param props
  */
 const Title: React.FC<TitleProps> = props => {
-    const { src, html, domain, setDomain, style, className } = props;
+    const {src, html, domain, setDomain, style, className} = props;
     // setDomain("brageast.com");
     document.title = src + " | " + domain;
-    return(
+    return (
         <div
             className={className}
             style={style}
         >
-            {html? src : ""}
+            {html ? src : ""}
         </div>
     )
 };
 
 export default connect(state => {
     // @ts-ignore
-    const { indexReducer } = state;
+    const {indexReducer} = state;
     // @ts-ignore
-    return { domain : indexReducer.domain };
-}, dispatch=> {
+    return {domain: indexReducer.domain};
+}, dispatch => {
     return {
         setDomain: str => dispatch({type: "DOMAIN", content: str})
     }
