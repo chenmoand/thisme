@@ -1,6 +1,5 @@
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
-import 'rsuite/lib/styles/index.less';
 import Configuration from "./component/configuration";
 import {BackTop} from "antd";
 import TopMenu from "./menu/TopMenu";
@@ -14,7 +13,7 @@ import PageBottom from "./component/page-bottom";
 const App:React.FC = () => {
     return(
         <Configuration
-            url={"https://example.com"}
+            url={"https://brageast.com"}
         >
             <TopMenu />
             <PageBody />

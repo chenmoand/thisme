@@ -32,15 +32,16 @@ export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
     return (
         <div className={className}
              style={{
-                padding: 5,
-            ...style}}>
+                 padding: 5,
+                 ...style
+             }}>
             <div style={{paddingBottom: 5}}>
                 <NavLink to={articlePath(articleId)}>{title}</NavLink>
             </div>
-            <Item label={"作者"} icon={"user"} >{author}</Item>
+            <Item label={"作者"} icon={"user"}>{author}</Item>
             <Item label={"类别"} icon={"fire"}>{classify}</Item>
             <Item label={"标签"} icon={"tag"}>{label[0]}</Item>
-            <Item label={"日期"} icon={"calendar"} >{moment(startDate).format("LL")}</Item>
+            <Item label={"日期"} icon={"calendar"}>{moment(startDate).format("LL")}</Item>
             <div style={{
                 whiteSpace: "normal", wordBreak: "break-all", wordWrap: "break-word",
                 marginTop: 5, marginBottom: 5
@@ -63,14 +64,15 @@ export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
         classify, label, content,
         articleType
     } = article;
-    return(
-        <div className={className} style={style}>
-            <h3 style={{paddingBottom: 5}}>{title}</h3>
-            <Tag color={"red"} >{doArticleType(articleType)}</Tag>
-            <Item label={"作者"} icon={"user"} >{author}</Item>
+    return (
+        <div className={`complete-article ${className == null ? "" : className}`}
+             style={style}>
+            <h3 style={{paddingBottom: 3}}>{title}</h3>
+            <Tag color={"red"}>{doArticleType(articleType)}</Tag>
+            <Item label={"作者"} icon={"user"}>{author}</Item>
             <Item label={"类别"} icon={"fire"}>{classify}</Item>
             <Item label={"标签"} icon={"tag"}>{label[0]}</Item>
-            <Item label={"日期"} icon={"calendar"} >{moment(startDate).format("LL")}</Item>
+            <Item label={"日期"} icon={"calendar"}>{moment(startDate).format("LL")}</Item>
             <Markdown source={content}/>
         </div>
     );
@@ -101,7 +103,7 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
     if (articles === undefined) {
         axios.get(setRequestUrl(`getPageArticle?page=${currentPage}&size=10`))
             .then(res => {
-                const { data } = res;
+                const {data} = res;
                 setPageArticle({
                     page: currentPage,
                     articles: data
@@ -127,7 +129,7 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
             }
             <Pagination onChange={(page) => setCurrentPage(page)}
                         style={{textAlign: "center"}} hideOnSinglePage={true}
-                        //TODO  maxPage? 暂时占位置
+                //TODO  maxPage? 暂时占位置
                         simple defaultCurrent={1} total={maxPage}
             />
         </div>

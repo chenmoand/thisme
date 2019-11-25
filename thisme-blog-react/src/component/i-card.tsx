@@ -3,35 +3,33 @@ import {BaseProps} from "../util/PropsUtil";
 import {Avatar, Card, Icon} from "antd";
 import crooped from "../img/cropped.jpg"
 
-const { Meta } = Card;
+const {Meta} = Card;
 
-interface MyselfCardProps extends BaseProps{
+interface MyselfCardProps extends BaseProps {
 
 }
 
 
 export const MyselfCard: React.FC<MyselfCardProps> = props => {
+    const {className, style} = props;
 
-    const { className, style } = props;
-
-    return(
-        <div className={"myself-card "+ className}
-             style={{
-
-            ...style}}>
+    return (
+        <div className={"card-myself"}>
             <Card
+                className={className}
+                style={style}
                 cover={
-                    <img alt={"背景"} src={crooped} />
+                    <img alt={"背景"} src={crooped}/>
                 }
                 actions={[
-                    <a href={"https://github.com/chenmoand"} >
-                        <Icon type={"github"} />
+                    <a href={"https://github.com/chenmoand"}>
+                        <Icon type={"github"}/>
                     </a>,
-                    <a href={"https://www.zhihu.com/people/chen-mo-82-82-69/activities"} >
-                        <Icon type={"zhihu"} />
+                    <a href={"https://www.zhihu.com/people/chen-mo-82-82-69/activities"}>
+                        <Icon type={"zhihu"}/>
                     </a>,
-                    <a href={"mailto:chenmoand@gmail.com"} >
-                        <Icon type={"mail"} />
+                    <a href={"mailto:chenmoand@gmail.com"}>
+                        <Icon type={"mail"}/>
                     </a>
                 ]}
             >
@@ -46,3 +44,26 @@ export const MyselfCard: React.FC<MyselfCardProps> = props => {
         </div>
     );
 };
+
+
+interface LablCardProps extends BaseProps{
+    src : string[]
+}
+
+export const LablCard: React.FC<LablCardProps> = props => {
+
+    const {className, style} = props;
+
+    return (
+        <div className={"card-lable"}>
+            <Card
+                className={className}
+                style={style}
+                loading={true}
+            >
+
+            </Card>
+        </div>
+    );
+};
+

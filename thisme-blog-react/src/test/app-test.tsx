@@ -9,7 +9,8 @@ const article:Article = {
     author: "chenmo",
     chick: 0,
     classify: "java",
-    content: "```java \n 关羽温酒斩祁凯 \n public void say() { \n } \n ``` \n\nzhi哈哈哈哈哈",
+    content: "```java \n 关羽温酒斩祁凯 \n public void say() { \n } \n ``` \n\nzhi哈哈哈哈哈 " +
+        "\n ``` test 测试 ``` \n 汝甚骚",
     describe: "javajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava",
