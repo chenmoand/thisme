@@ -14,30 +14,6 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 @Slf4j
 @Configuration
 //@EnableReactiveMongoRepositories
-public class MongodbConfig extends AbstractReactiveMongoConfiguration {
+public class MongodbConfig {
 
-    private final MongoProperties mongoProperties;
-
-    @Autowired
-    public MongodbConfig(MongoProperties mongoProperties) {
-        this.mongoProperties = mongoProperties;
-    }
-
-    @Bean
-    public MongoClientOptions mongoOptions() {
-        return MongoClientOptions
-                .builder()
-                .maxConnectionIdleTime(60000)
-                .build();
-    }
-
-    @Override
-    public MongoClient reactiveMongoClient() {
-        return MongoClients.create();
-    }
-
-    @Override
-    protected String getDatabaseName() {
-        return mongoProperties.getDatabase();
-    }
 }

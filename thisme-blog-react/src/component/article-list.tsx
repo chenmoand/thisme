@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Article, BaseProps, PageArticle} from "../util/PropsUtil";
 import {connect} from "react-redux";
-import {Button, Divider, Pagination, Tag} from "antd";
+import {Button, Divider, Pagination, Result, Tag} from "antd";
 import {NavLink} from "react-router-dom";
 import {Map} from "immutable";
 import {articlePath} from "../util/RouterUtil";
@@ -10,6 +10,7 @@ import {setRequestUrl} from "../util/ApiUrl";
 import Item from "./item";
 import Markdown from "../editor/markdown-edit";
 import {doArticleType} from "../util/ViewUtil";
+import {useEffect, useState} from "react";
 
 const moment = require("moment");
 
@@ -99,23 +100,34 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
         setCurrentPage
     } = props;
 
+    // 防止多次点击请求按钮导致发送一堆请求的状态
+    const [ isclick, setClick ] = useState(false);
+    // 得到页面的文章数组
     let articles: Article[] = pageArticles.get(currentPage);
-    if (articles === undefined) {
-        axios.get(setRequestUrl(`getPageArticle?page=${currentPage}&size=10`))
-            .then(res => {
-                const {data} = res;
-                setPageArticle({
-                    page: currentPage,
-                    articles: data
+    // 发送请求的方法
+    const doArticles = () => {
+        setClick(true);
+        if (articles === undefined) {
+            axios.get(setRequestUrl(`getPageArticle?page=${currentPage}&size=10`))
+                .then(res => {
+                    const {data} = res;
+                    setPageArticle({
+                        page: currentPage,
+                        articles: data
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                    setClick(false);
                 });
-            })
-            .catch(console.log);
-    }
+        }
+    };
+    useEffect(doArticles, []);
 
     return (
         <div className={"article-list " + className} style={style}>
             {
-                articles && articles.map((item, index) => {
+                articles != null ? articles.map((item, index) => {
                     return (
                         <React.Fragment key={index}>
                             <SimpleArticle
@@ -125,11 +137,17 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
                             <Divider style={{height: 2}}/>
                         </React.Fragment>
                     )
-                })
+                }) :
+                <Result
+                    status={'500'}
+                    title={500}
+                    subTitle={"服务器请求失败,请点击尝试"}
+                    extra={<Button type="primary" onClick={doArticles} disabled={isclick} >重新请求</Button>}
+                />
             }
             <Pagination onChange={(page) => setCurrentPage(page)}
                         style={{textAlign: "center"}} hideOnSinglePage={true}
-                //TODO  maxPage? 暂时占位置
+                        //TODO  maxPage? 暂时占位置
                         simple defaultCurrent={1} total={maxPage}
             />
         </div>

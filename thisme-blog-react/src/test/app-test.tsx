@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Article} from "../util/PropsUtil";
 import {Map} from "immutable";
-import {CompleteArticle} from "../component/article-list";
+import {ArticleList, CompleteArticle} from "../component/article-list";
 
 
 const article:Article = {
@@ -32,7 +32,8 @@ const AppTest:React.FC = () => {
     const pa:Map<number, Article[]> = Map<number, Article[]>();
     return(
         <div>
-            <CompleteArticle article={article} />
+            {/*<CompleteArticle article={article} />*/}
+            <ArticleList maxPage={0}/>
         </div>
     )
 };

@@ -17,7 +17,6 @@
 ### Help 帮助
 
 *  [\<REAL.md\>](./REAL.md)  一个记录遇到问题解决方法的一个文档
-*  [\<ssr.md\>](./doc/ssr.md)  一个酸酸乳的分享地址
 *  [\<update.md\>](./doc/update.md)  更新记录
 
 ###  Command

@@ -7,16 +7,6 @@ const Status:React.FC<RouteComponentProps> = props => {
 
     return(
         <div>
-            <Error />
-        </div>
-    );
-};
-
-export default withRouter(Status);
-
-export const Error:React.FC = props => {
-    return(
-        <div>
             <Result
                 status="404"
                 title="404"
@@ -26,3 +16,5 @@ export const Error:React.FC = props => {
         </div>
     );
 };
+
+export default withRouter(Status);
