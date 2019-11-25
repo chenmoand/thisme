@@ -11,6 +11,8 @@ import Item from "./item";
 import Markdown from "../editor/markdown-edit";
 import {doArticleType} from "../util/ViewUtil";
 import {useEffect, useState} from "react";
+import Assert from "../util/Assert";
+import wait from "../img/wait.png"
 
 const moment = require("moment");
 
@@ -19,7 +21,7 @@ interface SimpleArticleProps extends BaseProps {
 }
 
 /**
- * 简单文章
+ * 简单文章组件
  * @param props
  * @constructor
  */
@@ -41,7 +43,9 @@ export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
             </div>
             <Item label={"作者"} icon={"user"}>{author}</Item>
             <Item label={"类别"} icon={"fire"}>{classify}</Item>
-            <Item label={"标签"} icon={"tag"}>{label[0]}</Item>
+            <Item label={"标签"} icon={"tag"}>
+                <Assert text={label} index={0} doEmpty={"NULL"} />
+            </Item>
             <Item label={"日期"} icon={"calendar"}>{moment(startDate).format("LL")}</Item>
             <div style={{
                 whiteSpace: "normal", wordBreak: "break-all", wordWrap: "break-word",
@@ -72,7 +76,9 @@ export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
             <Tag color={"red"}>{doArticleType(articleType)}</Tag>
             <Item label={"作者"} icon={"user"}>{author}</Item>
             <Item label={"类别"} icon={"fire"}>{classify}</Item>
-            <Item label={"标签"} icon={"tag"}>{label[0]}</Item>
+            <Item label={"标签"} icon={"tag"}>
+                <Assert text={label} index={0} doEmpty={"NULL"} />
+            </Item>
             <Item label={"日期"} icon={"calendar"}>{moment(startDate).format("LL")}</Item>
             <Markdown source={content}/>
         </div>
@@ -115,6 +121,7 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
                         page: currentPage,
                         articles: data
                     });
+                    console.log(data);
                 })
                 .catch(err => {
                     console.log(err);
@@ -139,10 +146,10 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
                     )
                 }) :
                 <Result
-                    status={'500'}
-                    title={500}
-                    subTitle={"服务器请求失败,请点击尝试"}
-                    extra={<Button type="primary" onClick={doArticles} disabled={isclick} >重新请求</Button>}
+                    title={"wait"}
+                    icon={<img src={wait}/>}
+                    subTitle={isclick ? "正在向服务器拉取数据" :  "服务器请求失败,请点击尝试"}
+                    extra={<Button type="primary" onClick={doArticles} disabled={isclick} >拉取请求</Button>}
                 />
             }
             <Pagination onChange={(page) => setCurrentPage(page)}

@@ -1,5 +1,7 @@
 package com.brageast.blog.thisboot.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
@@ -18,6 +20,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Article {
     @Id
+    @JsonSerialize(using = ToStringSerializer.class)
     private ObjectId articleId;
     private String title;
     private String[] label;
@@ -30,9 +33,4 @@ public class Article {
     private Integer chick;
     private Reply[] replys;
     private ArticleType articleType;
-
-    public enum ArticleType {
-        /* 原创 */ORIGINAL,
-        /* 转载 */REPRINT;
-    }
 }
