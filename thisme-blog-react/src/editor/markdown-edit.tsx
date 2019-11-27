@@ -18,18 +18,19 @@ interface MarkdownProps {
  * @param props
  */
 const Markdown: React.FC<MarkdownProps> = props => {
+
+    const {source} = props;
+
     return (
         <div className={"text-markdown"}>
             <ReactMarkdown
                 skipHtml={false}
-                source={props.source}
+                source={source}
                 renderers={{code: CodeBlack}}
                 plugins={[
-                    [
-                        require('remark-toc'),
-                        {heading: "目录"}]
-                    ,]
-                }
+                    [require('remark-toc'), {heading: "目录"}],
+                    // [require('remark-collapse')]
+                ]}
                 escapeHtml={false}
             />
         </div>

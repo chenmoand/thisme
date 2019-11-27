@@ -30,6 +30,7 @@
     "react-syntax-highlighter": "^11.0.2",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
+    "remark-collapse": "^0.1.2",
     "remark-toc": "^6.0.0",
     "use-axios-client": "^2.0.0"
   },

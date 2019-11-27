@@ -4070,6 +4070,18 @@ mdast-add-list-metadata@1.0.1:
   dependencies:
     unist-util-visit-parents "1.1.2"
 
+mdast-util-heading-range@^2.0.1:
+  version "2.1.3"
+  resolved "https://registry.npm.taobao.org/mdast-util-heading-range/download/mdast-util-heading-range-2.1.3.tgz#a9d3e203fe7011fcce89fb7595353b52692d5b93"
+  integrity sha1-qdPiA/5wEfzOift1lTU7UmktW5M=
+  dependencies:
+    mdast-util-to-string "^1.0.0"
+
+mdast-util-to-string@^1.0.0, mdast-util-to-string@^1.0.2:
+  version "1.0.7"
+  resolved "https://registry.npm.taobao.org/mdast-util-to-string/download/mdast-util-to-string-1.0.7.tgz#62d8e9c6b2113070d8b497c7dc35bf12796f06ee"
+  integrity sha1-YtjpxrIRMHDYtJfH3DW/EnlvBu4=
+
 mdast-util-to-string@^1.0.5:
   version "1.0.6"
   resolved "https://registry.npm.taobao.org/mdast-util-to-string/download/mdast-util-to-string-1.0.6.tgz#7d85421021343b33de1552fc71cb8e5b4ae7536d"
@@ -5790,6 +5802,14 @@ relateurl@0.2.x:
   version "0.2.7"
   resolved "https://registry.npm.taobao.org/relateurl/download/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
+
+remark-collapse@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.npm.taobao.org/remark-collapse/download/remark-collapse-0.1.2.tgz#7ebf0b0e0932f39a8599a754906e0a097906070b"
+  integrity sha1-fr8LDgky85qFmadUkG4KCXkGBws=
+  dependencies:
+    mdast-util-heading-range "^2.0.1"
+    mdast-util-to-string "^1.0.2"
 
 remark-parse@^5.0.0:
   version "5.0.0"

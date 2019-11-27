@@ -1,8 +1,7 @@
 import * as React from "react";
 import {Article} from "../util/PropsUtil";
 import {Map} from "immutable";
-import {ArticleList, CompleteArticle, SimpleArticle} from "../component/article-list";
-import {Divider} from "antd";
+import {CompleteArticle} from "../component/article-list";
 
 
 const article:Article = {
@@ -11,7 +10,7 @@ const article:Article = {
     chick: 0,
     classify: "java",
     content: "```java \n 关羽温酒斩祁凯 \n public void say() { \n } \n ``` \n\nzhi哈哈哈哈哈 " +
-        "\n ``` test 测试 ``` \n 汝甚骚",
+        "\n ``` test 测试 ``` \n 汝甚骚 \n\n ### 目录 \n\n ***  -> <- != == ===",
     describe: "javajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava",
@@ -33,11 +32,11 @@ const AppTest:React.FC = () => {
     const pa:Map<number, Article[]> = Map<number, Article[]>();
     return(
         <div className={"article-list"}>
-            {/*<CompleteArticle article={article} />*/}
+            <CompleteArticle article={article} />
             {/*<ArticleList maxPage={0}/>*/}
-            <SimpleArticle className={"simple-article"}  article={article}/>
-            {/*<Divider style={{height: 1}}/>*/}
-            <SimpleArticle className={"simple-article"}  article={article}/>
+            {/*<SimpleArticle   article={article}/>*/}
+            {/*<Divider style={{margin: "12px 0"}}/>*/}
+            {/*<SimpleArticle  article={article}/>*/}
             {/*<Divider style={{height: 1}}/>*/}
         </div>
     )

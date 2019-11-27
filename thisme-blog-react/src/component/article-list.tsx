@@ -1,10 +1,10 @@
 import * as React from "react";
+import {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
-import {useEffect, useState} from "react";
 import axios from "axios";
 import {Map} from "immutable";
-import {Button, Divider, Pagination, Tag} from "antd";
+import {Divider, Pagination, Tag} from "antd";
 import {Article, BaseProps, PageArticle} from "../util/PropsUtil";
 import {articlePath} from "../util/RouterUtil";
 import {setRequestUrl} from "../util/ApiUrl";
@@ -26,21 +26,18 @@ interface SimpleArticleProps extends BaseProps {
  * @constructor
  */
 export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
-    const {article, className, style} = props;
+    const {article, style} = props;
     const {
         title, author, startDate,
         classify, label, describe,
         articleId
     } = article;
     return (
-        <div className={className}
-             style={{
-                 padding: 5,
-                 ...style
-             }}>
-            <h3 style={{paddingBottom: 5}}>
+        <div className={"simple-article"}
+             style={style}>
+            <h2>
                 <NavLink to={articlePath(articleId)}>{title}</NavLink>
-            </h3>
+            </h2>
             <Item label={"作者"} icon={"user"}>{author}</Item>
             <Item label={"类别"} icon={"fire"}>{classify}</Item>
             <Item label={"标签"} icon={"tag"}>
@@ -49,30 +46,28 @@ export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
             <Item label={"日期"} icon={"calendar"}>{moment(startDate).format("LL")}</Item>
             <div style={{
                 whiteSpace: "normal", wordBreak: "break-all", wordWrap: "break-word",
-                marginTop: 5, marginBottom: 5
+                marginTop: 5, marginBottom: 5, color: "rgba(0,0,0,0.45)", paddingRight: 5
             }}>{describe}</div>
-            <Button style={{float: "right", marginBottom: "1.6em"}}>
-                <NavLink to={articlePath(articleId)}>点击阅读</NavLink>
-            </Button>
         </div>
     );
 };
 
 interface CompleteArticleProps extends BaseProps {
     article: Article,
+    domain: string,
 }
 
-export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
-    const {article, className, style} = props;
+export const CompleteArticle$: React.FC<CompleteArticleProps> = props => {
+    const {article, className, style, domain} = props;
     const {
         title, author, startDate,
         classify, label, content,
-        articleType
+        articleType, articleId
     } = article;
     return (
         <div className={`complete-article ${className == null ? "" : className}`}
              style={style}>
-            <h3 style={{paddingBottom: 3}}>{title}</h3>
+            <h1 style={{paddingBottom: 3}}>{title}</h1>
             <Tag color={"red"}>{doArticleType(articleType)}</Tag>
             <Item label={"作者"} icon={"user"}>{author}</Item>
             <Item label={"类别"} icon={"fire"}>{classify}</Item>
@@ -81,9 +76,25 @@ export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
             </Item>
             <Item label={"日期"} icon={"calendar"}>{moment(startDate).format("LL")}</Item>
             <Markdown source={content}/>
+            <Markdown source={`### 转载请注: \`\`\`https://${domain}/article/${articleId}\`\`\``}/>
         </div>
     );
 };
+
+export const CompleteArticle = connect(
+    state => {
+        // @ts-ignore
+        const {indexReducer} = state;
+        return{
+            domain : indexReducer.domain,
+        }
+
+    }
+)(CompleteArticle$);
+
+
+
+
 
 
 interface ArticleListProps extends BaseProps {
@@ -139,9 +150,8 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
                             <React.Fragment key={index}>
                                 <SimpleArticle
                                     article={item}
-                                    className={"simple-article"}
                                 />
-                                <Divider style={{height: 2}}/>
+                                <Divider style={{margin: "12px 0"}}/>
                             </React.Fragment>
                         )
                     }) :
