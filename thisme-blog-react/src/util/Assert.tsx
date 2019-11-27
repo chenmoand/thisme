@@ -22,9 +22,9 @@ const Assert: React.FC<AssertProps> = props => {
             case "string":
                 return text == null ? doEmpty : text;
             case "object":
-                if (typeof index === "number") {
+                if (typeof index == "number") {
                     let tx = text as [];
-                    if (tx.length > 0 && tx.length - 1 > index) {
+                    if (tx.length > 0 && tx.length > index) {
                         return tx[index];
                     }
                     return doEmpty;

@@ -5,7 +5,8 @@ const PageBottom: React.FC = props => {
     return(
         <div style={{
             backgroundColor: "#000",
-            color: "#ffffff"
+            color: "#ffffff",
+            marginTop: "1em"
         }}>
             <Row
                 type={"flex"}

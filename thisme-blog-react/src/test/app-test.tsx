@@ -1,7 +1,8 @@
 import * as React from "react";
 import {Article} from "../util/PropsUtil";
 import {Map} from "immutable";
-import {ArticleList, CompleteArticle} from "../component/article-list";
+import {ArticleList, CompleteArticle, SimpleArticle} from "../component/article-list";
+import {Divider} from "antd";
 
 
 const article:Article = {
@@ -31,9 +32,13 @@ const article:Article = {
 const AppTest:React.FC = () => {
     const pa:Map<number, Article[]> = Map<number, Article[]>();
     return(
-        <div>
+        <div className={"article-list"}>
             {/*<CompleteArticle article={article} />*/}
-            <ArticleList maxPage={0}/>
+            {/*<ArticleList maxPage={0}/>*/}
+            <SimpleArticle className={"simple-article"}  article={article}/>
+            {/*<Divider style={{height: 1}}/>*/}
+            <SimpleArticle className={"simple-article"}  article={article}/>
+            {/*<Divider style={{height: 1}}/>*/}
         </div>
     )
 };

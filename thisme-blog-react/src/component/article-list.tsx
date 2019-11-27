@@ -38,9 +38,9 @@ export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
                  padding: 5,
                  ...style
              }}>
-            <div style={{paddingBottom: 5}}>
+            <h3 style={{paddingBottom: 5}}>
                 <NavLink to={articlePath(articleId)}>{title}</NavLink>
-            </div>
+            </h3>
             <Item label={"作者"} icon={"user"}>{author}</Item>
             <Item label={"类别"} icon={"fire"}>{classify}</Item>
             <Item label={"标签"} icon={"tag"}>
@@ -51,7 +51,7 @@ export const SimpleArticle: React.FC<SimpleArticleProps> = props => {
                 whiteSpace: "normal", wordBreak: "break-all", wordWrap: "break-word",
                 marginTop: 5, marginBottom: 5
             }}>{describe}</div>
-            <Button style={{float: "right"}}>
+            <Button style={{float: "right", marginBottom: "1.6em"}}>
                 <NavLink to={articlePath(articleId)}>点击阅读</NavLink>
             </Button>
         </div>
