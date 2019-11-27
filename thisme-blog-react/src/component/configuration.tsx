@@ -46,7 +46,7 @@ interface WebSizeProps {
  * @param props
  * @constructor
  */
-const WebSize: React.FC<WebSizeProps> = props => {
+export const WebSize: React.FC<WebSizeProps> = props => {
     const {children, isDesktopOrLaptop, isBigScreen, setWebType, isTabletOrMobile} = props;
     // 判断页面大小
     if (isDesktopOrLaptop) {

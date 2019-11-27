@@ -13,6 +13,7 @@ import Markdown from "../editor/markdown-edit";
 import {doArticleType} from "../util/ViewUtil";
 import Assert from "../util/Assert";
 import Wait from "./wait";
+import Title from "./title";
 
 const moment = require("moment");
 
@@ -67,6 +68,7 @@ export const CompleteArticle$: React.FC<CompleteArticleProps> = props => {
     return (
         <div className={`complete-article ${className == null ? "" : className}`}
              style={style}>
+            <Title src={title.substring(0,10) + "..."} />
             <h1 style={{paddingBottom: 3}}>{title}</h1>
             <Tag color={"red"}>{doArticleType(articleType)}</Tag>
             <Item label={"作者"} icon={"user"}>{author}</Item>

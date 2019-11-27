@@ -100,6 +100,15 @@ module.exports = {
                 use:[
                     'file-loader'
                 ]
+            },
+            {
+                test: /\.md$/,
+                use: [
+                    {
+                        loader: path.resolve(__dirname, './loader/md-loader')
+
+                    }
+                ]
             }
 
         ]

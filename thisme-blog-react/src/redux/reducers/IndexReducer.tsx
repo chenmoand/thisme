@@ -24,7 +24,7 @@ export enum WebType {
  * 初始化state
  */
 const init:MainState = {
-    domain : 'Brageast.com',
+    domain : 'new.brageast.com',
     webType : WebType.BIG,
     pageArticle: Map<number, Article[]>(),
     currentPage : 1,

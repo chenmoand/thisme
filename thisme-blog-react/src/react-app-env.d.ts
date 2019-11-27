@@ -11,6 +11,8 @@ declare namespace NodeJS {
 
 declare module '*.bmp';
 
+declare module '*.md';
+
 declare module '*.gif';
 
 declare module '*.jpg';

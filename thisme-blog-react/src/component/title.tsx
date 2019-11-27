@@ -19,7 +19,7 @@ interface TitleProps {
 const Title: React.FC<TitleProps> = props => {
     const {src, html, domain, setDomain, style, className} = props;
     // setDomain("brageast.com");
-    document.title = src + " | " + domain;
+    document.title = src + " - " + domain;
     return (
         <div
             className={className}

@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
+import {connect} from "react-redux";
+import {withRouter} from 'react-router-dom';
 
 /**
  * 不如直接connect 写这个太真实了
@@ -26,8 +26,6 @@ export const ConnectRouter = (mapStateToProps, mapDisPatchToProps, Component) =>
 };
 
 
-
-
 /**
  * 已经弃用,,,因为我看了Router的index自带props
  * import {RouterProps} from "react-router";
@@ -39,37 +37,6 @@ export const ConnectRouter = (mapStateToProps, mapDisPatchToProps, Component) =>
  * @deprecated
  */
 export interface RouterProps {
-    history : History,
-    location : Location,
-    match : Match,
-    staticContext : any
-}
-
-interface History {
-    atction : string,
-    block : any,
-    createHeref: any ,
-    go : any,
-    goBack : any,
-    goForward : any,
-    length : number,
-    listen : any,
-    location : Location
-    push : any,
-    replace : any
 
 }
 
-interface Location {
-    hash : string,
-    pathname: string,
-    search: string,
-    state: any
-}
-
-interface Match {
-    isExact : boolean,
-    params : string[],
-    path : string,
-    url : string
-}
