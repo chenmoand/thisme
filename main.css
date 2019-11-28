@@ -12189,6 +12189,30 @@ textarea.ant-pagination-options-quick-jumper input {
   }
 }
 
+.page {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+}
+.page-enter {
+  opacity: 0;
+  transform: scale(1.1);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+.page-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.page-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12263,5 +12287,11 @@ body {
   /*css3   transform 实现*/
   transform: translate(-50%, -50%);
   left: 20px;
+}
+.router {
+  border: 1px solid #e8e8e8;
+  background: white;
+  border-radius: 3px;
+  margin-bottom: 1.4em;
 }
 
