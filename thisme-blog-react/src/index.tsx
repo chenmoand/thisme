@@ -26,7 +26,9 @@ const Init:React.FC = () => {
         <Provider store={Store}>
             <ConfigProvider locale={zhCN}>
                     <Router>
-                        <App />
+                        <div className={"route"}>
+                            <App />
+                        </div>
                     </Router>
             </ConfigProvider>
         </Provider>

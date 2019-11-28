@@ -4,7 +4,7 @@ import {Map} from "immutable";
 import {CompleteArticle} from "../component/article-list";
 
 
-const article:Article = {
+const article: Article = {
     articleId: "demo",
     author: "chenmo",
     chick: 0,
@@ -28,11 +28,15 @@ const article:Article = {
     articleType: "ORIGINAL",
 };
 
-const AppTest:React.FC = () => {
-    const pa:Map<number, Article[]> = Map<number, Article[]>();
-    return(
+const AppTest: React.FC = () => {
+    const pa: Map<number, Article[]> = Map<number, Article[]>();
+    return (
         <div className={"article-list"}>
-            <CompleteArticle article={article} />
+
+            <div className={'page'}>
+                <CompleteArticle article={article}/>
+            </div>
+
             {/*<ArticleList maxPage={0}/>*/}
             {/*<SimpleArticle   article={article}/>*/}
             {/*<Divider style={{margin: "12px 0"}}/>*/}

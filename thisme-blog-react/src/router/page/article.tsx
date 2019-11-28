@@ -36,6 +36,7 @@ const Article$: React.FC<ArticleProps> = props => {
     return (
         <div className={"page-Article"}>
             <BodySyle
+                title={currentArticle.title.substring(0,10) + "..."}
                 left={
                     <Skeleton loading={loding} title paragraph={{rows: 8}} active={true}>
                         <CompleteArticle article={currentArticle}/>

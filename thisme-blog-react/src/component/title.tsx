@@ -21,12 +21,12 @@ const Title: React.FC<TitleProps> = props => {
     // setDomain("brageast.com");
     document.title = src + " - " + domain;
     return (
-        <div
+        <span
             className={className}
             style={style}
         >
             {html ? src : ""}
-        </div>
+        </span>
     )
 };
 

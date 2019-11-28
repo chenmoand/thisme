@@ -9,8 +9,13 @@ const About: React.FC = props => {
     return (
         <div className={"about"}>
             <BodySyle
+                title={"关于我"}
                 left={
-                    <FileMarkdown source={AboutMd}/>
+                    <div className={"router"} style={{
+                        padding: 7
+                    }}>
+                        <FileMarkdown source={AboutMd}/>
+                    </div>
                 }
                 right={
                     <MyselfCard />

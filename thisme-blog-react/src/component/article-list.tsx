@@ -68,7 +68,6 @@ export const CompleteArticle$: React.FC<CompleteArticleProps> = props => {
     return (
         <div className={`complete-article ${className == null ? "" : className}`}
              style={style}>
-            <Title src={title.substring(0,10) + "..."} />
             <h1 style={{paddingBottom: 3}}>{title}</h1>
             <Tag color={"red"}>{doArticleType(articleType)}</Tag>
             <Item label={"作者"} icon={"user"}>{author}</Item>

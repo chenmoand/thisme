@@ -1,22 +1,24 @@
 import * as React from "react";
 import {NavLink} from "react-router-dom";
 
+
 interface LinkProps {
-    to: string,
-    src?: string,
+    to: string
 }
 
 /**
- * 没什么意义
+ * @deprecated
  * @param props
  * @constructor
  */
 const Link: React.FC<LinkProps> = props => {
-    const { to, src, } = props;
-    return(
-            <NavLink to={to} >
-                {src}
-            </NavLink>
+    const {to, children} = props;
+    return (
+        <NavLink to={to}>
+            <span >
+                {children}
+            </span>
+        </NavLink>
     );
 };
 
@@ -28,8 +30,8 @@ export default Link;
  * @param props
  * @constructor
  */
-export const ObjLink : React.FC<LinkProps> = props => {
-    return(
+export const ObjLink: React.FC<LinkProps> = props => {
+    return (
         <object>
             <Link {...props}/>
         </object>

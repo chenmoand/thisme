@@ -2,17 +2,19 @@ import * as React from "react";
 import {Col, Row} from "antd";
 import {connect} from "react-redux";
 import {viewSize} from "../util/ViewUtil";
-
+import Title from "./title";
 
 export interface BodyStyleProps {
     left?: React.ReactNode,
     right?: React.ReactNode,
+    title: string,
     webType: boolean,
 }
 
 const BodySyle: React.FC<BodyStyleProps> = props => {
 
-    const {left, right, webType} = props;
+    // ng.done();
+    const {left, right, webType, title} = props;
 
     return (
         <Row
@@ -22,6 +24,7 @@ const BodySyle: React.FC<BodyStyleProps> = props => {
             <Col
                 offset={2} span={webType ? 14 : 20}
             >
+                <Title src={title}/>
                 {left}
             </Col>
             <Col
