@@ -1,10 +1,12 @@
 const config = require('./webpack.config');
-
-const path = require('path');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 const prodConfig = {
     mode: 'production',
-
+    plugins: [
+        ...config.plugins,
+        new CleanWebpackPlugin(),
+    ]
 };
 // 合并两个config
 module.exports = {...config, ...prodConfig };

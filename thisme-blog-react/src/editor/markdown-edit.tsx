@@ -38,6 +38,32 @@ const Markdown: React.FC<MarkdownProps> = props => {
 };
 export default Markdown;
 
+
+interface FileMarkdownProps {
+    source: MarkdownAttribute
+}
+
+export interface MarkdownAttribute {
+    text: string
+}
+
+
+export const FileMarkdown: React.FC<FileMarkdownProps> = props => {
+
+    const { source } = props;
+
+    return(
+        <>
+            <Markdown source={source.text}/>
+        </>
+    )
+};
+
+
+
+
+
+
 interface CodeBlackProps {
     value: string,
     language?: string,
@@ -64,7 +90,7 @@ export const CodeBlack$: React.FC<CodeBlackProps> = props => {
                 <Popover content={"复制成功"} trigger={"click"}>
                     <Button style={{
                         position: "absolute",
-                        top: "4%", left: webType ? "88%" : "70%",
+                        top: "6%", left: webType ? "88%" : "70%",
                         width: "7em", height: "2em",
                         fontSize: "0.7em"
                     }}>

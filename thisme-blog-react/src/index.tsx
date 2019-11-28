@@ -10,8 +10,9 @@ import './style/globle-index.less'
 import { HashRouter as Router } from 'react-router-dom';
 import { DevStore as Store } from "./redux/store";
 import {whiteLogo} from "./util/LogUtil";
+import * as moment from "moment";
 
-require('moment').locale('zh-cn'); // 设置为中文
+moment.locale('zh-cn'); // 设置为中文
 
 /**
  * 生产模式请将顶部import的

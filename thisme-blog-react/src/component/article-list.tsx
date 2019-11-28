@@ -14,8 +14,8 @@ import {doArticleType} from "../util/ViewUtil";
 import Assert from "../util/Assert";
 import Wait from "./wait";
 import Title from "./title";
+import * as moment from "moment";
 
-const moment = require("moment");
 
 interface SimpleArticleProps extends BaseProps {
     article: Article,

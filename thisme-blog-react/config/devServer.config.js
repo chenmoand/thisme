@@ -1,4 +1,5 @@
 const config = require('./webpack.config');
+const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
 
 const devServer = {
     mode: 'development',
@@ -10,6 +11,12 @@ const devServer = {
         contentBase: 'static/index.html',
 
     },
+    plugins: [
+        ...config.plugins,
+        new OpenBrowserPlugin({
+            url: 'http://localhost:8888'
+        }),
+    ]
 };
 
 

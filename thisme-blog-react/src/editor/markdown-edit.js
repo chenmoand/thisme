@@ -15,15 +15,18 @@ var ViewUtil_1 = require("../util/ViewUtil");
  * @param props
  */
 var Markdown = function (props) {
+    var source = props.source;
     return (React.createElement("div", { className: "text-markdown" },
-        React.createElement(ReactMarkdown, { skipHtml: false, source: props.source, renderers: { code: exports.CodeBlack }, plugins: [
-                [
-                    require('remark-toc'),
-                    { heading: "目录" }
-                ],
+        React.createElement(ReactMarkdown, { skipHtml: false, source: source, renderers: { code: exports.CodeBlack }, plugins: [
+                [require('remark-toc'), { heading: "目录" }],
             ], escapeHtml: false })));
 };
 exports.default = Markdown;
+exports.FileMarkdown = function (props) {
+    var source = props.source;
+    return (React.createElement(React.Fragment, null,
+        React.createElement(Markdown, { source: source.text })));
+};
 /**
  * Markdown代码渲染器
  * @constructor
@@ -36,7 +39,7 @@ exports.CodeBlack$ = function (props) {
             React.createElement(antd_1.Popover, { content: "复制成功", trigger: "click" },
                 React.createElement(antd_1.Button, { style: {
                         position: "absolute",
-                        top: "4%", left: webType ? "88%" : "70%",
+                        top: "6%", left: webType ? "88%" : "70%",
                         width: "7em", height: "2em",
                         fontSize: "0.7em"
                     } }, "\u70B9\u51FB\u590D\u5236")))));

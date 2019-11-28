@@ -1,11 +1,14 @@
 // const { CheckerPlugin } = require('awesome-typescript-loader');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const webpack = require("webpack");
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const path = require('path');
+const devMode = process.env.NODE_ENV !== 'production';
 
 /**
  * 这是所有webpack的所有父类
@@ -13,12 +16,12 @@ const path = require('path');
  */
 module.exports = {
     entry: ['react-hot-loader/patch', './src'],
-    output:{
+    output: {
         path: path.resolve(__dirname, '../build'),
         filename: '[name].[hash].js'
     },
     resolve: {
-        extensions : ['.ts', '.tsx', '.js', '/jsx'],
+        extensions: ['.ts', '.tsx', '.js', '/jsx'],
         alias: {
             'react-dom': '@hot-loader/react-dom',
         },
@@ -38,7 +41,7 @@ module.exports = {
                     cacheDirectory: true,
                     plugins: [
                         'react-hot-loader/babel',
-                        ["import", { libraryName: "antd", style: "css"}]
+                        ["import", {libraryName: "antd", style: "css"}]
                     ]
                 }
             },
@@ -58,7 +61,7 @@ module.exports = {
                             cacheDirectory: true,
                             plugins: [
                                 'react-hot-loader/babel',
-                                ["import", { libraryName: "antd", style: "css"}],
+                                ["import", {libraryName: "antd", style: "css"}],
                             ]
                         }
                     },
@@ -68,13 +71,18 @@ module.exports = {
             {
                 test: /\.less?$/,
                 use: [
-                    {loader: 'style-loader'},
                     {
-                        loader: 'css-loader',
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development',
+                        },
+                    },
+                    // {loader: 'style-loader'},
+                    {loader: 'css-loader',
                     },
                     {
                         loader: 'less-loader',
-                        options:{
+                        options: {
                             // paths: [path.resolve(__dirname, 'node_modules')],
                             javascriptEnabled: true,
                         }
@@ -83,9 +91,15 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use:[
-                    {loader: 'style-loader'},
-                    {loader: 'css-loader',},
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development',
+                        },
+                    },
+                    // {loader: 'style-loader'},
+                    {loader: 'css-loader'},
                 ]
             },
             {
@@ -96,8 +110,8 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(ttf|eto|woff|woff2|svg)$/,
-                use:[
+                test: /\.(ttf|eto|woff|woff2)$/,
+                use: [
                     'file-loader'
                 ]
             },
@@ -115,22 +129,49 @@ module.exports = {
     },
     plugins: [
         new LodashModuleReplacementPlugin(),
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './static/index.html'
         }),
-        new OpenBrowserPlugin({
-            url : 'http://localhost:8888'
+        new MiniCssExtractPlugin({
+            filename: devMode ? '[name].css' : '[name].[hash].css',
+            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+            ignoreOrder: false,
         }),
         new CompressionPlugin({
             filename: '[path].br[query]',
             algorithm: 'brotliCompress',
             test: /\.(js|css|html|svg)$/,
-            compressionOptions: { level: 11 },
+            compressionOptions: {level: 11},
             threshold: 10240,
             minRatio: 0.8,
             deleteOriginalAssets: false,
         }),
-    ]
+        // new BundleAnalyzerPlugin(),
+
+    ],
+    /*optimization: {
+        splitChunks: {
+            chunks: 'async',
+            minSize: 30000,
+            // minRemainingSize: 0,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 6,
+            maxInitialRequests: 4,
+            automaticNameDelimiter: '~',
+            automaticNameMaxLength: 30,
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
+        }
+    }*/
 };
