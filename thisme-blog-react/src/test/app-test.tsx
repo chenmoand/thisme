@@ -33,9 +33,7 @@ const AppTest: React.FC = () => {
     return (
         <div className={"article-list"}>
 
-            <div className={'page'}>
-                <CompleteArticle article={article}/>
-            </div>
+            <CompleteArticle article={article}/>
 
             {/*<ArticleList maxPage={0}/>*/}
             {/*<SimpleArticle   article={article}/>*/}

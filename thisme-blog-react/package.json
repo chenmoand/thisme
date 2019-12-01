@@ -19,7 +19,6 @@
     "highlight.js": "^9.15.10",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",
-    "nprogress": "^0.2.0",
     "react": "^16.9.0",
     "react-ace": "^7.0.4",
     "react-copy-to-clipboard": "^5.0.2",

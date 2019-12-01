@@ -6,11 +6,13 @@ import UpdateMd from "../../markdown/update.md";
 
 const Update: React.FC = props => {
     return (
-        <div className={"update"}>
+        <div className={"update"} >
             <BodySyle
                 title={"关于我"}
                 left={
-                    <div className={"router"}>
+                    <div className={"router"}  style={{
+                        padding: 7
+                    }}>>
                         <FileMarkdown source={UpdateMd}/>
                     </div>
                 }
