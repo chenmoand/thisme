@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   font-family:  "Cascadia Code", Code , "Microsoft YaHei UI", "宋体", serif;
-
 }
 // 好看的字体大家都要共享啊, 底下是字体地址
 // https://github.com/microsoft/cascadia-code
@@ -13,83 +12,20 @@
 body {
   /* https://www.toptal.com/designers/subtlepatterns/page/17 */
   background-image: url("../img/geometry.png");
-
+  height: 100%;
 }
-.navigation-menu {
-  //position: relative;
-  //background: url("../img/geometry.png");
-  background: gainsboro;
-  border-bottom: #dfe2e5;
-}
-.navigation-menu-bj {
-  filter: blur(3px);
-  height: @nm;
-  position: absolute;
-  background: inherit;
-  width: 100%;
-}
-
-@nm: 55px;
-.navigation-menu-li {
-  position: absolute;
-  height: @nm;
-  //background: snow;
-  list-style: none;
-  text-align: center;
-  border-bottom: rebeccapurple;
-  li {
-    //height: 100%;
-    float: left;
-    //margin: 1em;
-    padding: 1em;
-    :hover {
-      color: lightseagreen;
-    }
-    a{
-      font-size: 0.8em;
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-    }
-  }
-}
-.navbar-body{
-  user-select: none;
-  float: right;
-  margin-right: 10em;
-  a {
-    color: #000;
-  }
-}
-.text-logo{
-  .CenterVertically();
-}
-.navigationMenu {
-  position: relative;
-}
-.nav-search {
-  float: left;
-  margin-left: 10em !important;
-  margin-top: 0.8em !important;
-}
-.text-center {
-  .CenterVertically();
-  left: 20px;
-
-}
-// 垂直左右居中
-.CenterVertically() {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-/*css3   transform 实现*/
-  transform: translate(-50%, -50%);
-}
-
 .router {
   border: 1px solid #e8e8e8;
   background: white;
   border-radius: 3px;
   //box-shadow: 4px 4px 2px #5b5b5b;
   margin-bottom: 1.4em;
+}
+.page-bottom {
+  background-color: #000;
+  color: #ffffff;
+  marginTop: "1em";
+  /*position: fixed;
+  bottom: 0;
+  width: 100%;*/
 }

@@ -173,10 +173,10 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
 export const ArticleList = connect(
     state => {
         // @ts-ignore
-        const {indexReducer} = state;
+        const {articleReducer} = state;
         return {
-            pageArticles: indexReducer.pageArticle,
-            currentPage: indexReducer.currentPage
+            pageArticles: articleReducer.pageArticle,
+            currentPage: articleReducer.currentPage
         }
     },
     dispatch => {

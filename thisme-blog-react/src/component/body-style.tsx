@@ -17,23 +17,25 @@ const BodySyle: React.FC<BodyStyleProps> = props => {
     const {left, right, webType, title} = props;
 
     return (
-        <Row
-            type={"flex"}
-            justify={"start"}
-        >
-            <Col
-                offset={2} span={webType ? 14 : 20}
+        <div style={{marginBottom: 103.4}}>
+            <Row
+                type={"flex"}
+                justify={"start"}
             >
-                <Title src={title}/>
-                {left}
-            </Col>
-            <Col
-                offset={webType ? 1 : 0} span={webType ? 6 : 0}
-            >
-                {right}
-            </Col>
-            <Col span={webType ? 1 : 2}/>
-        </Row>
+                <Col
+                    offset={2} span={webType ? 14 : 20}
+                >
+                    <Title src={title}/>
+                    {left}
+                </Col>
+                <Col
+                    offset={webType ? 1 : 0} span={webType ? 6 : 0}
+                >
+                    {right}
+                </Col>
+                <Col span={webType ? 1 : 2}/>
+            </Row>
+        </div>
     )
 };
 
@@ -44,5 +46,5 @@ export default connect(
         return {
             webType: viewSize(indexReducer.webType),
         };
-    }, null
+    }
 )(BodySyle);

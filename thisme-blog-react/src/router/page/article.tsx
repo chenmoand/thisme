@@ -49,9 +49,9 @@ const Article$: React.FC<ArticleProps> = props => {
 
 export default ConnectRouter(
     state => {
-        const {indexReducer} = state;
+        const {articleReducer} = state;
         return {
-            currentArticle: indexReducer.currentArticle
+            currentArticle: articleReducer.currentArticle
         }
     },
     dispatch => {

@@ -1,11 +1,22 @@
 import * as React from "react";
-import {Row} from "antd";
+import BodySyle from "../../component/body-style";
+import {MyselfCard} from "../../component/i-card";
 
 const Directory: React.FC = props => {
     return(
-        <Row>
-            test55
-        </Row>
+        <div>
+            <BodySyle
+                title={"目录"}
+                left={
+                    <div>
+
+                    </div>
+                }
+                right={
+                    <MyselfCard />
+                }
+            />
+        </div>
     );
 };
 

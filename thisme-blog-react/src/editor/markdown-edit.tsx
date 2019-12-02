@@ -61,9 +61,6 @@ export const FileMarkdown: React.FC<FileMarkdownProps> = props => {
 
 
 
-
-
-
 interface CodeBlackProps {
     value: string,
     language?: string,
@@ -110,5 +107,5 @@ export const CodeBlack = connect(
         return {
             webType: viewSize(indexReducer.webType),
         };
-    }, null
+    }
 )(CodeBlack$);

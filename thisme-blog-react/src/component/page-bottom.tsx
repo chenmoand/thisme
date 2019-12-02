@@ -3,11 +3,9 @@ import {Divider, Row} from "antd";
 
 const PageBottom: React.FC = props => {
     return(
-        <div style={{
-            backgroundColor: "#000",
-            color: "#ffffff",
-            marginTop: "1em"
-        }}>
+        <div
+            className={"page-bottom"}
+        >
             <Row
                 type={"flex"}
                 justify={"center"}

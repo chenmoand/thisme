@@ -12,7 +12,7 @@ const Update: React.FC = props => {
                 left={
                     <div className={"router"}  style={{
                         padding: 7
-                    }}>>
+                    }}>
                         <FileMarkdown source={UpdateMd}/>
                     </div>
                 }

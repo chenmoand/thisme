@@ -1,17 +1,14 @@
-import {Article, PageArticle} from "../../util/PropsUtil";
-import {Map} from "immutable";
+import {Reducer} from "redux";
+import {IAction} from "../store";
 
 /**
  * 初始声明state类型
- *
  */
-export interface MainState{
+export interface IndexState {
     domain: string,
     webType: WebType,
-    pageArticle: Map<number, Article[]>,
-    currentPage: number,
-    currentArticle?: Article,
 }
+
 // 页面大小
 // export type WebType = "Big" | "Small" | "in";
 export enum WebType {
@@ -23,36 +20,24 @@ export enum WebType {
 /**
  * 初始化state
  */
-const init:MainState = {
-    domain : 'new.brageast.com',
-    webType : WebType.BIG,
-    pageArticle: Map<number, Article[]>(),
-    currentPage : 1,
+const init: IndexState = {
+    domain: 'new.brageast.com',
+    webType: WebType.BIG,
 };
 
 /**
  * 用于修改的指令操作
  */
-export interface MainAction {
-    type: string,
-    content?: any
-}
-
-export default function indexReducer(state:MainState = init, action:MainAction):MainState {
-    const { content } = action;
+const IndexReducer: Reducer<IndexState, IAction> = (state = init, action) => {
+    const {content} = action;
     switch (action.type) {
         case 'DOMAIN':
-            return {...state, domain: content };
+            return {...state, domain: content};
         case 'WEBTYPE':
-            return {...state, webType: content };
-        case 'CURRENT_PAGE':
-            return {...state, currentPage: content };
-        case 'PAGE_ARTICLE':
-            let page_Article: PageArticle = content;
-            return {
-                ...state, pageArticle : state.pageArticle.set(page_Article.page, page_Article.articles)
-            };
+            return {...state, webType: content};
         default:
             return state;
     }
-}
+};
+
+export default IndexReducer;

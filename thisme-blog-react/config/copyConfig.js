@@ -13,7 +13,7 @@ const fs = require('fs');
  */
 const copy = (infile, gofile) => {
     fs.readdir(infile, (err, data) => {
-        if(err) console.log(err);
+        if(err) return console.log(err);
         data.forEach(val => {
             let inf, gof;
             inf = `./${infile}/${val}`;
