@@ -8,7 +8,7 @@ const Update: React.FC = props => {
     return (
         <div className={"update"} >
             <BodySyle
-                title={"关于我"}
+                title={"更新列表"}
                 left={
                     <div className={"router"}  style={{
                         padding: 7
