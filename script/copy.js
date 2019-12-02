@@ -1,22 +1,59 @@
 const copy = require("../thisme-blog-react/config/lib/copy");
 const fs = require('fs');
+const path = require('path');
 
-
-const
-    res = './thisme/src/main/resources'
-    infile = './thisme-blog-react/build',
-    inindex = `${infile}/index.html`, // 前端生成的index.html
-    gofile = `${res}/static`,       // 后端的css等杂类的目录
-    goindex = `${res}/index.html`; // 后端要生成的index.html
-
-const doErr = (err) => err => err && console.log(err);
-
-const doCopy = (inf, gof) => {
-    console.log(inf, "\n", gof)
-    inindex === inf ? fs.copyFile(inf, goindex, doErr) : fs.copyFile(inf, gof, doErr);
+/**
+ * 百度获取
+ */
+function delDir(path){
+    let files = [];
+    if(fs.existsSync(path)){
+        files = fs.readdirSync(path);
+        files.forEach((file, index) => {
+            let curPath = path + "/" + file;
+            if(fs.statSync(curPath).isDirectory()){
+                delDir(curPath); //递归删除文件夹
+            } else {
+                fs.unlinkSync(curPath); //删除文件
+            }
+        });
+    }
 }
 
 
-copy(infile, gofile, doCopy);
-console.log('数据转入成功')
+const getFileName = (str) => path.parse(str).base;
+
+/**
+ * 文件就因为thisboot打错成了thisme 废了半天时间
+ */
+const
+    res = './thisboot/src/main/resources',
+    infile = './thisme-blog-react/build',
+    gofile = `${res}/static`,       // 后端的css等杂类的目录
+    goindex = `${res}/templates`; // 后端要生成的主要文件
+    
+var inindex = ['index.html', 'CNAME']; // 要在/templates下的文件
+
+inindex = inindex.map(str => `${infile}/${str}`);
+
+
+//删除文件
+delDir(gofile);
+
+const doErr = (err) => err && console.log(err);
+const doCopy = (IN, GO) => {
+    fs.copyFile(IN, GO, doErr);
+    console.log(`目标文件: ${IN} -> 输出文件: ${GO}`);
+}
+
+const onCopy = (inf, gof) => {
+    let isIn = false, value = undefined;
+    inindex.forEach(val => {
+        !isIn && (isIn = (inf === val), value = getFileName(val));     
+    })
+    isIn ? doCopy(inf, `${goindex}/${value}`) : doCopy(inf, gof);
+}
+
+
+copy(infile, gofile, onCopy);
 
