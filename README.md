@@ -32,6 +32,7 @@
 * 一次性指令(2选一)
 
   ```yarn deploy:yarn```  用yarn的方式下载项目所需要的依赖
+  
   ```npm deploy:npm``` 用npm的方式下载项目所需要的依赖 
 
 

@@ -1,13 +1,14 @@
 import * as React from "react";
-import {Route, Switch} from "react-router";
+import {Route, Switch} from "react-router-dom";
 import {BaseProps} from "../util/PropsUtil";
-import Home from "./page/home";
-import Directory from "./page/directory";
-import Update from "./page/update";
-import About from "./page/about";
-import Status from "./page/status";
-import Article from "./page/article";
-import "../style/AnimatedSwitch.less";
+import {RouteState} from "../redux/reducers/RouteReducer";
+import {connect} from "react-redux";
+import {CSSTransition} from "react-transition-group";
+
+
+interface PageBodyProps extends BaseProps {
+    routes: RouteState
+}
 
 
 /**
@@ -15,38 +16,48 @@ import "../style/AnimatedSwitch.less";
  * @param props
  * @constructor
  */
-export const PageBody: React.FC<BaseProps> = props => {
-    const {className, style} = props;
+export const PageBody$: React.FC<PageBodyProps> = props => {
+    const {className, style, routes} = props;
+
     return (
         <div style={{marginTop: "2em", ...style}}
              className={className}
         >
             <Switch>
-                <Route
-                    exact path={['/', '/index', '/index.html']}
-                    component={Home}
-                />
-                <Route
-                    exact path={['/directory']}
-                    component={Directory}
-                />
-                <Route
-                    exact path={['/update']}
-                    component={Update}
-                />
-                <Route
-                    exact path={['/about']}
-                    component={About}
-                />
-                <Route
-                    path={['/article/**']}
-                    component={Article}
-                />
-                <Route
-                    path={['/**']}
-                    component={Status}
-                />
+
+                {routes.map(({path, Component, exact}, index) => {
+                    return (
+                        <Route
+                            key={index}
+                            path={path}
+                            exact={exact}
+                        >
+                            {({match}) => (
+                                <CSSTransition
+                                    in={match != null}
+                                    timeout={300}
+                                    classNames="fade"
+                                    unmountOnExit
+                                >
+                                    <div className="fade">
+                                        {Component}
+                                    </div>
+                                </CSSTransition>
+                            )}
+                        </Route>
+                    )
+                })}
             </Switch>
         </div>
     )
 };
+
+export const PageBody = connect(
+    state => {
+        // @ts-ignore
+        const {routeReducer} = state;
+        return {
+            routes: routeReducer,
+        }
+    },
+)(PageBody$);

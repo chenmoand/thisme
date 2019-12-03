@@ -1,5 +1,4 @@
-import {Reducer} from "redux";
-import {IAction} from "../store";
+import {BaseReducer} from "../store";
 
 /**
  * 初始声明state类型
@@ -28,7 +27,7 @@ const init: IndexState = {
 /**
  * 用于修改的指令操作
  */
-const IndexReducer: Reducer<IndexState, IAction> = (state = init, action) => {
+const IndexReducer: BaseReducer<IndexState> = (state = init, action) => {
     const {content} = action;
     switch (action.type) {
         case 'DOMAIN':

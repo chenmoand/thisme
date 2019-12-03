@@ -3,6 +3,8 @@ import {Col, Row} from "antd";
 import {connect} from "react-redux";
 import {viewSize} from "../util/ViewUtil";
 import Title from "./title";
+import "../style/AnimatedSwitch.less"
+import {CSSTransition} from "react-transition-group";
 
 export interface BodyStyleProps {
     left?: React.ReactNode,
@@ -26,7 +28,14 @@ const BodySyle: React.FC<BodyStyleProps> = props => {
                     offset={2} span={webType ? 14 : 20}
                 >
                     <Title src={title}/>
-                    {left}
+                    <CSSTransition
+                        in={true}
+                        timeout={1000} //动画执行1秒
+                        classNames={"fade"} //自定义的class名
+                        unmountOnExit
+                    >
+                        {left}
+                    </CSSTransition>
                 </Col>
                 <Col
                     offset={webType ? 1 : 0} span={webType ? 6 : 0}

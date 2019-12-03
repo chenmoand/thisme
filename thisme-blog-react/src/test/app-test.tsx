@@ -31,7 +31,7 @@ const article: Article = {
 const AppTest: React.FC = () => {
     const pa: Map<number, Article[]> = Map<number, Article[]>();
     return (
-        <div className={"article-list"}>
+        <div className={""}>
 
             <CompleteArticle article={article}/>
 

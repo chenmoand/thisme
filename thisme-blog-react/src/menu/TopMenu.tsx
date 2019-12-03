@@ -5,16 +5,18 @@ import {Avatar, Button, Col, Icon, Input, Menu, Popover, Row} from "antd";
 import {NavLink} from "react-router-dom";
 import "../style/menu.less"
 import {WebType} from "../redux/reducers/IndexReducer";
+import {Route, RouteState} from "../redux/reducers/RouteReducer";
 
 
 interface TopMenuProps {
     webType: boolean,
     setWebType: (webType: boolean) => void,
+    routes: RouteState,
 }
 
 
 const TopMenu: React.FC<TopMenuProps> = props => {
-    const {webType, setWebType} = props;
+    const {webType, setWebType, routes} = props;
     return (
         <Row
             style={{height: 48, backgroundColor: "#FFF",}}
@@ -52,7 +54,7 @@ const TopMenu: React.FC<TopMenuProps> = props => {
                  span={webType ? 10 : 1}
                  order={webType ? 1 : 0}
             >
-                <ThisMenu webType={webType}/>
+                <ThisMenu routes={routes}/>
             </Col>
             <Col offset={webType ? 2 : 0}
                  span={webType ? 6 : 9}
@@ -77,9 +79,10 @@ const TopMenu: React.FC<TopMenuProps> = props => {
 export default connect(
     state => {
         // @ts-ignore
-        const {indexReducer} = state;
+        const {indexReducer, routeReducer } = state;
         return {
             webType: viewSize(indexReducer.webType),
+            routes: routeReducer.filter((route: Route) => route.name !== false), // 过滤出不参与菜单的route
         };
     }, dispatch => {
         return {
@@ -91,30 +94,32 @@ export default connect(
 )(TopMenu);
 
 interface ThisMenuProps {
-    webType: boolean,
+    routes: RouteState,
 }
 
-
+/**
+ * 我真TM无聊, 这个玩意虽然方便,但是我感觉我不干正事啊!!!
+ *
+ * @param props
+ * @constructor
+ */
 const ThisMenu: React.FC<ThisMenuProps> = props => {
-    // const { webType } = props;
+    const { routes } = props;
     const {Item} = Menu;
     return (
         <Menu
             mode={"horizontal"}
             overflowedIndicator={<Icon type="switcher"/>}
         >
-            <Item>
-                <NavLink to={"/"}>首页</NavLink>
-            </Item>
-            <Item>
-                <NavLink to={"/directory"}>目录</NavLink>
-            </Item>
-            <Item>
-                <NavLink to={"/update"}>更新</NavLink>
-            </Item>
-            <Item>
-                <NavLink to={"/about"}>关于我</NavLink>
-            </Item>
+            {routes.map(({name, path}, index) => {
+                return(
+                    <Item key={index}>
+                        <NavLink to={typeof path == 'string' ? path : path[0]}>
+                            {name}
+                        </NavLink>
+                    </Item>
+                )
+            })}
         </Menu>
     );
 };

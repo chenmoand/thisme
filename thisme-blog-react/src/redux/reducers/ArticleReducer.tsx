@@ -1,7 +1,6 @@
 import {Article, PageArticle} from "../../util/PropsUtil";
 import {Map} from "immutable";
-import {Reducer} from "redux";
-import {IAction} from "../store";
+import {BaseReducer} from "../store";
 
 /**
  * 文章基本状态
@@ -19,7 +18,7 @@ const init: ArticleState = {
 };
 
 
-const ArticleReducer: Reducer<ArticleState, IAction> = (state = init, action) => {
+const ArticleReducer: BaseReducer<ArticleState> = (state = init, action) => {
     const {content} = action;
     switch (action.type) {
         case 'CURRENT_PAGE':
