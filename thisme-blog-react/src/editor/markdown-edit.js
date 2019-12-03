@@ -50,5 +50,5 @@ exports.CodeBlack = react_redux_1.connect(function (state) {
     return {
         webType: ViewUtil_1.viewSize(indexReducer.webType),
     };
-}, null)(exports.CodeBlack$);
+})(exports.CodeBlack$);
 //# sourceMappingURL=markdown-edit.js.map

@@ -34,7 +34,6 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     presets: [
-                        // ["rsuite", { "style": true}],
                         '@babel/env',
                         '@babel/react',
                     ],
@@ -53,7 +52,6 @@ module.exports = {
                         loader: 'babel-loader',
                         options: {
                             presets: [
-                                // ["rsuite", { "style": true}],
                                 '@babel/env',
                                 '@babel/typescript',
                                 '@babel/react',
@@ -150,28 +148,4 @@ module.exports = {
         // new BundleAnalyzerPlugin(),
 
     ],
-    /*optimization: {
-        splitChunks: {
-            chunks: 'async',
-            minSize: 30000,
-            // minRemainingSize: 0,
-            maxSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 6,
-            maxInitialRequests: 4,
-            automaticNameDelimiter: '~',
-            automaticNameMaxLength: 30,
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true
-                }
-            }
-        }
-    }*/
 };

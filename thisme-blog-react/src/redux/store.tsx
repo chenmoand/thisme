@@ -24,7 +24,7 @@ export const DevStore = createStore(
 );
 
 // 不开启redux dev工具
-export const PordStore = createStore(
+export const ProdStore = createStore(
     combineReducers(reducers),
     applyMiddleware(thunk)
 );
