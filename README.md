@@ -24,6 +24,7 @@
 ###  Command
 
 * ```yarn web``` 将thisme-blog-react构建并且提交githubPage
+* ```yarn ci``` 自动将thisme-blog-react/build文件发到thisboot上
 * ```yarn deploy:yarn```  用yarn的方式下载项目所需要的依赖
 * ```npm deploy:npm``` 用npm的方式下载项目所需要的依赖 
 

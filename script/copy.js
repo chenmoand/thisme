@@ -3,21 +3,16 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * 百度获取
+ * 只会递归删文件, 并且留下文件夹
  */
-function delDir(path){
-    let files = [];
-    if(fs.existsSync(path)){
-        files = fs.readdirSync(path);
-        files.forEach((file, index) => {
-            let curPath = path + "/" + file;
-            if(fs.statSync(curPath).isDirectory()){
-                delDir(curPath); //递归删除文件夹
-            } else {
-                fs.unlinkSync(curPath); //删除文件
-            }
-        });
-    }
+const delDirAllFile = (path) => {
+    fs.existsSync(path) && (
+        fs.readdirSync(path).forEach(file => {
+            let curPath = `${path}/${file}`;
+            console.log(`正在清理: ${curPath}`);
+            fs.statSync(curPath).isDirectory() ? delDir(curPath) : fs.unlinkSync(curPath);
+        })
+    )
 }
 
 
@@ -37,8 +32,8 @@ var inindex = ['index.html', 'CNAME']; // 要在/templates下的文件
 inindex = inindex.map(str => `${infile}/${str}`);
 
 
-//删除文件
-delDir(gofile);
+//删除文件所有文件
+delDirAllFile(gofile);
 
 const doErr = (err) => err && console.log(err);
 const doCopy = (IN, GO) => {
