@@ -1,4 +1,4 @@
-const copy = require("../thisme-blog-react/config/lib/copy");
+const ci = require("../thisme-blog-react/config/lib/copy");
 const fs = require('fs');
 const path = require('path');
 
@@ -10,7 +10,7 @@ const delDirAllFile = (path) => {
         fs.readdirSync(path).forEach(file => {
             let curPath = `${path}/${file}`;
             console.log(`正在清理: ${curPath}`);
-            fs.statSync(curPath).isDirectory() ? delDir(curPath) : fs.unlinkSync(curPath);
+            fs.statSync(curPath).isDirectory() ? delDirAllFile(curPath) : fs.unlinkSync(curPath);
         })
     )
 }
@@ -50,5 +50,5 @@ const onCopy = (inf, gof) => {
 }
 
 
-copy(infile, gofile, onCopy);
+ci(infile, gofile, onCopy);
 
