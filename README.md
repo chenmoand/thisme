@@ -1,27 +1,28 @@
 # thisme ```coder``` 有点骚的玩意
 
-> 一个正在施工的网页(Blog) : https://new.brageast.com
->
-> 第一次下载后请先尝试```yarn deploy:yarn```
->
-> [效果截图](./doc/img/)
+![GitHub](https://img.shields.io/github/license/chenmoand/thisme)![GitHub last commit](https://img.shields.io/github/last-commit/chenmoand/thisme)![GitHub stars](https://img.shields.io/github/stars/chenmoand/thisme)
 
-### Download
+博客地址: https://new.brageast.com [效果截图](./doc/img/)
+
+第一次下载后请先尝试```yarn deploy:yarn```
+
+
+### 如何下载
 
 ``` git clone https://github.com/chenmoand/thisme.git ``` 
 
-### Modules 
+### 模块列表
 
 * [\<simple-react-app\>](./simple-react-app)  一个简单的 webpack + react启动配置
 * [\<thisme-blog-react\>](./thisme-blog-react) 一个为自己而写的react小项目
 * [\<thisboot\>](./thisboot) thisme-blog-react后端
 
-### Help
+### 帮助列表
 
 *  [\<REAL.md\>](./REAL.md)  一个记录遇到问题解决方法的一个文档
 *  [\<update.md\>](./doc/update.md)  更新记录
 
-###  Command
+###  指令列表
 
 * 常用指令
 
