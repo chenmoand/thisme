@@ -25,8 +25,8 @@ const init: RouteState = [
     {path: ['/directory'], name: "目录", title: "目录", exact: true,Component: Directory},
     {path: ['/update'], name: "更新", title: "更新记录", exact: true,Component: Update},
     {path: ['/about'], name: "关于我", title: "沉默的个人介绍", exact: true,Component: About},
-    {path: ['/article/**'], name: false, Component: Article},
-    {path: ['/**'], name: false, Component: Status},
+    {path: ['/article/:id'], name: false, exact: true, Component: Article},
+    {path: ['*'], name: false, Component: Status},
 ];
 
 const RouteReducer: BaseReducer<RouteState> = (state = init, action) => {

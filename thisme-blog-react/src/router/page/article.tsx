@@ -1,8 +1,7 @@
 import * as React from "react";
 import {useState} from "react";
 import {Skeleton} from "antd";
-import {RouteComponentProps} from "react-router";
-import {equalPath} from "../../util/RouterUtil";
+import {RouteComponentProps, useParams} from "react-router";
 import {Article, BaseProps} from "../../util/PropsUtil";
 import {CompleteArticle} from "../../component/article-list";
 import BodySyle from "../../component/body-style";
@@ -18,15 +17,18 @@ interface ArticleProps extends RouteComponentProps, BaseProps {
 }
 
 const Article$: React.FC<ArticleProps> = props => {
-    const {currentArticle, setCurrentArticle, location} = props;
-    console.log(props);
+    const {currentArticle, setCurrentArticle} = props;
+
+    // 获取URL 上的id参数
+    const {id} = useParams();
+
     // 是否显示加载组件
     const [loding, setLoding] = useState(true);
-    if (currentArticle && equalPath(location.pathname, currentArticle.articleId)) {
+    if (currentArticle && id === currentArticle.articleId) {
         setLoding(false);
     } else {
         //TODO 发送AJAX请求 (articleId暂时为null?)
-        axios.get(setRequestUrl(`getArticle?articleId=${null}`))
+        axios.get(setRequestUrl(`getArticle?articleId=${id}`))
             .then(({data}) => {
                 setCurrentArticle(data);
                 setLoding(false);

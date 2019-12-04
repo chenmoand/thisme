@@ -3,7 +3,7 @@
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
+// const CompressionPlugin = require('compression-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -135,16 +135,7 @@ module.exports = {
             filename: devMode ? '[name].css' : '[name].[hash].css',
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
             ignoreOrder: false,
-        }),
-        new CompressionPlugin({
-            filename: '[path].br[query]',
-            algorithm: 'brotliCompress',
-            test: /\.(js|css|html|svg)$/,
-            compressionOptions: {level: 11},
-            threshold: 10240,
-            minRatio: 0.8,
-            deleteOriginalAssets: false,
-        }),
+        })
         // new BundleAnalyzerPlugin(),
 
     ],
