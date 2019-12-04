@@ -1,5 +1,5 @@
 import * as React from "react";
-import {RouteComponentProps, withRouter} from "react-router";
+import {RouteComponentProps} from "react-router";
 import {Button, Result} from "antd";
 import {NavLink} from "react-router-dom";
 
@@ -17,4 +17,4 @@ const Status:React.FC<RouteComponentProps> = props => {
     );
 };
 
-export default withRouter(Status);
+export default Status;

@@ -1,6 +1,6 @@
 import {Article, PageArticle} from "../../util/PropsUtil";
 import {Map} from "immutable";
-import {BaseReducer} from "../store";
+import {BaseReducer} from "../../util/ReduxUtil";
 
 /**
  * 文章基本状态

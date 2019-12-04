@@ -31,8 +31,4 @@ export const ProdStore = createStore(
     applyMiddleware(thunk)
 );
 
-export interface IAction extends Action<string>{
-    content?: any
-}
 
-export type BaseReducer<S> = Reducer<S, IAction>;

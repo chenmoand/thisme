@@ -95,9 +95,6 @@ export const CompleteArticle = connect(
 
 
 
-
-
-
 interface ArticleListProps extends BaseProps {
     currentPage: number,
     maxPage: number,

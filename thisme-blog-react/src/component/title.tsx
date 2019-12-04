@@ -17,9 +17,9 @@ interface TitleProps {
  * @param props
  */
 const Title: React.FC<TitleProps> = props => {
-    const {src, html, domain, setDomain, style, className} = props;
-    // setDomain("brageast.com");
-    document.title = src + " - " + domain;
+    const {src, html, domain, style, className} = props;
+    // 保证src是有内容的在试图修改标题
+    src && (document.title = src + " - " + domain);
     return (
         <span
             className={className}

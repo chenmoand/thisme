@@ -3,7 +3,6 @@ import {Route, Switch} from "react-router-dom";
 import {BaseProps} from "../util/PropsUtil";
 import {RouteState} from "../redux/reducers/RouteReducer";
 import {connect} from "react-redux";
-import {CSSTransition} from "react-transition-group";
 
 
 interface PageBodyProps extends BaseProps {
@@ -20,7 +19,10 @@ export const PageBody$: React.FC<PageBodyProps> = props => {
     const {className, style, routes} = props;
 
     return (
-        <div style={{marginTop: "2em", ...style}}
+        <div style={{
+                marginTop: "2em",
+                position: "relative",
+            ...style}}
              className={className}
         >
             <Switch>
@@ -31,19 +33,8 @@ export const PageBody$: React.FC<PageBodyProps> = props => {
                             key={index}
                             path={path}
                             exact={exact}
+                            component={Component}
                         >
-                            {({match}) => (
-                                <CSSTransition
-                                    in={match != null}
-                                    timeout={300}
-                                    classNames="fade"
-                                    unmountOnExit
-                                >
-                                    <div className="fade">
-                                        {Component}
-                                    </div>
-                                </CSSTransition>
-                            )}
                         </Route>
                     )
                 })}

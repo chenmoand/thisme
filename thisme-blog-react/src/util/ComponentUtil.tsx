@@ -36,7 +36,7 @@ export const ConnectRouter = (mapStateToProps, mapDisPatchToProps, Component) =>
  * }
  * @deprecated
  */
-export interface RouterProps {
+interface RouterProps {
 
 }
 

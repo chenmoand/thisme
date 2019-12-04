@@ -14,3 +14,5 @@ export const whiteLogo = (): void => {
     );
     console.info("React构建版本为:", React.version )
 };
+
+export const doErr = (err) => err && console.log(err);

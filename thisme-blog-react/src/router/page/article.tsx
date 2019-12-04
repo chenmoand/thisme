@@ -3,12 +3,13 @@ import {useState} from "react";
 import {Skeleton} from "antd";
 import {RouteComponentProps} from "react-router";
 import {equalPath} from "../../util/RouterUtil";
-import {ConnectRouter} from "../../util/ComponentUtil";
 import {Article, BaseProps} from "../../util/PropsUtil";
 import {CompleteArticle} from "../../component/article-list";
 import BodySyle from "../../component/body-style";
 import axios from "axios";
 import {setRequestUrl} from "../../util/ApiUrl";
+import {connect} from "react-redux";
+import {doErr} from '../../util/LogUtil';
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps {
@@ -18,37 +19,40 @@ interface ArticleProps extends RouteComponentProps, BaseProps {
 
 const Article$: React.FC<ArticleProps> = props => {
     const {currentArticle, setCurrentArticle, location} = props;
+    console.log(props);
     // 是否显示加载组件
     const [loding, setLoding] = useState(true);
-    // console.log(props);
-    if (currentArticle != undefined && equalPath(location.pathname, currentArticle.articleId)) {
+    if (currentArticle && equalPath(location.pathname, currentArticle.articleId)) {
         setLoding(false);
     } else {
         //TODO 发送AJAX请求 (articleId暂时为null?)
         axios.get(setRequestUrl(`getArticle?articleId=${null}`))
-            .then(res => {
-                setCurrentArticle(res.data);
-                setLoding(true);
+            .then(({data}) => {
+                setCurrentArticle(data);
+                setLoding(false);
             })
-            .catch(console.log);
+            .catch(doErr);
     }
 
     return (
-        <div className={"page-Article"}>
+        <div className={"page-article"}>
             <BodySyle
-                title={currentArticle.title.substring(0,10) + "..."}
+                title={currentArticle && currentArticle.title.substring(0, 10) + "..."}
                 left={
-                    <Skeleton loading={loding} title paragraph={{rows: 8}} active={true}>
-                        <CompleteArticle article={currentArticle}/>
-                    </Skeleton>
+                    <div className={loding && "complete-article"}>
+                        <Skeleton loading={loding} title paragraph={{rows: 8}} active={true}>
+                            <CompleteArticle article={currentArticle}/>
+                        </Skeleton>
+                    </div>
                 }
             />
         </div>
     );
 };
 
-export default ConnectRouter(
+export default connect(
     state => {
+        // @ts-ignore
         const {articleReducer} = state;
         return {
             currentArticle: articleReducer.currentArticle
@@ -58,6 +62,5 @@ export default ConnectRouter(
         return {
             setCurrentArticle: (article: Article) => dispatch({type: "CURRENT_PAGE", content: article}),
         }
-    },
-    Article$
-);
+    }
+)(Article$);
