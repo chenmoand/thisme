@@ -46,7 +46,7 @@ export const ItemIcon: React.FC<ItemIconProps> = props => {
     const {icon} = props;
     return (
         <>
-            {icon != undefined ? (typeof icon === 'string' ? <Icon type={icon}/> : icon) : ""}
+            {icon && (typeof icon === 'string' ? <Icon type={icon}/> : icon)}
         </>
     );
 };
