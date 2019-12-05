@@ -2,38 +2,35 @@
 
 ![GitHub](https://img.shields.io/github/license/chenmoand/thisme)![GitHub last commit](https://img.shields.io/github/last-commit/chenmoand/thisme)![GitHub stars](https://img.shields.io/github/stars/chenmoand/thisme)
 
-博客地址: https://new.brageast.com [效果截图](./doc/img/)
+| 博客地址 | [```Chick Here```](https://new.brageast.com) |
+| :------: | :------------------------------------------: |
+| 博客截图 |        [```Chick Here```](./doc/img/)        |
 
-第一次下载后请先尝试```yarn deploy:yarn```
 
+### 如何下载 && 安装
 
-### 如何下载
-
-``` git clone https://github.com/chenmoand/thisme.git ``` 
+```txt
+#第一步 [克隆项目]
+> git clone https://github.com/chenmoand/thisme.git 
+#第二步 [安装前置 二选一]
+> yarn deploy:yarn 或者 npm deploy:npm
+#第三步 [打开IDEA]
+File -> open
+#第四步 [It's up to you]
+```
 
 ### 模块列表
 
-* [\<simple-react-app\>](./simple-react-app)  一个简单的 webpack + react启动配置
-* [\<thisme-blog-react\>](./thisme-blog-react) 一个为自己而写的react小项目
-* [\<thisboot\>](./thisboot) thisme-blog-react后端
-
-### 帮助列表
-
-*  [\<REAL.md\>](./REAL.md)  一个记录遇到问题解决方法的一个文档
-*  [\<update.md\>](./doc/update.md)  更新记录
+| 名称                                     | 介绍                               |
+| ---------------------------------------- | ---------------------------------- |
+| [simple-react-app](./simple-react-app)   | React脚手架                        |
+| [thisme-blog-react](./thisme-blog-react) | React + Redux + Router ... 的项目  |
+| [thisboot](./thisboot)                   | Springboot + WebFlux+ mongodb 项目 |
 
 ###  指令列表
 
-* 常用指令
-
-  ```yarn web``` 将thisme-blog-react构建并且提交githubPage
-
-  ```yarn ci``` 一个强大的自动部署指令, 将thisme-blog-react构建并复制到thisboot上
-
-* 一次性指令(2选一)
-
-  ```yarn deploy:yarn```  用yarn的方式下载项目所需要的依赖
-  
-  ```npm deploy:npm``` 用npm的方式下载项目所需要的依赖 
-
+| 指令名称 | 指令介绍                                         |
+| -------- | ------------------------------------------------ |
+| yarn web | 将thisme-blog-react构建并且提交Github Pages      |
+| yarn ci  | 将thisme-blog-react构建并部署到到thisboot 资源下 |
 
