@@ -15,9 +15,7 @@ import * as moment from "moment";
 moment.locale('zh-cn'); // 设置为中文
 
 /**
- * 生产模式请将顶部import的
- * HashRouter 替换成 BrowserRouter
- * DevStore 替换成 PordStore
+ * 生产环境入口
  * @author chenmo
  */
 const Init:React.FC = () => {

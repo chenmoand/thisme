@@ -1,12 +1,7 @@
 import * as React from "react";
 import {BaseReducer} from "../../util/ReduxUtil";
-import Home from "../../router/page/home";
-import Directory from "../../router/page/directory";
-import Update from "../../router/page/update";
-import About from "../../router/page/about";
-import Article from "../../router/page/article";
-import Status from "../../router/page/status";
 import {RouteComponentProps} from "react-router";
+import {About, Article, Directory, Home, Status, Update} from "../../router/page";
 
 
 export interface Route {
@@ -21,10 +16,10 @@ export type RouteState = Route[];
 
 
 const init: RouteState = [
-    {path: ['/','/index', '/index.html'], name: "首页", title: "沉默的个人小站", exact: true, Component: Home},
-    {path: ['/directory'], name: "目录", title: "目录", exact: true,Component: Directory},
-    {path: ['/update'], name: "更新", title: "更新记录", exact: true,Component: Update},
-    {path: ['/about'], name: "关于我", title: "沉默的个人介绍", exact: true,Component: About},
+    {path: ['/', '/index', '/index.html'], name: "首页", title: "沉默的个人小站", exact: true, Component: Home},
+    {path: ['/directory'], name: "目录", title: "目录", exact: true, Component: Directory},
+    {path: ['/update'], name: "更新", title: "更新记录", exact: true, Component: Update},
+    {path: ['/about'], name: "关于我", title: "沉默的个人介绍", exact: true, Component: About},
     {path: ['/article/:id'], name: false, exact: true, Component: Article},
     {path: ['*'], name: false, Component: Status},
 ];

@@ -2,8 +2,8 @@ import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import Configuration from "../component/configuration";
 import {BackTop} from "antd";
-import TopMenu from "../menu/TopMenu";
-import {PageBody} from "../router/page-switch";
+import TopMenu from "../component/menu/TopMenu";
+import {PageView} from "../router/page-switch";
 import PageBottom from "../component/page-bottom";
 
 /**
@@ -16,7 +16,7 @@ const App:React.FC = () => {
             url={"https://brageast.com"}
         >
             <TopMenu />
-            <PageBody />
+            <PageView />
             <BackTop /> {/*回到顶部组件*/}
             <PageBottom />
         </Configuration>

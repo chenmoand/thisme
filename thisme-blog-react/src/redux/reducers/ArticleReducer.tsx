@@ -9,12 +9,14 @@ export interface ArticleState {
     pageArticle: Map<number, Article[]>,
     currentPage: number,
     currentArticle?: Article,
+    maxPage: number
 }
 
 
 const init: ArticleState = {
     pageArticle: Map<number, Article[]>(),
     currentPage: 1,
+    maxPage: 1,
 };
 
 
@@ -24,9 +26,10 @@ const ArticleReducer: BaseReducer<ArticleState> = (state = init, action) => {
         case 'CURRENT_PAGE':
             return {...state, currentPage: content};
         case 'PAGE_ARTICLE':
-            let page_Article: PageArticle = content;
+            let { page, articles }: PageArticle = content;
             return {
-                ...state, pageArticle: state.pageArticle.set(page_Article.page, page_Article.articles)
+                ...state,
+                pageArticle: state.pageArticle.set(page, articles)
             };
         default:
             return state;

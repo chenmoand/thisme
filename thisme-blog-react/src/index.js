@@ -14,9 +14,7 @@ var LogUtil_1 = require("./util/LogUtil");
 var moment = require("moment");
 moment.locale('zh-cn'); // 设置为中文
 /**
- * 生产模式请将顶部import的
- * HashRouter 替换成 BrowserRouter
- * DevStore 替换成 PordStore
+ * 开发环境入口
  * @author chenmo
  */
 var Init = function () {

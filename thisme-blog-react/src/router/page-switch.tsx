@@ -8,17 +8,16 @@ import TransitionGroup from "react-transition-group/TransitionGroup";
 import CSSTransition from "react-transition-group/CSSTransition";
 
 
-interface PageBodyProps extends BaseProps {
+interface PageViewProps extends BaseProps {
     routes: RouteState
 }
-
 
 /**
  * 页面分发组件
  * @param props
  * @constructor
  */
-export const PageBody$: React.FC<PageBodyProps> = props => {
+export const PageView$: React.FC<PageViewProps> = props => {
     const {className, style, routes} = props;
     let location = useLocation();
 
@@ -30,6 +29,7 @@ export const PageBody$: React.FC<PageBodyProps> = props => {
         }}
              className={className}
         >
+            {/*动画只能在PROD模式下生产才能显示*/}
             <TransitionGroup>
                 <CSSTransition
                     key={location.key}
@@ -55,7 +55,7 @@ export const PageBody$: React.FC<PageBodyProps> = props => {
     )
 };
 
-export const PageBody = connect(
+export const PageView = connect(
     state => {
         // @ts-ignore
         const {routeReducer} = state;
@@ -63,4 +63,4 @@ export const PageBody = connect(
             routes: routeReducer,
         }
     },
-)(PageBody$);
+)(PageView$);

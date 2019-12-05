@@ -6,9 +6,11 @@ var redux_devtools_extension_1 = require("redux-devtools-extension");
 var redux_logger_1 = require("redux-logger");
 var IndexReducer_1 = require("./reducers/IndexReducer");
 var ArticleReducer_1 = require("./reducers/ArticleReducer");
+var RouteReducer_1 = require("./reducers/RouteReducer");
 var reducers = {
     indexReducer: IndexReducer_1.default,
-    articleReducer: ArticleReducer_1.default
+    articleReducer: ArticleReducer_1.default,
+    routeReducer: RouteReducer_1.default
 };
 // 使用日志打印方法， collapsed让action折叠
 var loggerMiddleware = redux_logger_1.createLogger({ collapsed: true });
