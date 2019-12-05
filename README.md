@@ -23,14 +23,23 @@ File -> open
 
 | 名称                                     | 介绍                               |
 | ---------------------------------------- | ---------------------------------- |
-| [simple-react-app](./simple-react-app)   | React脚手架                        |
-| [thisme-blog-react](./thisme-blog-react) | React + Redux + Router ... 的项目  |
 | [thisboot](./thisboot)                   | Springboot + WebFlux+ mongodb 项目 |
+| [simple-react-app](./simple-react-app)   | React 基础配置的脚手架             |
+| [thisme-blog-react](./thisme-blog-react) | React + Redux + Router ... 的项目  |
 
 ###  指令列表
 
-| 指令名称 | 指令介绍                                         |
-| -------- | ------------------------------------------------ |
-| yarn web | 将thisme-blog-react构建并且提交Github Pages      |
-| yarn ci  | 将thisme-blog-react构建并部署到到thisboot 资源下 |
+| 指令名称       | 指令介绍                                         |
+| -------------- | ------------------------------------------------ |
+| ```yarn web``` | 将thisme-blog-react构建并且提交Github Pages      |
+| ```yarn ci```  | 将thisme-blog-react构建并部署到到thisboot 资源下 |
+
+###  帮助列表
+
+| 文档地址                 | 文档介绍 |
+| ------------------------ | -------- |
+| [```REAL.md```](./REAL.md) | 一个记录遇到问题解决方法的一个文档 |
+| [```update.md```](./doc/update.md) | 这个项目的更新记录 |
+| [```犯蠢记录.md```](./doc/犯蠢记录.md) | 如名字那样,就是犯蠢 |
+
 
