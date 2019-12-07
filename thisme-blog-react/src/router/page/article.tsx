@@ -2,13 +2,13 @@ import * as React from "react";
 import {useState} from "react";
 import {Skeleton} from "antd";
 import {RouteComponentProps, useParams} from "react-router";
-import {Article, BaseProps} from "../../util/PropsUtil";
-import {CompleteArticle} from "../../component/article-list";
-import BodySyle from "../../component/body-style";
+import {Article, BaseProps} from "@/util/PropsUtil";
+import {CompleteArticle} from "@/component/article-list";
+import BodySyle from "@/component/body-style";
 import axios from "axios";
-import {setRequestUrl} from "../../util/ApiUrl";
+import {setRequestUrl} from "@/util/ApiUrl";
 import {connect} from "react-redux";
-import {doErr} from '../../util/LogUtil';
+import {doErr} from "@/util/LogUtil";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps {

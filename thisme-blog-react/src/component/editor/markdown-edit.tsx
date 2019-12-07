@@ -2,11 +2,11 @@ import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown/with-html';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import '../../style/markdown.less';
+import '@/style/markdown.less';
 import * as CopyToClipboard from "react-copy-to-clipboard";
 import {Button, Popover} from "antd";
 import {connect} from "react-redux";
-import {viewSize} from "../../util/ViewUtil";
+import {viewSize} from "@/util/ViewUtil";
 
 interface MarkdownProps {
     source: string,

@@ -5,13 +5,13 @@ import {NavLink} from "react-router-dom";
 import axios from "axios";
 import {Map} from "immutable";
 import {Divider, Pagination, Tag} from "antd";
-import {Article, BaseProps, PageArticle} from "../util/PropsUtil";
-import {articlePath} from "../util/RouterUtil";
-import {setRequestUrl} from "../util/ApiUrl";
+import {Article, BaseProps, PageArticle} from "@/util/PropsUtil";
+import {articlePath} from "@/util/RouterUtil";
+import {setRequestUrl} from "@/util/ApiUrl";
 import Item from "./item";
 import Markdown from "./editor/markdown-edit";
-import {doArticleType} from "../util/ViewUtil";
-import Assert from "../util/Assert";
+import {doArticleType} from "@/util/ViewUtil";
+import Assert from "@/util/Assert";
 import Wait from "./wait";
 import * as moment from "moment";
 

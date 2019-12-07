@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Col, Row} from "antd";
 import {connect} from "react-redux";
-import {viewSize} from "../util/ViewUtil";
+import {viewSize} from "@/util/ViewUtil";
 import Title from "./title";
 
 export interface BodyStyleProps {

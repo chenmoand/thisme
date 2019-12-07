@@ -1,8 +1,8 @@
 import * as React from "react";
-import "../../style/home.less"
-import BodySyle from "../../component/body-style";
-import AppTest from "../../test/app-test";
-import {LablCard, MyselfCard} from "../../component/i-card";
+import "@/style/home.less"
+import BodySyle from "@/component/body-style";
+import AppTest from "@/test/app-test";
+import {LablCard, MyselfCard} from "@/component/i-card";
 
 interface HomeProps {
 

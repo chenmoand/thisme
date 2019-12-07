@@ -1,14 +1,11 @@
-// const { CheckerPlugin } = require('awesome-typescript-loader');
-// const webpack = require("webpack");
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-// const CompressionPlugin = require('compression-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const path = require('path');
 const devMode = process.env.NODE_ENV !== 'production';
+
+const resolve = str => path.resolve(__dirname, str);
 
 /**
  * 这是所有webpack的所有父类
@@ -17,35 +14,20 @@ const devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
     entry: ['react-hot-loader/patch', './src'],
     output: {
-        path: path.resolve(__dirname, '../build'),
+        path: resolve('../build'),
         filename: '[name].[hash].js'
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '/jsx'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
         alias: {
             'react-dom': '@hot-loader/react-dom',
-        },
+            '@': path.join(__dirname, '..', 'src'),
+        }
     },
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: [
-                        '@babel/env',
-                        '@babel/react',
-                    ],
-                    cacheDirectory: true,
-                    plugins: [
-                        'react-hot-loader/babel',
-                        ["import", {libraryName: "antd", style: "css"}]
-                    ]
-                }
-            },
-            {
-                test: /\.tsx?$/,
+                test: /\.js|jsx|tsx?$/,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -67,37 +49,23 @@ module.exports = {
 
             },
             {
-                test: /\.less?$/,
+                test: /\.(c|le)ss?$/,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            hmr: process.env.NODE_ENV === 'development',
+                            hmr: !devMode,
                         },
                     },
-                    // {loader: 'style-loader'},
-                    {loader: 'css-loader',
+                    {
+                        loader: 'css-loader',
                     },
                     {
                         loader: 'less-loader',
                         options: {
-                            // paths: [path.resolve(__dirname, 'node_modules')],
                             javascriptEnabled: true,
                         }
                     },
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: process.env.NODE_ENV === 'development',
-                        },
-                    },
-                    // {loader: 'style-loader'},
-                    {loader: 'css-loader'},
                 ]
             },
             {
@@ -117,8 +85,7 @@ module.exports = {
                 test: /\.md$/,
                 use: [
                     {
-                        loader: path.resolve(__dirname, './loader/md-loader')
-
+                        loader: resolve('./loader/md-loader')
                     }
                 ]
             }
@@ -136,7 +103,5 @@ module.exports = {
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
             ignoreOrder: false,
         })
-        // new BundleAnalyzerPlugin(),
-
     ],
 };

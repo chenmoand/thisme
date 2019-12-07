@@ -9,7 +9,7 @@ import 'moment/locale/zh-cn';
 import './style/globle-index.less'
 import { HashRouter as Router } from 'react-router-dom';
 import { DevStore as Store } from "./redux/store";
-import {whiteLogo} from "./util/LogUtil";
+import {whiteLogo} from "@/util/LogUtil";
 import * as moment from "moment";
 
 moment.locale('zh-cn'); // 设置为中文

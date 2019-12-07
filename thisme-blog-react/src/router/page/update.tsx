@@ -1,8 +1,8 @@
 import * as React from "react";
-import {FileMarkdown} from "../../component/editor/markdown-edit";
-import {MyselfCard} from "../../component/i-card";
-import BodySyle from "../../component/body-style";
-import UpdateMd from "../../markdown/update.md";
+import {FileMarkdown} from "@/component/editor/markdown-edit";
+import {MyselfCard} from "@/component/i-card";
+import BodySyle from "@/component/body-style";
+import UpdateMd from "@/markdown/update.md";
 
 const Update: React.FC = props => {
     return (

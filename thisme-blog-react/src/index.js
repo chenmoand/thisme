@@ -10,7 +10,7 @@ require("moment/locale/zh-cn");
 require("./style/globle-index.less");
 var react_router_dom_1 = require("react-router-dom");
 var store_1 = require("./redux/store");
-var LogUtil_1 = require("./util/LogUtil");
+var LogUtil_1 = require("@/util/LogUtil");
 var moment = require("moment");
 moment.locale('zh-cn'); // 设置为中文
 /**

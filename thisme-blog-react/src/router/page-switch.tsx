@@ -1,9 +1,9 @@
 import * as React from "react";
 import {Route, Switch, useLocation} from "react-router-dom";
-import {BaseProps} from "../util/PropsUtil";
-import {RouteState} from "../redux/reducers/RouteReducer";
+import {BaseProps} from "@/util/PropsUtil";
+import {RouteState} from "@/redux/reducers/RouteReducer";
 import {connect} from "react-redux";
-import "../style/AnimatedSwitch.less"
+import "@/style/AnimatedSwitch.less"
 import TransitionGroup from "react-transition-group/TransitionGroup";
 import CSSTransition from "react-transition-group/CSSTransition";
 

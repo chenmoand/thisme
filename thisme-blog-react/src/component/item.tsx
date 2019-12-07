@@ -1,5 +1,5 @@
 import * as React from "react";
-import {BaseProps} from "../util/PropsUtil";
+import {BaseProps} from "@/util/PropsUtil";
 import {Icon} from "antd";
 
 export interface ItemProps extends BaseProps {

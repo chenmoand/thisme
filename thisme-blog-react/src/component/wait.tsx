@@ -1,5 +1,5 @@
 import * as React from "react";
-import wait from "../img/wait.png";
+import wait from "@/img/wait.png";
 import {Button, Result} from "antd";
 import Img from 'react-image'
 
