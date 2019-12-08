@@ -27,7 +27,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js|jsx|tsx?$/,
+                test: /\.[jt]sx?$/i,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -49,12 +49,12 @@ module.exports = {
 
             },
             {
-                test: /\.(c|le)ss?$/,
+                test: /\.(c|le)ss$/i,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            hmr: !devMode,
+                            hmr: devMode,
                         },
                     },
                     {
@@ -76,13 +76,13 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(ttf|eto|woff|woff2)$/,
+                test: /\.(ttf|eto|woff|woff2)$/i,
                 use: [
                     'file-loader'
                 ]
             },
             {
-                test: /\.md$/,
+                test: /\.m(d|arkdown)$/i,
                 use: [
                     {
                         loader: resolve('./loader/md-loader')

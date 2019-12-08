@@ -4,7 +4,7 @@ const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
 const devServer = {
     mode: 'development',
     devServer: {
-        host: '0.0.0.0',
+        host: 'localhost',
         hot: true,
         inline: true,
         port: 8888,

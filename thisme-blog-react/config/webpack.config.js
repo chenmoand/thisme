@@ -27,7 +27,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(j|t)s(x?)$/i,
+                test: /\.[jt]sx?$/i,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -82,7 +82,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(md|markdown)$/i,
+                test: /\.m(d|arkdown)$/i,
                 use: [
                     {
                         loader: resolve('./loader/md-loader')
