@@ -27,7 +27,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js|jsx|tsx?$/,
+                test: /\.(j|t)s(x?)$/i,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -49,7 +49,7 @@ module.exports = {
 
             },
             {
-                test: /\.(c|le)ss?$/,
+                test: /\.(c|le)ss$/i,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -76,13 +76,13 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(ttf|eto|woff|woff2)$/,
+                test: /\.(ttf|eto|woff|woff2)$/i,
                 use: [
                     'file-loader'
                 ]
             },
             {
-                test: /\.md$/,
+                test: /\.(md|markdown)$/i,
                 use: [
                     {
                         loader: resolve('./loader/md-loader')

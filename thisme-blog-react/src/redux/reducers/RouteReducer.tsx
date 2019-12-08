@@ -1,7 +1,7 @@
 import * as React from "react";
-import {BaseReducer} from "../../util/ReduxUtil";
+import {BaseReducer} from "@/util/ReduxUtil";
 import {RouteComponentProps} from "react-router";
-import {About, Article, Directory, Home, Status, Update} from "../../router/page";
+import {About, Article, Directory, Home, Status, Update} from "@/router/page";
 
 
 export interface Route {

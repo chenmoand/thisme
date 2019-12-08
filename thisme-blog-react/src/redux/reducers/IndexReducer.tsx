@@ -1,4 +1,4 @@
-import {BaseReducer} from "../../util/ReduxUtil";
+import {BaseReducer} from "@/util/ReduxUtil";
 
 /**
  * 初始声明state类型

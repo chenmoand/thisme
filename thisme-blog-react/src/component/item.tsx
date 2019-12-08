@@ -23,14 +23,14 @@ const Item: React.FC<ItemProps> = props => {
         }}>
             <span style={
                 {
-                    marginRight: indentation == undefined ? 4 : indentation,
+                    marginRight: indentation || 4,
                     fontSize: 12, fontWeight: "bolder"
                 }
             }>
                 <ItemIcon icon={icon}/>
                 {label + ":"}
             </span>
-            {children == null ? onChildrenNull : children}
+            {children || onChildrenNull}
         </span>
     );
 

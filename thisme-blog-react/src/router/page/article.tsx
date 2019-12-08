@@ -24,17 +24,14 @@ const Article$: React.FC<ArticleProps> = props => {
 
     // 是否显示加载组件
     const [loding, setLoding] = useState(true);
-    if (currentArticle && id === currentArticle.articleId) {
-        setLoding(false);
-    } else {
-        //TODO 发送AJAX请求 (articleId暂时为null?)
-        axios.get(setRequestUrl(`getArticle?articleId=${id}`))
-            .then(({data}) => {
-                setCurrentArticle(data);
-                setLoding(false);
-            })
-            .catch(doErr);
-    }
+    (currentArticle && id === currentArticle.articleId) ?
+    setLoding(false) :
+    axios.get(setRequestUrl(`getArticle?articleId=${id}`))
+        .then(({data}) => {
+            setCurrentArticle(data);
+            setLoding(false);
+        })
+        .catch(doErr);
 
     return (
         <div className={"page-article"}>

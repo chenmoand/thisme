@@ -121,21 +121,21 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
     // 发送请求的方法
     const doArticles = () => {
         setClick(true);
-        if (articles === undefined) {
-            axios.get(setRequestUrl(`getPageArticle?page=${currentPage}&size=10`))
-                .then(res => {
-                    const {data} = res;
-                    setPageArticle({
-                        page: currentPage,
-                        articles: data
-                    });
-                    // console.log(data);
+        // TODO 暂时使用setRequestUrl方法
+        articles && axios
+            .get(setRequestUrl(`getPageArticle?page=${currentPage}&size=10`))
+            .then(res => {
+                const {data} = res;
+                data && setPageArticle({
+                    page: currentPage,
+                    articles: data
                 })
-                .catch(err => {
-                    console.log(err);
-                    setClick(false);
-                });
-        }
+            })
+            .catch(err => {
+                console.log(err);
+                setClick(false);
+            });
+
     };
     useEffect(doArticles, []);
 
@@ -159,7 +159,6 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
                 style={{
                     textAlign: "center", padding: "6px 0"
                 }}
-                //TODO  maxPage? 暂时占位置
                 simple defaultCurrent={1} total={maxPage}
             />
         </div>

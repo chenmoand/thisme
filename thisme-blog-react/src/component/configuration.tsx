@@ -2,10 +2,12 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {useMediaQuery} from 'react-responsive'
 import {WebType} from "@/redux/reducers/IndexReducer";
+import {useEffect} from "react";
 
 interface ConfigurationProps {
-    url?: string,
+    domain?: string,
     setWebType: (webType: WebType) => void,
+    setDomain: (str: string) => void,
 }
 
 /**
@@ -14,7 +16,11 @@ interface ConfigurationProps {
  */
 const Configuration: React.FC<ConfigurationProps> = props => {
 
-    const {setWebType} = props;
+    const {setWebType, setDomain, domain} = props;
+
+    // 设置URL
+    useEffect(() => domain && setDomain(domain) ,[domain]);
+
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-device-width: 1224px)'
     });
@@ -50,21 +56,17 @@ export const WebSize: React.FC<WebSizeProps> = props => {
     const {children, isDesktopOrLaptop, isBigScreen, setWebType, isTabletOrMobile} = props;
     // 判断页面大小
     if (isDesktopOrLaptop) {
-        if (isBigScreen) {
-            // 台式电脑
-            setWebType(WebType.BIG);
-        } else {
-            // 笔记本
-            setWebType(WebType.IN);
-        }
+
+        isBigScreen ?
+        // 台式电脑
+        setWebType(WebType.BIG):
+        // 笔记本
+        setWebType(WebType.IN);
     } else {
         // 手机
         setWebType(WebType.SMALL);
-
     }
-    if (isTabletOrMobile) {
-        setWebType(WebType.SMALL)
-    }
+    isTabletOrMobile && setWebType(WebType.SMALL);
     return (
         <>
             {children}
@@ -79,6 +81,7 @@ export default connect(
         // @ts-ignore
         return {
             setWebType: (webType: WebType) => dispatch({type: 'WEBTYPE', content: webType}),
+            setDomain: (str: string) => dispatch({type: "DOMAIN", content: str})
         }
     }
 )(Configuration);
