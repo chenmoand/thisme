@@ -19,7 +19,10 @@ const Configuration: React.FC<ConfigurationProps> = props => {
     const {setWebType, setDomain, domain} = props;
 
     // 设置URL
-    useEffect(() => domain && setDomain(domain) ,[domain]);
+    useEffect(() => {
+            domain && setDomain(domain)
+        } ,[domain]
+    );
 
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-device-width: 1224px)'
