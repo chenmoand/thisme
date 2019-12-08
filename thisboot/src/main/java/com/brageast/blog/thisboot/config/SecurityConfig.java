@@ -16,17 +16,16 @@ public class SecurityConfig {
 
     /**
      * web安全配置
+     *
      * @param http
-     * @return
-     * https://docs.spring.io/spring-boot/docs/2.2.0.RELEASE/reference/htmlsingle/#boot-features-security-webflux
+     * @return https://docs.spring.io/spring-boot/docs/2.2.0.RELEASE/reference/htmlsingle/#boot-features-security-webflux
      */
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         // 关闭默认的配置
         http.csrf().disable()
-            .formLogin().disable()
-            .httpBasic().disable();
-
+                .formLogin().disable()
+                .httpBasic().disable();
         //TODO 暂时先放行全部
         http.authorizeExchange()
                 .matchers(PathRequest.toStaticResources().atCommonLocations())

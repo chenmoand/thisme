@@ -76,7 +76,9 @@ export const CompleteArticle$: React.FC<CompleteArticleProps> = props => {
             </Item>
             <Item label={"日期"} icon={"calendar"}>{moment(startDate).format("LL")}</Item>
             <Markdown source={content}/>
-            <Markdown source={`### 转载请注: \`\`\`https://${domain}/article/${articleId}\`\`\``}/>
+            <span>
+                转载请注: https://{domain}/article/{articleId}
+            </span>
         </div>
     );
 };

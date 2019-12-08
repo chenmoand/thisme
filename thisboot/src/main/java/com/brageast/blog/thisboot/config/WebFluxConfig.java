@@ -4,10 +4,7 @@ import com.brageast.blog.thisboot.controller.IndexController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.http.CacheControl;
-import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.web.reactive.config.EnableWebFlux;
 import org.springframework.web.reactive.config.ResourceHandlerRegistry;
 import org.springframework.web.reactive.config.ViewResolverRegistry;
@@ -21,9 +18,6 @@ import org.springframework.web.reactive.resource.VersionResourceResolver;
 import org.springframework.web.reactive.result.method.annotation.ArgumentResolverConfigurer;
 import org.thymeleaf.spring5.view.reactive.ThymeleafReactiveViewResolver;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -37,37 +31,12 @@ public class WebFluxConfig implements WebFluxConfigurer {
 
     @Autowired(required = false)
     private ThymeleafReactiveViewResolver thymeleafReactiveViewResolver;
-    @Autowired
-    private IndexController indexController;
-
 
     @Override
     public void configureArgumentResolvers(ArgumentResolverConfigurer configurer) {
         configurer.addCustomResolver();
     }
 
-    @Override
-    public void configureHttpMessageCodecs(ServerCodecConfigurer configurer) {
-        /*configurer.defaultCodecs().enableLoggingRequestDetails(true);
-        configurer.getReaders().add(new FormHttpMessageReader());
-        configurer.getWriters().add(new FormHttpMessageWriter());*/
-
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> webFluxRoutesRegister() {
-        return RouterFunctions.
-                route(RequestPredicates.GET("/"), indexController::doIndex);
-    }
-
-    /*@Bean
-    public ThymeleafReactiveViewResolver thymeleafReactiveViewResolver(ReactiveWebApplicationContext applicationContext) {
-        ThymeleafReactiveViewResolver thymeleafViewResolver = new ThymeleafReactiveViewResolver();
-        thymeleafViewResolver.setApplicationContext(applicationContext);
-        thymeleafViewResolver.setRedirectViewProvider(RedirectView::new);
-        thymeleafViewResolver.setTemplateEngine(new SpringWebFluxTemplateEngine());
-        return thymeleafViewResolver;
-    }*/
 
     /**
      * 注册视图

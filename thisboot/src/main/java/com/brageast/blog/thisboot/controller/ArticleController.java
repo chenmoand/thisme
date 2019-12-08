@@ -7,13 +7,11 @@ import com.mongodb.client.result.UpdateResult;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Slf4j
-@Component
 @RestController
 @CrossOrigin
 public class ArticleController {
@@ -45,7 +43,7 @@ public class ArticleController {
     }
 
     @DeleteMapping("/deleteArticle")
-    public Mono<DeleteResult> deleteArticle (ObjectId id) {
+    public Mono<DeleteResult> deleteArticle(ObjectId id) {
         return articleService.delete(id);
     }
 

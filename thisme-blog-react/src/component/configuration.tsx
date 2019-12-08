@@ -21,7 +21,7 @@ const Configuration: React.FC<ConfigurationProps> = props => {
     // 设置URL
     useEffect(() => {
             domain && setDomain(domain)
-        } ,[domain]
+        }, [domain]
     );
 
     const isDesktopOrLaptop = useMediaQuery({
@@ -57,19 +57,21 @@ interface WebSizeProps {
  */
 export const WebSize: React.FC<WebSizeProps> = props => {
     const {children, isDesktopOrLaptop, isBigScreen, setWebType, isTabletOrMobile} = props;
-    // 判断页面大小
-    if (isDesktopOrLaptop) {
-
-        isBigScreen ?
-        // 台式电脑
-        setWebType(WebType.BIG):
-        // 笔记本
-        setWebType(WebType.IN);
-    } else {
-        // 手机
-        setWebType(WebType.SMALL);
-    }
-    isTabletOrMobile && setWebType(WebType.SMALL);
+    useEffect(() => {
+            // 判断页面大小
+            if (isDesktopOrLaptop) {
+                isBigScreen ?
+                    // 台式电脑
+                    setWebType(WebType.BIG) :
+                    // 笔记本
+                    setWebType(WebType.IN);
+            } else {
+                // 手机
+                setWebType(WebType.SMALL);
+            }
+            isTabletOrMobile && setWebType(WebType.SMALL);
+        },
+        [isDesktopOrLaptop, isBigScreen, isTabletOrMobile]);
     return (
         <>
             {children}

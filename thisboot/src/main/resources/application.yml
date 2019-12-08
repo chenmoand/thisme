@@ -7,4 +7,4 @@ spring:
     check-template: false
   data:
     mongodb:
-      uri: mongodb+srv://chenmo:<password>@cluster0-jbhpo.mongodb.net/test?retryWrites=true&w=majority
+      uri: mongodb+srv://chenmo:brageast.com@cluster0-jbhpo.mongodb.net/test?retryWrites=true&w=majority

@@ -34,7 +34,6 @@ const AppTest: React.FC = () => {
         <div className={""}>
 
             <CompleteArticle article={article}/>
-
             {/*<ArticleList maxPage={0}/>*/}
             {/*<SimpleArticle   article={article}/>*/}
             {/*<Divider style={{margin: "12px 0"}}/>*/}

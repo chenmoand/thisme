@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * 开始的地方
+ *
  * @author chenmo
  */
 @Slf4j

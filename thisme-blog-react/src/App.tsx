@@ -1,13 +1,12 @@
-import {hot} from 'react-hot-loader/root';
 import * as React from 'react';
-import Configuration from "./component/configuration";
 import {BackTop} from "antd";
-import TopMenu from "./component/menu/TopMenu";
-import {PageView} from "./router/page-switch";
-import PageBottom from "./component/page-bottom";
-import '@/assets/style/globle-index.less'
-
 import * as moment from "moment";
+import {hot} from 'react-hot-loader/root';
+import '@/assets/style/globle-index.less'
+import {PageView} from "@/router/page-switch";
+import TopMenu from "@/component/menu/TopMenu";
+import PageBottom from "@/component/page-bottom";
+import Configuration from "@/component/configuration";
 
 moment.locale('zh-cn'); // 设置为中文
 
@@ -22,7 +21,9 @@ const App:React.FC = () => {
         >
             <TopMenu />
             <PageView />
-            <BackTop /> {/*回到顶部组件*/}
+            <BackTop>
+                <div className="ant-back-top-inner">TOP</div>
+            </BackTop>
             <PageBottom />
         </Configuration>
     )

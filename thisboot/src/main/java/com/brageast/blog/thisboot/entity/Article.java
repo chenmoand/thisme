@@ -15,7 +15,6 @@ import java.util.Date;
  * @author chenmo
  */
 @Data
-//@Builder
 @Document(collection = "Article")
 @NoArgsConstructor
 public class Article {
