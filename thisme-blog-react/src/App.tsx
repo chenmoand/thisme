@@ -5,6 +5,11 @@ import {BackTop} from "antd";
 import TopMenu from "./component/menu/TopMenu";
 import {PageView} from "./router/page-switch";
 import PageBottom from "./component/page-bottom";
+import '@/assets/style/globle-index.less'
+
+import * as moment from "moment";
+
+moment.locale('zh-cn'); // 设置为中文
 
 /**
  * 系统URL默认以 /的 方式

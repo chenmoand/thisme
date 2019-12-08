@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {viewSize} from "@/util/ViewUtil";
 import {Avatar, Button, Col, Icon, Input, Menu, Popover, Row} from "antd";
 import {NavLink} from "react-router-dom";
-import "@/style/menu.less"
+import "@/assets/style/menu.less"
 import {WebType} from "@/redux/reducers/IndexReducer";
 import {Route, RouteState} from "@/redux/reducers/RouteReducer";
 
