@@ -1,7 +1,7 @@
 import * as React from "react";
-import {Article} from "../util/PropsUtil";
+import {Article} from "@/util/PropsUtil";
 import {Map} from "immutable";
-import {CompleteArticle} from "../component/article-list";
+import {CompleteArticle} from "@/component/article-list";
 
 
 const article: Article = {

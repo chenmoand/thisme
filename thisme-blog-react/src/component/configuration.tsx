@@ -1,8 +1,8 @@
 import * as React from "react";
+import {useEffect} from "react";
 import {connect} from "react-redux";
 import {useMediaQuery} from 'react-responsive'
 import {WebType} from "@/redux/reducers/IndexReducer";
-import {useEffect} from "react";
 
 interface ConfigurationProps {
     domain?: string,

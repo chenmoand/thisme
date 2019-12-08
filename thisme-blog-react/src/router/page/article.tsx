@@ -18,7 +18,6 @@ interface ArticleProps extends RouteComponentProps, BaseProps {
 
 const Article$: React.FC<ArticleProps> = props => {
     const {currentArticle, setCurrentArticle} = props;
-
     // 获取URL 上的id参数
     const {id} = useParams();
 
@@ -28,7 +27,8 @@ const Article$: React.FC<ArticleProps> = props => {
     setLoding(false) :
     axios.get(setRequestUrl(`getArticle?articleId=${id}`))
         .then(({data}) => {
-            setCurrentArticle(data);
+            // 确保后端发送数据不为空
+            data && setCurrentArticle(data);
             setLoding(false);
         })
         .catch(doErr);
@@ -36,7 +36,7 @@ const Article$: React.FC<ArticleProps> = props => {
     return (
         <div className={"page-article"}>
             <BodySyle
-                title={currentArticle && currentArticle.title.substring(0, 10) + "..."}
+                title={currentArticle && currentArticle.title.substring(0, 8) + "..."}
                 left={
                     <div className={loding && "complete-article"}>
                         <Skeleton loading={loding} title paragraph={{rows: 8}} active={true}>

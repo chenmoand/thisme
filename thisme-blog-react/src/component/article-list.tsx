@@ -65,7 +65,7 @@ export const CompleteArticle$: React.FC<CompleteArticleProps> = props => {
         articleType, articleId
     } = article;
     return (
-        <div className={`complete-article ${className == null ? "" : className}`}
+        <div className={`complete-article ${className ? "" : className}`}
              style={style}>
             <h1 style={{paddingBottom: 3}}>{title}</h1>
             <Tag color={"red"}>{doArticleType(articleType)}</Tag>

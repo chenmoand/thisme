@@ -20,7 +20,7 @@ const Assert: React.FC<AssertProps> = props => {
     const DoAssert: React.FC = () => {
         switch (typeof text) {
             case "string":
-                return text == null ? doEmpty : text;
+                return text || doEmpty;
             case "object":
                 if (typeof index == "number") {
                     let tx = text as [];
@@ -29,9 +29,9 @@ const Assert: React.FC<AssertProps> = props => {
                     }
                     return doEmpty;
                 } else if (typeof index === "undefined") {
-                    return text == null ? doEmpty : text;
+                    return text || doEmpty;
                 }
-                return text[index] == null ? doEmpty : text[index];
+                return text[index] || doEmpty;
             default:
                 return doEmpty;
         }

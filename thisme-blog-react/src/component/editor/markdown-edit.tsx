@@ -29,7 +29,6 @@ const Markdown: React.FC<MarkdownProps> = props => {
                 renderers={{code: CodeBlack}}
                 plugins={[
                     [require('remark-toc'), {heading: "目录"}],
-                    // [require('remark-collapse')]
                 ]}
                 escapeHtml={false}
             />
