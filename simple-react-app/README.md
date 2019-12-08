@@ -1,20 +1,21 @@
-# simple-react-app
+# simple-react-app 简单react脚手架
 
-> 为了避免降智攻击,请在运行或者编辑前保证你有```node``` 和```yarn``` 
->
-> 这个帮你简化了不必要的操作, 这个是由```webpack```  + ```React``` + ```TypeScript``` 的产物, 至于出现问题可以提出,或者自行修改, 请最好遵守我分类的目录, 因为强迫症所以强迫症, 毕竟写着东西是给**自己**写的!!
->
-> 这个可能有着一些BUG, 请参照我的完善[这里](../thisme-blog-react)的配置
+#### 如何安装
 
-#### Install
+``` txt
+#第一步
+yarn 或者 npm install
+#第二步
+自我整理目录结构(雾), 本项目采用TypeScript + React Hook 的方式, 并在里面存有例子,确保会用Tsx
+```
 
-* ```yarn``` 安装好所有库
+#### 指令列表
 
-#### Command
-
-* ```yarn start``` 启动服务默认端口8080
-* ```yarn build:dev``` 开发者模式构建
-* ```yarn build:pord``` 生产环境构建(需要改index.html的js源)
+| 名称             | 作用                                                        |
+| ---------------- | ----------------------------------------------------------- |
+| ```yarn start``` | 启动devServer,默认端口8888                                  |
+| ```build:dev```  | 项目的dev模式,是以prod模式构建(入口**src/index.tsx**)       |
+| ```build:prod``` | 项目的prod模式,是以prod模式构建(入口**src/prod/index.tsx**) |
 
 #### Installed and Configuration 
 
@@ -24,7 +25,3 @@
 * ```antd``` 配置了按需加载
 * ```Markdown``` 配置好了Markdown组件
 * ```react-hot-loader``` 热部署范围在以**App.tsx**为基点
-
-### Utils
-
-* ```ComponentUtil``` 一个用于连接redux和router的工具类

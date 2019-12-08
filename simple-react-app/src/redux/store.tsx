@@ -1,11 +1,34 @@
-import mainReducer from './reducers/mainReducer';
-import {combineReducers, createStore} from "redux";
+import {Action, applyMiddleware, combineReducers, createStore, Reducer} from "redux";
+import thunk from 'redux-thunk';
+import {composeWithDevTools} from "redux-devtools-extension";
+import {createLogger} from 'redux-logger'
+import IndexReducer from "./reducers/IndexReducer";
+import ArticleReducer, {ArticleState} from "./reducers/ArticleReducer";
+import RouteReducer from "./reducers/RouteReducer";
 
 const reducers = {
-    mainReducer
+    indexReducer: IndexReducer,
+    articleReducer: ArticleReducer,
+    routeReducer: RouteReducer
+
 };
+
+// 使用日志打印方法， collapsed让action折叠
+const loggerMiddleware = createLogger({collapsed: true});
+
 // 开启redux dev工具
-export const DevStore = createStore(combineReducers(reducers), eval("window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()"));
+export const DevStore = createStore(
+    combineReducers(reducers),
+    composeWithDevTools(
+        applyMiddleware(thunk),
+        applyMiddleware(loggerMiddleware),
+    )
+);
 
 // 不开启redux dev工具
-export const PordStore = createStore(combineReducers(reducers));
+export const ProdStore = createStore(
+    combineReducers(reducers),
+    applyMiddleware(thunk)
+);
+
+

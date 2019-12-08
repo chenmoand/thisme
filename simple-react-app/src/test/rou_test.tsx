@@ -1,5 +1,6 @@
 import * as React from "react";
 import {ConnectRouter} from "../util/ComponentUtil";
+import Title from "../component/title";
 
 /**
  * 这是一个测试传入数据是否正常的组件
@@ -7,10 +8,10 @@ import {ConnectRouter} from "../util/ComponentUtil";
  * @constructor
  */
 const Rou:React.FC = props => {
-    console.log(props);
+    // console.log(props);
     return(
         <div>
-
+            <Title src={"测试哈哈哈"} html/>
         </div>
     )
 };

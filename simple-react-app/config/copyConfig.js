@@ -1,1 +1,6 @@
-// 这个是将static目录下的其他文件一并导入到build上
+const fs = require('fs');
+const copy = require("./lib/copy");
+
+const doCopy = (inf, gof) => ('./static/index.html' !== inf && fs.copyFile(inf, gof, err => err && console.log(err)));
+
+copy('./static', './build', doCopy);

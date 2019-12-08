@@ -11,6 +11,8 @@ declare namespace NodeJS {
 
 declare module '*.bmp';
 
+declare module '*.md';
+
 declare module '*.gif';
 
 declare module '*.jpg';
@@ -21,7 +23,10 @@ declare module '*.png';
 
 declare module '*.webp';
 
-declare module '*.less';
+declare module '*.less' {
+  const classes: { [key: string]: string };
+  export default classes;
+}
 
 declare module '*.svg' {
   import * as React from 'react';

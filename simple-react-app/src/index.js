@@ -2,33 +2,27 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ReactDOM = require("react-dom");
+var App_1 = require("./App");
 var react_redux_1 = require("react-redux");
-var react_router_dom_1 = require("react-router-dom");
 var antd_1 = require("antd");
 var zh_CN_1 = require("antd/es/locale/zh_CN");
 require("moment/locale/zh-cn");
 require("./style/globle-index.less");
+var react_router_dom_1 = require("react-router-dom");
 var store_1 = require("./redux/store");
-var App_1 = require("./App");
-require('moment').locale('zh-cn'); // 设置为中文
+var LogUtil_1 = require("@/util/LogUtil");
+var moment = require("moment");
+moment.locale('zh-cn'); // 设置为中文
 /**
- * 真实的开始
+ * 开发环境入口
  * @author chenmo
- * @constructor
  */
 var Init = function () {
+    LogUtil_1.whiteLogo();
     return (React.createElement(react_redux_1.Provider, { store: store_1.DevStore },
         React.createElement(antd_1.ConfigProvider, { locale: zh_CN_1.default },
-            React.createElement(react_router_dom_1.BrowserRouter, null,
+            React.createElement(react_router_dom_1.HashRouter, null,
                 React.createElement(App_1.default, null)))));
 };
-// 打印LOG信息
-console.info("%cthisme : %c 代码托管于github.com/chenmoand/thisme", "background: black;\n" +
-    "            font-family: \"Arial Black\", serif;\n" +
-    "            color: #ffd498;\n" +
-    "            padding: 6px;", "background: brown;\n" +
-    "            font-family: \"Arial Black\", serif;\n" +
-    "            color: #fff;\n" +
-    "            padding: 6px;");
 ReactDOM.render(React.createElement(Init, null), document.getElementById('init'));
 //# sourceMappingURL=index.js.map

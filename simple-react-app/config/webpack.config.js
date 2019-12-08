@@ -1,9 +1,11 @@
-const { CheckerPlugin } = require('awesome-typescript-loader');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const path = require('path');
+const devMode = process.env.NODE_ENV !== 'production';
+
+const resolve = str => path.resolve(__dirname, str);
 
 /**
  * 这是所有webpack的所有父类
@@ -11,64 +13,59 @@ const path = require('path');
  */
 module.exports = {
     entry: ['react-hot-loader/patch', './src'],
-    output:{
-        path: path.resolve(__dirname, '../build'),
+    output: {
+        path: resolve('../build'),
         filename: '[name].[hash].js'
     },
     resolve: {
-        extensions : ['.ts', '.tsx', '.js', '/jsx'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
         alias: {
             'react-dom': '@hot-loader/react-dom',
-        },
+            '@': path.join(__dirname, '..', 'src'),
+        }
     },
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['@babel/env', '@babel/react'],
-                    cacheDirectory: true,
-                    plugins: ['react-hot-loader/babel',["import", { libraryName: "antd", style: "css"}]]
-                }
-            },
-            {
-                test: /\.tsx?$/,
+                test: /\.js|jsx|tsx?$/,
                 exclude: /node_modules/,
                 use: [
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['@babel/env', '@babel/typescript', '@babel/react'],
+                            presets: [
+                                '@babel/env',
+                                '@babel/typescript',
+                                '@babel/react',
+                            ],
                             cacheDirectory: true,
-                            plugins: ['react-hot-loader/babel',["import", { libraryName: "antd", style: "css"}]]
+                            plugins: [
+                                'react-hot-loader/babel',
+                                ["import", {libraryName: "antd", style: "css"}],
+                            ]
                         }
                     },
-                    // {loader: 'awesome-typescript-loader'}
                 ]
 
             },
             {
-                test: /\.less?$/,
-                // exclude: /node_modules/,
+                test: /\.(c|le)ss?$/,
                 use: [
-                    {loader: 'style-loader'},
-                    {loader: 'css-loader'},
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: !devMode,
+                        },
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
                     {
                         loader: 'less-loader',
-                        options:{
-                            paths: [path.resolve(__dirname, 'node_modules')],
-                            javascriptEnabled: true
+                        options: {
+                            javascriptEnabled: true,
                         }
                     },
-                ]
-            },
-            {
-                test: /\.css?$/,
-                use:[
-                    {loader: 'style-loader'},
-                    {loader: 'css-loader',}
                 ]
             },
             {
@@ -79,23 +76,32 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(ttf|eto|woff|woff2|svg)$/,
-                use:[
+                test: /\.(ttf|eto|woff|woff2)$/,
+                use: [
                     'file-loader'
+                ]
+            },
+            {
+                test: /\.md$/,
+                use: [
+                    {
+                        loader: resolve('./loader/md-loader')
+                    }
                 ]
             }
 
         ]
     },
     plugins: [
-        new CheckerPlugin(),
-        new CleanWebpackPlugin(),
+        new LodashModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './static/index.html'
         }),
-        new OpenBrowserPlugin({
-            url : 'http://localhost:8080'
+        new MiniCssExtractPlugin({
+            filename: devMode ? '[name].css' : '[name].[hash].css',
+            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+            ignoreOrder: false,
         })
-    ]
+    ],
 };
