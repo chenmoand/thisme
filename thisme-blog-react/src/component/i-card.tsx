@@ -2,6 +2,7 @@ import * as React from "react";
 import {Avatar, Card, Icon} from "antd";
 import {BaseProps} from "@/util/PropsUtil";
 import crooped from "@/assets/img/cropped.jpg"
+import {listToComponent} from "@/util/Assert";
 
 const {Meta} = Card;
 
@@ -18,7 +19,6 @@ const CardActions: CardActionsType = [
 ];
 export const MyselfCard: React.FC<BaseProps> = props => {
     const {className, style} = props;
-    
     return (
         <div className={"card-myself"}>
             <Card
@@ -27,13 +27,14 @@ export const MyselfCard: React.FC<BaseProps> = props => {
                 cover={
                     <img alt={"背景"} src={crooped}/>
                 }
-                actions={CardActions.map(((value, index) => (
-                    <React.Fragment key={index}>
-                        <a href={value.href}>
-                            <Icon type={value.type}></Icon>
-                        </a>
-                    </React.Fragment>
-                )))
+                actions={
+                    listToComponent(CardActions, data => {
+                        return(
+                            <a href={data.href}>
+                                <Icon type={data.type}></Icon>
+                            </a>
+                        )
+                    })
                 }
             >
                 <Meta

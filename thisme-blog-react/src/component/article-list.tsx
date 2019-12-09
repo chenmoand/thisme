@@ -83,17 +83,17 @@ export const CompleteArticle$: React.FC<CompleteArticleProps> = props => {
     );
 };
 
+
 export const CompleteArticle = connect(
     state => {
         // @ts-ignore
         const {indexReducer} = state;
-        return{
-            domain : indexReducer.domain,
+        return {
+            domain: indexReducer.domain,
         }
 
     }
 )(CompleteArticle$);
-
 
 
 interface ArticleListProps extends BaseProps {
@@ -140,10 +140,10 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
 
     };
     useEffect(doArticles, []);
-
     return (
         <div className={"article-list " + className} style={style}>
-            {articles != null ? articles.map((item, index) => {
+            {
+                articles != null ? articles.map((item, index) => {
                         return (
                             <React.Fragment key={index}>
                                 <SimpleArticle

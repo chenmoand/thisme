@@ -45,3 +45,14 @@ const Assert: React.FC<AssertProps> = props => {
 };
 
 export default Assert;
+
+
+export function listToComponent<T>(array: Array<T>, callback: (data: T) => JSX.Element): Array<JSX.Element> {
+    return array && array.map((data, index) => {
+        return(
+            <React.Fragment key={index}>
+                {callback(data)}
+            </React.Fragment>
+        )
+    });
+}
