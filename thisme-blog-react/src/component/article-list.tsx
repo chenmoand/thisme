@@ -1,20 +1,20 @@
-import * as React from "react";
-import {useEffect, useState} from "react";
-import {connect} from "react-redux";
-import {NavLink} from "react-router-dom";
 import axios from "axios";
 import {Map} from "immutable";
+import * as React from "react";
+import {connect} from "react-redux";
+import {NavLink} from "react-router-dom";
 import {Divider, Pagination, Tag} from "antd";
-import {Article, BaseProps, PageArticle} from "@/util/PropsUtil";
-import {articlePath} from "@/util/RouterUtil";
+import Assert from "@/util/Assert";
 import {setRequestUrl} from "@/util/ApiUrl";
+import {doArticleType} from "@/util/ViewUtil";
+import {articlePath} from "@/util/RouterUtil";
+import {Article, BaseProps, PageArticle} from "@/util/PropsUtil";
+import Wait from "./wait";
 import Item from "./item";
 import Markdown from "./editor/markdown-edit";
-import {doArticleType} from "@/util/ViewUtil";
-import Assert from "@/util/Assert";
-import Wait from "./wait";
 import * as moment from "moment";
 
+const {useEffect, useState} = React;
 
 interface SimpleArticleProps extends BaseProps {
     article: Article,
@@ -143,8 +143,7 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
 
     return (
         <div className={"article-list " + className} style={style}>
-            {
-                articles != null ? articles.map((item, index) => {
+            {articles != null ? articles.map((item, index) => {
                         return (
                             <React.Fragment key={index}>
                                 <SimpleArticle

@@ -5,14 +5,20 @@ import crooped from "@/assets/img/cropped.jpg"
 
 const {Meta} = Card;
 
-interface MyselfCardProps extends BaseProps {
-
+interface CardActionInterface {
+    href: string,
+    type: string
 }
+type CardActionsType = Array<CardActionInterface>;
 
-
-export const MyselfCard: React.FC<MyselfCardProps> = props => {
+const CardActions: CardActionsType = [
+    {href: 'https://github.com/chenmoand', type: 'github'},
+    {href: 'https://www.zhihu.com/people/chen-mo-82-82-69/activities', type: 'zhihu'},
+    {href: 'mailto:chenmoand@gmail.com', type: 'mail'}
+];
+export const MyselfCard: React.FC<BaseProps> = props => {
     const {className, style} = props;
-
+    
     return (
         <div className={"card-myself"}>
             <Card
@@ -21,17 +27,14 @@ export const MyselfCard: React.FC<MyselfCardProps> = props => {
                 cover={
                     <img alt={"背景"} src={crooped}/>
                 }
-                actions={[
-                    <a href={"https://github.com/chenmoand"}>
-                        <Icon type={"github"}/>
-                    </a>,
-                    <a href={"https://www.zhihu.com/people/chen-mo-82-82-69/activities"}>
-                        <Icon type={"zhihu"}/>
-                    </a>,
-                    <a href={"mailto:chenmoand@gmail.com"}>
-                        <Icon type={"mail"}/>
-                    </a>
-                ]}
+                actions={CardActions.map(((value, index) => (
+                    <React.Fragment key={index}>
+                        <a href={value.href}>
+                            <Icon type={value.type}></Icon>
+                        </a>
+                    </React.Fragment>
+                )))
+                }
             >
                 <Meta
                     avatar={
