@@ -4,9 +4,10 @@ import * as moment from "moment";
 import {hot} from 'react-hot-loader/root';
 import '@/assets/style/globle-index.less'
 import {PageView} from "@/router/page-switch";
-import TopMenu from "@/component/menu/TopMenu";
+import TopMenu from "@/component/menu/top-menu";
 import PageBottom from "@/component/page-bottom";
 import Configuration from "@/component/configuration";
+import {whiteLogo} from "@/util/LogUtil";
 
 moment.locale('zh-cn'); // 设置为中文
 
@@ -15,6 +16,7 @@ moment.locale('zh-cn'); // 设置为中文
  * @author chenmo
  */
 const App:React.FC = () => {
+    whiteLogo();
     return(
         <Configuration
             domain={"new.brageast.com"}

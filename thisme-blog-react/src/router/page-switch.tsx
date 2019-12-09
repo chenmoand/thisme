@@ -1,11 +1,11 @@
 import * as React from "react";
-import {Route, Switch, useLocation} from "react-router-dom";
-import {BaseProps} from "@/util/PropsUtil";
-import {RouteState} from "@/redux/reducers/RouteReducer";
 import {connect} from "react-redux";
-import "@/assets/style/animated-switch.less"
-import TransitionGroup from "react-transition-group/TransitionGroup";
+import {Route, Switch, useLocation} from "react-router-dom";
 import CSSTransition from "react-transition-group/CSSTransition";
+import TransitionGroup from "react-transition-group/TransitionGroup";
+import {BaseProps} from "@/util/PropsUtil";
+import "@/assets/style/animated-switch.less"
+import {RouteState} from "@/redux/reducers/RouteReducer";
 
 
 interface PageViewProps extends BaseProps {

@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import reactor.core.publisher.Mono;
 
 import java.util.Date;
@@ -18,9 +20,15 @@ import java.util.Date;
 @Slf4j
 @SpringBootTest
 public class ThisbootApplicationTests {
+    @Autowired
+    private ReactiveMongoTemplate reactiveMongoTemplate;
 
     @Autowired
     private ArticleService articleService;
+
+    @Test
+    public void  onReact() {
+    }
 
     @Test
     public void contextLoads() {
@@ -34,7 +42,7 @@ public class ThisbootApplicationTests {
         article.setTitle("这是一个来自java的测试请求");
         article.setStartDate(new Date());
         article.setUpDate(new Date());
-        article.setReplys(new Reply[]{ Reply.builder().name("demo").build() });
+        article.setReplys(new Reply[]{Reply.builder().name("demo").build()});
         final Mono<Article> insert = articleService.insert(article);
         System.out.println(insert.log().block().toString());
 

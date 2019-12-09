@@ -6,5 +6,5 @@ import Status from "./status";
 import Update from "./update";
 
 export {
-    About, Article, Directory, Home, Status, Update
+    About , Article, Directory, Home, Status, Update
 }

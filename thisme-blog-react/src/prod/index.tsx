@@ -1,34 +1,30 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import App from "@/App";
-import { Provider } from 'react-redux'
-import { ConfigProvider } from 'antd';
+import App from "@/app";
+import {Provider} from 'react-redux'
+import {ConfigProvider} from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import 'moment/locale/zh-cn';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { ProdStore as Store } from "@/redux/store";
-import {whiteLogo} from "@/util/LogUtil";
+import {BrowserRouter as Router} from 'react-router-dom';
+import {ProdStore as Store} from "@/redux/store";
 
 /**
  * 生产环境入口
  * @author chenmo
  */
-const Init:React.FC = () => {
-    whiteLogo();
-    return(
+const Init: React.FC = () => {
+    return (
         <Provider store={Store}>
             <ConfigProvider locale={zhCN}>
-                    <Router>
-                        <div className={"route"}>
-                            <App />
-                        </div>
-                    </Router>
+                <Router>
+                    <App/>
+                </Router>
             </ConfigProvider>
         </Provider>
     )
 };
 ReactDOM.render(
-    <Init />,
+    <Init/>,
     document.getElementById('init')
 );

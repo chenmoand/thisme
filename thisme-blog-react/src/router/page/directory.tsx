@@ -9,7 +9,7 @@ const Directory: React.FC = props => {
                 title={"目录"}
                 left={
                     <div>
-
+                        汝可知, 此乃神之目录页
                     </div>
                 }
                 right={

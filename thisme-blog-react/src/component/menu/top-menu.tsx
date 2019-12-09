@@ -59,7 +59,6 @@ const TopMenu: React.FC<TopMenuProps> = props => {
             <Col offset={webType ? 2 : 0}
                  span={webType ? 6 : 9}
                  order={2}
-
             >
                 <div style={{textAlign: webType ? "start" : "center"}}>
                     <Input.Search
@@ -79,7 +78,7 @@ const TopMenu: React.FC<TopMenuProps> = props => {
 export default connect(
     state => {
         // @ts-ignore
-        const {indexReducer, routeReducer } = state;
+        const {indexReducer, routeReducer} = state;
         return {
             webType: viewSize(indexReducer.webType),
             routes: routeReducer.filter((route: Route) => route.name !== false), // 过滤出不参与菜单的route
@@ -104,7 +103,7 @@ interface ThisMenuProps {
  * @constructor
  */
 const ThisMenu: React.FC<ThisMenuProps> = props => {
-    const { routes } = props;
+    const {routes} = props;
     const {Item} = Menu;
     return (
         <Menu
@@ -112,7 +111,7 @@ const ThisMenu: React.FC<ThisMenuProps> = props => {
             overflowedIndicator={<Icon type="switcher"/>}
         >
             {routes.map(({name, path}, index) => {
-                return(
+                return (
                     <Item key={index}>
                         <NavLink to={typeof path == 'string' ? path : path[0]}>
                             {name}

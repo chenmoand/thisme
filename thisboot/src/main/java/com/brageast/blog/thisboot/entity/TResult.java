@@ -13,11 +13,11 @@ public class TResult<T> {
     private T data;
 
     public static <T> Mono<TResult<T>> ofMono(TState result, String message, T data) {
-        return Mono.just(new TResult<T>(result, message, data));
+        return Mono.just(new TResult<>(result, message, data));
     }
 
     public static <T> Flux<TResult<T>> ofFlux(TState result, String message, T data) {
-        return Flux.just(new TResult<T>(result, message, data));
+        return Flux.just(new TResult<>(result, message, data));
     }
 }
 
