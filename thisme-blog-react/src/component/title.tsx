@@ -1,5 +1,6 @@
 import * as React from "react";
 import {connect} from "react-redux";
+import {useEffect} from "react";
 
 
 interface TitleProps {
@@ -18,7 +19,9 @@ interface TitleProps {
 const Title: React.FC<TitleProps> = props => {
     const {src, html, domain, style, className} = props;
     // 保证src是有内容的在试图修改标题
-    src && (document.title = src + " - " + domain);
+    useEffect(() => {
+        src && (document.title = src + " - " + domain);
+    },[src]);
     return (
         <span
             className={className}

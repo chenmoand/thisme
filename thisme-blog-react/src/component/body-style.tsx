@@ -13,7 +13,6 @@ export interface BodyStyleProps {
 
 const BodySyle: React.FC<BodyStyleProps> = props => {
 
-    // ng.done();
     const {left, right, webType, title} = props;
 
     return (

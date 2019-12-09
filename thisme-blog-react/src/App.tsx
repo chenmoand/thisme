@@ -21,10 +21,10 @@ const App:React.FC = () => {
         >
             <TopMenu />
             <PageView />
+            <PageBottom />
             <BackTop>
                 <div className="ant-back-top-inner">TOP</div>
             </BackTop>
-            <PageBottom />
         </Configuration>
     )
 };

@@ -16,7 +16,7 @@ interface ConfigurationProps {
  */
 const Configuration: React.FC<ConfigurationProps> = props => {
 
-    const {setWebType, setDomain, domain} = props;
+    const {setWebType, setDomain, domain, children} = props;
 
     // 设置URL
     useEffect(() => {
@@ -24,21 +24,18 @@ const Configuration: React.FC<ConfigurationProps> = props => {
         }, [domain]
     );
 
-    const isDesktopOrLaptop = useMediaQuery({
-        query: '(min-device-width: 1224px)'
-    });
-    const isBigScreen = useMediaQuery({query: '(min-device-width: 1824px)'});
-    const isTabletOrMobile = useMediaQuery({query: '(max-width: 844px)'});
+    const isDesktopOrLaptop = useMediaQuery({query: '(min-device-width: 1224px)'}),
+        isBigScreen = useMediaQuery({query: '(min-device-width: 1824px)'}),
+        isTabletOrMobile = useMediaQuery({query: '(max-width: 844px)'});
     return (
-        <>
-            <WebSize
-                isDesktopOrLaptop={isDesktopOrLaptop}
-                isBigScreen={isBigScreen}
-                setWebType={setWebType}
-                isTabletOrMobile={isTabletOrMobile}
-            />
-            {props.children}
-        </>
+        <WebSize
+            isDesktopOrLaptop={isDesktopOrLaptop}
+            isBigScreen={isBigScreen}
+            setWebType={setWebType}
+            isTabletOrMobile={isTabletOrMobile}
+        >
+            {children}
+        </WebSize>
     )
 };
 

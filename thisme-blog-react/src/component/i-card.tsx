@@ -1,7 +1,7 @@
 import * as React from "react";
 import {BaseProps} from "@/util/PropsUtil";
 import {Avatar, Card, Icon} from "antd";
-import crooped from "@/img/cropped.jpg"
+import crooped from "@/assets/img/cropped.jpg"
 
 const {Meta} = Card;
 
