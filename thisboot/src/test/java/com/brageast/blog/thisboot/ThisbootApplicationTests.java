@@ -45,7 +45,6 @@ public class ThisbootApplicationTests {
         article.setReplys(new Reply[]{Reply.builder().name("demo").build()});
         final Mono<Article> insert = articleService.insert(article);
         System.out.println(insert.log().block().toString());
-
     }
 
 }
