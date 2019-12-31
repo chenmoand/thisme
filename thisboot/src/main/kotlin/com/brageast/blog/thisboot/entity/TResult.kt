@@ -1,13 +1,14 @@
 package com.brageast.blog.thisboot.entity
 
+import com.brageast.blog.thisboot.entity.enums.TState
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 
 data class TResult<T> (
-    var result: TState? = null,
-    var message: String? = null,
-    var data: T? = null
+        val result: TState,
+        val message: String,
+        var data: T? = null
 ) {
 
     companion object {

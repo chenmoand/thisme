@@ -11,7 +11,7 @@ export interface BaseProps {
 
 export interface PageArticle {
     page: number,
-    articles: Article[]
+    articles: Array<Article>
 }
 
 
@@ -21,7 +21,7 @@ export interface PageArticle {
 export interface Article {
     articleId: string, // 文章序号
     title: string, // 标题
-    label: string[], // 标签
+    label: Array<string>, // 标签
     classify: string, // 分类
     describe: string, // 描述
     startDate?: Date, // 发布日期
@@ -29,7 +29,7 @@ export interface Article {
     author: string, // 作者
     content: string, // 内容
     chick: number, // 点击次数
-    replys?: Reply[],
+    replys?: Array<Reply>, // 回复
     articleType: ArticleType, // 文章类型
 }
 

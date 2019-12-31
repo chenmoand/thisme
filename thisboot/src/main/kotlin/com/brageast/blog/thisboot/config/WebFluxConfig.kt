@@ -25,7 +25,7 @@ import org.springframework.web.reactive.config.ViewResolverRegistry
 class WebFluxConfig: WebFluxConfigurer {
 
     @Autowired(required = false)
-    private val thymeleafReactiveViewResolver: ThymeleafReactiveViewResolver? = null;
+    lateinit var thymeleafReactiveViewResolver: ThymeleafReactiveViewResolver
 
     override fun configureArgumentResolvers(configurer: ArgumentResolverConfigurer) {
         configurer.addCustomResolver()
@@ -40,9 +40,7 @@ class WebFluxConfig: WebFluxConfigurer {
      * @param registry
      */
     override fun configureViewResolvers(registry: ViewResolverRegistry) {
-        if (thymeleafReactiveViewResolver != null) {
-            registry.viewResolver(thymeleafReactiveViewResolver)
-        }
+        registry.viewResolver(thymeleafReactiveViewResolver)
     }
 
     /**

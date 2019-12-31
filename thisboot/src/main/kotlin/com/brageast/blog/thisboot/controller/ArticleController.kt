@@ -24,21 +24,21 @@ import org.springframework.beans.factory.annotation.Autowired
 class ArticleController {
 
     @Autowired
-    private val articleService: ArticleService? = null
+    lateinit var articleService: ArticleService
 
     @GetMapping("/getAllArticle")
     fun getAllArticle(): Flux<Article> {
-        return articleService!!.show()
+        return articleService.show()
     }
 
     @GetMapping("/getArticle")
     fun getArticle(articleId: ObjectId): Mono<Article> {
-        return articleService!!.findById(articleId)
+        return articleService.findById(articleId)
     }
 
     @PostMapping("/addArticle")
     fun addArticle(@RequestBody article: Article): Mono<Boolean> {
-        return articleService!!.insert(article)
+        return articleService.insert(article)
                 .log()
                 .hasElement()
     }
@@ -46,16 +46,16 @@ class ArticleController {
     @GetMapping("/getPageArticle")
     fun getPageArticle(@RequestParam(defaultValue = "1") page: Int,
                        @RequestParam(defaultValue = "10") size: Int): Flux<Article> {
-        return articleService!!.limitShow(page, size)
+        return articleService.limitShow(page, size)
     }
 
     @DeleteMapping("/deleteArticle")
     fun deleteArticle(id: ObjectId): Mono<DeleteResult> {
-        return articleService!!.delete(id)
+        return articleService.delete(id)
     }
 
     @PutMapping("/updateArticle")
     fun updateArticle(@RequestBody article: Article): Mono<UpdateResult> {
-        return articleService!!.update(article)
+        return articleService.update(article)
     }
 }

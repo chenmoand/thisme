@@ -19,8 +19,12 @@ import java.util.*
 @Service
 class ArticleServiceImpl : ArticleService {
 
+    /**
+     * 因为这个肯定有 ReactiveMongoTemplate 这个类
+     * 所以用lateinit var 修饰, 比较双!!号也是麻烦
+     */
     @Autowired
-    private val reactiveMongoTemplate: ReactiveMongoTemplate? = null
+    lateinit var reactiveMongoTemplate: ReactiveMongoTemplate
 
     /**
      * @param page 默认减一, 使页面成 1 开始
@@ -28,23 +32,23 @@ class ArticleServiceImpl : ArticleService {
      * @return
      */
     override fun limitShow(page: Int, size: Int): Flux<Article> {
-        return reactiveMongoTemplate!!.find(Query().with(PageRequest.of(page - 1, size)), Article::class.java)
+        return reactiveMongoTemplate.find(Query().with(PageRequest.of(page - 1, size)), Article::class.java)
     }
 
     override fun insert(article: Mono<Article>): Mono<Article> {
-        return reactiveMongoTemplate!!.insert(article)
+        return reactiveMongoTemplate.insert(article)
     }
 
     override fun insert(article: Article): Mono<Article> {
-        return reactiveMongoTemplate!!.insert(article)
+        return reactiveMongoTemplate.insert(article)
     }
 
     override fun show(): Flux<Article> {
-        return reactiveMongoTemplate!!.findAll(Article::class.java)
+        return reactiveMongoTemplate.findAll(Article::class.java)
     }
 
     override fun delete(id: ObjectId): Mono<DeleteResult> {
-        return reactiveMongoTemplate!!.remove(doId(id.toString()), Article::class.java)
+        return reactiveMongoTemplate.remove(doId(id.toString()), Article::class.java)
     }
 
     override fun update(article: Article): Mono<UpdateResult> {
@@ -54,11 +58,11 @@ class ArticleServiceImpl : ArticleService {
         )
         update.set("upDate", Date())
 
-        return reactiveMongoTemplate!!.updateFirst(doId(article.articleId!!.toString()), update, Article::class.java)
+        return reactiveMongoTemplate.updateFirst(doId(article.articleId.toString()), update, Article::class.java)
     }
 
     override fun findById(articleId: ObjectId): Mono<Article> {
-        return reactiveMongoTemplate!!.findOne(doId(articleId.toString()), Article::class.java)
+        return reactiveMongoTemplate.findOne(doId(articleId.toString()), Article::class.java)
     }
 
     private fun doId(id: String): Query {
