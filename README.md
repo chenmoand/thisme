@@ -2,6 +2,8 @@
 
 ![GitHub](https://img.shields.io/github/license/chenmoand/thisme)![GitHub last commit](https://img.shields.io/github/last-commit/chenmoand/thisme)![GitHub stars](https://img.shields.io/github/stars/chenmoand/thisme)
 
+>  争取用最多的技术闸写我觉得有用的东西
+
 | 博客地址 | [```Chick Here```](https://new.brageast.com) |
 | :------: | :------------------------------------------: |
 | 博客截图 |        [```Chick Here```](./doc/img/)        |

@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate
 import org.springframework.data.mongodb.core.query.Criteria
 import org.springframework.data.mongodb.core.query.Query
+import org.springframework.data.mongodb.core.query.Update
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -52,9 +53,10 @@ class ArticleServiceImpl : ArticleService {
     }
 
     override fun update(article: Article): Mono<UpdateResult> {
+
         val update = EntityUtil.addUpdate(
                 article, "title", "label", "classify",
-                "describe", "author", "content", "chick", "replys"
+                "describe", "author", "content", "chick"
         )
         update.set("upDate", Date())
 
