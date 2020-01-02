@@ -16,9 +16,9 @@ object Ktmd {
 
 fun main(args: Array<String>) {
     if (args[0].startsWith("--")) {
-        TODO("")
+
     } else if (args[0].startsWith("-")) {
-        TODO("")
+
     } else {
         println(HelpCommand().doOperation(""))
     }
