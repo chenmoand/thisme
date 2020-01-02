@@ -9,6 +9,7 @@ import kotlin.streams.toList
 
 object CommandUtil {
 
+    @JvmStatic
     fun <T: Annotation> findAnnotation(instance: CommandTemplate, clazz: Class<T>): T {
         val instanceClass = instance.javaClass
         return instanceClass.getAnnotation(clazz) ?: throw AnnotationNotfoundException(instanceClass, clazz)

@@ -10,7 +10,7 @@ class HelpCommand: CommandTemplate  {
 
     override fun doOperation(vararg strs: String): String {
         val str:String = strs[0]
-        if("" == str) {
+        if("default" == str) {
             val stringBuilder = StringBuilder()
             Ktmd.cmds.forEach {
                 val commandInfo = it.commandInfo
@@ -31,5 +31,7 @@ class HelpCommand: CommandTemplate  {
         }.findFirst().get().commandTemplate.doOperation("help")
 
     }
+
+    fun printDefault() = print(this.doOperation("default"))
 
 }
