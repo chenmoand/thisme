@@ -3,5 +3,5 @@ package com.brageast.cli.test
 import com.brageast.cli.Ktmd
 
 fun main() {
-    Ktmd.appInit(arrayOf("-v", "default"))
+    Ktmd.appInit(arrayOf("-h", "default"))
 }

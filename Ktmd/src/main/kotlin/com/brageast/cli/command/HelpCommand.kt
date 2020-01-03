@@ -6,10 +6,10 @@ import com.brageast.cli.template.CommandTemplate
 import java.lang.StringBuilder
 
 @Command(value = "help", alias = ["h", "*"], description = "获得帮指令帮助", priority = 99)
-class HelpCommand: CommandTemplate  {
+object HelpCommand: CommandTemplate  {
 
-    override fun doOperation(vararg strs: String): String {
-        val str:String = strs[0]
+    override fun doOperation(vararg parameters: String): String {
+        val str:String = parameters[0]
         if("default" == str) {
             val stringBuilder = StringBuilder()
             Ktmd.cmds.forEach {

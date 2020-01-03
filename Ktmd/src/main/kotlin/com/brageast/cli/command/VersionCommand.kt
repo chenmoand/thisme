@@ -7,7 +7,7 @@ import com.brageast.cli.template.CommandTemplate
 @Command(value = "version", alias = ["v"], description = "获得版本号指令")
 class VersionCommand: CommandTemplate {
 
-    override fun doOperation(vararg strs: String): String = when(strs[0]) {
+    override fun doOperation(vararg parameters: String): String = when(parameters[0]) {
         "help" -> "获得Ktmd版本号信息"
         else -> "ktmd-cli version: ${Ktmd.version}"
     }
