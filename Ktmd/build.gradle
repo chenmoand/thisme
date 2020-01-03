@@ -8,11 +8,14 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+processResources {
+    // 真就WDNMD??? 还得手动配置
+    from('src/main/resources')
+}
 
 dependencies {
-    // 将kotlin整个打包进来有点emm
-    // 就这样把, 反正能玩就行
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile "com.google.code.gson:gson:2.8.6"
 }
 
 compileKotlin {

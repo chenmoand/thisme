@@ -5,6 +5,7 @@ import com.brageast.cli.command.InitializationCommand
 import com.brageast.cli.command.VersionCommand
 import com.brageast.cli.template.CommandTemplate
 import com.brageast.cli.util.CommandUtil
+import java.io.File
 
 object Ktmd {
     const val version: String = "1.0.0"
@@ -15,6 +16,7 @@ object Ktmd {
     val cmds = CommandUtil.registerCommand()
     // 获取当前cmd 输入的所在目录
     val userPath = System.getProperty("user.dir")
+    val userFile = File(userPath)
 
     fun appInit(args: Array<String>) {
         if (args.isNotEmpty()) {
