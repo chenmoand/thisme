@@ -1,6 +1,6 @@
 package com.brageast.cli.command
 
-import com.brageast.cli.Ktmd
+import com.brageast.cli.ThisCli
 import com.brageast.cli.annotations.Command
 import com.brageast.cli.template.CommandTemplate
 import java.lang.StringBuilder
@@ -12,7 +12,7 @@ object HelpCommand: CommandTemplate  {
         val str:String = parameters[0]
         if("default" == str) {
             val stringBuilder = StringBuilder()
-            Ktmd.cmds.forEach {
+            ThisCli.cmds.forEach {
                 val commandInfo = it.commandInfo
                 val als = commandInfo.alias.map { s -> "-$s" }.toString()
                 stringBuilder.append("[")
@@ -26,7 +26,7 @@ object HelpCommand: CommandTemplate  {
         }
 
         if("help" == str)  return "获取帮助信息"
-        return Ktmd.cmds.stream().filter {
+        return ThisCli.cmds.stream().filter {
             it.commandInfo.alias.contains(str) || it.commandInfo.value.contains(str)
         }.findFirst().get().commandTemplate.doOperation("help")
 

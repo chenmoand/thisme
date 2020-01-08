@@ -3,11 +3,18 @@ package com.brageast.cli
 import com.brageast.cli.command.HelpCommand
 import com.brageast.cli.command.InitializationCommand
 import com.brageast.cli.command.VersionCommand
+import com.brageast.cli.entity.CMD
 import com.brageast.cli.template.CommandTemplate
 import com.brageast.cli.util.CommandUtil
 import java.io.File
 
-object Ktmd {
+fun main(args: Array<String>) {
+    println("---------[kbmd]---------")
+    ThisCli.appInit(args)
+
+}
+
+object ThisCli {
     const val version: String = "1.0.0"
 
     val commands: Array<CommandTemplate> = arrayOf(
@@ -15,7 +22,8 @@ object Ktmd {
     )
     val cmds = CommandUtil.registerCommand()
     // 获取当前cmd 输入的所在目录
-    val userPath = System.getProperty("user.dir")
+    @JvmStatic
+    val userPath: String = System.getProperty("user.dir")
     val userFile = File(userPath)
 
     fun appInit(args: Array<String>) {
@@ -25,28 +33,20 @@ object Ktmd {
             when {
                 parameter.startsWith("--") -> {
                     val lastOrNull = cmds.lastOrNull { cmd -> cmd.commandInfo.value == parameter.replace("--", "") }
-                    print(lastOrNull)
-                    if (lastOrNull != null)
-                        lastOrNull.commandTemplate.printOperation(parameter2)
-                    else
-                        HelpCommand.printDefault()
+                    cmdNotNull(lastOrNull, parameter2)
 
                 }
                 parameter.startsWith("-") -> {
                     val lastOrNull = cmds.lastOrNull { cmd -> cmd.commandInfo.alias.contains(parameter.replace("-", "")) }
-                    if (lastOrNull != null)
-                        lastOrNull.commandTemplate.printOperation(parameter2)
-                    else
-                        HelpCommand.printDefault()
+                    cmdNotNull(lastOrNull, parameter2)
                 }
                 else -> HelpCommand.printDefault()
             }
 
         } else HelpCommand.printDefault()
     }
-}
 
-fun main(args: Array<String>) {
-    println("---------[kbmd]---------")
-    Ktmd.appInit(args)
+    private fun cmdNotNull(cmd: CMD?, vararg parameters: String) =
+        if(cmd != null) cmd.commandTemplate.printOperation(*parameters) else HelpCommand.printDefault()
+
 }

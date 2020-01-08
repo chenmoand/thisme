@@ -11,8 +11,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ktmd.iml" filepath="$PROJECT_DIR$/.idea/modules/Ktmd.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ktmd.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Ktmd.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ktmd.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Ktmd.test.iml" />
-<!--      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.brageast.cli.Ktmd.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.brageast.cli.Ktmd.main.iml" />-->
-<!--      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.brageast.cli.Ktmd.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.brageast.cli.Ktmd.test.iml" />-->
+<!--      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.brageast.com.brageast.cli.Ktmd.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.brageast.com.brageast.cli.Ktmd.main.iml" />-->
+<!--      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.brageast.com.brageast.cli.Ktmd.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.brageast.com.brageast.cli.Ktmd.test.iml" />-->
       <module fileurl="file://$PROJECT_DIR$/thisboot/thisboot.iml" filepath="$PROJECT_DIR$/thisboot/thisboot.iml" />
     </modules>
   </component>

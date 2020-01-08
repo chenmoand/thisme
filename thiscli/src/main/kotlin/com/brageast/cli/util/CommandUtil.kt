@@ -1,6 +1,6 @@
 package com.brageast.cli.util
 
-import com.brageast.cli.Ktmd
+import com.brageast.cli.ThisCli
 import com.brageast.cli.annotations.Command
 import com.brageast.cli.entity.CMD
 import com.brageast.cli.exception.AnnotationNotfoundException
@@ -17,7 +17,7 @@ object CommandUtil {
 
     fun registerCommand(): List<CMD> {
         val cmds = ArrayList<CMD>()
-        for (command in Ktmd.commands) {
+        for (command in ThisCli.commands) {
             val findAnnotation = findAnnotation(command, Command::class.java)
             cmds.add(CMD(findAnnotation, command))
         }
