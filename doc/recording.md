@@ -20,3 +20,20 @@
 ```
 
 我打开了.idea目录 发现module 有两个重复的我尝试把他注视掉, IDEA正常了,,,, 也许是我太LJ了
+
+### ```20/01/08``` 受不了Gradle啦
+
+Gradle抽风!!!Gradle抽风!!!Gradle抽风!!! 重要的事情说三遍
+
+今天本来是想看看java的请求库, 我导入格式为:
+
+```groovy
+dependencies {
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+    compile "com.squareup.okhttp3:okhttp:4.3.1"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+```
+
+我本来觉的没有什嘛问题, 可是一打开IDEA的代码 ```val gson = Gson()``` 很正常, 结果找不到Gson???? 纳尼, 我甚至以为是Gradle缓存有问题, 或者我IDEA设置有问题, 我调试了半天 , 根本就找不到那里出现了问题, 自从用Gradle创建的项目就一直出现脑残问题, 我都不知道这是为什么?? 我尝试用Maven ,,, 居然没有什嘛问题.... 虽然用xml导致文件过大, 但是他说真的没啥问题啊... gradle 我是真的看不懂, 太难了!!
