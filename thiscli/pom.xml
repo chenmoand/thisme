@@ -45,6 +45,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.3</version>
+                <configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -55,7 +58,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.brageast.cli.ThisCliKt</mainClass>
+                                    <mainClass>com.brageast.cli.ThisCliApp</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

@@ -1,17 +1,17 @@
+@file:JvmName("ThisCliApp")
+
 package com.brageast.cli
 
 import com.brageast.cli.command.HelpCommand
 import com.brageast.cli.command.InitializationCommand
 import com.brageast.cli.command.VersionCommand
-import com.brageast.cli.entity.CMD
 import com.brageast.cli.template.CommandTemplate
 import com.brageast.cli.util.CommandUtil
 import java.io.File
 
 fun main(args: Array<String>) {
-    println("---------[kbmd]---------")
+    println("< -!ThisCli!- >")
     ThisCli.appInit(args)
-
 }
 
 object ThisCli {
@@ -29,24 +29,21 @@ object ThisCli {
     fun appInit(args: Array<String>) {
         if (args.isNotEmpty()) {
             val parameter = args[0]
-            val parameter2 = if (args.size > 1) args[1] else "default"
+            val parameter2 = if (args.size > 1) args[1] else ""
             when {
-                parameter.startsWith("--") -> {
-                    val lastOrNull = cmds.lastOrNull { cmd -> cmd.commandInfo.value == parameter.replace("--", "") }
-                    cmdNotNull(lastOrNull, parameter2)
+                parameter.startsWith("--") -> cmds
+                        .lastOrNull { it.commandInfo.value == parameter.replace("--", "") }
+                        .apply { CommandUtil.cmdNotNull(this, parameter2) }
 
-                }
-                parameter.startsWith("-") -> {
-                    val lastOrNull = cmds.lastOrNull { cmd -> cmd.commandInfo.alias.contains(parameter.replace("-", "")) }
-                    cmdNotNull(lastOrNull, parameter2)
-                }
+                parameter.startsWith("-") -> cmds
+                        .lastOrNull { it.commandInfo.alias.contains(parameter.replace("-", "")) }
+                        .apply { CommandUtil.cmdNotNull(this, parameter2) }
+
                 else -> HelpCommand.printDefault()
             }
 
         } else HelpCommand.printDefault()
     }
 
-    private fun cmdNotNull(cmd: CMD?, vararg parameters: String) =
-        if(cmd != null) cmd.commandTemplate.printOperation(*parameters) else HelpCommand.printDefault()
 
 }
