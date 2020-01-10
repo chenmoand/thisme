@@ -14,17 +14,18 @@ object HelpCommand : CommandTemplate {
                     cmds.forEach {
                         val commandInfo = it.commandInfo
                         val als = commandInfo.alias.map { s -> "-$s" }.toString()
-                        builder.append("[")
-                        builder.append(als.substring(1, als.length - 1))
-                        builder.append("] --")
+                        builder.append("* thiscli ")
                         builder.append(commandInfo.value)
                         builder.append(" ")
+                        builder.append("[")
+                        builder.append(als.substring(1, als.length - 1))
+                        builder.append("] ")
                         builder.append(commandInfo.description)
                         builder.append("\n")
                     }
                     builder.toString()
                 }
-                "help" -> "显示 <thiscli --help> 帮助信息"
+                "help" -> "-> 显示 <thiscli --help> 帮助信息 \n-> 食用方法 thiscli -h help"
                 else -> cmds.findLast {
                     it.commandInfo.alias.contains(str) || it.commandInfo.value.contains(str)
                 }?.run { commandTemplate.doOperation("help") } ?: "并未找到相关于${str}的帮助信息"

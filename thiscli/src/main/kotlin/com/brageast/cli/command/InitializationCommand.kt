@@ -6,7 +6,7 @@ import com.brageast.cli.template.CommandTemplate
 import java.io.File
 import java.io.FileOutputStream
 
-@Command(value = "initialization", alias = ["i", "init"], description = "初始化这个目录")
+@Command(value = "init", alias = ["i"], description = "初始化这个目录")
 class InitializationCommand : CommandTemplate {
 
     override fun doOperation(vararg parameters: String): String = when (parameters[0]) {

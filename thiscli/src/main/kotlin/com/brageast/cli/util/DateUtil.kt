@@ -4,5 +4,5 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object DateUtil {
-    var simpleDate: String = SimpleDateFormat("yyyy-MM-dd").format(Date())
+    val currentDate: String = SimpleDateFormat("yyyy-MM-dd").format(Date())
 }

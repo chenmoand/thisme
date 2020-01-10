@@ -2,6 +2,7 @@
 
 package com.brageast.cli
 
+import com.brageast.cli.command.CreateMarkdownCommand
 import com.brageast.cli.command.HelpCommand
 import com.brageast.cli.command.InitializationCommand
 import com.brageast.cli.command.VersionCommand
@@ -18,7 +19,8 @@ object ThisCli {
     const val version: String = "1.0.0"
 
     val commands: Array<CommandTemplate> = arrayOf(
-            VersionCommand(), InitializationCommand(), HelpCommand
+            VersionCommand(), InitializationCommand(), HelpCommand,
+            CreateMarkdownCommand()
     )
     val cmds = CommandUtil.registerCommand()
     // 获取当前cmd 输入的所在目录
@@ -31,15 +33,14 @@ object ThisCli {
             val parameter = args[0]
             val parameter2 = if (args.size > 1) args[1] else ""
             when {
-                parameter.startsWith("--") -> cmds
-                        .lastOrNull { it.commandInfo.value == parameter.replace("--", "") }
-                        .apply { CommandUtil.cmdNotNull(this, parameter2) }
-
                 parameter.startsWith("-") -> cmds
                         .lastOrNull { it.commandInfo.alias.contains(parameter.replace("-", "")) }
                         .apply { CommandUtil.cmdNotNull(this, parameter2) }
 
-                else -> HelpCommand.printDefault()
+                else -> cmds.lastOrNull {
+                    val commandInfo = it.commandInfo
+                    commandInfo.alias.contains(parameter) || commandInfo.value == parameter
+                }.apply { CommandUtil.cmdNotNull(this, parameter2) }
             }
 
         } else HelpCommand.printDefault()
