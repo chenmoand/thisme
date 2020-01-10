@@ -12,5 +12,6 @@ fun main() {
         charStream().readLines().forEach(::print)
     }*/
     println(DateUtil.currentDate)
+    print(ThisCli.userFile)
 
 }

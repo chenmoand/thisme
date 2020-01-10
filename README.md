@@ -28,7 +28,7 @@ File -> open
 | [```thisboot```](./thisboot)                   | Springboot + WebFlux+ mongodb 项目 |
 | [```simple-react-app```](./simple-react-app)   | React 基础配置的脚手架             |
 | [```thisme-blog-react```](./thisme-blog-react) | React + Redux + Router ... 的项目  |
-| [```Ktmd```](./Ktmd)                           | 一个用kotlin写cli的小玩意          |
+| [```thiscli```](./Ktmd)                           | 一个用kotlin写cli的小玩意          |
 
 ###  指令列表
 
