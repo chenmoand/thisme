@@ -2,14 +2,10 @@
 
 package com.brageast.cli
 
-import com.brageast.cli.command.CreateMarkdownCommand
+import com.brageast.cli.CliConfig.CMDS
 import com.brageast.cli.command.HelpCommand
-import com.brageast.cli.command.InitializationCommand
-import com.brageast.cli.command.VersionCommand
-import com.brageast.cli.template.CommandTemplate
 import com.brageast.cli.util.CommandUtil
 import com.brageast.cli.util.toParameter
-import java.io.File
 
 fun main(args: Array<String>) {
     println("< -!ThisCli!- >")
@@ -17,31 +13,18 @@ fun main(args: Array<String>) {
 }
 
 object ThisCli {
-    const val version: String = "1.0.0"
-    const val configName = "thiscli.config.json"
-
-    val commands: Array<CommandTemplate> = arrayOf(
-            VersionCommand(), InitializationCommand(), HelpCommand,
-            CreateMarkdownCommand()
-    )
-    val cmds = CommandUtil.registerCommand()
-    // 获取当前cmd 输入的所在目录
-    @JvmStatic
-    val userPath: String = System.getProperty("user.dir")
-    val userFile = File(userPath)
-
     fun appInit(args: Array<String>) {
         if (args.isNotEmpty()) {
             val parameter = args[0]
             val parameters = args.toParameter()
             when {
-                parameter.startsWith("-") -> cmds
+                parameter.startsWith("-") -> CMDS
                         .lastOrNull { it.commandInfo.alias.contains(parameter.replace("-", "")) }
                         .apply { CommandUtil.cmdNotNull(this, *parameters) }
 
-                else -> cmds.lastOrNull {
+                else -> CMDS.lastOrNull {
                     val commandInfo = it.commandInfo
-                    commandInfo.alias.contains(parameter) || commandInfo.value == parameter
+                    commandInfo.alias.contains(parameter) || commandInfo.name == parameter
                 }.apply { CommandUtil.cmdNotNull(this, *parameters) }
             }
 

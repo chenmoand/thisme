@@ -7,7 +7,7 @@ annotation class Command(
         /**
          * 指令全名 例: --value
          */
-        val value: String,
+        val name: String,
         /**
          * 指令缩写 例: -v
          */

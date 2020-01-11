@@ -1,6 +1,6 @@
 package com.brageast.cli.util
 
-import com.brageast.cli.ThisCli
+import com.brageast.cli.CliConfig.COMMANDS
 import com.brageast.cli.annotations.Command
 import com.brageast.cli.command.HelpCommand
 import com.brageast.cli.entity.CMD
@@ -24,7 +24,7 @@ object CommandUtil {
 
     fun registerCommand(): List<CMD> {
         val cmds = ArrayList<CMD>()
-        for (command in ThisCli.commands) {
+        for (command in COMMANDS) {
             val findAnnotation: Command = findAnnotation(command)
             cmds.add(CMD(findAnnotation, command))
         }
