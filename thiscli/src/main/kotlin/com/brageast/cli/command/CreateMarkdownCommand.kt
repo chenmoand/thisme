@@ -16,8 +16,7 @@ class CreateMarkdownCommand : CommandTemplate {
                     val outFileUrl = "${DateUtil.currentDate}/${filename}.md"
                     val file = File(ThisCli.userFile, outFileUrl)
                     // 尝试创建所在目录
-                    file.parentFile?.run { if(!exists()) mkdirs() }
-
+                    file.parentFile?.run { if(!exists()) mkdirs() } ?: throw IllegalAccessError("创建文件夹错误")
                     if (file.createNewFile()) "-> 创建${outFileUrl}文件成功" else "-> 创建${outFileUrl}文件失败"
                 }
             }

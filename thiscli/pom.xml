@@ -65,7 +65,6 @@
                         </configuration>
                     </execution>
                 </executions>
-
             </plugin>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>

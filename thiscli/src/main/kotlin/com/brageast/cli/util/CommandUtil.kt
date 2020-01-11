@@ -34,3 +34,21 @@ object CommandUtil {
     fun cmdNotNull(cmd: CMD?, vararg parameters: String) =
             cmd?.run { commandTemplate.printOperation(*parameters) } ?: HelpCommand.printDefault()
 }
+
+fun Array<String>.toParameter(): Array<String> {
+    val arr = arrayListOf<String>()
+
+    if (this.isNotEmpty()) forEachIndexed { index: Int, str: String ->
+        if (index != 0) arr.add(str)
+    }
+
+    arr.addAll(listOf("") * 5)
+
+    return arr.slice(0..4).toTypedArray()
+}
+
+private operator fun <E> List<E>.times(i: Int): Collection<E> {
+    val arr = arrayListOf<E>()
+    for(o in 1..i) arr.addAll(this)
+    return arr
+}

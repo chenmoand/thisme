@@ -1,6 +1,6 @@
 package com.brageast.cli
 
-import com.brageast.cli.util.DateUtil
+import com.brageast.cli.util.toParameter
 
 fun main() {
     /*val JSON: MediaType = "application/json; charset=utf-8".toMediaType()
@@ -11,7 +11,8 @@ fun main() {
     execute.body?.run {
         charStream().readLines().forEach(::print)
     }*/
-    println(DateUtil.currentDate)
-    print(ThisCli.userFile)
+    val arrayOf = arrayOf("1", "2").toParameter()
+    arrayOf.forEach(::print)
+    println(arrayOf.size)
 
 }

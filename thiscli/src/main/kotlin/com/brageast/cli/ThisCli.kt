@@ -8,6 +8,7 @@ import com.brageast.cli.command.InitializationCommand
 import com.brageast.cli.command.VersionCommand
 import com.brageast.cli.template.CommandTemplate
 import com.brageast.cli.util.CommandUtil
+import com.brageast.cli.util.toParameter
 import java.io.File
 
 fun main(args: Array<String>) {
@@ -17,6 +18,7 @@ fun main(args: Array<String>) {
 
 object ThisCli {
     const val version: String = "1.0.0"
+    const val configName = "thiscli.config.json"
 
     val commands: Array<CommandTemplate> = arrayOf(
             VersionCommand(), InitializationCommand(), HelpCommand,
@@ -31,16 +33,16 @@ object ThisCli {
     fun appInit(args: Array<String>) {
         if (args.isNotEmpty()) {
             val parameter = args[0]
-            val parameter2 = if (args.size > 1) args[1] else ""
+            val parameters = args.toParameter()
             when {
                 parameter.startsWith("-") -> cmds
                         .lastOrNull { it.commandInfo.alias.contains(parameter.replace("-", "")) }
-                        .apply { CommandUtil.cmdNotNull(this, parameter2) }
+                        .apply { CommandUtil.cmdNotNull(this, *parameters) }
 
                 else -> cmds.lastOrNull {
                     val commandInfo = it.commandInfo
                     commandInfo.alias.contains(parameter) || commandInfo.value == parameter
-                }.apply { CommandUtil.cmdNotNull(this, parameter2) }
+                }.apply { CommandUtil.cmdNotNull(this, *parameters) }
             }
 
         } else HelpCommand.printDefault()
