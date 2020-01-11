@@ -23,10 +23,10 @@ object CommandUtil {
     }
 
     fun registerCommand(): List<CMD> {
-        val cmds = ArrayList<CMD>()
-        for (command in COMMANDS) {
-            val findAnnotation: Command = findAnnotation(command)
-            cmds.add(CMD(findAnnotation, command))
+        val cmds = arrayListOf<CMD>()
+        COMMANDS.forEach {
+            val findAnnotation: Command = findAnnotation(it)
+            cmds.add(CMD(findAnnotation, it))
         }
         return cmds.sortedBy { it.commandInfo.priority }
     }
@@ -38,9 +38,7 @@ object CommandUtil {
 fun Array<String>.toParameter(): Array<String> {
     val arr = arrayListOf<String>()
 
-    if (this.isNotEmpty()) forEachIndexed { index: Int, str: String ->
-        if (index != 0) arr.add(str)
-    }
+    if (this.isNotEmpty()) forEachIndexed { index: Int, str: String -> if (index != 0) arr.add(str) }
 
     arr.addAll(listOf("") * 5)
 

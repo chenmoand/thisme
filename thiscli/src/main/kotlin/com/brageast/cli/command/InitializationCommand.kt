@@ -16,7 +16,7 @@ class InitializationCommand : CommandTemplate {
                 val fileOutputStream = FileOutputStream(this)
                 ClassLoader.getSystemResourceAsStream(CONFIG_NAME)
                         ?.copyTo(fileOutputStream)
-                        ?: throw IllegalAccessError("jar包已损坏, 请重新下载")
+                        ?: throw IllegalAccessError("jar包已损坏, 请重新构建")
                 fileOutputStream.close()
                 return@run "-> <${CONFIG_NAME}> 初始化成功"
             }
