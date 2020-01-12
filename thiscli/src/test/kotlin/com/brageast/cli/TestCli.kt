@@ -1,7 +1,6 @@
 package com.brageast.cli
 
 import com.brageast.cli.util.FileUtil
-import com.brageast.cli.util.toJson
 
 fun main() {
     /*val JSON: MediaType = "application/json; charset=utf-8".toMediaType()
@@ -17,6 +16,8 @@ fun main() {
     arrayOf.forEach(::print)
     println(arrayOf.size)*/
 
-    println(FileUtil.configInfo.toJson())
+//    println("https://www.zhihu.com".toRequest().build().send())
+    print(FileUtil.configInfo)
+
 
 }

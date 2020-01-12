@@ -18,15 +18,14 @@ import java.util.*
 data class Article(@Id
                    @JsonSerialize(using = ToStringSerializer::class)
                    val articleId: ObjectId,
-                   var title: String? = null,
-                   var label: Array<String>? = null,
-                   var classify: String? = null,
-                   var describe: String? = null,
-                   var startDate: Date? = null,
-                   var upDate: Date? = null,
-                   var author: String? = null,
-                   var content: String? = null,
-                   var chick: Int? = null,
-//                   var replys: Array<Reply>? = null,
-                   var articleType: ArticleType? = null
+                   var title: String?,
+                   var label: Array<String>?,
+                   var classify: String?,
+                   var describe: String?,
+                   var startDate: Date?,
+                   var upDate: Date?,
+                   var author: String?,
+                   var content: String?,
+                   var chick: Int?,
+                   var articleType: ArticleType?
 )

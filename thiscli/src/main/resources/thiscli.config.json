@@ -1,6 +1,15 @@
 {
-  "url" : "http://127.0.0.0",
-  "port" : 8080,
-  "author" : "chenmo",
-  "token" : ""
+  "author": "chenmo",
+  "server": {
+    "url": "http://127.0.0.0",
+    "port": 8080,
+    "token": ""
+  },
+  "api": {
+    "base": "admin",
+    "add": "addArticle",
+    "remove": "removeArticle",
+    "update": "updateArticle",
+    "show": "showArticle"
+  }
 }
