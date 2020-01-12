@@ -4,7 +4,7 @@ import com.brageast.cli.CliConfig.CONFIG_FILE
 import com.brageast.cli.CliConfig.CONFIG_NAME
 import com.brageast.cli.entity.ConfigInfo
 
-object FileUtil {
+object ConfigUtil {
     val configInfo: ConfigInfo by lazy {
         if (!CONFIG_FILE.exists()) {
             println("-> [err] 配置文件未存在, 正在使用默认配置")

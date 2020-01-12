@@ -1,6 +1,11 @@
 package com.brageast.cli
 
-import com.brageast.cli.util.FileUtil
+import com.brageast.cli.entity.Article
+import com.brageast.cli.entity.ArticleType
+import com.brageast.cli.service.ArticleService
+import com.brageast.cli.service.impl.ArticleServiceImpl
+import com.brageast.cli.util.ConfigUtil
+import java.util.*
 
 fun main() {
     /*val JSON: MediaType = "application/json; charset=utf-8".toMediaType()
@@ -17,7 +22,8 @@ fun main() {
     println(arrayOf.size)*/
 
 //    println("https://www.zhihu.com".toRequest().build().send())
-    print(FileUtil.configInfo)
+    val articleService: ArticleService = ArticleServiceImpl
+    articleService.addArticle(Article("1","2", arrayOf("")," ", "", Date(), Date(),"", "", ArticleType.ORIGINAL))
 
 
 }

@@ -2,11 +2,20 @@ package com.brageast.cli.service.impl
 
 import com.brageast.cli.entity.Article
 import com.brageast.cli.service.ArticleService
-import com.brageast.cli.util.toJson
+import com.brageast.cli.util.*
+import com.brageast.cli.util.ConfigUtil.configInfo
 
-class ArticleServiceImpl: ArticleService {
+object ArticleServiceImpl : ArticleService {
+    private val simpleUrl = configInfo.simpleUrl()
+
     override fun addArticle(article: Article): Boolean {
-        article.toJson()
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val url = simpleUrl + configInfo.api.add
+        val response = url.toRequest()
+                .post(article.typeJsonRequestBody())
+                .build()
+                .send()
+        val fromJson = gson.fromJson<HashMap<String, Any>>(response)
+
+        return true
     }
 }
