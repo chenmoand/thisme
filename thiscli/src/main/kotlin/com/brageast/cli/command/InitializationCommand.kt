@@ -7,7 +7,7 @@ import com.brageast.cli.template.CommandTemplate
 import java.io.FileOutputStream
 
 @Command(name = "init", alias = ["i"], description = "初始化这个目录")
-class InitializationCommand : CommandTemplate {
+object InitializationCommand : CommandTemplate {
 
     override fun doOperation(vararg parameters: String): String = when (parameters[0]) {
         "help" -> "ktmd 对这个目录初始化"

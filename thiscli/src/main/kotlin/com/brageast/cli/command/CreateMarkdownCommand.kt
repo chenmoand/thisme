@@ -15,7 +15,7 @@ import java.io.File
 import java.util.*
 
 @Command(name = "create", alias = ["c"], description = "description 创建一个实时的markdown日志文件")
-class CreateMarkdownCommand : CommandTemplate {
+object CreateMarkdownCommand : CommandTemplate {
     override fun doOperation(vararg parameters: String): String =
             when (val filename = parameters[0]) {
                 "" -> "-> 未输入指定参数"

@@ -8,7 +8,7 @@ import java.io.IOException
 import java.util.*
 
 @Command(name = "deploy", alias = ["d"], description = "把文章推送到后台")
-class DeployCommand : CommandTemplate {
+object DeployCommand : CommandTemplate {
 
     override fun doOperation(vararg parameters: String): String =
             when (val pt = parameters[0]) {

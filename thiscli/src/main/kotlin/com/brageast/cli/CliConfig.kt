@@ -10,8 +10,8 @@ object CliConfig {
     const val INFO_NAME = "folder.info.json"
 
     val COMMANDS = arrayOf(
-            VersionCommand(), InitializationCommand(), HelpCommand,
-            CreateMarkdownCommand(), DeployCommand()
+            VersionCommand, InitializationCommand, HelpCommand,
+            CreateMarkdownCommand, DeployCommand
     ).registerCommand()
 
     // 获取当前cmd 输入的所在目录
