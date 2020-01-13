@@ -1,19 +1,19 @@
 package com.brageast.cli
 
 import com.brageast.cli.command.*
-import com.brageast.cli.template.CommandTemplate
-import com.brageast.cli.util.CommandUtil
+import com.brageast.cli.util.registerCommand
 import java.io.File
 
 object CliConfig {
     const val VERSION: String = "1.0.0"
     const val CONFIG_NAME = "thiscli.config.json"
+    const val INFO_NAME = "folder.info.json"
 
-    val COMMANDS: Array<CommandTemplate> = arrayOf(
+    val COMMANDS = arrayOf(
             VersionCommand(), InitializationCommand(), HelpCommand,
             CreateMarkdownCommand(), DeployCommand()
-    )
-    val CMDS = CommandUtil.registerCommand()
+    ).registerCommand()
+
     // 获取当前cmd 输入的所在目录
     @JvmStatic
     val USER_PATH: String = System.getProperty("user.dir")

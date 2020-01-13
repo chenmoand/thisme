@@ -1,6 +1,6 @@
 package com.brageast.cli.command
 
-import com.brageast.cli.CliConfig.CMDS
+import com.brageast.cli.CliConfig.COMMANDS
 import com.brageast.cli.annotations.Command
 import com.brageast.cli.template.CommandTemplate
 
@@ -11,7 +11,7 @@ object HelpCommand : CommandTemplate {
             when (val str: String = parameters[0]) {
                 "" -> {
                     val builder = StringBuilder()
-                    CMDS.forEach {
+                    COMMANDS.forEach {
                         val commandInfo = it.commandInfo
                         val als = commandInfo.alias.map { s -> "-$s" }.toString()
                         builder.append("* thiscli ")
@@ -26,7 +26,7 @@ object HelpCommand : CommandTemplate {
                     builder.toString()
                 }
                 "help" -> "-> 显示 <thiscli --help> 帮助信息 \n-> 食用方法 thiscli -h help"
-                else -> CMDS.findLast {
+                else -> COMMANDS.findLast {
                     it.commandInfo.alias.contains(str) || it.commandInfo.name.contains(str)
                 }?.run { commandTemplate.doOperation("help") } ?: "并未找到相关于${str}的帮助信息"
             }

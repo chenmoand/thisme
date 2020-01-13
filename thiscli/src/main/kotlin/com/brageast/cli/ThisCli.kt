@@ -2,9 +2,9 @@
 
 package com.brageast.cli
 
-import com.brageast.cli.CliConfig.CMDS
+import com.brageast.cli.CliConfig.COMMANDS
 import com.brageast.cli.command.HelpCommand
-import com.brageast.cli.util.CommandUtil
+import com.brageast.cli.util.notNull
 import com.brageast.cli.util.toParameter
 
 fun main(args: Array<String>) {
@@ -18,14 +18,19 @@ object ThisCli {
             val parameter = args[0]
             val parameters = args.toParameter()
             when {
-                parameter.startsWith("-") -> CMDS
-                        .lastOrNull { it.commandInfo.alias.contains(parameter.replace("-", "")) }
-                        .apply { CommandUtil.cmdNotNull(this, *parameters) }
+                parameter
+                        .startsWith("-") -> COMMANDS
+                        .lastOrNull {
+                            it.commandInfo.alias.contains(parameter.replace("-", ""))
+                        }
+                        .notNull(*parameters)
 
-                else -> CMDS.lastOrNull {
-                    val commandInfo = it.commandInfo
-                    commandInfo.alias.contains(parameter) || commandInfo.name == parameter
-                }.apply { CommandUtil.cmdNotNull(this, *parameters) }
+                else -> COMMANDS
+                        .lastOrNull {
+                            val commandInfo = it.commandInfo
+                            commandInfo.alias.contains(parameter) || commandInfo.name == parameter
+                        }
+                        .notNull(*parameters)
             }
 
         } else HelpCommand.printDefault()

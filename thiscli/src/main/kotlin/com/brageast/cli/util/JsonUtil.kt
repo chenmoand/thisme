@@ -3,8 +3,9 @@
 package com.brageast.cli.util
 
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 
-val gson: Gson by lazy { Gson() }
+val gson: Gson by lazy { GsonBuilder().setPrettyPrinting().create(); }
 
 inline fun <reified T: Any> Gson.fromJson(json: String): T = fromJson(json, T::class.java)
 /**
