@@ -2,7 +2,9 @@
 
 ![GitHub](https://img.shields.io/github/license/chenmoand/thisme)![GitHub last commit](https://img.shields.io/github/last-commit/chenmoand/thisme)![GitHub stars](https://img.shields.io/github/stars/chenmoand/thisme)
 
->  争取用最多的技术闸写我觉得有用的东西
+>  争取用最多的技术闸写我觉得有用的东西, oHHHH!!!!!!!!
+>
+>  里面所有代码和内容都由我 一人编写,  谁让我是个垃圾专科生, 莫得朋友来协助
 
 | 博客地址 | [```Chick Here```](https://new.brageast.com) |
 | :------: | :------------------------------------------: |
@@ -45,5 +47,3 @@ File -> open
 | [```update.md```](./doc/update.md) | 这个项目的更新记录 |
 | [```犯蠢记录.md```](./doc/犯蠢记录.md) | 如名字那样,就是犯蠢 |
 | [```recording.md```](./doc/recording.md) | 一个随手笔记的Markdown文件 |
-
-
