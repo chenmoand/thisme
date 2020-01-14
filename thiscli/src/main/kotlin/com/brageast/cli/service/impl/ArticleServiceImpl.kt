@@ -14,7 +14,7 @@ object ArticleServiceImpl : ArticleService {
                 .post(article.typeJsonRequestBody())
                 .build()
                 .send()
-        val fromJson = gson.fromJson<HashMap<String, Any>>(response)
+        val fromJson = IGson.fromJson<HashMap<String, Any>>(response)
 
         return true
     }

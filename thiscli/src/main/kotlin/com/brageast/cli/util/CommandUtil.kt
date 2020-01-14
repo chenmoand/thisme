@@ -4,6 +4,7 @@ import com.brageast.cli.command.HelpCommand
 import com.brageast.cli.entity.CMD
 import com.brageast.cli.exception.AnnotationNotfoundException
 import com.brageast.cli.template.CommandTemplate
+import java.util.*
 
 object CommandUtil {
 
@@ -24,18 +25,11 @@ fun CMD?.notNull(vararg parameters: String) = this?.commandTemplate?.printOperat
 
 fun Array<CommandTemplate>.registerCommand() = this.map { CMD(CommandUtil.findAnnotation(it), it) }.sortedBy { it.commandInfo.priority }
 
-fun Array<String>.toParameter(): Array<String> {
-    val arr = arrayListOf<String>()
+fun Array<String>.toParameter(): Array<String> = arrayListOf<String>().let {
+    if(this.isNotEmpty()) {
+        it.addAll(this.sliceArray(1 until this.size))
+    }
+    it.addAll(Collections.nCopies(5,""))
 
-    if (this.isNotEmpty()) forEachIndexed { index: Int, str: String -> if (index != 0) arr.add(str) }
-
-    arr.addAll(listOf("") * 5)
-
-    return arr.slice(0..4).toTypedArray()
-}
-
-private operator fun <E> List<E>.times(i: Int): Collection<E> {
-    val arr = arrayListOf<E>()
-    for (o in 1..i) arr.addAll(this)
-    return arr
+    return@let it.slice(0..4).toTypedArray()
 }

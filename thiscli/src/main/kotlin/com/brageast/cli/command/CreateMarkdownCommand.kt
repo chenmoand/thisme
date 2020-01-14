@@ -9,7 +9,7 @@ import com.brageast.cli.exception.FileNameSameException
 import com.brageast.cli.template.CommandTemplate
 import com.brageast.cli.util.DateUtil
 import com.brageast.cli.util.fromJson
-import com.brageast.cli.util.gson
+import com.brageast.cli.util.IGson
 import com.brageast.cli.util.toJson
 import java.io.File
 import java.util.*
@@ -19,7 +19,7 @@ object CreateMarkdownCommand : CommandTemplate {
     override fun doOperation(vararg parameters: String): String =
             when (val filename = parameters[0]) {
                 "" -> "-> 未输入指定参数"
-                "help" -> "-> 创建一个实时的markdown日志文件"
+                "help" -> "m-> 创建一个实时的markdown日志文件"
                 else -> {
                     val outFileUrl = "${DateUtil.currentDate}/${filename}.md"
                     val file = File(USER_FILE, outFileUrl)
@@ -32,12 +32,14 @@ object CreateMarkdownCommand : CommandTemplate {
                                 it.createNewFile()
                                 it.writeText(ArticlesInfo(DateUtil.currentDate, arrayListOf(ai)).toJson())
                             } else {
-                                val fromJson = gson.fromJson<ArticlesInfo>(it.readText())
-                                fromJson.articleInfos.let { ais ->
-                                    if (ais.map(ArticleInfo::articleTitle).contains(filename)) throw FileNameSameException("文件${filename}名称相同, 无法创建")
+                                val oldInfo = IGson.fromJson<ArticlesInfo>(it.readText())
+                                oldInfo.articleInfos.let { ais ->
+                                    if (ais.map(ArticleInfo::articleTitle).contains(filename)) {
+                                        throw FileNameSameException("文件${filename}名称相同, 无法创建")
+                                    }
                                     ais.add(ai)
                                 }
-                                it.writeText(fromJson.toJson())
+                                it.writeText(oldInfo.toJson())
                             }
                         }
                     } ?: throw IllegalAccessError("创建文件夹错误")

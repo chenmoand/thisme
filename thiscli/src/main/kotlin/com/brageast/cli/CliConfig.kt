@@ -8,7 +8,7 @@ object CliConfig {
     const val VERSION: String = "1.0.0"
     const val CONFIG_NAME = "thiscli.config.json"
     const val INFO_NAME = "folder.info.json"
-
+    @JvmStatic
     val COMMANDS = arrayOf(
             VersionCommand, InitializationCommand, HelpCommand,
             CreateMarkdownCommand, DeployCommand
@@ -17,6 +17,8 @@ object CliConfig {
     // 获取当前cmd 输入的所在目录
     @JvmStatic
     val USER_PATH: String = System.getProperty("user.dir")
+    @JvmStatic
     val USER_FILE = File(USER_PATH)
+    @JvmStatic
     val CONFIG_FILE = File(USER_FILE, CONFIG_NAME)
 }

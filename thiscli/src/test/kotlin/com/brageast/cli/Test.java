@@ -7,5 +7,6 @@ public class Test {
         /*final Request build = AjaxUtilKt.toRequest("https://www.zhihu.com").build();
         System.out.println(AjaxUtilKt.send(build));*/
         System.out.println("sdasd".substring(1));
+
     }
 }
