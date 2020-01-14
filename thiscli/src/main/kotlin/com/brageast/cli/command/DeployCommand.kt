@@ -13,8 +13,11 @@ object DeployCommand : CommandTemplate {
 
     override fun doOperation(vararg parameters: String): String =
             when (val pt = parameters[0]) {
+
                 "help" -> "-> thiscli deploy 发送文章"
+
                 "now" -> TODO("暂未完成")
+
                 else -> let {
                     val scanner = Scanner(System.`in`)
                     val tabs = USER_FILE
@@ -26,7 +29,7 @@ object DeployCommand : CommandTemplate {
                         return "-> 并未找到合适的目录"
                     }
                     tabs.forEachIndexed(formatPrint)
-
+                    //获得相关的文件
                     val files = tabs[scanner + "选择一个发布所在的文件夹(序号): "]
                             .toListFile()
                             .filter(File::isFile)
@@ -37,8 +40,9 @@ object DeployCommand : CommandTemplate {
                     }
                     files.forEachIndexed(formatPrint)
 
-                    val selectFile = files[scanner + "选择你要发布的文件(序号): "]
+                    val deployFile = files[scanner + "选择你要发布的文件(序号): "].readText()
 
+                    scanner.close()
                     ""
                 }
             }

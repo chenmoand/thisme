@@ -26,9 +26,12 @@ object HelpCommand : CommandTemplate {
                     builder.toString()
                 }
                 "help" -> "-> 显示 <thiscli --help> 帮助信息 \n-> 食用方法 thiscli -h help"
-                else -> COMMANDS.findLast {
-                    it.commandInfo.alias.contains(str) || it.commandInfo.name.contains(str)
-                }?.run { commandTemplate.doOperation("help") } ?: "并未找到相关于${str}的帮助信息"
+                else -> COMMANDS
+                        .findLast {
+                            it.commandInfo.alias.contains(str) || it.commandInfo.name.contains(str)
+                        }
+                        ?.commandTemplate?.doOperation("help", parameters[2], parameters[3], parameters[4])
+                        ?: "-> 并未找到相关于${str}的帮助信息"
             }
 
 
