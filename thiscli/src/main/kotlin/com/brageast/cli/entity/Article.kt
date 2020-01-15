@@ -4,7 +4,7 @@ import com.brageast.cli.util.ConfigUtil.configInfo
 import java.util.*
 
 data class Article(
-        val articleId: String? = null,
+        var articleId: String? = null,
         var title: String? = null,
         var label: List<String>? = null,
         var classify: String? = null,
