@@ -7,14 +7,14 @@ import com.brageast.cli.util.ConfigUtil.configInfo
 
 object ArticleServiceImpl : ArticleService {
 
-    override fun addArticle(article: Article): Boolean {
+    override fun Article.insert(): String? {
         val url = configInfo.doURL { it.add }
         val response = url.toRequest()
-                .post(article.typeJsonRequestBody())
+                .post(this.typeJsonRequestBody())
                 .build()
                 .send()
-        val fromJson = IGson.fromJson<HashMap<String, Any>>(response)
+//        val fromJson = IGson.fromJson<HashMap<String, Any>>(response)
 
-        return true
+        return null
     }
 }

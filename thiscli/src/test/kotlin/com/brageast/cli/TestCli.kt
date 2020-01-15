@@ -1,12 +1,5 @@
 package com.brageast.cli
 
-import com.brageast.cli.entity.Article
-import com.brageast.cli.entity.ArticleType
-import com.brageast.cli.service.ArticleService
-import com.brageast.cli.service.impl.ArticleServiceImpl
-import com.brageast.cli.util.ConfigUtil
-import java.util.*
-
 fun main() {
     /*val JSON: MediaType = "application/json; charset=utf-8".toMediaType()
     val client = OkHttpClient()
@@ -22,8 +15,19 @@ fun main() {
     println(arrayOf.size)*/
 
 //    println("https://www.zhihu.com".toRequest().build().send())
-    val articleService: ArticleService = ArticleServiceImpl
-    articleService.addArticle(Article("1","2", arrayOf("")," ", "", Date(), Date(),"", "", ArticleType.ORIGINAL))
+//    val articleService: ArticleService = ArticleServiceImpl
+//    articleService.addArticle(Article("1","2", arrayOf("")," ", "", Date(), Date(),"", "", ArticleType.ORIGINAL))
 
-
+    val testCli = TestCli()
+    K(testCli)
+    print(testCli)
 }
+
+fun K(tc: TestCli)  {
+    tc.test()
+}
+
+fun TestCli.test() {
+    name = "asdasd"
+}
+data class TestCli(var name:String? = null)

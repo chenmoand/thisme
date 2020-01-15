@@ -22,7 +22,7 @@ class ArticleServiceImpl : ArticleService {
 
     /**
      * 因为这个肯定有 ReactiveMongoTemplate 这个类
-     * 所以用lateinit var 修饰, 比较双!!号也是麻烦
+     * 所以用 lateinit var 修饰, 比较双!!号也是麻烦
      */
     @Autowired
     lateinit var reactiveMongoTemplate: ReactiveMongoTemplate
@@ -49,7 +49,7 @@ class ArticleServiceImpl : ArticleService {
     }
 
     override fun delete(id: ObjectId): Mono<DeleteResult> {
-        return reactiveMongoTemplate.remove(doId(id.toString()), Article::class.java)
+        return reactiveMongoTemplate.remove(id.toId(), Article::class.java)
     }
 
     override fun update(article: Article): Mono<UpdateResult> {
@@ -60,16 +60,13 @@ class ArticleServiceImpl : ArticleService {
         )
         update.set("upDate", Date())
 
-        return reactiveMongoTemplate.updateFirst(doId(article.articleId.toString()), update, Article::class.java)
+        return reactiveMongoTemplate.updateFirst(article.articleId.toId(), update, Article::class.java)
     }
 
     override fun findById(articleId: ObjectId): Mono<Article> {
-        return reactiveMongoTemplate.findOne(doId(articleId.toString()), Article::class.java)
+        return reactiveMongoTemplate.findOne(articleId.toId(), Article::class.java)
     }
 
-    private fun doId(id: String): Query {
-        return Query.query(
-                Criteria().and("articleId").`is`(id)
-        )
-    }
+    private fun ObjectId.toId():Query = Query.query(Criteria().and("articleId").`is`(this.toString()))
+
 }

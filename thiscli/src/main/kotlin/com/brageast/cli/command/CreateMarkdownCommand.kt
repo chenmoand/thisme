@@ -3,18 +3,17 @@ package com.brageast.cli.command
 import com.brageast.cli.CliConfig.INFO_NAME
 import com.brageast.cli.CliConfig.USER_FILE
 import com.brageast.cli.annotations.Command
-import com.brageast.cli.entity.ArticleInfo
+import com.brageast.cli.entity.Article
 import com.brageast.cli.entity.ArticlesInfo
 import com.brageast.cli.exception.FileNameSameException
 import com.brageast.cli.template.CommandTemplate
 import com.brageast.cli.util.DateUtil
-import com.brageast.cli.util.fromJson
 import com.brageast.cli.util.IGson
+import com.brageast.cli.util.fromJson
 import com.brageast.cli.util.toJson
 import java.io.File
-import java.util.*
 
-@Command(name = "create", alias = ["c"], description = "description 创建一个实时的markdown日志文件")
+@Command(name = "create", alias = ["c"], description = "label classify description 创建一个实时的markdown日志文件")
 object CreateMarkdownCommand : CommandTemplate {
     override fun doOperation(vararg parameters: String): String =
             when (val filename = parameters[0]) {
@@ -27,21 +26,32 @@ object CreateMarkdownCommand : CommandTemplate {
                     file.parentFile?.apply {
                         if (!exists()) mkdirs()
                         File(this, INFO_NAME).let {
-                            val ai = ArticleInfo(null, filename, parameters[1], Date())
+
+                            val ai = Article(
+                                    title = filename,
+                                    label = parameters[1].split(","),
+                                    classify = parameters[2],
+                                    describe = parameters[3]
+                            )
+
                             if (!it.exists()) {
                                 it.createNewFile()
                                 it.writeText(ArticlesInfo(DateUtil.currentDate, arrayListOf(ai)).toJson())
-                            } else {
+                            }
+
+                            else {
                                 val oldInfo = IGson.fromJson<ArticlesInfo>(it.readText())
-                                oldInfo.articleInfos.let { ais ->
-                                    if (ais.map(ArticleInfo::articleTitle).contains(filename)) {
+                                oldInfo.articleInfos.also { ais ->
+                                    if (ais.map(Article::title).contains(filename)) {
                                         throw FileNameSameException("文件${filename}名称相同, 无法创建")
                                     }
                                     ais.add(ai)
                                 }
                                 it.writeText(oldInfo.toJson())
                             }
+
                         }
+
                     } ?: throw IllegalAccessError("创建文件夹错误")
                     if (file.createNewFile()) "-> 创建${outFileUrl}文件成功" else "-> 创建${outFileUrl}文件失败"
                 }

@@ -2,7 +2,11 @@ package com.brageast.cli.util
 
 import com.brageast.cli.CliConfig.CONFIG_FILE
 import com.brageast.cli.CliConfig.CONFIG_NAME
+import com.brageast.cli.CliConfig.INFO_NAME
+import com.brageast.cli.CliConfig.USER_FILE
+import com.brageast.cli.entity.ArticlesInfo
 import com.brageast.cli.entity.ConfigInfo
+import java.io.File
 import java.io.FileNotFoundException
 
 object ConfigUtil {
@@ -17,5 +21,10 @@ object ConfigUtil {
             )
         }
         return@lazy IGson.fromJson<ConfigInfo>(CONFIG_FILE.readText())
+    }
+    fun getFoloderInfo(data: String): ArticlesInfo {
+        val file = File(USER_FILE, "${data}/${INFO_NAME}")
+        if (!file.exists()) throw FileNotFoundException(INFO_NAME + "文件不存在")
+        return IGson.fromJson(file.readText())
     }
 }

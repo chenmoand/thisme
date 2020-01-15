@@ -13,9 +13,11 @@ fun main(args: Array<String>) {
     ThisCli.appInit(args)
 }
 
-private fun Array<String>.ifNotEmpty(callback: Array<String>.() -> Unit) = if (isNotEmpty()) callback(this) else HelpCommand.printDefault()
 
 object ThisCli {
+
+    private fun Array<String>.ifNotEmpty(callback: Array<String>.() -> Unit) = if (isNotEmpty()) callback(this) else HelpCommand.printDefault()
+
     fun appInit(args: Array<String>) {
         args.ifNotEmpty {
             val parameters = this.toParameter()

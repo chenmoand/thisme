@@ -9,7 +9,7 @@ import org.springframework.boot.runApplication
 @SpringBootApplication
 class ThisbootApplication
 
-private val log: Logger = LoggerFactory.getLogger(ThisbootApplication::class.java)
+val log: Logger = getLogger<ThisbootApplication>()
 
 /**
  * 19/12/31 原先java 代码替换为kotlin
@@ -21,3 +21,5 @@ fun main(args: Array<String>) {
     runApplication<ThisbootApplication>(*args)
     log.info("代码托管于 https://github.com/chenmoand/thisme")
 }
+
+inline fun <reified T> getLogger(): Logger = LoggerFactory.getLogger(T::class.java)

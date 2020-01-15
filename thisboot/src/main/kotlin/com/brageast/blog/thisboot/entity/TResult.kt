@@ -1,25 +1,29 @@
 package com.brageast.blog.thisboot.entity
 
-import com.brageast.blog.thisboot.entity.enums.TState
-import reactor.core.publisher.Flux
-import reactor.core.publisher.Mono
 
-
-data class TResult<T> (
+data class TResult<T>(
         val result: TState,
         val message: String,
         var data: T? = null
-) {
+)
 
-    companion object {
+enum class TState constructor(val code: Int) {
+    //成功
+    SUCCESS(200),
 
-        fun <T> ofMono(result: TState, message: String, data: T): Mono<TResult<T>> {
-            return Mono.just(TResult(result, message, data))
-        }
+    //失败
+    FAIL(400),
 
-        fun <T> ofFlux(result: TState, message: String, data: T): Flux<TResult<T>> {
-            return Flux.just(TResult(result, message, data))
-        }
-    }
+    //错误
+    FALSE(404),
+
+    //token过期
+    EXPIRED(401),
+
+    //无权限
+    NOPERMISSION(403),
+
+    //内部错误
+    ERROR(500)
 }
 
