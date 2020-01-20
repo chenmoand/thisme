@@ -58,6 +58,7 @@ class ArticleServiceImpl : ArticleService {
                 article, "title", "label", "classify",
                 "describe", "author", "content", "chick"
         )
+
         update.set("upDate", Date())
 
         return reactiveMongoTemplate.updateFirst(article.articleId.toId(), update, Article::class.java)
