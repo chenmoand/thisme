@@ -1,5 +1,8 @@
 package com.brageast.cli
 
+import java.lang.reflect.AccessibleObject
+import java.lang.reflect.Member
+
 fun main() {
     /*val JSON: MediaType = "application/json; charset=utf-8".toMediaType()
     val client = OkHttpClient()
@@ -20,14 +23,28 @@ fun main() {
 
     val testCli = TestCli()
     K(testCli)
+//    val ( name ) = User("sad")
+
     print(testCli)
+
 }
 
 fun K(tc: TestCli)  {
     tc.test()
 }
 
+
+
 fun TestCli.test() {
     name = "asdasd"
 }
 data class TestCli(var name:String? = null)
+
+class Fbb<T> (val type: T) where T: Member, T: AccessibleObject {
+
+    fun he() {
+//        type.declaredAnnotations.
+    }
+
+
+}

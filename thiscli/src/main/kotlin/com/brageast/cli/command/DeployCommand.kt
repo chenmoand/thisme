@@ -20,14 +20,14 @@ object DeployCommand : CommandTemplate {
 
                 "now" -> TODO("暂未完成")
 
-                else -> let {
+                else -> run {
                     val scanner = Scanner(System.`in`)
 
                     // 一个返回方法, 我不知道kotlin'会不会自动关Scanner
                     // 这样写防止到处return 不明意义的东西
-                    fun Back(callback: () -> String): String {
+                    fun Back(msg: String): String {
                         scanner.close()
-                        return callback()
+                        return msg
                     }
 
                     val tabs = USER_FILE
@@ -35,7 +35,7 @@ object DeployCommand : CommandTemplate {
                             .filter(File::isDirectory)
                             .filter { Pattern.compile("\\d{4}-\\d{2}-\\d{2}").matcher(it.name).find() }
 
-                    if (tabs.isEmpty()) return@let Back { "-> 并未找到合适的目录" }
+                    if (tabs.isEmpty()) return@run Back("-> 并未找到合适的目录")
 
                     tabs.forEachIndexed(formatPrint)
                     //获得相关的文件
@@ -44,14 +44,14 @@ object DeployCommand : CommandTemplate {
                             .filter(File::isFile)
                             .filter { it.name.endsWith(".md", true) }
 
-                    if (files.isEmpty()) return@let Back { "-> 并未找到合适的文件" }
+                    if (files.isEmpty()) return@run Back("-> 并未找到合适的文件")
 
                     files.forEachIndexed(formatPrint)
 
-                    return@let files[scanner + "选择你要发布的文件(序号): "].run {
+                    return@run files[scanner + "选择你要发布的文件(序号): "].run {
                         val date = this.parentFile.name
                         val foloderInfo = ConfigUtil.getFoloderInfo(name)
-                        if (foloderInfo.date != date) return@run Back { "-> 文件所在目录与配置文件日期不相等" }
+                        if (foloderInfo.date != date) return Back("-> 文件所在目录与配置文件日期不相等")
 
                         val fileName = name.substring(0..name.length - 4)
                         val article = foloderInfo
@@ -63,10 +63,8 @@ object DeployCommand : CommandTemplate {
 
 
 
-
-                        return Back { "QWQ" }
+                        return Back("QWQ")
                     }
-
                 }
             }
 }
