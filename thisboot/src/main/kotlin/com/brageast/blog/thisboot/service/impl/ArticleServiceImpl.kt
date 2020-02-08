@@ -2,19 +2,20 @@ package com.brageast.blog.thisboot.service.impl
 
 import com.brageast.blog.thisboot.entity.Article
 import com.brageast.blog.thisboot.service.ArticleService
-import com.brageast.blog.thisboot.util.setToEntity
+import com.brageast.blog.thisboot.util.toJSON
+import com.brageast.blog.thisboot.util.toQueryById
 import com.mongodb.client.result.UpdateResult
-import org.bson.types.ObjectId
+import org.bson.Document
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate
-import org.springframework.data.mongodb.core.query.Criteria
 import org.springframework.data.mongodb.core.query.Query
 import org.springframework.data.mongodb.core.query.Update
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.util.*
+
 
 @Service
 class ArticleServiceImpl : ArticleService {
@@ -35,28 +36,20 @@ class ArticleServiceImpl : ArticleService {
         return reactiveMongoTemplate.find(Query().with(PageRequest.of(page - 1, size)), Article::class.java)
     }
 
-    override fun insert(article: Mono<Article>): Mono<Article> {
-        return reactiveMongoTemplate.insert(article)
-    }
-
     override fun insert(article: Article): Mono<Article> {
         return reactiveMongoTemplate.insert(article)
     }
 
-    override fun update(article: Article): Mono<UpdateResult> {
+    override fun update(article: Article): Mono<UpdateResult> = article.run {
+        val parse = Document.parse(this.toJSON())
 
-        val update = Update().setToEntity(
-                article,
-                "title", "label", "classify",
-                "describe", "author", "content", "chick"
-        )
+        val update = Update.fromDocument(
+                parse, "articleId", "update", "startDate", "chick"
+        ).set("upDate", Date())
 
-        update.set("upDate", Date())
+        val query = articleId?.toQueryById("articleId") ?: return@run Mono.just(UpdateResult.unacknowledged())
 
-        return reactiveMongoTemplate.updateFirst(article.articleId.toId(), update, Article::class.java)
+        return reactiveMongoTemplate.updateFirst(query, update, Article::class.java)
     }
-
-
-    private fun ObjectId.toId(): Query = Query.query(Criteria().and("articleId").`is`(this.toString()))
 
 }

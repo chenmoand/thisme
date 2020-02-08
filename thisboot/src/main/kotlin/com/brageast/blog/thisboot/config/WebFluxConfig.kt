@@ -2,17 +2,16 @@ package com.brageast.blog.thisboot.config
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
-import org.springframework.web.reactive.config.EnableWebFlux
-import org.springframework.web.reactive.config.WebFluxConfigurer
-import org.springframework.web.reactive.result.method.annotation.ArgumentResolverConfigurer
-import org.thymeleaf.spring5.view.reactive.ThymeleafReactiveViewResolver
-import org.springframework.web.reactive.resource.VersionResourceResolver
-import org.springframework.web.reactive.resource.EncodedResourceResolver
-import java.util.concurrent.TimeUnit
 import org.springframework.http.CacheControl
+import org.springframework.web.reactive.config.EnableWebFlux
 import org.springframework.web.reactive.config.ResourceHandlerRegistry
 import org.springframework.web.reactive.config.ViewResolverRegistry
-
+import org.springframework.web.reactive.config.WebFluxConfigurer
+import org.springframework.web.reactive.resource.EncodedResourceResolver
+import org.springframework.web.reactive.resource.VersionResourceResolver
+import org.springframework.web.reactive.result.method.annotation.ArgumentResolverConfigurer
+import org.thymeleaf.spring5.view.reactive.ThymeleafReactiveViewResolver
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -22,7 +21,7 @@ import org.springframework.web.reactive.config.ViewResolverRegistry
  */
 @EnableWebFlux
 @Configuration
-class WebFluxConfig: WebFluxConfigurer {
+class WebFluxConfig : WebFluxConfigurer {
 
     @Autowired(required = false)
     lateinit var thymeleafReactiveViewResolver: ThymeleafReactiveViewResolver

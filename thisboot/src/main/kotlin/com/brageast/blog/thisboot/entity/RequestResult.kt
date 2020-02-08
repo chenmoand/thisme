@@ -1,13 +1,13 @@
 package com.brageast.blog.thisboot.entity
 
 
-data class TResult<T>(
-        val result: TState,
+data class RequestResult<T> (
+        val state: ResultState = ResultState.SUCCESS,
         val message: String,
-        var data: T? = null
+        val data: T? = null
 )
 
-enum class TState constructor(val code: Int) {
+enum class ResultState constructor(val code: Int) {
     //成功
     SUCCESS(200),
 

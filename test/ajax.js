@@ -1,7 +1,6 @@
 const axios = require('axios');
 
-axios.put('http://127.0.0.1:8080/updateArticle',   {
-    articleId: "5dcd4149093b0e65c89c9841",
+axios.post('http://127.0.0.1:8080/addArticle',   {
     author: "chenmo",
     chick: 0,
     classify: "java",

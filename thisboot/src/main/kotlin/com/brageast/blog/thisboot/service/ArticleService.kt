@@ -10,8 +10,6 @@ import reactor.core.publisher.Mono
 interface ArticleService {
     fun limitShow(page: Int, size: Int): Flux<Article>
 
-    fun insert(article: Mono<Article>): Mono<Article>
-
     fun insert(article: Article): Mono<Article>
 
     fun update(article: Article): Mono<UpdateResult>

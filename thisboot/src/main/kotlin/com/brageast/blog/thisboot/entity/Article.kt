@@ -18,18 +18,18 @@ import java.util.*
 @Document(collection = "article")
 data class Article(@MongoId
                    @JsonSerialize(using = ToStringSerializer::class)
-                   val articleId: ObjectId,
+                   val articleId: ObjectId?,
                    var title: String?,
-                   var label: List<String> = listOf(),
+                   var label: List<String>? = emptyList(),
                    var classify: String?,
                    var describe: String?,
                    var startDate: Date?,
-                   var upDate: Date?,
+                   var update: Date?,
                    var author: String?,
                    var content: String?,
-                   var chick: Int,
-                   var articleType: ArticleType?,
-                   var replys: List<Reply> = listOf()
+                   var chick: Int? = 0,
+                   var articleType: ArticleType? = ArticleType.ORIGINAL,
+                   var replys: List<Reply>? = emptyList()
 )
 
 enum class ArticleType {
@@ -46,5 +46,5 @@ data class Reply(
         var upDate: Date?,
         var content: String?,
         // 嵌套回复
-        var replys: List<Reply> = listOf()
+        var replys: List<Reply>? = emptyList()
 )
