@@ -14,11 +14,6 @@ interface ArticleService {
 
     fun insert(article: Article): Mono<Article>
 
-    fun show(): Flux<Article>
-
-    fun delete(id: ObjectId): Mono<DeleteResult>
-
     fun update(article: Article): Mono<UpdateResult>
 
-    fun findById(articleId: ObjectId): Mono<Article>
 }

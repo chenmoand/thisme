@@ -17,6 +17,7 @@ import java.util.*
  */
 @Document(collection = "article")
 data class Article(@MongoId
+                   @JsonSerialize(using = ToStringSerializer::class)
                    val articleId: ObjectId,
                    var title: String?,
                    var label: List<String> = listOf(),
@@ -26,7 +27,7 @@ data class Article(@MongoId
                    var upDate: Date?,
                    var author: String?,
                    var content: String?,
-                   var chick: Int?,
+                   var chick: Int,
                    var articleType: ArticleType?,
                    var replys: List<Reply> = listOf()
 )
@@ -40,8 +41,6 @@ enum class ArticleType {
  * 回复
  */
 data class Reply(
-        @Id
-        @JsonSerialize(using = ToStringSerializer::class)
         var name: String?,
         var startDate: Date?,
         var upDate: Date?,

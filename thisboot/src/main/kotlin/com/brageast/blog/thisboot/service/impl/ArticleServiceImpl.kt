@@ -2,8 +2,7 @@ package com.brageast.blog.thisboot.service.impl
 
 import com.brageast.blog.thisboot.entity.Article
 import com.brageast.blog.thisboot.service.ArticleService
-import com.brageast.blog.thisboot.util.EntityUtil
-import com.mongodb.client.result.DeleteResult
+import com.brageast.blog.thisboot.util.setToEntity
 import com.mongodb.client.result.UpdateResult
 import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
@@ -44,18 +43,11 @@ class ArticleServiceImpl : ArticleService {
         return reactiveMongoTemplate.insert(article)
     }
 
-    override fun show(): Flux<Article> {
-        return reactiveMongoTemplate.findAll(Article::class.java)
-    }
-
-    override fun delete(id: ObjectId): Mono<DeleteResult> {
-        return reactiveMongoTemplate.remove(id.toId(), Article::class.java)
-    }
-
     override fun update(article: Article): Mono<UpdateResult> {
 
-        val update = EntityUtil.addUpdate(
-                article, "title", "label", "classify",
+        val update = Update().setToEntity(
+                article,
+                "title", "label", "classify",
                 "describe", "author", "content", "chick"
         )
 
@@ -64,10 +56,7 @@ class ArticleServiceImpl : ArticleService {
         return reactiveMongoTemplate.updateFirst(article.articleId.toId(), update, Article::class.java)
     }
 
-    override fun findById(articleId: ObjectId): Mono<Article> {
-        return reactiveMongoTemplate.findOne(articleId.toId(), Article::class.java)
-    }
 
-    private fun ObjectId.toId():Query = Query.query(Criteria().and("articleId").`is`(this.toString()))
+    private fun ObjectId.toId(): Query = Query.query(Criteria().and("articleId").`is`(this.toString()))
 
 }

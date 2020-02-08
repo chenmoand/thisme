@@ -1,22 +1,14 @@
 package com.brageast.blog.thisboot.controller
 
 import com.brageast.blog.thisboot.entity.Article
+import com.brageast.blog.thisboot.repository.ArticleRepository
 import com.brageast.blog.thisboot.service.ArticleService
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.bind.annotation.RequestBody
 import com.mongodb.client.result.UpdateResult
-import reactor.core.publisher.Mono
-import org.springframework.web.bind.annotation.PutMapping
-import com.mongodb.client.result.DeleteResult
 import org.bson.types.ObjectId
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.RequestParam
-import reactor.core.publisher.Flux
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.beans.factory.annotation.Autowired
-
+import org.springframework.web.bind.annotation.*
+import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 
 @RestController
@@ -26,36 +18,28 @@ class ArticleController {
     @Autowired
     lateinit var articleService: ArticleService
 
+    @Autowired
+    lateinit var articleRepository: ArticleRepository
+
+
     @GetMapping("/getAllArticle")
-    fun getAllArticle(): Flux<Article> {
-        return articleService.show()
-    }
+    fun getAllArticle(): Flux<Article> = articleRepository.findAll()
 
     @GetMapping("/getArticle")
-    fun getArticle(articleId: ObjectId): Mono<Article> {
-        return articleService.findById(articleId)
-    }
+    fun getArticle(articleId: ObjectId): Mono<Article> = articleRepository.findById(articleId)
 
     @PostMapping("/addArticle")
-    fun addArticle(@RequestBody article: Article): Mono<Boolean> {
-        return articleService.insert(article)
-                .log()
-                .hasElement()
-    }
+    fun addArticle(@RequestBody article: Article): Mono<Boolean> = articleService.insert(article).log().hasElement()
+
 
     @GetMapping("/getPageArticle")
     fun getPageArticle(@RequestParam(defaultValue = "1") page: Int,
-                       @RequestParam(defaultValue = "10") size: Int): Flux<Article> {
-        return articleService.limitShow(page, size)
-    }
+                       @RequestParam(defaultValue = "10") size: Int): Flux<Article> = articleService.limitShow(page, size)
+
 
     @DeleteMapping("/deleteArticle")
-    fun deleteArticle(id: ObjectId): Mono<DeleteResult> {
-        return articleService.delete(id)
-    }
+    fun deleteArticle(id: ObjectId): Mono<Void> = articleRepository.deleteById(id)
 
     @PutMapping("/updateArticle")
-    fun updateArticle(@RequestBody article: Article): Mono<UpdateResult> {
-        return articleService.update(article)
-    }
+    fun updateArticle(@RequestBody article: Article): Mono<UpdateResult> = articleService.update(article)
 }
