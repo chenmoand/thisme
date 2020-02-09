@@ -11,8 +11,9 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 
-@RestController
 @CrossOrigin
+@RestController
+@RequestMapping("/api")
 class ArticleController {
 
     @Autowired
@@ -22,24 +23,24 @@ class ArticleController {
     lateinit var articleRepository: ArticleRepository
 
 
-    @GetMapping("/getAllArticle")
+    @GetMapping("/articles")
     fun getAllArticle(): Flux<Article> = articleRepository.findAll()
 
-    @GetMapping("/getArticle")
-    fun getArticle(articleId: ObjectId): Mono<Article> = articleRepository.findById(articleId)
+    @GetMapping("/articles/pagination")
+    fun getPageArticle(@RequestParam(defaultValue = "1") page: Int,
+                       @RequestParam(defaultValue = "10") size: Int
+    ): Flux<Article> = articleService.limitShow(page, size)
 
-    @PostMapping("/addArticle")
+    @GetMapping("/articles/{articleId}")
+    fun getArticle(@PathVariable articleId: ObjectId): Mono<Article> = articleRepository.findById(articleId)
+
+    @PostMapping("/articles")
     fun addArticle(@RequestBody article: Article): Mono<Boolean> = articleService.insert(article).log().hasElement()
 
 
-    @GetMapping("/getPageArticle")
-    fun getPageArticle(@RequestParam(defaultValue = "1") page: Int,
-                       @RequestParam(defaultValue = "10") size: Int): Flux<Article> = articleService.limitShow(page, size)
+    @DeleteMapping("/articles/{id}")
+    fun deleteArticle(@PathVariable id: ObjectId): Mono<Void> = articleRepository.deleteById(id)
 
-
-    @DeleteMapping("/deleteArticle")
-    fun deleteArticle(id: ObjectId): Mono<Void> = articleRepository.deleteById(id)
-
-    @PutMapping("/updateArticle")
+    @PutMapping("/articles")
     fun updateArticle(@RequestBody article: Article): Mono<UpdateResult> = articleService.update(article)
 }
