@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-axios.post('http://127.0.0.1:8080/addArticle',   {
+axios.post('http://127.0.0.1:8080/api/articles',   {
     author: "chenmo",
     chick: 0,
     classify: "java",

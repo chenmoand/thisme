@@ -28,10 +28,6 @@ const TopMenu: React.FC<TopMenuProps> = props => {
                  order={webType ? 0 : 1}
             >
                 <div style={{marginTop: 6, height: 48}}>
-                    <Avatar src={"https://avatars2.githubusercontent.com/u/37534392"}
-                            style={{float: "left"}}
-                            alt={"CM"}
-                    />
                     <Popover
                         trigger={"hover"}
                         title={"你居然发现了彩蛋"}
@@ -46,7 +42,7 @@ const TopMenu: React.FC<TopMenuProps> = props => {
                             </span>
                         }
                     >
-                        <div className={"avatar-name"}>chenmo</div>
+                        <div className={"avatar-name"}>Chenmo`s</div>
                     </Popover>
                 </div>
             </Col>
@@ -109,6 +105,9 @@ const ThisMenu: React.FC<ThisMenuProps> = props => {
         <Menu
             mode={"horizontal"}
             overflowedIndicator={<Icon type="switcher"/>}
+            style={{
+                borderBottom: "none"
+            }}
         >
             {routes.map(({name, path}, index) => {
                 return (
