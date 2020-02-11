@@ -24,10 +24,9 @@ const Assert: React.FC<AssertProps> = props => {
             case "object":
                 if (typeof index == "number") {
                     let tx = text as [];
-                    if (tx.length > 0 && tx.length > index) {
-                        return tx[index];
-                    }
-                    return doEmpty;
+
+                    return (tx.length > 0 && tx.length > index) ? tx[index] : doEmpty;
+
                 } else if (typeof index === "undefined") {
                     return text || doEmpty;
                 }

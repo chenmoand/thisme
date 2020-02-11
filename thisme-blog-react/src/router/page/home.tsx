@@ -2,7 +2,7 @@ import * as React from "react";
 import "@/assets/style/home.less"
 import AppTest from "@/test/app-test";
 import BodySyle from "@/component/body-style";
-import {LablCard, MyselfCard} from "@/component/i-card";
+import {LabelCard, MyselfCard} from "@/component/i-card";
 
 interface HomeProps {
 
@@ -21,8 +21,8 @@ const Home: React.FC<HomeProps> = props => {
                 right={
                     <>
                         <MyselfCard />
-                        <LablCard  src={null}/>
-                        <LablCard  src={null}/>
+                        <LabelCard src={null}/>
+                        <LabelCard src={null}/>
                     </>
                 }
             />

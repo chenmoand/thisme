@@ -3,12 +3,14 @@ import * as React from "react";
 import {useState} from "react";
 import {Skeleton} from "antd";
 import {RouteComponentProps, useParams} from "react-router";
+
 import {Article, BaseProps} from "@/util/PropsUtil";
 import {CompleteArticle} from "@/component/article-list";
 import BodySyle from "@/component/body-style";
-import {setRequestUrl} from "@/util/ApiUrl";
 import {connect} from "react-redux";
 import {doErr} from "@/util/LogUtil";
+
+import server from "@/assets/json/server.json";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps {
@@ -25,7 +27,7 @@ const Article$: React.FC<ArticleProps> = props => {
     const [loding, setLoding] = useState(true);
     (currentArticle && id === currentArticle.articleId) ?
     setLoding(false) :
-    axios.get(setRequestUrl(`getArticle?articleId=${id}`))
+    axios.get(`${server.address}/articles/${id}`)
         .then(({data}) => {
             // 确保后端发送数据不为空
             data && setCurrentArticle(data);

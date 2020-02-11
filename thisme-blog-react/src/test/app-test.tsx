@@ -19,12 +19,12 @@ const article: Article = {
         replyId: "demo",
         name: "祁凯", // 姓名
         startDate: new Date(), // 发布日期
-        upDate: new Date(), // 更新日期
+        update: new Date(), // 更新日期
         content: "java", // 内容
     }],
     startDate: new Date(),
     title: "我乃上将祁凯可斩上将华雄 | NICE TO NE",
-    upDate: new Date(),
+    update: new Date(),
     articleType: "ORIGINAL",
 };
 

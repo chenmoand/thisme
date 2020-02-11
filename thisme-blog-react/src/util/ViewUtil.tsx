@@ -1,4 +1,4 @@
-import {WebType} from "../redux/reducers/IndexReducer";
+import {WebType} from "@/redux/reducers/index-reducer";
 import {ArticleType} from "./PropsUtil";
 
 /**

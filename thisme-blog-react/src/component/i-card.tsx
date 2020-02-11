@@ -28,13 +28,13 @@ export const MyselfCard: React.FC<BaseProps> = props => {
                     <img alt={"背景"} src={crooped}/>
                 }
                 actions={
-                    listToComponent(CardActions, data => {
-                        return(
+                    listToComponent(CardActions, data =>
+                        (
                             <a href={data.href}>
                                 <Icon type={data.type}></Icon>
                             </a>
                         )
-                    })
+                    )
                 }
             >
                 <Meta
@@ -50,16 +50,16 @@ export const MyselfCard: React.FC<BaseProps> = props => {
 };
 
 
-interface LablCardProps extends BaseProps{
+interface LabelCardProps extends BaseProps{
     src : string[]
 }
 
-export const LablCard: React.FC<LablCardProps> = props => {
+export const LabelCard: React.FC<LabelCardProps> = props => {
 
     const {className, style} = props;
 
     return (
-        <div className={"card-lable"}>
+        <div className={"card-label"}>
             <Card
                 className={className}
                 style={style}

@@ -1,18 +1,20 @@
 import axios from "axios";
 import {Map} from "immutable";
 import * as React from "react";
+import * as moment from "moment";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
 import {Divider, Pagination, Tag} from "antd";
+
 import Assert from "@/util/Assert";
-import {setRequestUrl} from "@/util/ApiUrl";
 import {doArticleType} from "@/util/ViewUtil";
 import {articlePath} from "@/util/RouterUtil";
 import {Article, BaseProps, PageArticle} from "@/util/PropsUtil";
 import Wait from "./wait";
 import Item from "./item";
 import Markdown from "./editor/markdown-edit";
-import * as moment from "moment";
+
+import server from "@/assets/json/server.json";
 
 
 const {useEffect, useState} = React;
@@ -126,7 +128,7 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
         setClick(true);
         // TODO 暂时使用setRequestUrl方法
         articles && axios
-            .get(setRequestUrl(`getPageArticle?page=${currentPage}&size=10`))
+            .get(`${server.address}/articles?page=${currentPage}&size=10`)
             .then(res => {
                 const {data} = res;
                 data && setPageArticle({

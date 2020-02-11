@@ -4,8 +4,8 @@ import {viewSize} from "@/util/ViewUtil";
 import {Avatar, Button, Col, Icon, Input, Menu, Popover, Row} from "antd";
 import {NavLink} from "react-router-dom";
 import "@/assets/style/menu.less"
-import {WebType} from "@/redux/reducers/IndexReducer";
-import {Route, RouteState} from "@/redux/reducers/RouteReducer";
+import {WebType} from "@/redux/reducers/index-reducer";
+import {Route, RouteState} from "@/redux/reducers/route-reducer";
 
 
 interface TopMenuProps {

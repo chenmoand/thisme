@@ -10,8 +10,8 @@ import * as moment from 'moment';
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 
-moment.locale('zh-cn'); // 设置为中文
-
+ // 设置为中文
+moment.locale('zh-cn');
 /**
  * 系统URL默认以/的 方式
  * @author chenmo

@@ -2,9 +2,9 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from "redux-devtools-extension";
 import {createLogger} from 'redux-logger'
-import IndexReducer from "./reducers/IndexReducer";
-import ArticleReducer from "./reducers/ArticleReducer";
-import RouteReducer from "./reducers/RouteReducer";
+import IndexReducer from "./reducers/index-reducer";
+import ArticleReducer from "./reducers/article-reducer";
+import RouteReducer from "./reducers/route-reducer";
 
 const reducers = {
     indexReducer: IndexReducer,

@@ -18,7 +18,7 @@ const Item: React.FC<ItemProps> = props => {
     } = props;
 
     return (
-        <span className={`thime-itme ${className}`} style={{
+        <span className={`thime-item ${className}`} style={{
             ...style
         }}>
             <span style={
