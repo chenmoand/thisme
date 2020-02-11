@@ -19,7 +19,11 @@ const TopMenu: React.FC<TopMenuProps> = props => {
     const {webType, setWebType, routes} = props;
     return (
         <Row
-            style={{height: 48, backgroundColor: "#FFF",}}
+            style={{
+                height: 48, backgroundColor: "#FFF",
+                borderBottom: "1px solid #e8e8e8"
+
+            }}
             type={"flex"}
             justify={"start"}
         >
