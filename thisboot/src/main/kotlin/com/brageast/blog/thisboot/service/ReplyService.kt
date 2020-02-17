@@ -5,5 +5,5 @@ import org.bson.types.ObjectId
 import reactor.core.publisher.Flux
 
 interface ReplyService {
-    fun findByArticleId(articleId: ObjectId): Flux<Reply>
+
 }

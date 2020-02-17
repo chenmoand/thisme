@@ -22,6 +22,10 @@ class ArticleController {
     @Autowired
     lateinit var articleRepository: ArticleRepository
 
+    fun test() {
+
+        articleRepository
+    }
 
     @GetMapping("/articles")
     fun getAllArticle(): Flux<Article> = articleRepository.findAll()
@@ -42,5 +46,5 @@ class ArticleController {
     fun deleteArticle(@PathVariable id: ObjectId): Mono<Void> = articleRepository.deleteById(id)
 
     @PutMapping("/articles")
-    fun updateArticle(@RequestBody article: Article): Mono<UpdateResult> = articleService.update(article)
+    fun updateArticle(@RequestBody article: Article): Mono<Article> = articleRepository.save(article)
 }

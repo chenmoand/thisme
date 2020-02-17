@@ -12,6 +12,6 @@ interface ArticleService {
 
     fun insert(article: Article): Mono<Article>
 
-    fun update(article: Article): Mono<UpdateResult>
+//    fun update(article: Article): Mono<UpdateResult>
 
 }

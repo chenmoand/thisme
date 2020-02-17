@@ -40,7 +40,7 @@ class ArticleServiceImpl : ArticleService {
         return reactiveMongoTemplate.insert(article)
     }
 
-    override fun update(article: Article): Mono<UpdateResult> = article.run {
+    /*override fun update(article: Article): Mono<UpdateResult> = article.run {
         val parse = Document.parse(this.toJSON())
 
         val update = Update.fromDocument(
@@ -50,6 +50,6 @@ class ArticleServiceImpl : ArticleService {
         val query = articleId?.toQueryById("articleId") ?: return@run Mono.just(UpdateResult.unacknowledged())
 
         return reactiveMongoTemplate.updateFirst(query, update, Article::class.java)
-    }
+    }*/
 
 }
