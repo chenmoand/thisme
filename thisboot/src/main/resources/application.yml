@@ -8,3 +8,5 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://chenmo:chenmoand@cluster0-jbhpo.mongodb.net/test?retryWrites=true&w=majority
+
+debug: true
