@@ -37,14 +37,14 @@ class ArticleServiceImpl : ArticleService {
      * @return
      */
     override fun findWithPagination(page: Int, size: Int): Flux<Article> {
-        return if(size <= 0 || page < 0) Flux.empty() else articleRepository.findBy(PageRequest.of(page - 1, size))
+        return if(size <= 0 || page < 0) Flux.empty() else articleRepository.findAllBy(PageRequest.of(page - 1, size))
     }
 
     override fun insert(article: Article): Mono<Article> {
         return reactiveMongoTemplate.insert(article)
     }
 
-    override fun updateOrInsert(article: Article) = articleRepository.save(article)
+    override fun updateOrInsert(article: Article): Mono<Article> = articleRepository.save(article)
 
     override fun findById(id: ObjectId): Mono<Article> = articleRepository.findById(id)
 

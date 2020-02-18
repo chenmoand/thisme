@@ -1,19 +1,28 @@
 package com.brageast.blog.thisboot
 
+import com.brageast.blog.thisboot.service.ArticleService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import reactor.core.publisher.Flux
 
 @SpringBootTest
 class ThisbootApplicationTests {
 
+    val log = getLogger<ThisbootApplicationTests>()
+
     @Autowired
-    lateinit var articleService: TestArticleService
+    lateinit var articleService: ArticleService
 
     @Test
     fun contextLoads() {
-
-        articleService.findAll().subscribe(::print)
+        // 免费的MongoDb 太慢了, 慢到Flux 都不打印
+        val all = articleService.findAll()
+        all.doOnError{
+            log.error(it.message, it)
+        }.subscribe(::print)
+        Flux.just(1,3,4,5,6).subscribe(::println)
+//        println(all.blockLast())
     }
 
 }

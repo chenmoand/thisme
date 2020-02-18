@@ -7,6 +7,5 @@ import org.springframework.data.repository.reactive.ReactiveSortingRepository
 import reactor.core.publisher.Flux
 
 interface ArticleRepository : ReactiveSortingRepository<Article, ObjectId> {
-
-    fun findBy(pageable: Pageable): Flux<Article>
+    fun findAllBy(pageable: Pageable): Flux<Article>
 }

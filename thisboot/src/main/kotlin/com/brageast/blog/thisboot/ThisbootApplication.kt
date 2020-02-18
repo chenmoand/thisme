@@ -14,7 +14,7 @@ val log: Logger = getLogger<ThisbootApplication>()
 
 /**
  * 19/12/31 原先java 代码替换为kotlin
- *          要敢于刚新东西, 自己收获了 才是真的,
+ *          要敢于刚新东西, 自己收获了才是真的,
  */
 fun main(args: Array<String>) {
     runApplication<ThisbootApplication>(*args)
