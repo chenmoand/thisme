@@ -13,18 +13,10 @@ import reactor.core.publisher.Mono
 
 
 @Service
-class ArticleServiceImpl : ArticleService {
-
-    /**
-     * 因为这个肯定有 ReactiveMongoTemplate 这个类
-     * 所以用 lateinit var 修饰, 比较双!!号也是麻烦
-     */
-    @Autowired
-    lateinit var reactiveMongoTemplate: ReactiveMongoTemplate
-
-    @Autowired
-    lateinit var articleRepository: ArticleRepository
-
+class ArticleServiceImpl (
+    val articleRepository: ArticleRepository,
+    val reactiveMongoTemplate: ReactiveMongoTemplate
+) : ArticleService {
 
     override fun findAll(): Flux<Article> = articleRepository.findAll()
     /**
@@ -40,9 +32,7 @@ class ArticleServiceImpl : ArticleService {
         return if(size <= 0 || page < 0) Flux.empty() else articleRepository.findAllBy(PageRequest.of(page - 1, size))
     }
 
-    override fun insert(article: Article): Mono<Article> {
-        return reactiveMongoTemplate.insert(article)
-    }
+    override fun insert(article: Article): Mono<Article> = reactiveMongoTemplate.insert(article)
 
     override fun updateOrInsert(article: Article): Mono<Article> = articleRepository.save(article)
 
@@ -54,8 +44,6 @@ class ArticleServiceImpl : ArticleService {
         val objectId = ObjectId(id)
         return articleRepository.findById(objectId)
     }
-
-
 
     /*override fun update(article: Article): Mono<UpdateResult> = article.run {
         val parse = Document.parse(this.toJSON())

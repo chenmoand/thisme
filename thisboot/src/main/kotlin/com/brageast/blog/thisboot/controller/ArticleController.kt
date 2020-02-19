@@ -16,11 +16,9 @@ import reactor.core.publisher.Mono
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-class ArticleController {
-
-    @Autowired
-    lateinit var articleService: ArticleService
-
+class ArticleController (
+        val articleService: ArticleService
+) {
     @GetMapping("/articles")
     fun getAllArticle(): Flux<Article> = articleService.findAll()
 

@@ -21,11 +21,10 @@ import java.util.concurrent.TimeUnit
  */
 @EnableWebFlux
 @Configuration
-class WebFluxConfig : WebFluxConfigurer {
-
-    @Autowired(required = false)
-    lateinit var thymeleafReactiveViewResolver: ThymeleafReactiveViewResolver
-
+class WebFluxConfig(
+        val thymeleafReactiveViewResolver: ThymeleafReactiveViewResolver
+) : WebFluxConfigurer {
+    
     override fun configureArgumentResolvers(configurer: ArgumentResolverConfigurer) {
         configurer.addCustomResolver()
     }
