@@ -6,7 +6,10 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
 import org.springframework.security.config.web.server.ServerHttpSecurity
+import org.springframework.security.core.userdetails.ReactiveUserDetailsService
+import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.web.server.SecurityWebFilterChain
+import reactor.core.publisher.Mono
 
 @Configuration
 @EnableWebFluxSecurity
@@ -21,18 +24,18 @@ class SecurityConfig {
      */
     @Bean
     fun securityWebFilterChain(http: ServerHttpSecurity) : SecurityWebFilterChain {
-        // 关闭默认的配置
-        http.csrf().disable()
+        //TODO 暂时先放行全部
+        return http.csrf().disable()
                 .formLogin().disable()
                 .httpBasic().disable()
-        //TODO 暂时先放行全部
-        http.authorizeExchange()
+                .authorizeExchange()
                 .matchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
                 .pathMatchers("/**")
                 .permitAll()
-
-        return http.build()
+                .and().build();
     }
+
+
 
 }

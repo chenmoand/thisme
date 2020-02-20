@@ -4,13 +4,12 @@ import com.brageast.blog.thisboot.entity.Article
 import com.brageast.blog.thisboot.repository.ArticleRepository
 import com.brageast.blog.thisboot.service.ArticleService
 import org.bson.types.ObjectId
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-
 
 @Service
 class ArticleServiceImpl (
@@ -32,12 +31,15 @@ class ArticleServiceImpl (
         return if(size <= 0 || page < 0) Flux.empty() else articleRepository.findAllBy(PageRequest.of(page - 1, size))
     }
 
+    @Transactional
     override fun insert(article: Article): Mono<Article> = reactiveMongoTemplate.insert(article)
 
+    @Transactional
     override fun updateOrInsert(article: Article): Mono<Article> = articleRepository.save(article)
 
     override fun findById(id: ObjectId): Mono<Article> = articleRepository.findById(id)
 
+    @Transactional
     override fun deleteById(id: ObjectId): Mono<Void> = articleRepository.deleteById(id)
 
     override fun findById(id: String): Mono<Article> {

@@ -19,7 +19,7 @@ data class Article(@MongoId
                    @JsonSerialize(using = ToStringSerializer::class)
                    val articleId: ObjectId?,
                    var title: String?,
-                   var label: List<String>? = emptyList(),
+                   var label: List<String> = emptyList(),
                    var classify: String?,
                    var describe: String?,
                    var startDate: Date?,
@@ -28,7 +28,7 @@ data class Article(@MongoId
                    var content: String?,
                    var chick: Int? = 0,
                    var articleType: ArticleType? = ArticleType.ORIGINAL,
-                   var replys: List<Reply>? = emptyList()
+                   var replys: List<Reply> = emptyList()
 )
 
 enum class ArticleType {
@@ -45,5 +45,5 @@ data class Reply(
         var upDate: Date?,
         var content: String?,
         // 嵌套回复
-        var replys: List<Reply>? = emptyList()
+        var replys: List<Reply> = emptyList()
 )

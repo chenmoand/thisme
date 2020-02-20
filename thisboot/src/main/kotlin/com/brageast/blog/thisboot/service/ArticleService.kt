@@ -2,6 +2,7 @@ package com.brageast.blog.thisboot.service
 
 import com.brageast.blog.thisboot.entity.Article
 import org.bson.types.ObjectId
+import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
