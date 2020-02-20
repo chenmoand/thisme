@@ -57,7 +57,7 @@ class AverageTest {
         Thread.sleep(4000L)
         val d2 = Date() // 大
 
-        println(d1.after(d2))
+        println(d1.before(d2))
 
     }
 

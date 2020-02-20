@@ -8,7 +8,6 @@ spring:
     check-template: false
   data:
     mongodb:
-      # 为了Config类可以识别
       database: test
       uri: mongodb+srv://chenmo:chenmoand@cluster0-jbhpo.mongodb.net/test?retryWrites=true&w=majority
   jpa:

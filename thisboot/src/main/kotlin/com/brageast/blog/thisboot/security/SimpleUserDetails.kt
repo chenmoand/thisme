@@ -5,11 +5,11 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
-class SimpleUserDetails (val user: User) : UserDetails {
+class SimpleUserDetails(val user: User) : UserDetails {
 
-    private val isExpired: Boolean = Unit.let lambda@ {
-        val accountExpiredTime = user.accountExpiredTime ?: return@lambda false
-        return@lambda user.joinTime.after(accountExpiredTime)
+    private val isNotExpired: Boolean = Unit.let lambda@{
+        val accountExpiredTime = user.accountExpiredTime ?: return@lambda true
+        return@lambda user.joinTime.before(accountExpiredTime)
     }
 
     private val isNotBan = !user.ban
@@ -20,11 +20,11 @@ class SimpleUserDetails (val user: User) : UserDetails {
 
     override fun getUsername(): String = user.name
 
-    override fun isCredentialsNonExpired(): Boolean = isExpired
+    override fun isCredentialsNonExpired(): Boolean = isNotExpired
 
     override fun getPassword(): String = user.password
 
-    override fun isAccountNonExpired(): Boolean = isExpired
+    override fun isAccountNonExpired(): Boolean = isNotExpired
 
     override fun isAccountNonLocked(): Boolean = isNotBan
 

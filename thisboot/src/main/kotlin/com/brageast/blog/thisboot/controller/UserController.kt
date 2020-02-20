@@ -15,13 +15,16 @@ class UserController(
     @GetMapping(value = ["/users"])
     fun getAllUser() = userService.findAll()
 
+    @GetMapping(value = ["/users/{id}"])
+    fun getUserById(@PathVariable id: ObjectId) = userService.findById(id)
+
     @PostMapping(value = ["/users"])
     fun addUser(user: User) = userService.insert(user)
 
     @PutMapping(value = ["/users"])
     fun updateUser(user: User) = userService.update(user)
 
-    @DeleteMapping(value = ["/users"])
-    fun deleteByUserId(id: ObjectId) = userService.deleteById(id)
+    @DeleteMapping(value = ["/users/{id}"])
+    fun deleteByUserId(@PathVariable id: ObjectId) = userService.deleteById(id)
 
 }
