@@ -12,7 +12,7 @@ import java.util.*
 data class User(
         @MongoId
         @JsonSerialize(using = ToStringSerializer::class)
-        val userId: ObjectId?,
+        val userId: ObjectId? = null,
         @Indexed(unique = true, name = "name")
         var name: String,
         var password: String,

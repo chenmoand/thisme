@@ -19,6 +19,7 @@ moment.locale('zh-cn');
 const App:React.FC = () => {
     whiteLogo();
     return(
+        // @ts-ignore
         <Configuration
             domain={"new.brageast.com"}
         >

@@ -21,16 +21,18 @@ class SecurityConfig {
      */
     @Bean
     fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
-        //TODO 暂时先放行全部
-        return http.csrf().disable()
-                .formLogin().disable()
+        // csrf 有待测试, 并没有前后端分离的考虑
+        // 后端是前端的载物, 如果IP多个的话在尝试关掉 csrf
+         http.csrf().and()
+                .formLogin().and()
                 .httpBasic().disable()
                 .authorizeExchange()
                 .matchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
+                // TODO 暂时先放行全部
                 .pathMatchers("/**")
                 .permitAll()
-                .and().build();
+        return http.build();
     }
 
 

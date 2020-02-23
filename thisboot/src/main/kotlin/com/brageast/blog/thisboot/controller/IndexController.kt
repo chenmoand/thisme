@@ -12,7 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping
  */
 @Controller
 class IndexController {
-    @GetMapping(value = ["/", "/index.html", "/index", "/about/**", "/update/**", "/article/**", "/directory/**"])
+    @GetMapping(
+            value = [
+                "/", "/index.html", "/index", "/about/**",
+                "/update/**", "/article/**", "/directory/**", "/error"
+            ]
+    )
     fun doIndex(): Mono<String> {
         return Mono.just("index.html")
     }
