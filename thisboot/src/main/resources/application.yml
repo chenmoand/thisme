@@ -1,5 +1,7 @@
 debug: false
 spring:
+  devtools:
+    add-properties: false
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
@@ -14,3 +16,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+logging:
+  level:
+    web: DEBUG
