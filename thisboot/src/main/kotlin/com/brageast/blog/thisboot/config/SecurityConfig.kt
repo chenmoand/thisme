@@ -32,6 +32,9 @@ class SecurityConfig {
         authorizeExchange()
                 .matchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
+                .pathMatchers("/**")
+                .permitAll()
+
 
 
         build()
