@@ -1,8 +1,10 @@
 package com.brageast.blog.thisboot
 
+import com.brageast.blog.thisboot.entity.HttpResult
 import com.brageast.blog.thisboot.entity.User
 import com.brageast.blog.thisboot.service.ArticleService
 import com.brageast.blog.thisboot.service.UserService
+import com.brageast.blog.thisboot.util.basalObjectMapper
 import com.brageast.blog.thisboot.util.loggerOf
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -59,6 +61,15 @@ class ThisbootApplicationTests {
 
 
 class AverageTest {
+
+    val log = loggerOf<AverageTest>()
+
+    @Test
+    fun onSer() {
+        val httpResult = HttpResult(message = "成功", data = "哈哈哈哈")
+        val json = basalObjectMapper.writeValueAsString(httpResult)
+        log.info(json)
+    }
 
     @Test
     fun onDate() {

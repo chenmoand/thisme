@@ -20,20 +20,21 @@ class SecurityConfig {
      * @return https://docs.spring.io/spring-boot/docs/2.2.0.RELEASE/reference/htmlsingle/#boot-features-security-webflux
      */
     @Bean
-    fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
+    fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain = http.run {
         // csrf 有待测试, 并没有前后端分离的考虑
         // 后端是前端的载物, 如果IP多个的话在尝试关掉 csrf
-         http.csrf().and()
-                .formLogin().and()
-                .httpBasic().disable()
-                .authorizeExchange()
+        csrf()
+        formLogin()
+        logout()
+        httpBasic().disable()
+        // TODO 暂时先放行全部
+        authorizeExchange()
                 .matchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
-                // TODO 暂时先放行全部
                 .pathMatchers("/**")
                 .permitAll()
-        return http.build();
-    }
 
+        build()
+    }
 
 }

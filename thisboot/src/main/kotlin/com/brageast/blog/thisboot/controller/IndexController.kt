@@ -1,8 +1,8 @@
 package com.brageast.blog.thisboot.controller
 
 import org.springframework.stereotype.Controller
-import reactor.core.publisher.Mono
 import org.springframework.web.bind.annotation.GetMapping
+import reactor.core.publisher.Mono
 
 
 /**

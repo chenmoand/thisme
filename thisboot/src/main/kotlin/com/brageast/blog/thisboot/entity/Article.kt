@@ -17,7 +17,7 @@ import java.util.*
 @Document(collection = "article")
 data class Article(@MongoId
                    @JsonSerialize(using = ToStringSerializer::class)
-                   val articleId: ObjectId?,
+                   val articleId: ObjectId? = null,
                    var title: String?,
                    var label: List<String> = emptyList(),
                    var classify: String?,

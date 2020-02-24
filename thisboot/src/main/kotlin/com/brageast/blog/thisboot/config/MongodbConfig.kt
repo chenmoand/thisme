@@ -12,14 +12,11 @@ class MongodbConfig(
         val mongoProperties: MongoProperties,
         val mongoClient: MongoClient
 ) : AbstractReactiveMongoConfiguration() {
+
     override fun reactiveMongoClient(): MongoClient = mongoClient
 
     override fun getDatabaseName(): String = mongoProperties.database
 
-    /**
-     * 我现在不知道这个的意思,
-     * spring 提示我需要重写一下,
-     * 来关掉烦人的警告. QWQ
-     */
     override fun autoIndexCreation(): Boolean = false
+
 }

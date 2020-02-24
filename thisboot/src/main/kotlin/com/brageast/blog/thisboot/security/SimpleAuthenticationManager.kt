@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.ReactiveUserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 class SimpleAuthenticationManager {
+
     @Bean
     fun simpleReactiveUserDetailsService(userRepository: UserRepository): ReactiveUserDetailsService = SimpleReactiveUserDetailsService(userRepository)
 

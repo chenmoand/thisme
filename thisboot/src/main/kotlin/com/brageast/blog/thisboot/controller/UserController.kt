@@ -3,11 +3,13 @@ package com.brageast.blog.thisboot.controller
 import com.brageast.blog.thisboot.entity.User
 import com.brageast.blog.thisboot.service.UserService
 import org.bson.types.ObjectId
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
+@PreAuthorize("hasAnyAuthority('ADMIN')")
 class UserController(
         val userService: UserService
 ) {

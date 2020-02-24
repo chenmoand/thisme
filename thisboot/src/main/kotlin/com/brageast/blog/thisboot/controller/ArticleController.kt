@@ -8,6 +8,7 @@ import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -31,12 +32,15 @@ class ArticleController (
     fun getArticle(@PathVariable articleId: ObjectId): Mono<Article> = articleService.findById(articleId)
 
     @PostMapping("/articles")
-    fun addArticle(@RequestBody article: Article): Mono<Article> = articleService.insert(article).log()
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    fun addArticle(@RequestBody article: Article): Mono<Article> = articleService.insert(article)
 
 
     @DeleteMapping("/articles/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     fun deleteArticle(@PathVariable id: ObjectId): Mono<Void> = articleService.deleteById(id)
 
     @PutMapping("/articles")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     fun updateArticle(@RequestBody article: Article): Mono<Article> = articleService.updateOrInsert(article)
 }
