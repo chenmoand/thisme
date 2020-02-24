@@ -3,6 +3,7 @@ package com.brageast.blog.thisboot.controller
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import reactor.core.publisher.Mono
+import javax.annotation.security.PermitAll
 
 
 /**
@@ -11,6 +12,7 @@ import reactor.core.publisher.Mono
  * @author chenmo
  */
 @Controller
+@PermitAll
 class IndexController {
     @GetMapping(
             value = [

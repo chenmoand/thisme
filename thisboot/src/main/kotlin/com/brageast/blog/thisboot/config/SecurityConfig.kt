@@ -27,12 +27,12 @@ class SecurityConfig {
         formLogin()
         logout()
         httpBasic().disable()
-        // TODO 暂时先放行全部
+
+        // 通过注解方式来进行权限验证
         authorizeExchange()
                 .matchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
-                .pathMatchers("/**")
-                .permitAll()
+
 
         build()
     }
