@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono
 class UserServiceImpl(
         val userRepository: UserRepository,
         val bCryptPasswordEncoder: BCryptPasswordEncoder
-): UserService {
+) : UserService {
 
     override fun findAll() = userRepository.findAll()!!
 

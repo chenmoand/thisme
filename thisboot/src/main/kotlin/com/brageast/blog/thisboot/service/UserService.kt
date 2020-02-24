@@ -8,9 +8,7 @@ import reactor.core.publisher.Mono
 interface UserService {
 
     fun insert(user: User): Mono<User>
-
     fun update(user: User): Mono<User>
-
     fun deleteById(objectId: ObjectId): Mono<Void>
     fun findAll(): Flux<User>
     fun findById(objectId: ObjectId): Mono<User>
