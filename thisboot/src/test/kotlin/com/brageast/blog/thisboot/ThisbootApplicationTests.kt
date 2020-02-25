@@ -34,6 +34,7 @@ class ThisbootApplicationTests {
 
     }*/
 
+
     @Autowired
     lateinit var articleService: ArticleService
 
@@ -53,7 +54,7 @@ class ThisbootApplicationTests {
     @Test
     fun onAddUser() {
         val user = userService.findByName("chenmo").block()
-
+//        val (userId, name, password, email, joinTime, accountExpiredTime, authorities, ban) = userService.findByName("chenmo").block()
 
         val insert = userService.insert(User(userId = user?.userId,name = "chenmo", password = "chenmo", email = "2010557767@qq.com", authorities = setOf("ADMIN")))
         val block = insert.block()

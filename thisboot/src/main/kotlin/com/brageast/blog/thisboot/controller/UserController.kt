@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-@PreAuthorize("hasAnyAuthority('ADMIN')")
 class UserController(
         val userService: UserService
 ) {
@@ -24,8 +23,10 @@ class UserController(
     fun addUser(user: User) = userService.insert(user)
 
     @PutMapping(value = ["/users"])
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     fun updateUser(user: User) = userService.update(user)
 
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @DeleteMapping(value = ["/users/{id}"])
     fun deleteByUserId(@PathVariable id: ObjectId) = userService.deleteById(id)
 
