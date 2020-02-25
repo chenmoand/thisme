@@ -12,7 +12,7 @@ class SimpleReactiveUserDetailsService(
 ) : ReactiveUserDetailsService {
 
     // TODO 没有缓存, 暂时用HashMap当作缓存, 用户删除可会出现问题
-    private val userDetailsMap = ConcurrentHashMap<String, UserDetails>(32)
+    private val userDetailsMap by lazy { ConcurrentHashMap<String, UserDetails>(32) }
 
     override fun findByUsername(username: String): Mono<UserDetails> {
         var userDetails: UserDetails = userDetailsMap[username]

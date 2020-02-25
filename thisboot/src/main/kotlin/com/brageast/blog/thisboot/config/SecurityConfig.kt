@@ -23,8 +23,9 @@ class SecurityConfig {
     fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain = http.run {
         // csrf 有待测试, 并没有前后端分离的考虑
         // 后端是前端的载物, 如果IP多个的话在尝试关掉 csrf
-        csrf()
-        formLogin()
+        csrf().disable()
+        formLogin().loginPage("/login")
+
         logout()
         httpBasic().disable()
 

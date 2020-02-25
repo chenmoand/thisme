@@ -16,6 +16,22 @@ const delDirAllFile = (path) => {
 };
 
 
+/**
+ * 只删除这个目录下的文件
+ *
+ * @param path
+ */
+const delDirFile = (path) => {
+    fs.existsSync(path) && (
+        fs.readdirSync(path).forEach(file => {
+            let curPath = `${path}/${file}`;
+            console.log(`正在清理: ${curPath}`);
+            fs.statSync(curPath).isFile() && fs.unlinkSync(curPath);
+        })
+    )
+};
+
+
 const getFileName = (str) => path.parse(str).base;
 
 /**
@@ -33,7 +49,7 @@ inindex = inindex.map(str => `${infile}/${str}`);
 
 
 //删除文件所有文件
-delDirAllFile(gofile);
+delDirFile(gofile);
 
 const doErr = (err) => err && console.log(err);
 const doCopy = (IN, GO) => {
