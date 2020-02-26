@@ -28,15 +28,15 @@ class ArticleController(
     fun getArticle(@PathVariable articleId: ObjectId): Mono<Article> = articleService.findById(articleId)
 
     @PostMapping("/articles")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     fun addArticle(@RequestBody article: Article): Mono<Article> = articleService.insert(article)
 
 
     @DeleteMapping("/articles/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     fun deleteArticle(@PathVariable id: ObjectId): Mono<Void> = articleService.deleteById(id)
 
     @PutMapping("/articles")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     fun updateArticle(@RequestBody article: Article): Mono<Article> = articleService.updateOrInsert(article)
 }

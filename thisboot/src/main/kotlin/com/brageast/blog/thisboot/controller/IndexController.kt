@@ -25,10 +25,10 @@ class IndexController {
 
 
     @GetMapping(value = ["/login"])
-    @PreAuthorize("isAnonymous()")
+    @PreAuthorize("isAnonymous()") // 没登陆可以访问, 防止多次登陆
     fun doLogin(): Mono<String> = Mono.just("login/index")
 
     @GetMapping(value = ["/test"])
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     fun doTest(): Mono<String> = Mono.just("index.html")
 }

@@ -23,10 +23,10 @@ class UserController(
     fun addUser(user: User) = userService.insert(user)
 
     @PutMapping(value = ["/users"])
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     fun updateUser(user: User) = userService.update(user)
 
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping(value = ["/users/{id}"])
     fun deleteByUserId(@PathVariable id: ObjectId) = userService.deleteById(id)
 
