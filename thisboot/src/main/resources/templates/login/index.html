@@ -20,13 +20,13 @@
     <!-- Meta tag Keywords -->
 
     <!-- css files -->
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" media="all"/>
     <!-- Style-CSS -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link th:href="@{css/font-awesome.min.css}" rel="stylesheet">
     <!-- Font-Awesome-Icons-CSS -->
     <!-- //css files -->
     <!-- web-fonts -->
-    <link href="//fonts.googleapis.com/css?family=Magra:400,700&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Magra:400,700&amp;subset=latin-ext" rel="stylesheet">
     <!-- //web-fonts -->
 </head>
 
@@ -54,7 +54,7 @@
                         <input type="password" name="password" placeholder="Password" class="input-field" required>
                     </label>
                 </div>
-<!--                <input type="hidden" th:name="${_csrf.getParameterName()}" th:value="${_csrf.getToken()}">-->
+<!--                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
                 <input class="submit-w3" type="submit" value="Login">
                 <div class="f_link">
                     <a href="#" class="resetTag">忘记密码?</a>

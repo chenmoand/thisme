@@ -8,6 +8,7 @@ spring:
     suffix: .html
     enabled: true
     check-template: false
+#    enable-spring-el-compiler: true
   data:
     mongodb:
       database: test

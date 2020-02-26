@@ -37,6 +37,7 @@ class WebFluxConfig(
      * @param registry
      */
     override fun configureViewResolvers(registry: ViewResolverRegistry) {
+
         registry.viewResolver(thymeleafReactiveViewResolver)
     }
 

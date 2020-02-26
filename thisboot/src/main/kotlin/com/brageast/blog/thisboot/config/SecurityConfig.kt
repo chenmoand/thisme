@@ -7,6 +7,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
 import org.springframework.security.config.web.server.ServerHttpSecurity
 import org.springframework.security.web.server.SecurityWebFilterChain
+import org.springframework.security.web.server.csrf.WebSessionServerCsrfTokenRepository
+import reactor.core.publisher.Mono
+import reactor.kotlin.core.publisher.toMono
 
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
@@ -21,12 +24,18 @@ class SecurityConfig {
      */
     @Bean
     fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain = http.run {
-        // csrf 有待测试, 并没有前后端分离的考虑
-        // 后端是前端的载物, 如果IP多个的话在尝试关掉 csrf
+        // csrf 与 Thymeleaf不太兼容
         csrf().disable()
+
         formLogin().loginPage("/login")
 
-        logout()
+       /* logout().logoutUrl("/logout").logoutSuccessHandler { exchange, authentication ->
+            exchange.exchange
+                    .addUrlTransformer { "/login" }
+            authentication.details
+            Mono.empty()
+        }*/
+
         httpBasic().disable()
 
         // 通过注解方式来进行权限验证

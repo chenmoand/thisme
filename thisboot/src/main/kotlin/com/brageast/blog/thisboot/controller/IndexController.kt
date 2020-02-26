@@ -25,6 +25,7 @@ class IndexController {
 
 
     @GetMapping(value = ["/login"])
+    @PreAuthorize("isAnonymous()")
     fun doLogin(): Mono<String> = Mono.just("login/index")
 
     @GetMapping(value = ["/test"])
