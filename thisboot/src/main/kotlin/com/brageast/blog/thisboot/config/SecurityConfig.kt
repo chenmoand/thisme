@@ -18,7 +18,6 @@ import reactor.kotlin.core.publisher.toMono
 @EnableAuthenticationManager
 class SecurityConfig {
 
-    val log = loggerOf<SecurityConfig>()
 
     /**
      * web安全配置
@@ -33,12 +32,6 @@ class SecurityConfig {
 
         formLogin().loginPage("/login")
 
-       /* logout().logoutUrl("/logout").logoutSuccessHandler { exchange, authentication ->
-            exchange.exchange
-                    .addUrlTransformer { "/login" }
-            authentication.details
-            Mono.empty()
-        }*/
 
         httpBasic().disable()
 
