@@ -1,11 +1,13 @@
 package com.brageast.blog.thisboot.config
 
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.CacheControl
 import org.springframework.web.reactive.config.EnableWebFlux
 import org.springframework.web.reactive.config.ResourceHandlerRegistry
 import org.springframework.web.reactive.config.ViewResolverRegistry
 import org.springframework.web.reactive.config.WebFluxConfigurer
+import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.resource.EncodedResourceResolver
 import org.springframework.web.reactive.resource.VersionResourceResolver
 import org.springframework.web.reactive.result.method.annotation.ArgumentResolverConfigurer
@@ -37,7 +39,6 @@ class WebFluxConfig(
      * @param registry
      */
     override fun configureViewResolvers(registry: ViewResolverRegistry) {
-
         registry.viewResolver(thymeleafReactiveViewResolver)
     }
 
@@ -56,5 +57,8 @@ class WebFluxConfig(
                 .addResolver(EncodedResourceResolver())
                 .addResolver(VersionResourceResolver().addContentVersionStrategy("/**"))
     }
+
+    @Bean
+    fun webClient(build: WebClient.Builder) = build.build()!!
 
 }

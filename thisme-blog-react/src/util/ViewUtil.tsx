@@ -1,5 +1,5 @@
 import {WebType} from "@/redux/reducers/index-reducer";
-import {ArticleType} from "./PropsUtil";
+import {ArticleType} from "../component/interface/articleInterface";
 
 /**
  * 获取视图的大小

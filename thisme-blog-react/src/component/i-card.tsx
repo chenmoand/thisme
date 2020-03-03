@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Avatar, Card, Icon} from "antd";
-import {BaseProps} from "@/util/PropsUtil";
+import {BaseProps} from "@/component/interface/articleInterface";
 import crooped from "@/assets/img/cropped.jpg"
-import {listToComponent} from "@/util/Assert";
+import {listToComponent} from "@/component/util/Assert";
 
 const {Meta} = Card;
 

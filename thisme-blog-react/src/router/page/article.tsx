@@ -4,8 +4,8 @@ import {useState} from "react";
 import {Skeleton} from "antd";
 import {RouteComponentProps, useParams} from "react-router";
 
-import {Article, BaseProps} from "@/util/PropsUtil";
-import {CompleteArticle} from "@/component/article-list";
+import {ArticleInterface, BaseProps} from "@/component/interface/articleInterface";
+import {CompleteArticle} from "@/component/article";
 import BodySyle from "@/component/body-style";
 import {connect} from "react-redux";
 import {doErr} from "@/util/LogUtil";
@@ -14,8 +14,8 @@ import server from "@/assets/json/server.json";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps {
-    currentArticle?: Article
-    setCurrentArticle: (article: Article) => void;
+    currentArticle?: ArticleInterface
+    setCurrentArticle: (article: ArticleInterface) => void;
 }
 
 const Article$: React.FC<ArticleProps> = props => {
@@ -61,7 +61,7 @@ export default connect(
     },
     dispatch => {
         return {
-            setCurrentArticle: (article: Article) => dispatch({type: "CURRENT_PAGE", content: article}),
+            setCurrentArticle: (article: ArticleInterface) => dispatch({type: "CURRENT_PAGE", content: article}),
         }
     }
 )(Article$);

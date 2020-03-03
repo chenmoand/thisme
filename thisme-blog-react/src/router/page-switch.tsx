@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Route, Switch, useLocation} from "react-router-dom";
 import CSSTransition from "react-transition-group/CSSTransition";
 import TransitionGroup from "react-transition-group/TransitionGroup";
-import {BaseProps} from "@/util/PropsUtil";
+import {BaseProps} from "@/component/interface/articleInterface";
 import "@/assets/style/animated-switch.less"
 import {RouteState} from "@/redux/reducers/route-reducer";
 

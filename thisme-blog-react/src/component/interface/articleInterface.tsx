@@ -11,14 +11,14 @@ export interface BaseProps {
 
 export interface PageArticle {
     page: number,
-    articles: Array<Article>
+    articles: Array<ArticleInterface>
 }
 
 
 /**
  * 文章属性
  */
-export interface Article {
+export interface ArticleInterface {
     articleId: string, // 文章序号
     title: string, // 标题
     label: Array<string>, // 标签

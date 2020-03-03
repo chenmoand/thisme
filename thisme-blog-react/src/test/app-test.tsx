@@ -1,10 +1,11 @@
 import * as React from "react";
-import {Article} from "@/util/PropsUtil";
+import {ArticleInterface} from "@/component/interface/articleInterface";
 import {Map} from "immutable";
-import {CompleteArticle} from "@/component/article-list";
+import {CompleteArticle} from "@/component/article";
+import Div from "@/component/util/Div";
 
 
-const article: Article = {
+const article: ArticleInterface = {
     articleId: "demo",
     author: "祁凯大神",
     chick: 0,
@@ -16,7 +17,6 @@ const article: Article = {
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava",
     label: ["java"],
     replys: [{
-        replyId: "demo",
         name: "祁凯", // 姓名
         startDate: new Date(), // 发布日期
         update: new Date(), // 更新日期
@@ -29,10 +29,12 @@ const article: Article = {
 };
 
 const AppTest: React.FC = () => {
-    const pa: Map<number, Article[]> = Map<number, Article[]>();
+    const pa: Map<number, ArticleInterface[]> = Map<number, ArticleInterface[]>();
     return (
         <div className={""}>
 
+
+            <Div className={"dasdsad"}></Div>
             <CompleteArticle article={article}/>
             {/*<ArticleList maxPage={0}/>*/}
             {/*<SimpleArticle   article={article}/>*/}

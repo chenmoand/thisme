@@ -6,11 +6,13 @@ import com.brageast.blog.thisboot.service.ArticleService
 import com.brageast.blog.thisboot.service.UserService
 import com.brageast.blog.thisboot.util.basalObjectMapper
 import com.brageast.blog.thisboot.util.loggerOf
+import jdk.internal.reflect.Reflection.getCallerClass
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Bean
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService
+import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
 import java.util.*
 
@@ -61,12 +63,26 @@ class ThisbootApplicationTests {
         println(block)
     }
 
+
+    @Autowired
+    lateinit var webClient: WebClient
+
+    @Test
+    fun onRestful() {
+        val get = webClient.get()
+                .uri("https://gturnquist-quoters.cfapps.io/api/random")
+                .retrieve()
+                .bodyToMono(Any::class.java)
+        println(get.block())
+
+    }
+
 }
 
 
 class AverageTest {
 
-    val log = loggerOf<AverageTest>()
+    private val log = loggerOf<AverageTest>()
 
     @Test
     fun onSer() {
@@ -80,8 +96,9 @@ class AverageTest {
         val d1 = Date() // 小
         Thread.sleep(4000L)
         val d2 = Date() // 大
-
-        println(d1.before(d2))
+        val callerClass = getCallerClass()
+        print(callerClass)
+//        println(d1.before(d2))
 
     }
 
