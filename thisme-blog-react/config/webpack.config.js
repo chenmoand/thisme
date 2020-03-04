@@ -1,9 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const AntdDayjsWebpackPlugin =  require('antd-dayjs-webpack-plugin');
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 
-const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+//打包检测工具
+const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const path = require('path');
 const devMode = process.env.NODE_ENV !== 'production';
@@ -44,7 +45,13 @@ module.exports = {
                             cacheDirectory: true,
                             plugins: [
                                 'react-hot-loader/babel',
-                                ["import", {libraryName: "antd", style: "css"}],
+                                [
+                                    "import",
+                                    {
+                                        libraryName: "antd",
+                                        style: "css"
+                                    }
+                                ],
                             ]
                         }
                     },

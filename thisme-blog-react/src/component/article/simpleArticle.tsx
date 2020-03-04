@@ -2,7 +2,6 @@ import {ArticleInterface, BaseProps} from "@/component/interface/articleInterfac
 import * as React from "react";
 import {CSSProperties} from "react";
 import {NavLink} from "react-router-dom";
-import {articlePath} from "@/util/RouterUtil";
 import {Assert, dayjs, Div, Item} from "@/component/util";
 import {FireOutlined, TagOutlined, UserOutlined} from "@ant-design/icons";
 
