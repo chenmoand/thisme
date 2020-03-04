@@ -11,14 +11,13 @@ export interface BodyStyleProps {
     webType: boolean,
 }
 
-const BodySyle: React.FC<BodyStyleProps> = props => {
+const BodyStyle: React.FC<BodyStyleProps> = props => {
 
     const {left, right, webType, title} = props;
 
     return (
         <div style={{marginBottom: 103.4}}>
             <Row
-                type={"flex"}
                 justify={"start"}
             >
                 <Col
@@ -46,4 +45,4 @@ export default connect(
             webType: viewSize(indexReducer.webType),
         };
     }
-)(BodySyle);
+)(BodyStyle);

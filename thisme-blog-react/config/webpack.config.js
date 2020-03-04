@@ -1,6 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const AntdDayjsWebpackPlugin =  require('antd-dayjs-webpack-plugin');
+
+const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const path = require('path');
 const devMode = process.env.NODE_ENV !== 'production';
@@ -102,6 +105,8 @@ module.exports = {
             filename: devMode ? '[name].css' : '[name].[hash].css',
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
             ignoreOrder: false,
-        })
+        }),
+        new AntdDayjsWebpackPlugin(),
+        // new WebpackBundleAnalyzer()
     ],
 };

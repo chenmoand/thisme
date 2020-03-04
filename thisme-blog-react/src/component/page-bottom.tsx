@@ -7,7 +7,6 @@ const PageBottom: React.FC = props => {
             className={"page-bottom"}
         >
             <Row
-                type={"flex"}
                 justify={"center"}
             >
                 <Divider style={{

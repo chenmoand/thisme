@@ -7,7 +7,7 @@ import server from "@/assets/json/server.json";
 import {Divider, Pagination} from "antd";
 import Wait from "@/component/wait";
 import {connect} from "react-redux";
-import Article from "./index"
+import {Article} from "./index"
 import {Div} from "@/component/util";
 
 interface ArticleListProps extends BaseProps {

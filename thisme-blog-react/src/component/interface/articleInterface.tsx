@@ -33,7 +33,7 @@ export interface ArticleInterface {
     articleType: ArticleType, // 文章类型
 }
 
-export type ArticleType = 'ORIGINAL' | 'REPRINT';
+export type ArticleType = '原创' | '转载';
 
 /**
  * 回复属性

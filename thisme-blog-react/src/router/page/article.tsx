@@ -6,11 +6,11 @@ import {RouteComponentProps, useParams} from "react-router";
 
 import {ArticleInterface, BaseProps} from "@/component/interface/articleInterface";
 import {CompleteArticle} from "@/component/article";
-import BodySyle from "@/component/body-style";
+import BodyStyle from "@/component/body-style";
 import {connect} from "react-redux";
 import {doErr} from "@/util/LogUtil";
 
-import server from "@/assets/json/server.json";
+import {server} from "@/assets/json";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps {
@@ -26,18 +26,18 @@ const Article$: React.FC<ArticleProps> = props => {
     // 是否显示加载组件
     const [loding, setLoding] = useState(true);
     (currentArticle && id === currentArticle.articleId) ?
-    setLoding(false) :
-    axios.get(`${server.address}/articles/${id}`)
-        .then(({data}) => {
-            // 确保后端发送数据不为空
-            data && setCurrentArticle(data);
-            setLoding(false);
-        })
-        .catch(doErr);
+        setLoding(false) :
+        axios.get<ArticleInterface>(`${server.address}/articles/${id}`)
+            .then(({data}) => {
+                // 确保后端发送数据不为空
+                data && setCurrentArticle(data);
+                setLoding(false);
+            })
+            .catch(doErr);
 
     return (
         <div className={"page-article"}>
-            <BodySyle
+            <BodyStyle
                 title={currentArticle && currentArticle.title.substring(0, 8) + "..."}
                 left={
                     <div className={loding && "complete-article"}>

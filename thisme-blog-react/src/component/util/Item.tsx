@@ -1,10 +1,9 @@
 import * as React from "react";
 import {BaseProps} from "@/component/interface/articleInterface";
-import {Icon} from "antd";
 
 export interface ItemProps extends BaseProps {
     label: string | React.ReactNode,
-    icon?: string | React.ReactNode,
+    icon?: React.ReactNode,
     onChildrenNull?: React.ReactNode,
     indentation?: number | string;
 }
@@ -46,7 +45,7 @@ export const ItemIcon: React.FC<ItemIconProps> = props => {
     const {icon} = props;
     return (
         <>
-            {icon && (typeof icon === 'string' ? <Icon type={icon}/> : icon)}
+            {icon}
         </>
     );
 };

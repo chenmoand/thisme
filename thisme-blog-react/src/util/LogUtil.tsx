@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import server from "@/assets/json/server.json";
+import {server} from "@/assets/json";
 
 // 打印LOG信息
 export const whiteLogo = (): void => {

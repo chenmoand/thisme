@@ -1,5 +1,5 @@
 import * as React from "react";
-import {BaseReducer} from "@/util/ReduxUtil";
+import {BaseReducer} from "@/redux/interface";
 import {RouteComponentProps} from "react-router";
 import {About, Article, Directory, Home, Status, Update} from "@/router/page";
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Avatar, Card, Icon} from "antd";
+import {Avatar, Card} from "antd";
 import {BaseProps} from "@/component/interface/articleInterface";
 import crooped from "@/assets/img/cropped.jpg"
 import {listToComponent} from "@/component/util/Assert";
@@ -31,7 +31,7 @@ export const MyselfCard: React.FC<BaseProps> = props => {
                     listToComponent(CardActions, data =>
                         (
                             <a href={data.href}>
-                                <Icon type={data.type}></Icon>
+                                {/*<Icon type={data.type}></Icon>*/}
                             </a>
                         )
                     )

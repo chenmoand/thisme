@@ -1,6 +1,6 @@
 import {ArticleInterface, PageArticle} from "@/component/interface/articleInterface";
 import {Map} from "immutable";
-import {BaseReducer} from "@/util/ReduxUtil";
+import {BaseReducer} from "@/redux/interface";
 
 //文章基本状态
 export interface ArticleState {

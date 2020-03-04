@@ -1,11 +1,13 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import {viewSize} from "@/util/ViewUtil";
-import {Avatar, Button, Col, Icon, Input, Menu, Popover, Row} from "antd";
+import {Button, Col, Input, Menu, Popover, Row} from "antd";
 import {NavLink} from "react-router-dom";
 import "@/assets/style/menu.less"
 import {WebType} from "@/redux/reducers/index-reducer";
 import {Route, RouteState} from "@/redux/reducers/route-reducer";
+
+import {SwitcherOutlined} from "@ant-design/icons"
 
 
 interface TopMenuProps {
@@ -24,7 +26,6 @@ const TopMenu: React.FC<TopMenuProps> = props => {
                 borderBottom: "1px solid #e8e8e8"
 
             }}
-            type={"flex"}
             justify={"start"}
         >
             <Col offset={webType ? 2 : 6}
@@ -108,7 +109,7 @@ const ThisMenu: React.FC<ThisMenuProps> = props => {
     return (
         <Menu
             mode={"horizontal"}
-            overflowedIndicator={<Icon type="switcher"/>}
+            overflowedIndicator={<SwitcherOutlined />}
             style={{
                 borderBottom: "none"
             }}

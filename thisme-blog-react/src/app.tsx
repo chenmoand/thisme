@@ -6,12 +6,12 @@ import PageBottom from '@/component/page-bottom';
 import { PageView } from '@/router/page-switch';
 import { whiteLogo } from '@/util/LogUtil';
 import { BackTop } from 'antd';
-import * as moment from 'moment';
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
+import dajs from 'dayjs';
+import 'dayjs/locale/zh-cn';
 
- // 设置为中文
-moment.locale('zh-cn');
+dajs.locale('zh-cn');
 /**
  * 系统URL默认以/的 方式
  * @author chenmo

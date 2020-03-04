@@ -1,10 +1,14 @@
 package com.brageast.blog.thisboot.entity
 
+import com.fasterxml.jackson.core.JsonGenerator
+import com.fasterxml.jackson.databind.JsonSerializer
+import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer
 import org.bson.types.ObjectId
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.MongoId
+import org.springframework.http.HttpStatus
 import java.util.*
 
 /**
@@ -27,13 +31,23 @@ data class Article(@MongoId
                    var author: String?,
                    var content: String?,
                    var chick: Int? = 0,
+                   @JsonSerialize(using = ToArticleTypeSerializer::class)
                    var articleType: ArticleType? = ArticleType.ORIGINAL,
                    var replys: List<Reply> = emptyList()
 )
 
-enum class ArticleType {
-    /* 原创 */ORIGINAL,
-    /* 转载 */REPRINT
+enum class ArticleType(val value: String) {
+    /* 原创 */ORIGINAL("原创"),
+    /* 转载 */REPRINT("转载");
+}
+
+class ToArticleTypeSerializer : JsonSerializer<ArticleType>() {
+    override fun serialize(type: ArticleType?, gen: JsonGenerator?, serializers: SerializerProvider?) {
+        if(type != null && gen != null) {
+            val type = type.value
+            gen.writeNumber(type)
+        }
+    }
 }
 
 /**

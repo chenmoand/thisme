@@ -1,8 +1,8 @@
 import * as React from "react";
 import {ArticleInterface} from "@/component/interface/articleInterface";
 import {Map} from "immutable";
-import {CompleteArticle} from "@/component/article";
-import Div from "@/component/util/Div";
+import {SimpleArticle} from "@/component/article";
+import {Div} from "@/component/util";
 
 
 const article: ArticleInterface = {
@@ -25,7 +25,7 @@ const article: ArticleInterface = {
     startDate: new Date(),
     title: "我乃上将祁凯可斩上将华雄 | NICE TO NE",
     update: new Date(),
-    articleType: "ORIGINAL",
+    articleType: "原创",
 };
 
 const AppTest: React.FC = () => {
@@ -35,9 +35,9 @@ const AppTest: React.FC = () => {
 
 
             <Div className={"dasdsad"}></Div>
-            <CompleteArticle article={article}/>
+            {/*<CompleteArticle article={article}/>*/}
             {/*<ArticleList maxPage={0}/>*/}
-            {/*<SimpleArticle   article={article}/>*/}
+            <SimpleArticle article={article}/>
             {/*<Divider style={{margin: "12px 0"}}/>*/}
             {/*<SimpleArticle  article={article}/>*/}
             {/*<Divider style={{height: 1}}/>*/}

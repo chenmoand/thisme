@@ -1,6 +1,7 @@
-import Assert from "@/component/util/Assert";
-import Div from "@/component/util/Div";
+export {default as Assert} from "./Assert";
+export {default as Div} from "./Div";
+export {default as Item} from "./Item"
 
-export {
-    Assert, Div
-}
+// 常用的库
+export {default as axios} from "axios";
+export {default as dayjs} from "dayjs";

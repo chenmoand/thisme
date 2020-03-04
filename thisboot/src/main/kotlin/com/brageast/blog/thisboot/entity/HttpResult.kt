@@ -15,10 +15,10 @@ data class HttpResult<T: Any>(
 )
 
 class ToHttpStatusSerializer : JsonSerializer<HttpStatus>() {
-    override fun serialize(value: HttpStatus?, gen: JsonGenerator?, serializers: SerializerProvider?) {
-        if(value != null && gen != null) {
-            val _value = value.value()
-            gen.writeNumber(_value)
+    override fun serialize(httpStatus: HttpStatus?, gen: JsonGenerator?, serializers: SerializerProvider?) {
+        if(httpStatus != null && gen != null) {
+            val value = httpStatus.value()
+            gen.writeNumber(value)
         }
     }
 }

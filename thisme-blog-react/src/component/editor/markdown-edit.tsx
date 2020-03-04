@@ -1,4 +1,5 @@
 import * as React from 'react';
+// @ts-ignore
 import * as ReactMarkdown from 'react-markdown/with-html';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {darcula} from 'react-syntax-highlighter/dist/esm/styles/hljs';
