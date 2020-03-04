@@ -1,6 +1,6 @@
 import * as React from "react";
 import BodySyle from "@/component/body-style";
-import {MyselfCard} from "@/component/i-card";
+import {MyselfCard} from "@/component/card";
 
 const Directory: React.FC = props => {
     return(

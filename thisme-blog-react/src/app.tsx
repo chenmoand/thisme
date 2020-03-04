@@ -21,7 +21,7 @@ const App:React.FC = () => {
     return(
         // @ts-ignore
         <Configuration
-            domain={"new.brageast.com"}
+            domain="new.brageast.com"
         >
             <TopMenu />
             <PageView />

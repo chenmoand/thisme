@@ -1,7 +1,7 @@
 import * as React from "react";
 import BodySyle from "@/component/body-style";
 import {FileMarkdown} from "@/component/editor/markdown-edit";
-import {MyselfCard} from "@/component/i-card";
+import {MyselfCard} from "@/component/card";
 import AboutMd from "@/assets/markdown/about.md";
 
 

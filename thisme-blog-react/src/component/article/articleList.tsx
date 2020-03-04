@@ -1,14 +1,14 @@
-import {ArticleInterface, BaseProps, PageArticle} from "@/component/interface/articleInterface";
-import {Map} from "immutable";
 import * as React from "react";
-import {useEffect, useState} from "react";
-import axios from "axios";
-import server from "@/assets/json/server.json";
+import {Map} from "immutable";
+import {server} from "@/assets/json";
 import {Divider, Pagination} from "antd";
 import Wait from "@/component/wait";
 import {connect} from "react-redux";
 import {Article} from "./index"
-import {Div} from "@/component/util";
+import {axios, Div} from "@/component/util";
+import {ArticleInterface, BaseProps, PageArticle} from "@/component/interface/articleInterface";
+
+const {useEffect, useState} = React;
 
 interface ArticleListProps extends BaseProps {
     currentPage: number,

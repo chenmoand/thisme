@@ -2,20 +2,22 @@ import * as React from "react";
 import {Avatar, Card} from "antd";
 import {BaseProps} from "@/component/interface/articleInterface";
 import crooped from "@/assets/img/cropped.jpg"
-import {listToComponent} from "@/component/util/Assert";
+import {listToComponent} from "@/component/util";
+import {GithubOutlined, ZhihuOutlined, MailOutlined} from "@ant-design/icons";
 
 const {Meta} = Card;
 
-interface CardActionInterface {
+export interface CardActionInterface {
     href: string,
-    type: string
+    type: JSX.Element
 }
-type CardActionsType = Array<CardActionInterface>;
+
+export type CardActionsType = Array<CardActionInterface>;
 
 const CardActions: CardActionsType = [
-    {href: 'https://github.com/chenmoand', type: 'github'},
-    {href: 'https://www.zhihu.com/people/chen-mo-82-82-69/activities', type: 'zhihu'},
-    {href: 'mailto:chenmoand@gmail.com', type: 'mail'}
+    {href: 'https://github.com/chenmoand', type: <GithubOutlined />},
+    {href: 'https://www.zhihu.com/people/chen-mo-82-82-69/activities', type: <ZhihuOutlined />},
+    {href: 'mailto:chenmoand@gmail.com', type: <MailOutlined />}
 ];
 export const MyselfCard: React.FC<BaseProps> = props => {
     const {className, style} = props;
@@ -31,7 +33,7 @@ export const MyselfCard: React.FC<BaseProps> = props => {
                     listToComponent(CardActions, data =>
                         (
                             <a href={data.href}>
-                                {/*<Icon type={data.type}></Icon>*/}
+                                {data.type}
                             </a>
                         )
                     )
@@ -50,8 +52,8 @@ export const MyselfCard: React.FC<BaseProps> = props => {
 };
 
 
-interface LabelCardProps extends BaseProps{
-    src : string[]
+interface LabelCardProps extends BaseProps {
+    src: string[]
 }
 
 export const LabelCard: React.FC<LabelCardProps> = props => {

@@ -5,7 +5,7 @@ import {useMediaQuery} from 'react-responsive'
 import {WebType} from "@/redux/reducers/index-reducer";
 
 interface ConfigurationProps {
-    domain?: string,
+    domain: string,
     setWebType: (webType: WebType) => void,
     setDomain: (str: string) => void,
 }
@@ -14,7 +14,7 @@ interface ConfigurationProps {
  * 用于初始化配置
  * @param props
  */
-const Configuration: React.FC<ConfigurationProps> = props => {
+const Configuration$: React.FC<ConfigurationProps> = props => {
 
     const {setWebType, setDomain, domain, children} = props;
 
@@ -24,51 +24,8 @@ const Configuration: React.FC<ConfigurationProps> = props => {
         }, [domain]
     );
 
-    const isDesktopOrLaptop = useMediaQuery({query: '(min-device-width: 1224px)'}),
-        isBigScreen = useMediaQuery({query: '(min-device-width: 1824px)'}),
-        isTabletOrMobile = useMediaQuery({query: '(max-width: 844px)'});
-    return (
-        <WebSize
-            isDesktopOrLaptop={isDesktopOrLaptop}
-            isBigScreen={isBigScreen}
-            setWebType={setWebType}
-            isTabletOrMobile={isTabletOrMobile}
-        >
-            {children}
-        </WebSize>
-    )
-};
+    useWebSize(setWebType);
 
-interface WebSizeProps {
-    setWebType: (webType: WebType) => void,
-    isDesktopOrLaptop: boolean,
-    isBigScreen: boolean,
-    isTabletOrMobile: boolean,
-}
-
-/**
- * 这个组件可能会触发多次, 不推荐用children
- * 防止多次渲染 ps: 可能是我多虑了
- * @param props
- * @constructor
- */
-export const WebSize: React.FC<WebSizeProps> = props => {
-    const {children, isDesktopOrLaptop, isBigScreen, setWebType, isTabletOrMobile} = props;
-    useEffect(() => {
-            // 判断页面大小
-            if (isDesktopOrLaptop) {
-                isBigScreen ?
-                    // 台式电脑
-                    setWebType(WebType.BIG) :
-                    // 笔记本
-                    setWebType(WebType.IN);
-            } else {
-                // 手机
-                setWebType(WebType.SMALL);
-            }
-            isTabletOrMobile && setWebType(WebType.SMALL);
-        },
-        [isDesktopOrLaptop, isBigScreen, isTabletOrMobile]);
     return (
         <>
             {children}
@@ -76,6 +33,31 @@ export const WebSize: React.FC<WebSizeProps> = props => {
     )
 };
 
+// 对webSize进行操作
+// 旧组件形式以剔除
+function useWebSize(callback: (webType: WebType) => void) {
+
+    const isDesktopOrLaptop = useMediaQuery({query: '(min-device-width: 1224px)'}),
+        isBigScreen = useMediaQuery({query: '(min-device-width: 1824px)'}),
+        isTabletOrMobile = useMediaQuery({query: '(max-width: 844px)'});
+
+    // 原先的是触发两次, 现在触发一次setWebType
+    // 总之这这个设计的并不大好
+    let webType: WebType = WebType.SMALL;
+
+    // 判断页面大小
+    if (isDesktopOrLaptop) {
+        webType = isBigScreen ?
+            // 台式电脑
+            WebType.BIG :
+            // 笔记本
+            WebType.IN;
+    }
+
+    isTabletOrMobile && (webType = WebType.SMALL);
+
+    callback(webType);
+}
 
 export default connect(
     null,
@@ -86,4 +68,4 @@ export default connect(
             setDomain: (str: string) => dispatch({type: "DOMAIN", content: str})
         }
     }
-)(Configuration);
+)(Configuration$);

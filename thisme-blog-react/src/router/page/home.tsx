@@ -2,7 +2,7 @@ import * as React from "react";
 import "@/assets/style/home.less"
 import AppTest from "@/test/app-test";
 import BodySyle from "@/component/body-style";
-import {LabelCard, MyselfCard} from "@/component/i-card";
+import {LabelCard, MyselfCard} from "@/component/card";
 
 interface HomeProps {
 

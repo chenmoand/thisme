@@ -1,6 +1,6 @@
 import * as React from "react";
 import {FileMarkdown} from "@/component/editor/markdown-edit";
-import {MyselfCard} from "@/component/i-card";
+import {MyselfCard} from "@/component/card";
 import BodySyle from "@/component/body-style";
 import UpdateMd from "@/assets/markdown/update.md";
 
