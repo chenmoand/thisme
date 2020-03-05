@@ -1,19 +1,19 @@
 import * as React from "react";
-import {FileMarkdown} from "@/component/editor/markdown-edit";
+import {FileMarkdown} from "@/component/editor/markdown";
 import {MyselfCard} from "@/component/card";
-import BodySyle from "@/component/body-style";
-import UpdateMd from "@/assets/markdown/update.md";
+import {BodyTemplate} from "@/component/template";
+import update from "@/assets/markdown/update.md";
 
 const Update: React.FC = props => {
     return (
         <div className={"update"} >
-            <BodySyle
+            <BodyTemplate
                 title={"更新列表"}
                 left={
                     <div className={"router"}  style={{
                         padding: 7
                     }}>
-                        <FileMarkdown source={UpdateMd}/>
+                        <FileMarkdown source={update}/>
                     </div>
                 }
                 right={

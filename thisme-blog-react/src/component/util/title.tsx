@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useEffect} from "react";
-import {connect} from "react-redux";
+import {server} from "@/assets/json";
 
 
 interface TitleProps {
@@ -8,7 +8,6 @@ interface TitleProps {
     className?: string,
     src: string,
     html?: true,
-    domain: string,
 }
 
 /**
@@ -17,10 +16,11 @@ interface TitleProps {
  * @param props
  */
 const Title: React.FC<TitleProps> = props => {
-    const {src, html, domain, style, className} = props;
+    const {src, html, style, className} = props;
     // 保证src是有内容的在试图修改标题
     useEffect(() => {
-        src && (document.title = src + " - " + domain);
+        // @ts-ignore idea抽风报错本来不需要这样的
+        src && (document.title = src + " - " + server.domain);
     }, [src]);
     return (
         <span
@@ -32,10 +32,4 @@ const Title: React.FC<TitleProps> = props => {
     )
 };
 
-export default connect(state => {
-    // @ts-ignore
-    const {indexReducer} = state;
-    return {
-        domain: indexReducer.domain
-    };
-})(Title);
+export default Title;

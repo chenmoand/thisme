@@ -16,7 +16,7 @@ const resolve = str => path.resolve(__dirname, str);
  * @author chenmo
  */
 module.exports = {
-    entry: ['react-hot-loader/patch', './src'],
+    entry: ['react-hot-loader/patch', './src/mode/dev'],
     output: {
         path: resolve('../build'),
         filename: '[name].[hash].js'

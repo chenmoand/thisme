@@ -2,12 +2,12 @@ import * as React from 'react';
 // @ts-ignore
 import * as ReactMarkdown from 'react-markdown/with-html';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {darcula} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import '@/assets/style/markdown.less';
 import * as CopyToClipboard from "react-copy-to-clipboard";
 import {Button, Popover} from "antd";
 import {connect} from "react-redux";
-import {viewSize} from "@/util/ViewUtil";
+import {viewSize} from "@/redux/status/webStatus";
+
 
 interface MarkdownProps {
     source: string,
@@ -50,15 +50,14 @@ export interface MarkdownAttribute {
 
 export const FileMarkdown: React.FC<FileMarkdownProps> = props => {
 
-    const { source } = props;
+    const {source} = props;
 
-    return(
+    return (
         <>
             <Markdown source={source.text}/>
         </>
     )
 };
-
 
 
 interface CodeBlackProps {
@@ -78,7 +77,8 @@ export const CodeBlack$: React.FC<CodeBlackProps> = props => {
         <div style={{position: "relative"}}>
             <SyntaxHighlighter
                 language={language}
-                style={darcula}
+                // 防止将全部style加载进去
+                style={require('react-syntax-highlighter/dist/esm/styles/hljs').darcula}
                 showLineNumbers={true}
             >
                 {value}
@@ -87,8 +87,10 @@ export const CodeBlack$: React.FC<CodeBlackProps> = props => {
                 <Popover content={"复制成功"} trigger={"click"}>
                     <Button style={{
                         position: "absolute",
-                        top: "6%", left: webType ? "88%" : "70%",
-                        width: "7em", height: "2em",
+                        top: "6%",
+                        left: webType ? "88%" : "70%",
+                        width: "7em",
+                        height: "2.3em",
                         fontSize: "0.7em"
                     }}>
                         点击复制
@@ -103,9 +105,9 @@ export const CodeBlack$: React.FC<CodeBlackProps> = props => {
 export const CodeBlack = connect(
     state => {
         // @ts-ignore
-        const {indexReducer} = state;
+        const {webStatus} = state;
         return {
-            webType: viewSize(indexReducer.webType),
+            webType: viewSize(webStatus.webType),
         };
     }
 )(CodeBlack$);

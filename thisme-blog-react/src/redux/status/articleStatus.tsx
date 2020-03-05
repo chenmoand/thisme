@@ -18,7 +18,7 @@ const init: ArticleState = {
 };
 
 
-const ArticleReducer: BaseReducer<ArticleState> = (state = init, action) => {
+const ArticleStatus: BaseReducer<ArticleState> = (state = init, action) => {
     const {content} = action;
     switch (action.type) {
         case 'CURRENT_PAGE':
@@ -34,4 +34,4 @@ const ArticleReducer: BaseReducer<ArticleState> = (state = init, action) => {
     }
 };
 
-export default ArticleReducer;
+export default ArticleStatus;

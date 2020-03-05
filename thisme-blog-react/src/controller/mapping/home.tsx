@@ -1,7 +1,7 @@
 import * as React from "react";
 import "@/assets/style/home.less"
 import AppTest from "@/test/app-test";
-import BodySyle from "@/component/body-style";
+import {BodyTemplate} from "@/component/template";
 import {LabelCard, MyselfCard} from "@/component/card";
 
 interface HomeProps {
@@ -13,7 +13,7 @@ const Home: React.FC<HomeProps> = props => {
 
     return (
         <div className={"router-home"}>
-            <BodySyle
+            <BodyTemplate
                 title={"沉默的个人小站"}
                 left={
                     <AppTest/>

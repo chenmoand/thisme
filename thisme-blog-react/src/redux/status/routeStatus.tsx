@@ -1,7 +1,7 @@
 import * as React from "react";
 import {BaseReducer} from "@/redux/interface";
 import {RouteComponentProps} from "react-router";
-import {About, Article, Directory, Home, Status, Update} from "@/router/page";
+import {About, Article, Directory, Home, Status, Update} from "@/controller/mapping";
 
 
 export interface Route {
@@ -24,14 +24,13 @@ const init: RouteState = [
     {path: ['*'], name: false, Component: Status},
 ];
 
-const RouteReducer: BaseReducer<RouteState> = (state = init, action) => {
+const RouteStatus: BaseReducer<RouteState> = (state = init, action) => {
     const {content} = action;
-    switch (action.type) {
-        case "ROUTE_ADD":
-            return {...state, ...content};
-        default:
-            return state;
+    if (action.type === "ROUTE_ADD") {
+        return {...state, ...content};
+    } else {
+        return state;
     }
 };
 
-export default RouteReducer;
+export default RouteStatus;

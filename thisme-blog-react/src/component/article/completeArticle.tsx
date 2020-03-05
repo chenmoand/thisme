@@ -1,19 +1,17 @@
 import * as React from "react";
 import {Tag} from "antd";
-import {Assert, Div, Item, dayjs} from "@/component/util";
-import Markdown from "@/component/editor/markdown-edit";
-import {connect} from "react-redux";
+import {Assert, dayjs, Div, Item} from "@/component/util";
+import Markdown from "@/component/editor/markdown";
 import {ArticleInterface, BaseProps} from "@/component/interface/articleInterface";
-import {UserOutlined, FireOutlined, TagOutlined} from "@ant-design/icons";
+import {FireOutlined, TagOutlined, UserOutlined} from "@ant-design/icons";
 
 
 interface CompleteArticleProps extends BaseProps {
     article: ArticleInterface,
-    domain: string,
 }
 
-export const CompleteArticle$: React.FC<CompleteArticleProps> = props => {
-    const {article, className, style, domain} = props;
+export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
+    const {article, className, style} = props;
     const {
         title, author, startDate,
         classify, label, content,
@@ -43,22 +41,9 @@ export const CompleteArticle$: React.FC<CompleteArticleProps> = props => {
             </Item>
             <Markdown source={content}/>
             <span>
-                转载请注: https://{domain}/article/{articleId}
+                转载请注: https:///article/{articleId}
             </span>
         </Div>
     );
 };
-
-
-const CompleteArticle = connect(
-    state => {
-        // @ts-ignore
-        const {indexReducer} = state;
-        return {
-            domain: indexReducer.domain,
-        }
-
-    }
-)(CompleteArticle$);
-
 export default CompleteArticle;

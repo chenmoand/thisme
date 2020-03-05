@@ -6,9 +6,9 @@ import {RouteComponentProps, useParams} from "react-router";
 
 import {ArticleInterface, BaseProps} from "@/component/interface/articleInterface";
 import {CompleteArticle} from "@/component/article";
-import BodyStyle from "@/component/body-style";
+import {BodyTemplate} from "@/component/template";
 import {connect} from "react-redux";
-import {doErr} from "@/util/LogUtil";
+import {doErr} from "@/log";
 
 import {server} from "@/assets/json";
 
@@ -37,7 +37,7 @@ const Article$: React.FC<ArticleProps> = props => {
 
     return (
         <div className={"page-article"}>
-            <BodyStyle
+            <BodyTemplate
                 title={currentArticle && currentArticle.title.substring(0, 8) + "..."}
                 left={
                     <div className={loding && "complete-article"}>
@@ -54,9 +54,9 @@ const Article$: React.FC<ArticleProps> = props => {
 export default connect(
     state => {
         // @ts-ignore
-        const {articleReducer} = state;
+        const {articleStatus} = state;
         return {
-            currentArticle: articleReducer.currentArticle
+            currentArticle: articleStatus.currentArticle
         }
     },
     dispatch => {

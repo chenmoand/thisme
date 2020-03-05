@@ -1,11 +1,11 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {Route, Switch, useLocation} from "react-router-dom";
+import {Route, Switch, useLocation, withRouter} from "react-router-dom";
 import CSSTransition from "react-transition-group/CSSTransition";
 import TransitionGroup from "react-transition-group/TransitionGroup";
 import {BaseProps} from "@/component/interface/articleInterface";
 import "@/assets/style/animated-switch.less"
-import {RouteState} from "@/redux/reducers/route-reducer";
+import {RouteState} from "@/redux/status/routeStatus";
 
 
 interface PageViewProps extends BaseProps {
@@ -17,7 +17,7 @@ interface PageViewProps extends BaseProps {
  * @param props
  * @constructor
  */
-export const PageView$: React.FC<PageViewProps> = props => {
+export const Body$: React.FC<PageViewProps> = props => {
     const {className, style, routes} = props;
     let location = useLocation();
 
@@ -55,12 +55,25 @@ export const PageView$: React.FC<PageViewProps> = props => {
     )
 };
 
-export const PageView = connect(
+export const Body = connect(
     state => {
         // @ts-ignore
-        const {routeReducer} = state;
+        const {routeStatus} = state;
         return {
-            routes: routeReducer,
+            routes: routeStatus,
         }
     },
-)(PageView$);
+)(Body$);
+
+/**
+ * 转换成持有Redux和Router的组件
+ * 有关网址https://reacttraining.com/react-router/web/guides/redux-integration
+ * @param mapStateToProps
+ * @param mapDisPatchToProps
+ * @param Component
+ */
+export const ConnectRouter = (mapStateToProps, mapDisPatchToProps, Component) => {
+    // 这样写会报类型错误, 强迫症的我!!!
+    // return withRouter(connect(mapStateToProps, mapDisPatchToProps)(Component));
+    return connect(mapStateToProps, mapDisPatchToProps)(withRouter(Component));
+};

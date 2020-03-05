@@ -1,31 +1,30 @@
+import * as React from 'react';
 import '@/assets/style/globle-index.less';
 
-import Configuration from '@/component/configuration';
-import TopMenu from '@/component/menu/top-menu';
-import PageBottom from '@/component/page-bottom';
-import { PageView } from '@/router/page-switch';
-import { whiteLogo } from '@/util/LogUtil';
-import { BackTop } from 'antd';
-import * as React from 'react';
-import { hot } from 'react-hot-loader/root';
-import dajs from 'dayjs';
+import {Body} from '@/controller/router';
+import {BackTop} from 'antd';
+import {hot} from 'react-hot-loader/root';
+import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
+import {Bottom, TopMenu, Configuration} from '@/component/template/final';
 
-dajs.locale('zh-cn');
+dayjs.locale('zh-cn');
+
+
 /**
- * 系统URL默认以/的 方式
- * @author chenmo
+ * 注意: 这个类不是入口, 入口在src/mode目录下分别的
+ * dev和pord文件夹里面, 模式不同随对应组件的加载也不同
+ *
  */
-const App:React.FC = () => {
-    whiteLogo();
-    return(
-        // @ts-ignore
+const App: React.FC = () => {
+
+    return (
         <Configuration
-            domain="new.brageast.com"
+            isLogoLog={true}
         >
-            <TopMenu />
-            <PageView />
-            <PageBottom />
+            <TopMenu/>
+            <Body/>
+            <Bottom/>
             <BackTop>
                 <div className="ant-back-top-inner">UP</div>
             </BackTop>

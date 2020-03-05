@@ -1,11 +1,11 @@
 import * as React from "react";
-import BodySyle from "@/component/body-style";
+import {BodyTemplate} from "@/component/template";
 import {MyselfCard} from "@/component/card";
 
 const Directory: React.FC = props => {
     return(
         <div>
-            <BodySyle
+            <BodyTemplate
                 title={"目录"}
                 left={
                     <div>

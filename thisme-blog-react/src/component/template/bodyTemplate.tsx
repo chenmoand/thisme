@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Col, Row} from "antd";
 import {connect} from "react-redux";
-import {viewSize} from "@/util/ViewUtil";
-import Title from "./title";
+import {viewSize} from "@/redux/status/webStatus";
+import {Title} from "@/component/util";
 
 export interface BodyStyleProps {
     left?: React.ReactNode,
@@ -11,7 +11,7 @@ export interface BodyStyleProps {
     webType: boolean,
 }
 
-const BodyStyle: React.FC<BodyStyleProps> = props => {
+const BodyTemplate: React.FC<BodyStyleProps> = props => {
 
     const {left, right, webType, title} = props;
 
@@ -40,9 +40,9 @@ const BodyStyle: React.FC<BodyStyleProps> = props => {
 export default connect(
     state => {
         // @ts-ignore
-        const {indexReducer} = state;
+        const {webStatus} = state;
         return {
-            webType: viewSize(indexReducer.webType),
+            webType: viewSize(webStatus.webType),
         };
     }
-)(BodyStyle);
+)(BodyTemplate);

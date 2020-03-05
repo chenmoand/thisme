@@ -1,30 +1,29 @@
 import * as React from "react";
 import {useEffect} from "react";
-import {connect} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useMediaQuery} from 'react-responsive'
-import {WebType} from "@/redux/reducers/index-reducer";
+import {WebType} from "@/redux/status/webStatus";
+import {whiteLogo} from "@/log";
 
 interface ConfigurationProps {
-    domain: string,
-    setWebType: (webType: WebType) => void,
-    setDomain: (str: string) => void,
+    isLogoLog?: boolean
 }
+
 
 /**
  * 用于初始化配置
  * @param props
  */
-const Configuration$: React.FC<ConfigurationProps> = props => {
+const Configuration: React.FC<ConfigurationProps> = props => {
+    const {
+        children, isLogoLog
+    } = props;
 
-    const {setWebType, setDomain, domain, children} = props;
+    useEffect(() => isLogoLog && whiteLogo(), [isLogoLog]);
 
-    // 设置URL
-    useEffect(() => {
-            domain && setDomain(domain)
-        }, [domain]
-    );
+    const dispatch = useDispatch();
 
-    useWebSize(setWebType);
+    dispatch({type: 'WEBTYPE', content: useWebSize()});
 
     return (
         <>
@@ -35,7 +34,9 @@ const Configuration$: React.FC<ConfigurationProps> = props => {
 
 // 对webSize进行操作
 // 旧组件形式以剔除
-function useWebSize(callback: (webType: WebType) => void) {
+function useWebSize() {
+
+
 
     const isDesktopOrLaptop = useMediaQuery({query: '(min-device-width: 1224px)'}),
         isBigScreen = useMediaQuery({query: '(min-device-width: 1824px)'}),
@@ -56,16 +57,7 @@ function useWebSize(callback: (webType: WebType) => void) {
 
     isTabletOrMobile && (webType = WebType.SMALL);
 
-    callback(webType);
+    return webType;
 }
 
-export default connect(
-    null,
-    dispatch => {
-        // @ts-ignore
-        return {
-            setWebType: (webType: WebType) => dispatch({type: 'WEBTYPE', content: webType}),
-            setDomain: (str: string) => dispatch({type: "DOMAIN", content: str})
-        }
-    }
-)(Configuration$);
+export default Configuration;

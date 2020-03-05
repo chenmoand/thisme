@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ArticleInterface} from "@/component/interface/articleInterface";
 import {Map} from "immutable";
-import {SimpleArticle} from "@/component/article";
+import {Article} from "@/component/article";
 import {Div} from "@/component/util";
 
 
@@ -32,15 +32,9 @@ const AppTest: React.FC = () => {
     const pa: Map<number, ArticleInterface[]> = Map<number, ArticleInterface[]>();
     return (
         <div className={""}>
-
-
             <Div className={"dasdsad"}></Div>
-            {/*<CompleteArticle article={article}/>*/}
-            {/*<ArticleList maxPage={0}/>*/}
-            <SimpleArticle article={article}/>
-            {/*<Divider style={{margin: "12px 0"}}/>*/}
-            {/*<SimpleArticle  article={article}/>*/}
-            {/*<Divider style={{height: 1}}/>*/}
+            <Article type={"Complete"} src={article}/>
+
         </div>
     )
 };

@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 import {ConfigProvider} from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import {HashRouter as Router} from 'react-router-dom';
-import {DevStore as Store} from "@/redux/store";
+import DevStore from "@/mode/dev/DevStore";
 
 
 /**
@@ -16,7 +16,7 @@ import {DevStore as Store} from "@/redux/store";
 const Init: React.FC = () => {
 
     return (
-        <Provider store={Store}>
+        <Provider store={DevStore}>
             <ConfigProvider locale={zhCN}>
                 <Router>
                     <App/>

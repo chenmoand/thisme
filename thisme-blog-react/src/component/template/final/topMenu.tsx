@@ -1,11 +1,10 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {viewSize} from "@/util/ViewUtil";
 import {Button, Col, Input, Menu, Popover, Row} from "antd";
 import {NavLink} from "react-router-dom";
 import "@/assets/style/menu.less"
-import {WebType} from "@/redux/reducers/index-reducer";
-import {Route, RouteState} from "@/redux/reducers/route-reducer";
+import {viewSize, WebType} from "@/redux/status/webStatus";
+import {Route, RouteState} from "@/redux/status/routeStatus";
 
 import {SwitcherOutlined} from "@ant-design/icons"
 
@@ -79,10 +78,10 @@ const TopMenu: React.FC<TopMenuProps> = props => {
 export default connect(
     state => {
         // @ts-ignore
-        const {indexReducer, routeReducer} = state;
+        const {webStatus, routeStatus} = state;
         return {
-            webType: viewSize(indexReducer.webType),
-            routes: routeReducer.filter((route: Route) => route.name !== false), // 过滤出不参与菜单的route
+            webType: viewSize(webStatus.webType),
+            routes: routeStatus.filter((route: Route) => route.name !== false), // 过滤出不参与菜单的route
         };
     }, dispatch => {
         return {

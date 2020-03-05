@@ -7,7 +7,7 @@ import {ConfigProvider} from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import 'moment/locale/zh-cn';
 import {BrowserRouter as Router} from 'react-router-dom';
-import {ProdStore as Store} from "@/redux/store";
+import {ProdStore} from "@/mode/prod/ProdStore";
 
 /**
  * 生产环境入口
@@ -15,7 +15,7 @@ import {ProdStore as Store} from "@/redux/store";
  */
 const Init: React.FC = () => {
     return (
-        <Provider store={Store}>
+        <Provider store={ProdStore}>
             <ConfigProvider locale={zhCN}>
                 <Router>
                     <App/>
