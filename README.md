@@ -1,10 +1,7 @@
-# thisme ```coder``` 有点骚的玩意
+# thisme ```coder``` 
 
 ![GitHub](https://img.shields.io/github/license/chenmoand/thisme)![GitHub last commit](https://img.shields.io/github/last-commit/chenmoand/thisme)![GitHub stars](https://img.shields.io/github/stars/chenmoand/thisme)
 
->  争取用最多的技术闸写我觉得有用的东西, oHHHH!!!!!!!!
->
->  里面所有代码和内容都由我 一人编写,  谁让我是个垃圾专科生, 莫得朋友来协助
 
 | 博客地址 | [```Chick Here```](https://new.brageast.com) |
 | :------: | :------------------------------------------: |
