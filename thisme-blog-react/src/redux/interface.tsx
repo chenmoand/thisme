@@ -1,6 +1,9 @@
 import {Action, Reducer} from "redux";
+import {WebState} from "@/redux/status/webStatus";
+import {ArticleState} from "@/redux/status/articleStatus";
+import {RouteState} from "@/redux/status/routeStatus";
 
-export interface IAction extends Action<string>{
+export interface IAction extends Action<string> {
     content?: any
 }
 
@@ -9,3 +12,10 @@ export interface IAction extends Action<string>{
  * 用于管理State
  */
 export type BaseReducer<S> = Reducer<S, IAction>;
+
+
+export interface Reducers {
+    webStatus: WebState,
+    articleStatus: ArticleState,
+    routeStatus: RouteState
+}

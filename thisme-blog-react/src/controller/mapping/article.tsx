@@ -11,6 +11,8 @@ import {connect} from "react-redux";
 import {doErr} from "@/log";
 
 import {server} from "@/assets/json";
+import {IAction, Reducers} from "@/redux/interface";
+import {Dispatch} from "redux";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps {
@@ -52,14 +54,13 @@ const Article$: React.FC<ArticleProps> = props => {
 };
 
 export default connect(
-    state => {
-        // @ts-ignore
+    (state: Reducers) => {
         const {articleStatus} = state;
         return {
             currentArticle: articleStatus.currentArticle
         }
     },
-    dispatch => {
+    (dispatch: Dispatch<IAction>) => {
         return {
             setCurrentArticle: (article: ArticleInterface) => dispatch({type: "CURRENT_PAGE", content: article}),
         }

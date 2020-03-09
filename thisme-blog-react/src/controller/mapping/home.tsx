@@ -21,8 +21,6 @@ const Home: React.FC<HomeProps> = props => {
                 right={
                     <>
                         <MyselfCard />
-                        <LabelCard src={null}/>
-                        <LabelCard src={null}/>
                     </>
                 }
             />

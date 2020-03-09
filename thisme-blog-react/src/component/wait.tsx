@@ -1,7 +1,7 @@
 import * as React from "react";
 import wait from "@/assets/img/wait.png";
 import {Button, Result} from "antd";
-import Img from 'react-image'
+// import Img from 'react-image'
 
 interface WaitProps {
     onClick: () => void,
@@ -21,7 +21,7 @@ const Wait: React.FC<WaitProps> = props => {
         <>
             <Result
                 title={"wait"}
-                icon={<Img
+                icon={<img
                     style={{
                         display: "block",
                         height: "100%",

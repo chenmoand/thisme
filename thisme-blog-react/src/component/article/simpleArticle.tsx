@@ -27,7 +27,7 @@ const _Dstyle: CSSProperties = {
 const SimpleArticle: React.FC<SimpleArticleProps> = props => {
     const {article, style, className} = props;
     const {
-        title, author, startDate,
+        title, author, createdDate,
         classify, label, describe,
         articleId
     } = article;
@@ -51,7 +51,7 @@ const SimpleArticle: React.FC<SimpleArticleProps> = props => {
                 <Assert text={label} index={0} doEmpty={"NULL"}/>
             </Item>
             <Item label={"日期"} icon={"calendar"}>
-                {dayjs(startDate).format("LL")}
+                {dayjs(createdDate).format("LL")}
             </Item>
             <div style={_Dstyle}>{describe}</div>
         </Div>

@@ -1,10 +1,10 @@
-import {ArticleInterface, PageArticle} from "@/component/interface/articleInterface";
 import {Map} from "immutable";
 import {BaseReducer} from "@/redux/interface";
+import {ArticleInterface, PageArticle, PageArticles} from "@/component/interface/articleInterface";
 
 //文章基本状态
 export interface ArticleState {
-    pageArticle: Map<number, ArticleInterface[]>,
+    pageArticles: PageArticles,
     currentPage: number,
     currentArticle?: ArticleInterface,
     maxPage: number
@@ -12,7 +12,7 @@ export interface ArticleState {
 
 
 const init: ArticleState = {
-    pageArticle: Map<number, ArticleInterface[]>(),
+    pageArticles: Map(),
     currentPage: 1,
     maxPage: 1,
 };
@@ -27,7 +27,7 @@ const ArticleStatus: BaseReducer<ArticleState> = (state = init, action) => {
             let { page, articles }: PageArticle = content;
             return {
                 ...state,
-                pageArticle: state.pageArticle.set(page, articles)
+                pageArticle: state.pageArticles.set(page, articles)
             };
         default:
             return state;

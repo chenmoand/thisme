@@ -7,9 +7,10 @@ import * as CopyToClipboard from "react-copy-to-clipboard";
 import {Button, Popover} from "antd";
 import {connect} from "react-redux";
 import {viewSize} from "@/redux/status/webStatus";
+import {BaseProps} from "@/component/interface/articleInterface";
 
 
-interface MarkdownProps {
+interface MarkdownProps extends BaseProps{
     source: string,
 }
 
@@ -20,10 +21,13 @@ interface MarkdownProps {
  */
 const Markdown: React.FC<MarkdownProps> = props => {
 
-    const {source} = props;
+    const {source, className, style} = props;
 
     return (
-        <div className={"text-markdown"}>
+        <div
+            className={className == null ? "text-markdown" : className}
+            style={style}
+        >
             <ReactMarkdown
                 skipHtml={false}
                 source={source}

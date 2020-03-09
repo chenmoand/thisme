@@ -66,7 +66,7 @@ class ToArticleTypeSerializer : JsonSerializer<ArticleType>() {
  * 回复
  */
 data class Reply(
-        var createdBy: String? = null,
+        var createdName: String? = null,
         var createdDate: Date? = null,
         var lastModifiedDate: Date? = null,
         var content: String?,

@@ -37,7 +37,6 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
     // 发送请求的方法
     const doArticles = () => {
         setClick(true);
-        // TODO 暂时使用setRequestUrl方法
         articles && axios
             .get(`${server.address}/articles?page=${currentPage}&size=10`)
             .then(res => {
@@ -86,7 +85,7 @@ const ArticleList = connect(
         // @ts-ignore
         const {articleStatus} = state;
         return {
-            pageArticles: articleStatus.pageArticle,
+            pageArticles: articleStatus.pageArticles,
             currentPage: articleStatus.currentPage
         }
     },

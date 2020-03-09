@@ -1,4 +1,5 @@
 import {CSSProperties} from "react";
+import {Map} from "immutable";
 
 /**
  * 基础的组件
@@ -8,11 +9,12 @@ export interface BaseProps {
     className?: string,
 }
 
-
 export interface PageArticle {
     page: number,
     articles: Array<ArticleInterface>
 }
+
+export type PageArticles = Map<number, ArticleInterface[]>
 
 
 /**
@@ -24,13 +26,12 @@ export interface ArticleInterface {
     label: Array<string>, // 标签
     classify: string, // 分类
     describe: string, // 描述
-    startDate?: Date, // 发布日期
-    update?: Date, // 更新日期
+    createdDate?: Date, // 发布日期
+    lastModifiedDate?:Date, // 更新日期
     author: string, // 作者
     content: string, // 内容
-    chick: number, // 点击次数
-    replys?: Array<Reply>, // 回复
     articleType: ArticleType, // 文章类型
+    replys?: Array<Reply>, // 回复
 }
 
 export type ArticleType = '原创' | '转载';
@@ -39,8 +40,9 @@ export type ArticleType = '原创' | '转载';
  * 回复属性
  */
 export interface Reply {
-    name: string, // 姓名
-    startDate: Date, // 发布日期
-    update: Date, // 更新日期
+    createdName: string, // 姓名
+    createdDate: Date, // 发布日期
+    lastModifiedDate: Date,
     content: string, // 内容
+    replys?: Array<Reply>, // 嵌套回复
 }
