@@ -8,8 +8,12 @@ import org.springframework.security.core.userdetails.UserDetails
 class SimpleUserDetails(val user: User) : UserDetails {
 
     private val isNotExpired: Boolean = Unit.let lambda@{
-        val accountExpiredTime = user.accountExpiredTime ?: return@lambda true
-        return@lambda user.joinTime.before(accountExpiredTime)
+        var joinTime = user.joinTime
+        if (joinTime != null) {
+            val accountExpiredTime = user.accountExpiredTime ?: return@lambda true
+            return@lambda joinTime.before(accountExpiredTime)
+        }
+        return@lambda false
     }
 
     private val isNotBan = !user.ban

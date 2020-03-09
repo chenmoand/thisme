@@ -1,12 +1,11 @@
 package com.brageast.blog.thisboot
 
-import com.brageast.blog.thisboot.entity.HttpResult
+import com.brageast.blog.thisboot.util.HttpResult
 import com.brageast.blog.thisboot.entity.User
 import com.brageast.blog.thisboot.service.ArticleService
 import com.brageast.blog.thisboot.service.UserService
 import com.brageast.blog.thisboot.util.basalObjectMapper
 import com.brageast.blog.thisboot.util.loggerOf
-import jdk.internal.reflect.Reflection.getCallerClass
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -14,7 +13,6 @@ import org.springframework.context.annotation.Bean
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
-import java.util.*
 
 @SpringBootTest
 class ThisbootApplicationTests {
@@ -55,10 +53,10 @@ class ThisbootApplicationTests {
 
     @Test
     fun onAddUser() {
-        val user = userService.findByName("chenmo").block()
+//        val user = userService.findByName("chenmo").block()
 //        val (userId, name, password, email, joinTime, accountExpiredTime, authorities, ban) = userService.findByName("chenmo").block()
 
-        val insert = userService.insert(User(userId = user?.userId,name = "chenmo", password = "chenmo", email = "2010557767@qq.com", authorities = setOf("ADMIN")))
+        val insert = userService.insert(User(name = "233", password = "233", email = "233@qq.com", authorities = setOf("ADMIN")))
         val block = insert.block()
         println(block)
     }
@@ -93,12 +91,6 @@ class AverageTest {
 
     @Test
     fun onDate() {
-        val d1 = Date() // 小
-        Thread.sleep(4000L)
-        val d2 = Date() // 大
-        val callerClass = getCallerClass()
-        print(callerClass)
-//        println(d1.before(d2))
 
     }
 

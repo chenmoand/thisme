@@ -1,4 +1,4 @@
-package com.brageast.blog.thisboot.entity
+package com.brageast.blog.thisboot.util
 
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.databind.JsonSerializer
