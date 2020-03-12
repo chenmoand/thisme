@@ -7,6 +7,7 @@ import org.bson.types.ObjectId
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @Service
@@ -15,9 +16,9 @@ class UserServiceImpl(
         val bCryptPasswordEncoder: BCryptPasswordEncoder
 ) : UserService {
 
-    override fun findAll() = userRepository.findAll()!!
+    override fun findAll(): Flux<User> = userRepository.findAll()
 
-    override fun findById(objectId: ObjectId) = userRepository.findById(objectId)!!
+    override fun findById(objectId: ObjectId): Mono<User> = userRepository.findById(objectId)
 
     override fun findByName(name: String) = userRepository.findByName(name)
 
@@ -41,7 +42,7 @@ class UserServiceImpl(
     }
 
     @Transactional
-    override fun deleteById(objectId: ObjectId) = userRepository.deleteById(objectId)!!
+    override fun deleteById(objectId: ObjectId): Mono<Void> = userRepository.deleteById(objectId)
 
 
 }

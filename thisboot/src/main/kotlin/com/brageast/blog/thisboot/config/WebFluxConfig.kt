@@ -59,6 +59,6 @@ class WebFluxConfig(
     }
 
     @Bean
-    fun webClient(build: WebClient.Builder) = build.build()!!
+    fun webClient(build: WebClient.Builder): WebClient = build.build()
 
 }
