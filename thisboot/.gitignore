@@ -34,5 +34,4 @@ build/
 src/main/resources/static
 
 src/main/resources/application-pord.yml
-
-src/main/resources/2657790_brageast.com.pfx
+src/main/resources/application-dev.yml
