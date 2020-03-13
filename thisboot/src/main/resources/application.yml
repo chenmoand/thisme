@@ -1,7 +1,5 @@
 debug: false
 spring:
-  devtools:
-    add-properties: false
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
@@ -13,6 +11,3 @@ spring:
     mongodb:
       database: test
       uri: mongodb+srv://chenmo:chenmoand@cluster0-jbhpo.mongodb.net/test?retryWrites=true&w=majority
-logging:
-  level:
-    web: DEBUG

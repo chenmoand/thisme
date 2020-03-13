@@ -9,5 +9,8 @@ import reactor.core.publisher.Mono
 
 interface UserRepository : ReactiveSortingRepository<User, ObjectId> {
     fun findByName(name: String): Mono<User>
+
     fun findAllBy(pageable: Pageable): Flux<User>
+
+    fun existsByName(name: String): Mono<Boolean>
 }

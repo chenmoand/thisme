@@ -13,4 +13,5 @@ interface UserService {
     fun findAll(): Flux<User>
     fun findById(objectId: ObjectId): Mono<User>
     fun findByName(name: String): Mono<User>
+    fun existsByName(name: String): Mono<Boolean>
 }

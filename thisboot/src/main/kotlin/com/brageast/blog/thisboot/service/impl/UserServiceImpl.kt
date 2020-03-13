@@ -24,10 +24,21 @@ class UserServiceImpl(
 
     @Transactional
     override fun insert(user: User): Mono<User> {
-        val encodePassword = bCryptPasswordEncoder.encode(user.password)
-        user.password = encodePassword
-        return userRepository.save(user)
+        var mono: Mono<User> = Mono.empty()
+
+        userRepository.existsByName(user.name).subscribe { exists ->
+            // 确保这个用户不存在, 否正会导致重写另一个用户
+            if (exists == null || !exists) {
+                val encodePassword = bCryptPasswordEncoder.encode(user.password)
+                user.password = encodePassword
+                mono =  userRepository.save(user)
+            }
+        }
+
+        return mono
     }
+
+    override fun existsByName(name: String): Mono<Boolean> = userRepository.existsByName(name)
 
     @Transactional
     override fun update(user: User): Mono<User> {
