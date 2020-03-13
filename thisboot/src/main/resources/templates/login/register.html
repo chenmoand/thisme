@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登陆跳转页面 - brageast.com</title>
+</head>
+<body>
+    <!--/*@thymesVar id="status" type="java.lang.String"*/-->
+    <span th:text="${status}"></span>
+    三秒后将自动跳转, 如果跳转失败请点击
+    <a th:href="@{/}">here</a>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = window.location.origin;
+        },3000);
+    </script>
+</body>
+</html>

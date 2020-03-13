@@ -34,7 +34,6 @@ class UserServiceImpl(
                 mono =  userRepository.save(user)
             }
         }
-
         return mono
     }
 
@@ -44,11 +43,15 @@ class UserServiceImpl(
     override fun update(user: User): Mono<User> {
         val userId = user.userId ?: return insert(user)
 
-        val block = findById(userId).block() ?: return Mono.empty()
+        var sub: User? = null;
+
+        findById(userId).subscribe { sub = it }
+
+        val _user = sub?: return Mono.empty()
 
         // mongodb 的保存和更新是一个, 我不得不先查询一次, 在确定是否加密密码
         // 可能我知识的浅薄, 还是mongodb 不适合存储用户信息, LOL
-        return if (block.password != user.password) insert(user) else userRepository.save(user)
+        return if (_user.password != user.password) insert(user) else userRepository.save(user)
 
     }
 
