@@ -20,7 +20,6 @@ class IndexController(
         val userService: UserService
 ) {
 
-
     @GetMapping(
             value = [
                 "/", "/index.html", "/index", "/about/**",
@@ -29,7 +28,6 @@ class IndexController(
     ) // 将部分URL处理交给前端, 这么做也算是黑魔法把
     fun doIndex(): Mono<String> = Mono.just("index.html")
 
-
     /**
      * 用户登陆
      */
@@ -37,13 +35,10 @@ class IndexController(
     @PreAuthorize("isAnonymous()") // 没登陆可以访问, 防止多次登陆
     fun doLogin(): Mono<String> = Mono.just("login/index")
 
-    @GetMapping(value = ["/test"])
-    @PreAuthorize("hasAuthority('ADMIN')")
-    fun doTest(): Mono<String> = Mono.just("index.html")
-
     @PostMapping(value = ["/register"])
     fun register(user: User, model: Model): Mono<String> {
         userService.insert(user).subscribe{
+            // Mono.empty() 方法创建的实例似乎不会走subscribe方法, 所以出此下策
             it?: model.addAttribute("status", "注册失败")
         }
         model.addAttribute("status", "注册成功")

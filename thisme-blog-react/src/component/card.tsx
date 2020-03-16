@@ -1,10 +1,10 @@
 import * as React from "react";
 import {Avatar, Card} from "antd";
-import {BaseProps} from "@/component/interface/articleInterface";
 import crooped from "@/assets/img/cropped.jpg"
 import {listToComponent} from "@/component/util";
 import {GithubOutlined, ZhihuOutlined, MailOutlined} from "@ant-design/icons";
 import {api} from "@/assets/json";
+import {BaseProps} from "@/component/interface";
 
 const {Meta} = Card;
 

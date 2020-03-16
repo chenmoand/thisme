@@ -1,13 +1,16 @@
 import * as React from 'react';
+import {connect} from "react-redux";
+import {Button, Popover} from "antd";
+
+import '@/assets/style/markdown.less';
 // @ts-ignore
 import * as ReactMarkdown from 'react-markdown/with-html';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import '@/assets/style/markdown.less';
 import * as CopyToClipboard from "react-copy-to-clipboard";
-import {Button, Popover} from "antd";
-import {connect} from "react-redux";
+
 import {viewSize} from "@/redux/status/webStatus";
-import {BaseProps} from "@/component/interface/articleInterface";
+import {BaseProps} from "@/component/interface";
+import {Div} from "@/component/util";
 
 
 interface MarkdownProps extends BaseProps{
@@ -24,8 +27,8 @@ const Markdown: React.FC<MarkdownProps> = props => {
     const {source, className, style} = props;
 
     return (
-        <div
-            className={className == null ? "text-markdown" : className}
+        <Div
+            classNames={["text-markdown", className]}
             style={style}
         >
             <ReactMarkdown
@@ -37,7 +40,7 @@ const Markdown: React.FC<MarkdownProps> = props => {
                 ]}
                 escapeHtml={false}
             />
-        </div>
+        </Div>
     )
 };
 export default Markdown;

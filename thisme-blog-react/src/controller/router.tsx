@@ -3,9 +3,9 @@ import {connect} from "react-redux";
 import {Route, Switch, useLocation, withRouter} from "react-router-dom";
 import CSSTransition from "react-transition-group/CSSTransition";
 import TransitionGroup from "react-transition-group/TransitionGroup";
-import {BaseProps} from "@/component/interface/articleInterface";
 import "@/assets/style/animated-switch.less"
 import {RouteState} from "@/redux/status/routeStatus";
+import {BaseProps} from "@/component/interface";
 
 
 interface PageViewProps extends BaseProps {

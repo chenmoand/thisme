@@ -1,18 +1,17 @@
 import React from "react";
 import {List} from "immutable";
-import {ArticleInterface} from "@/component/interface/articleInterface";
 import {Collapse} from 'antd';
 import {NavLink} from "react-router-dom";
 import Markdown from "@/component/editor/markdown";
-import "@/assets/style/article.less"
+import {ArticleBean} from "@/component/article";
 
 const {Panel} = Collapse;
 
-interface NewArticleListProps {
-    src: List<ArticleInterface>
+interface ArticleTableProps {
+    src: List<ArticleBean>
 }
 
-function mapToPanel(array: List<ArticleInterface>) {
+function mapToPanel(array: List<ArticleBean>) {
     return array.map((value, key) => (
         <Panel
             header={
@@ -31,7 +30,8 @@ function mapToPanel(array: List<ArticleInterface>) {
     ))
 }
 
-const NewArticleList: React.FC<NewArticleListProps> = props => {
+// 文章列表
+const ArticleTable: React.FC<ArticleTableProps> = props => {
 
     const { src } = props;
 
@@ -46,4 +46,4 @@ const NewArticleList: React.FC<NewArticleListProps> = props => {
     )
 };
 
-export default NewArticleList;
+export default ArticleTable;

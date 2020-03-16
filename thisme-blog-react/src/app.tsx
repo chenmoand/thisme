@@ -6,7 +6,7 @@ import {BackTop} from 'antd';
 import {hot} from 'react-hot-loader/root';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
-import {Bottom, TopMenu, Configuration} from '@/component/template/final';
+import {Bottom, TopMenu, Configuration} from '@/component/final';
 
 dayjs.locale('zh-cn');
 

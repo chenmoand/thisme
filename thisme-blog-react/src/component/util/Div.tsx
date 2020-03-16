@@ -1,5 +1,5 @@
 import React from "react";
-import {BaseProps} from "@/component/interface/articleInterface";
+import {BaseProps} from "@/component/interface";
 
 export interface DivProps extends BaseProps {
     classNames?: string[]
@@ -12,7 +12,7 @@ const Div: React.FC<DivProps> = props => {
     const {classNames, children, className, style} = props;
 
     return (
-        <div style={style} className={isEmpty(className) + arrayToClassName(classNames)}>
+        <div style={style} className={arrayToClassName(classNames) + isEmpty(className)}>
             {children}
         </div>
     )
@@ -26,10 +26,8 @@ function isEmpty(value: string) {
 }
 
 function arrayToClassName(value: string[]) {
-    if (value != null) {
-        return " " + value.reduce((pre, current) => pre + " " + isEmpty(current));
-    }
-    return '';
+    return value != null ?
+        value.reduce((pre, current) => pre + " " + isEmpty(current)) : '';
 }
 
 export default Div

@@ -4,8 +4,7 @@ import {useState} from "react";
 import {Skeleton} from "antd";
 import {RouteComponentProps, useParams} from "react-router";
 
-import {ArticleInterface, BaseProps} from "@/component/interface/articleInterface";
-import {CompleteArticle} from "@/component/article";
+import {ArticleBean, CompleteArticle} from "@/component/article";
 import {BodyTemplate} from "@/component/template";
 import {connect} from "react-redux";
 import {doErr} from "@/log";
@@ -13,11 +12,12 @@ import {doErr} from "@/log";
 import {server} from "@/assets/json";
 import {IAction, Reducers} from "@/redux/interface";
 import {Dispatch} from "redux";
+import {BaseProps} from "@/component/interface";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps {
-    currentArticle?: ArticleInterface
-    setCurrentArticle: (article: ArticleInterface) => void;
+    currentArticle?: ArticleBean
+    setCurrentArticle: (article: ArticleBean) => void;
 }
 
 const Article$: React.FC<ArticleProps> = props => {
@@ -29,7 +29,7 @@ const Article$: React.FC<ArticleProps> = props => {
     const [loding, setLoding] = useState(true);
     (currentArticle && id === currentArticle.articleId) ?
         setLoding(false) :
-        axios.get<ArticleInterface>(`${server.address}/articles/${id}`)
+        axios.get<ArticleBean>(`${server.address}/articles/${id}`)
             .then(({data}) => {
                 // 确保后端发送数据不为空
                 data && setCurrentArticle(data);
@@ -62,7 +62,7 @@ export default connect(
     },
     (dispatch: Dispatch<IAction>) => {
         return {
-            setCurrentArticle: (article: ArticleInterface) => dispatch({type: "CURRENT_PAGE", content: article}),
+            setCurrentArticle: (article: ArticleBean) => dispatch({type: "CURRENT_PAGE", content: article}),
         }
     }
 )(Article$);

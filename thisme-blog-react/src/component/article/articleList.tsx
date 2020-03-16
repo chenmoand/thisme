@@ -4,16 +4,16 @@ import {server} from "@/assets/json";
 import {Divider, Pagination} from "antd";
 import Wait from "@/component/wait";
 import {connect} from "react-redux";
-import {Article} from "./index"
+import {ArticleBean, CompleteArticle, PageArticle} from "./index"
 import {axios, Div} from "@/component/util";
-import {ArticleInterface, BaseProps, PageArticle} from "@/component/interface/articleInterface";
+import {BaseProps} from "@/component/interface";
 
 const {useEffect, useState} = React;
 
 interface ArticleListProps extends BaseProps {
     currentPage: number,
     maxPage: number,
-    pageArticles: Map<number, ArticleInterface[]>,
+    pageArticles: Map<number, ArticleBean[]>,
     setPageArticle: (pa: PageArticle) => void,
     setCurrentPage: (num: number) => void,
 }
@@ -23,7 +23,7 @@ interface ArticleListProps extends BaseProps {
  * @param props
  * @constructor
  */
-export const ArticleList$: React.FC<ArticleListProps> = props => {
+const ArticleList$: React.FC<ArticleListProps> = props => {
     const {
         className, maxPage, pageArticles,
         currentPage, setPageArticle, style,
@@ -33,7 +33,7 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
     // 防止多次点击请求按钮导致发送一堆请求的状态
     const [isclick, setClick] = useState(false);
     // 得到页面的文章数组
-    let articles: ArticleInterface[] = pageArticles.get(currentPage);
+    let articles: ArticleBean[] = pageArticles.get(currentPage);
     // 发送请求的方法
     const doArticles = () => {
         setClick(true);
@@ -43,7 +43,7 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
                 const {data} = res;
                 data && setPageArticle({
                     page: currentPage,
-                    articles: data
+                    data: data
                 })
             })
             .catch(err => {
@@ -59,9 +59,8 @@ export const ArticleList$: React.FC<ArticleListProps> = props => {
                 articles != null ? articles.map((item, index) => {
                         return (
                             <React.Fragment key={index}>
-                                <Article
-                                    type={"Complete"}
-                                    src={item}
+                                <CompleteArticle
+                                    article={item}
                                 />
                                 <Divider style={{margin: "12px 0"}}/>
                             </React.Fragment>
@@ -96,6 +95,5 @@ const ArticleList = connect(
         }
     }
 )(ArticleList$);
-
 
 export default ArticleList;

@@ -1,11 +1,9 @@
 import * as React from "react";
-import {ArticleInterface} from "@/component/interface/articleInterface";
 import {List, Map} from "immutable";
-import {Article} from "@/component/article";
-import NewArticleList from "@/component/article/newArticleList";
+import {ArticleBean, CompleteArticle} from "@/component/article";
 
 
-const article: ArticleInterface = {
+const article: ArticleBean = {
     articleId: "demo",
     author: "祁凯大神",
     classify: "java",
@@ -23,18 +21,16 @@ const article: ArticleInterface = {
 };
 
 const AppTest: React.FC = () => {
-    const pa: Map<number, ArticleInterface[]> = Map<number, ArticleInterface[]>();
+    const pa: Map<number, ArticleBean[]> = Map<number, ArticleBean[]>();
 
     const artis = List.of(article, article, article, article, article);
 
     return (
-        <div className={""}>
+        <div className={"hahah"}>
             {/*<Div className={"dasdsad"}></Div>*/}
-            {/*<Article type={"Simple"} src={article}/>*/}
 
-            <NewArticleList src={artis}>
-
-            </NewArticleList>
+            <CompleteArticle article={article}></CompleteArticle>
+            {/*<ArticleTable src={artis} />*/}
 
         </div>
     )

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {BaseProps} from "@/component/interface/articleInterface";
+import {BaseProps} from "@/component/interface";
 
 export interface ItemProps extends BaseProps {
     label: string | React.ReactNode,
@@ -17,7 +17,7 @@ const Item: React.FC<ItemProps> = props => {
     } = props;
 
     return (
-        <span className={`thime-item ${className}`} style={{
+        <span className={className} style={{
             ...style
         }}>
             <span style={
