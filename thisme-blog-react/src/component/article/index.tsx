@@ -4,7 +4,7 @@ import {List, Map} from "immutable";
 import "@/assets/style/article.less"
 
 export {default as CompleteArticle} from "./completeArticle";
-export {default as ArticleTable } from "./articleTable";
+export {default as ArticleTable} from "./articleTable";
 
 export interface PageArticle {
     page: number,

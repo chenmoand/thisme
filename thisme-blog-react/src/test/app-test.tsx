@@ -1,6 +1,7 @@
 import * as React from "react";
 import {List, Map} from "immutable";
 import {ArticleBean, CompleteArticle} from "@/component/article";
+import {ViewArticle} from "@/component/article/viewArticle";
 
 
 const article: ArticleBean = {
@@ -30,6 +31,7 @@ const AppTest: React.FC = () => {
             {/*<Div className={"dasdsad"}></Div>*/}
 
             <CompleteArticle article={article}></CompleteArticle>
+            <ViewArticle pageNum={1}></ViewArticle>
             {/*<ArticleTable src={artis} />*/}
 
         </div>

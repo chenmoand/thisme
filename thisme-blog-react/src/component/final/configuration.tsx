@@ -36,8 +36,6 @@ const Configuration: React.FC<ConfigurationProps> = props => {
 // 旧组件形式以剔除
 function useWebSize() {
 
-
-
     const isDesktopOrLaptop = useMediaQuery({query: '(min-device-width: 1224px)'}),
         isBigScreen = useMediaQuery({query: '(min-device-width: 1824px)'}),
         isTabletOrMobile = useMediaQuery({query: '(max-width: 844px)'});

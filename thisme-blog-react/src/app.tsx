@@ -8,7 +8,9 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import {Bottom, TopMenu, Configuration} from '@/component/final';
 
+
 dayjs.locale('zh-cn');
+
 
 
 /**
