@@ -12,11 +12,16 @@ interface ArticleTableProps {
 }
 
 function mapToPanel(array: List<ArticleBean>) {
-
     return array.map((value, key) => (
         <Panel
             header={
-                <NavLink to={"/article/" + value.articleId}>
+                <NavLink
+                    style={{
+                        color: "black",
+                        fontWeight: "bolder"
+                    }}
+                    to={"/article/" + value.articleId}
+                >
                     {value.title}
                 </NavLink>
             }
@@ -25,11 +30,14 @@ function mapToPanel(array: List<ArticleBean>) {
             <Markdown
                 className={"article-describe"}
                 source={value.describe}
-            >
-            </Markdown>
+            />
+            {/*<Divider style={{marginBottom: "10px"}} />
+            <TagFilled />*/}
         </Panel>
     ))
 }
+
+
 
 // 文章列表
 const ArticleTable: React.FC<ArticleTableProps> = props => {

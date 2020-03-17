@@ -1,6 +1,6 @@
 import * as React from "react";
 import "@/assets/style/home.less"
-import AppTest from "@/test/app-test";
+import AppTest from "@/test/appTest";
 import {BodyTemplate} from "@/component/template";
 import {MyselfCard} from "@/component/card";
 

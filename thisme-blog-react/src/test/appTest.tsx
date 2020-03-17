@@ -1,6 +1,6 @@
 import * as React from "react";
 import {List, Map} from "immutable";
-import {ArticleBean, ArticleTable} from "@/component/article";
+import {ArticleBean, ArticleTable, CompleteArticle} from "@/component/article";
 import {useAxios} from "use-axios-client";
 import {api, server} from "@/assets/json";
 
@@ -26,14 +26,25 @@ const AppTest: React.FC = () => {
     const pa: Map<number, ArticleBean[]> = Map<number, ArticleBean[]>();
 
     // const artis = List.of(article, article, article, article, article);
-    const {data, loading, error} = useAxios<string>(`${server.address + api.article}/pagination?page=${1}`);
-    var message = data && JSON.parse(data);
-    console.log(message)
-    console.log(message && message)
+    const {address} = server;
+    const {data, loading, error} = useAxios<List<ArticleBean>>(`${address + api.article}/pagination?page=${1}`);
+
+    /*const {data, error, loading} = useRetryAxios(
+        {
+            url: "www.sdasdas.xxxx",
+            retry: 3,
+            timeout: 1000
+        }
+    );*/
+
+    console.log(error);
+
 
     return (
         <div className={"hahah"}>
-            {/*{data && <ArticleTable src={List.of(...data)}/>}*/}
+
+            <CompleteArticle article={article}/>
+            {/*{data && <ArticleTable src={data}/>}*/}
         </div>
     )
 };

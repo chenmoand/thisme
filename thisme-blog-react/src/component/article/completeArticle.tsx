@@ -1,8 +1,7 @@
 import * as React from "react";
-import {Tag} from "antd";
-import {Assert, dayjs, Div, Item} from "@/component/util";
+import {Card, Tag} from "antd";
+import {dayjs} from "@/component/util";
 import Markdown from "@/component/editor/markdown";
-import {FireOutlined, TagOutlined, UserOutlined} from "@ant-design/icons";
 import {ArticleBean} from "@/component/article";
 import {BaseProps} from "@/component/interface";
 
@@ -12,40 +11,43 @@ interface CompleteArticleProps extends BaseProps {
 }
 
 export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
-    const {article, className, style} = props;
+    const {article, style} = props;
     const {
-        title, author, createdDate,
-        classify, label, content,
-        articleType, articleId
+        title,
+        articleType
     } = article;
     return (
-        <Div
-            classNames={["complete-article", className]}
+        <Card
+            className={"complete-article"}
             style={style}
+            title={
+                <>
+                    <h3 style={{margin: 0}}>
+                        <Tag color={"red"}
+                             style={{verticalAlign: "middle"}}>
+                            {articleType}
+                        </Tag>
+                        {title}
+                    </h3>
+
+
+                </>
+            }
         >
-            <h1 style={{paddingBottom: 3}}>
-                {title}
-            </h1>
-            <Tag color={"red"}>
-                {articleType}
-            </Tag>
-            <Item label={"作者"} icon={<UserOutlined/>}>
-                {author}
-            </Item>
-            <Item label={"类别"} icon={<FireOutlined/>}>
-                {classify}
-            </Item>
-            <Item label={"标签"} icon={<TagOutlined/>}>
-                <Assert text={label} index={0} doEmpty={"NULL"}/>
-            </Item>
-            <Item label={"日期"} icon={"calendar"}>
-                {dayjs(createdDate).format("LL")}
-            </Item>
-            <Markdown source={content}/>
-            <span>
-                转载请注: https:///article/{articleId}
-            </span>
-        </Div>
+            <Markdown source={articleToMarkdown(article)}/>
+        </Card>
     );
 };
+
+function articleToMarkdown(value: ArticleBean) {
+    const {title, author, createdDate, content} = value;
+
+    return content + "\n\n" +
+        "\n\n> **本文标题**: " + title +
+        "\n\n> **本文作者**: " + author +
+        "\n\n> **发布时间**: " + dayjs(createdDate).format("LL") +
+        "\n\n> **版权声明**: 本博客所有文章除特别声明外，均采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 许可协议。转载请注明出处！"
+
+}
+
 export default CompleteArticle;
