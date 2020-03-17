@@ -1,7 +1,8 @@
 import * as React from "react";
 import {List, Map} from "immutable";
-import {ArticleBean, CompleteArticle} from "@/component/article";
-import {ViewArticle} from "@/component/article/viewArticle";
+import {ArticleBean, ArticleTable} from "@/component/article";
+import {useAxios} from "use-axios-client";
+import {api, server} from "@/assets/json";
 
 
 const article: ArticleBean = {
@@ -24,16 +25,15 @@ const article: ArticleBean = {
 const AppTest: React.FC = () => {
     const pa: Map<number, ArticleBean[]> = Map<number, ArticleBean[]>();
 
-    const artis = List.of(article, article, article, article, article);
+    // const artis = List.of(article, article, article, article, article);
+    const {data, loading, error} = useAxios<string>(`${server.address + api.article}/pagination?page=${1}`);
+    var message = data && JSON.parse(data);
+    console.log(message)
+    console.log(message && message)
 
     return (
         <div className={"hahah"}>
-            {/*<Div className={"dasdsad"}></Div>*/}
-
-            <CompleteArticle article={article}></CompleteArticle>
-            <ViewArticle pageNum={1}></ViewArticle>
-            {/*<ArticleTable src={artis} />*/}
-
+            {/*{data && <ArticleTable src={List.of(...data)}/>}*/}
         </div>
     )
 };

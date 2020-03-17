@@ -13,7 +13,7 @@ export const ViewArticle: React.FC<ViewArticleProps> = props => {
 
     const {pageNum} = props;
 
-    const {data, loading, error} = useAxios<List<ArticleBean>>(`${server.address + api.article}?page=${pageNum}`);
+    const {data, loading, error} = useAxios<List<ArticleBean>>(`${server.address + api.article}/pagination?page=${pageNum}`);
 
     return(
         <>

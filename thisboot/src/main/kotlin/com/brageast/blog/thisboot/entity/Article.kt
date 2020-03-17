@@ -57,7 +57,8 @@ class ToArticleTypeSerializer : JsonSerializer<ArticleType>() {
     override fun serialize(type: ArticleType?, gen: JsonGenerator?, serializers: SerializerProvider?) {
         if (type != null && gen != null) {
             val value = type.value
-            gen.writeNumber(value)
+            // 原先写成了writeNumber了, 谨记自己
+            gen.writeString(value)
         }
     }
 }

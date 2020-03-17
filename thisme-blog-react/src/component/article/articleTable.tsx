@@ -12,6 +12,7 @@ interface ArticleTableProps {
 }
 
 function mapToPanel(array: List<ArticleBean>) {
+
     return array.map((value, key) => (
         <Panel
             header={

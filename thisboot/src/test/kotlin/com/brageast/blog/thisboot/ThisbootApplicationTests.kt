@@ -1,5 +1,6 @@
 package com.brageast.blog.thisboot
 
+import com.brageast.blog.thisboot.entity.Article
 import com.brageast.blog.thisboot.util.HttpResult
 import com.brageast.blog.thisboot.entity.User
 import com.brageast.blog.thisboot.service.ArticleService
@@ -23,20 +24,51 @@ class ThisbootApplicationTests {
 
     val log = loggerOf<ThisbootApplicationTests>()
 
+
     @Bean
     fun getUser(): MapReactiveUserDetailsService {
         return MapReactiveUserDetailsService()
     }
 
- /*   @Test
-    fun onRepos() {
-        println(userRepository.count().block())
-
-    }*/
-
-
     @Autowired
     lateinit var articleService: ArticleService
+
+    @Test
+    fun addArticle() {
+        val article = Article(
+                title = "长坂坡祁连山祁凯VS上将邢道荣",
+                label = listOf("测试"),
+                classify = "测试",
+                describe = "长坂坡祁连山祁凯VS上将邢道荣鹿死谁手, 让我们拭目以待",
+                author = "祁凯",
+                content = """
+                    ``` java
+                        public static void main(String[] args) {
+                            System.out.print("看我扎不扎你就完了");
+                        }
+                    ```
+                    
+                    > 卧槽祁凯居然跟邢道荣发生了这样的关系
+                    
+                    ``` NEW ``` 祁凯挑战i邢道荣发生了VAN♂的事情, 居然化干戈为玉帛了
+                    
+                    ## 总结
+                    
+                    * 这是一个神奇的MarkDown
+                    * 祁凯被上将邢道荣翻牌子了
+                    
+                    ``` javascript
+                        console.log("emmm, 哇卡哇卡我")
+                    ```
+                    
+                    
+                """.trimIndent()
+        )
+        var intRange = 1..10
+        intRange.forEach { _ ->
+            articleService.insert(article).block()
+        }
+    }
 
     @Test
     fun contextLoads() {

@@ -1,5 +1,8 @@
 package com.brageast.util;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 public final class ClassUtil {
 
     public static Class[] BASE_CLASS;
@@ -15,9 +18,15 @@ public final class ClassUtil {
     private ClassUtil() {
     }
 
-    public static Object runConstructor(Class<?> cls, Object... parameters) {
-
-        return null;
+    public static <T> T runConstructor(Class<T> cls, Object... parameters) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        final Class[] parametersClass = ParameterUtil.getParametersClass(parameters);
+        final Constructor<T> declaredConstructor = cls.getDeclaredConstructor(parametersClass);
+        return runConstructor(declaredConstructor, parameters);
     }
+    public static <T> T runConstructor(Constructor<T> constructor, Object... parameters) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        return constructor.newInstance(parameters);
+    }
+
+//    public static Class[] get
 
 }

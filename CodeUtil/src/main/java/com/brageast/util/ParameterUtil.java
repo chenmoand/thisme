@@ -3,6 +3,11 @@ package com.brageast.util;
 public final class ParameterUtil {
 
 
+    public static Class[] getParametersClass(Object[] parameters) {
+        return getParametersClass(parameters, true);
+    }
+
+
     /**
      * 得到参数数组的所有类
      *
@@ -10,7 +15,7 @@ public final class ParameterUtil {
      * @param basicClass 是否解析成基础类, 例: Byte.class -> byte.class
      * @return
      */
-    public static Class<?>[] getParametersClass(Object[] parameters, boolean basicClass) {
+    public static Class[] getParametersClass(Object[] parameters, boolean basicClass) {
         final int length = parameters.length;
         Class<?>[] classes = new Class[length];
 
@@ -24,6 +29,11 @@ public final class ParameterUtil {
                         break;
                     }
                 }
+            }
+
+            if (aClass == An.class) {
+                final An an = (An) parameter;
+                classes[i] = an.cls;
             }
 
             if (classes[i] == null) {
