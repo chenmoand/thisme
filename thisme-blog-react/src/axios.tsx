@@ -6,7 +6,10 @@ export interface AxiosConfig extends Config {
     retry?: number
 }
 
-
+/**
+ * 自带重复发送数据
+ * @param config
+ */
 function useRetryAxios<Data>(config: AxiosConfig) {
     const [order, setOrder] = useState(0);
 
@@ -14,14 +17,10 @@ function useRetryAxios<Data>(config: AxiosConfig) {
 
     const [getData, {data, error, loading}] = useLazyAxios<Data>(config);
 
-    function _goto() {
+    if (order === 0 || (error && order < retry)) {
         getData();
         setOrder(order + 1);
     }
-
-    order === 0 && _goto();
-
-    if (error && order < retry) _goto();
 
     return {
         data,

@@ -19,4 +19,3 @@ export const whiteLogo = (): void => {
     );
 };
 
-export const doErr = (err) => err && console.log(err);

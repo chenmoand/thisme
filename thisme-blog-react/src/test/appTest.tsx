@@ -3,6 +3,7 @@ import {List, Map} from "immutable";
 import {ArticleBean, ArticleTable, CompleteArticle} from "@/component/article";
 import {useAxios} from "use-axios-client";
 import {api, server} from "@/assets/json";
+import {ViewArticle} from "@/component/article/viewArticle";
 
 
 const article: ArticleBean = {
@@ -27,7 +28,7 @@ const AppTest: React.FC = () => {
 
     // const artis = List.of(article, article, article, article, article);
     const {address} = server;
-    const {data, loading, error} = useAxios<List<ArticleBean>>(`${address + api.article}/pagination?page=${1}`);
+    // const {data, loading, error} = useAxios<List<ArticleBean>>(`${address + api.article}/pagination?page=${1}`);
 
     /*const {data, error, loading} = useRetryAxios(
         {
@@ -37,13 +38,14 @@ const AppTest: React.FC = () => {
         }
     );*/
 
-    console.log(error);
+    // console.log(error);
 
 
     return (
         <div className={"hahah"}>
 
-            <CompleteArticle article={article}/>
+            <ViewArticle pageNum={1}/>
+            {/*<CompleteArticle article={article}/>*/}
             {/*{data && <ArticleTable src={data}/>}*/}
         </div>
     )

@@ -1,8 +1,9 @@
-import React from "react";
-import {useAxios} from "use-axios-client";
-import {ArticleBean} from "@/component/article";
+import React, {useEffect} from "react";
+import {ArticleBean, ArticleTable} from "@/component/article";
 import {api, server} from "@/assets/json";
 import {List} from "immutable";
+import {useRetryAxios} from "@/axios";
+import {Skeleton} from "antd";
 
 
 interface ViewArticleProps {
@@ -13,11 +14,24 @@ export const ViewArticle: React.FC<ViewArticleProps> = props => {
 
     const {pageNum} = props;
 
-    const {data, loading, error} = useAxios<List<ArticleBean>>(`${server.address + api.article}/pagination?page=${pageNum}`);
+    const url = server.address + api.article + "/pagination?page=" + pageNum;
+
+    const {data, loading, error} = useRetryAxios<List<ArticleBean>>({
+        url: url,
+        timeout: 1500,
+        retry: 3,
+        method: "GET"
+    });
+
+    useEffect(() => {
+        error && console.log(error)
+    },[error])
 
     return(
-        <>
-
-        </>
+        <Skeleton loading={loading}>
+            {
+                data && <ArticleTable src={data}/>
+            }
+        </Skeleton >
     )
 }

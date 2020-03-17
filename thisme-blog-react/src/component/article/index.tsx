@@ -1,17 +1,9 @@
 import React from "react";
-import {List, Map} from "immutable";
 
 import "@/assets/style/article.less"
 
 export {default as CompleteArticle} from "./completeArticle";
 export {default as ArticleTable} from "./articleTable";
-
-export interface PageArticle {
-    page: number,
-    data: List<ArticleBean>
-}
-
-export type PageArticles = Map<number, List<ArticleBean>>
 
 /**
  * 文章属性

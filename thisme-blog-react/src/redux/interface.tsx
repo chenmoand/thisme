@@ -1,4 +1,4 @@
-import {Action, Reducer} from "redux";
+import {Action, Dispatch, Reducer} from "redux";
 import {WebState} from "@/redux/status/webStatus";
 import {ArticleState} from "@/redux/status/articleStatus";
 import {RouteState} from "@/redux/status/routeStatus";
@@ -19,3 +19,5 @@ export interface Reducers {
     articleStatus: ArticleState,
     routeStatus: RouteState
 }
+
+export type IDispatch = Dispatch<IAction>
