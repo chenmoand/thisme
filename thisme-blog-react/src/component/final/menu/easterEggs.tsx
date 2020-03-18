@@ -31,7 +31,8 @@ const EasterEggs: React.FC<EasterEggsProps> = props => {
                             color: "red"
                         }
                     }>注
-                                </span>: 可能会导致页面抽搐<br/>
+                    </span>
+                    : 可能会导致页面抽搐<br/>
                     <Button
                         style={{
                             float: "right",

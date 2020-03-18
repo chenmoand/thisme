@@ -42,6 +42,11 @@ const Article: React.FC<ArticleProps> = props => {
                         {loding && <View id={id} setLoding={setLoding}/>}
                     </>
                 }
+                right={
+                    <div>
+                        {/*占位*/}
+                    </div>
+                }
             />
         </>
     );

@@ -3,5 +3,6 @@
   "port": 8080,
   "domain": "brageast.com",
   "address": "http://39.105.170.250:233",
-  "version": "1.0-beta"
+  "version": "1.0-beta",
+  "repository": "https://github.com/chenmoand/thisme"
 }

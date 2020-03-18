@@ -1,17 +1,19 @@
 import * as React from "react";
 import {BackTop, Divider, Row} from "antd";
+import {server} from "@/assets/json";
 
 const Bottom: React.FC = props => {
     return (
-        <div
-            className={"page-bottom"}
+        <div className={"page-bottom"}
         >
             <Row
                 justify={"center"}
             >
-                <Divider style={{
-                    height: 2, marginTop: 0,
-                }}/>
+                <Divider
+                    style={{
+                        height: 2, marginTop: 0,
+                    }}
+                />
                 <span
                     style={{
                         textAlign: "center",
@@ -19,7 +21,7 @@ const Bottom: React.FC = props => {
                     }}
                 >
                     页面托管于
-                    <a href="https://github.com/chenmoand/thisme">
+                    <a href={server.repository}>
                         Github.com
                     </a><br/>
                     <a href="/">
@@ -29,7 +31,9 @@ const Bottom: React.FC = props => {
                 </span>
             </Row>
             <BackTop>
-                <div className="ant-back-top-inner">UP</div>
+                <div className="ant-back-top-inner">
+                    UP
+                </div>
             </BackTop>
         </div>
     )

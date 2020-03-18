@@ -1,6 +1,6 @@
 import React from "react";
 import {Menu} from "antd";
-import {SwitcherOutlined} from "@ant-design/icons/lib";
+import {SwitcherOutlined} from "@ant-design/icons";
 
 import {useSelector} from "react-redux";
 import {Reducers} from "@/redux/interface";
