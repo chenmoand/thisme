@@ -8,14 +8,14 @@ import {Route, RouteState} from "@/redux/status/routeStatus";
 import {NavLink} from "react-router-dom";
 
 
-const ViewTopMenu: React.FC = props => {
+const ViewTopMenu: React.FC = () => {
 
     const routes = useSelector<Reducers, RouteState>(
         state => state.routeStatus
         .filter(
             (route: Route) => route.name !== false
         )
-    )
+    );
 
     const {Item} = Menu;
 
@@ -38,6 +38,6 @@ const ViewTopMenu: React.FC = props => {
             )}
         </Menu>
     );
-}
+};
 
 export default ViewTopMenu;

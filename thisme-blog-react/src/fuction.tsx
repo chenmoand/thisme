@@ -17,6 +17,15 @@ export interface AxiosConfig extends Config {
 function useRetryAxios<Data>(config: AxiosConfig) {
     const [order, setOrder] = useState(0);
 
+    const _url = config.url;
+
+    const [url, setUrl] = useState(_url);
+
+    if(_url != url) {
+        setOrder(0);
+        setUrl(_url);
+    }
+
     const {retry} = config;
 
     const [getData, {data, error, loading}] = useLazyAxios<Data>(config);

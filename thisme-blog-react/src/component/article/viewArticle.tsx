@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Pagination, Skeleton} from "antd";
 import {List} from "immutable";
 
@@ -6,18 +6,18 @@ import {api, server} from "@/assets/json";
 import {useRetryAxios} from "@/fuction";
 import {ArticleBean, ArticleTable} from "@/component/article";
 import {BaseProps} from "@/component/interface";
-import {useSelector} from "react-redux";
-import {Reducers} from "@/redux/interface";
+import {useDispatch, useSelector} from "react-redux";
+import {IDispatch, Reducers} from "@/redux/interface";
 import {ArticleState} from "@/redux/status/articleStatus";
 
 
-export const ViewArticle: React.FC<BaseProps> = props => {
+export const ViewArticle: React.FC<BaseProps> = () => {
 
     const {currentPage, articleAllSize} = useSelector<Reducers, ArticleState>(
         ({articleStatus}) => articleStatus
-    )
+    );
 
-    const url = server.address + api.article + "/pagination?page=" + currentPage;
+    let url = server.address + api.article + "/pagination?page=" + currentPage;
 
     const {data, loading, error} = useRetryAxios<List<ArticleBean>>({
         url: url,
@@ -26,22 +26,26 @@ export const ViewArticle: React.FC<BaseProps> = props => {
         method: "GET"
     });
 
-    useEffect(() => {
-        error && console.log(error)
-    }, [error])
+    const dispatch = useDispatch<IDispatch>();
+
+    error && console.log(error);
+
 
     return (
         <>
             <Skeleton loading={loading}>
-                {
-                    data && <ArticleTable src={data}/>
-                }
+                {data && <ArticleTable src={data}/>}
             </Skeleton>
             <Pagination
-                simple
+                simple style={{
+                    float: "right"
+                }}
                 defaultCurrent={currentPage}
                 total={articleAllSize}
+                onChange={
+                    page => dispatch({type: "CURRENT_PAGE", content: page})
+                }
             />
         </>
     )
-}
+};

@@ -17,7 +17,7 @@ const EasterEggs: React.FC<EasterEggsProps> = props => {
 
     const setWebType = (webType: boolean) => dispatch(
         {type: 'WEBTYPE', content: webType ? WebType.BIG : WebType.SMALL}
-    )
+    );
 
     return (
         <Popover
@@ -55,6 +55,6 @@ const EasterEggs: React.FC<EasterEggsProps> = props => {
         </Popover>
     )
 
-}
+};
 
 export default EasterEggs;

@@ -14,4 +14,5 @@ interface ArticleService {
     fun findById(id: String): Mono<Article>
     fun findById(id: ObjectId): Mono<Article>
     fun deleteById(id: ObjectId): Mono<Void>
+    fun getSize(): Mono<Long>
 }

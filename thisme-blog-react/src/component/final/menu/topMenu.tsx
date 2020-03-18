@@ -9,11 +9,11 @@ import ViewTopMenu from "@/component/final/menu/viewTopMenu";
 import EasterEggs from "@/component/final/menu/easterEggs";
 
 
-const TopMenu: React.FC = props => {
+const TopMenu: React.FC = () => {
 
     const webType = useSelector<Reducers, boolean>(
         ({webStatus}) => viewSize(webStatus.webType)
-    )
+    );
 
     return(
         <Row style={{
@@ -60,6 +60,6 @@ const TopMenu: React.FC = props => {
         </Row>
     )
 
-}
+};
 
 export default TopMenu;

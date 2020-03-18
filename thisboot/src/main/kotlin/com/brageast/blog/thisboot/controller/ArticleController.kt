@@ -7,19 +7,21 @@ import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import javax.annotation.security.PermitAll
 
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/articles")
 class ArticleController(
         val articleService: ArticleService
 ) {
-    @GetMapping("/articles")
+    @GetMapping
     fun getAllArticle(): Flux<Article> = articleService.findAll()
 
-    @GetMapping("/articles/pagination")
+    @GetMapping("/size")
+    fun getAllArticleSize(): Mono<Long> = articleService.getSize()
+
+    @GetMapping("pagination")
     fun getPageArticle(@RequestParam(defaultValue = "1") page: Int,
                        @RequestParam(defaultValue = "10") size: Int
     ): Flux<Article> = articleService.findWithPagination(page, size)

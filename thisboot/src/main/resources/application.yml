@@ -1,7 +1,7 @@
 debug: false
 spring:
   thymeleaf:
-    cache: false
+    cache: true
     prefix: classpath:/templates/
     suffix: .html
     enabled: true
@@ -11,3 +11,6 @@ spring:
     mongodb:
       database: test
       uri: mongodb+srv://chenmo:chenmoand@cluster0-jbhpo.mongodb.net/test?retryWrites=true&w=majority
+server:
+  compression:
+    enabled: true

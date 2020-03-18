@@ -28,14 +28,14 @@ const Configuration: React.FC<ConfigurationProps> = props => {
 
     const articleAllSize = useSelector<Reducers, number>(
         ({articleStatus}) => articleStatus.articleAllSize
-    )
+    );
 
     dispatch({type: 'WEBTYPE', content: size});
 
     return (
         <>
             {/*可能使用useXXX的副作用最好的解决方法是这个*/}
-            {articleAllSize || <DoArticleSize dispatch={dispatch}/>}
+            {articleAllSize == undefined ? <DoArticleSize dispatch={dispatch}/> : ""}
             {children}
         </>
     )
@@ -50,14 +50,14 @@ interface DoArticleSizeProps {
 
 const DoArticleSize: React.FC<DoArticleSizeProps> = ({dispatch}) => {
 
-    const url = server.address + "/api/article/size"
+    const url = server.address + "/api/articles/size";
 
     const {data, error} = useRetryAxios<number>({
         url: url,
         retry: 3,
         timeout: 1500,
         method: "get"
-    })
+    });
 
     if (data) {
         dispatch({type: "ARTICLE_ALL_SIZE", content: data})

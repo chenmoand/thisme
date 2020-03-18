@@ -16,15 +16,15 @@ const init: ArticleState = {
 };
 
 
-const ArticleStatus: BaseReducer<ArticleState> = (state = init, action) => {
+const ArticleStatus: BaseReducer<ArticleState> = (state = init, action): ArticleState => {
     const {content} = action;
     switch (action.type) {
         case 'CURRENT_PAGE':
             return {...state, currentPage: content};
         case 'CURRENT_ARTICLE':
-            return {...state, currentArticle: content}
+            return {...state, currentArticle: content};
         case 'ARTICLE_ALL_SIZE':
-            return {...state, maxPage: content}
+            return {...state, articleAllSize: content};
         default:
             return state;
     }

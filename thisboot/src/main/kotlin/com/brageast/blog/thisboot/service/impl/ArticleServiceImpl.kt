@@ -17,6 +17,8 @@ class ArticleServiceImpl (
     val reactiveMongoTemplate: ReactiveMongoTemplate
 ) : ArticleService {
 
+    override fun getSize() = articleRepository.count()
+
     override fun findAll(): Flux<Article> = articleRepository.findAll()
     /**
      * 用reactiveMongoTemplate 实现为 reactiveMongoTemplate.

@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.MongoId
 import java.util.*
+import javax.validation.constraints.Email
 
 @Document(collection = "user")
 data class User(
@@ -18,6 +19,7 @@ data class User(
         @Indexed(unique = true, name = "name")
         var name: String,
         var password: String,
+        @Email
         var email: String?,
         @CreatedDate
         var joinTime: Date? = null, // 加入时间
