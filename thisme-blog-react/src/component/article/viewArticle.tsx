@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {ArticleBean, ArticleTable} from "@/component/article";
 import {api, server} from "@/assets/json";
 import {List} from "immutable";
-import {useRetryAxios} from "@/axios";
+import {useRetryAxios} from "../../fuction";
 import {Skeleton} from "antd";
 
 

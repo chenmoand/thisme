@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Divider, Row} from "antd";
+import {BackTop, Divider, Row} from "antd";
 
 const Bottom: React.FC = props => {
     return (
@@ -28,6 +28,9 @@ const Bottom: React.FC = props => {
                     @ 2019 · ChenMo 版权所有<br/>冀ICP备18025254号-1
                 </span>
             </Row>
+            <BackTop>
+                <div className="ant-back-top-inner">UP</div>
+            </BackTop>
         </div>
     )
 };

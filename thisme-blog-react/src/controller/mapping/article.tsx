@@ -1,15 +1,15 @@
 import * as React from "react";
 import {useState} from "react";
+import {Skeleton} from "antd";
+import {useDispatch, useSelector} from "react-redux";
 import {RouteComponentProps, useParams} from "react-router";
 
 import {server} from "@/assets/json";
+import {useRetryAxios} from "@/fuction";
 import {BaseProps} from "@/component/interface";
-import {useDispatch, useSelector} from "react-redux";
 import {IDispatch, Reducers} from "@/redux/interface";
 import {ArticleBean, CompleteArticle} from "@/component/article";
 import {BodyTemplate} from "@/component/template";
-import {Skeleton} from "antd";
-import {useRetryAxios} from "@/axios";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps {
@@ -24,7 +24,6 @@ const Article: React.FC<ArticleProps> = props => {
     const {id} = useParams();
 
     const [loding, setLoding] = useState(currentArticle == undefined || currentArticle.articleId != id);
-    console.log(loding)
 
     return (
         <>
@@ -78,7 +77,7 @@ const View: React.FC<ViewProps> = props => {
     error && console.log(error);
 
     if (data) {
-        console.log(data)
+        // console.log(data)
         dispatch({type: "CURRENT_ARTICLE", content: data});
         setLoding(false)
     }

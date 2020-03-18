@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import {Title} from "@/component/util";
-import {ConnectRouter} from "@/controller/router";
+import {ConnectRouter} from "@/fuction";
 
 /**
  * 这是一个测试传入数据是否正常的组件

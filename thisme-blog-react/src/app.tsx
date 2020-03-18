@@ -1,16 +1,15 @@
 import * as React from 'react';
-import '@/assets/style/globle-index.less';
-
-import {Body} from '@/controller/router';
-import {BackTop} from 'antd';
 import {hot} from 'react-hot-loader/root';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
-import {Bottom, TopMenu, Configuration} from '@/component/final';
+
+import '@/assets/style/globle-index.less';
+import {BodyController} from '@/controller/router';
+import {Bottom, Configuration} from '@/component/final';
+import {TopMenu} from "@/component/final/menu";
 
 
 dayjs.locale('zh-cn');
-
 
 
 /**
@@ -24,12 +23,9 @@ const App: React.FC = () => {
         <Configuration
             isLogoLog={true}
         >
-            <TopMenu/>
-            <Body/>
+            <TopMenu />
+            <BodyController/>
             <Bottom/>
-            <BackTop>
-                <div className="ant-back-top-inner">UP</div>
-            </BackTop>
         </Configuration>
     )
 };
