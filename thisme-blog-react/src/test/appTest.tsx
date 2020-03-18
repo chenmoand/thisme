@@ -1,9 +1,7 @@
 import * as React from "react";
-import {List, Map} from "immutable";
-import {ArticleBean, ArticleTable, CompleteArticle} from "@/component/article";
-import {useAxios} from "use-axios-client";
-import {api, server} from "@/assets/json";
-import {ViewArticle} from "@/component/article/viewArticle";
+import {Map} from "immutable";
+import {ArticleBean} from "@/component/article";
+import {server} from "@/assets/json";
 import ArticleTest from "@/test/articleTest";
 
 

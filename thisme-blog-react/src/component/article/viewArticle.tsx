@@ -1,20 +1,23 @@
 import React, {useEffect} from "react";
-import {ArticleBean, ArticleTable} from "@/component/article";
-import {api, server} from "@/assets/json";
+import {Pagination, Skeleton} from "antd";
 import {List} from "immutable";
-import {useRetryAxios} from "../../fuction";
-import {Skeleton} from "antd";
+
+import {api, server} from "@/assets/json";
+import {useRetryAxios} from "@/fuction";
+import {ArticleBean, ArticleTable} from "@/component/article";
+import {BaseProps} from "@/component/interface";
+import {useSelector} from "react-redux";
+import {Reducers} from "@/redux/interface";
+import {ArticleState} from "@/redux/status/articleStatus";
 
 
-interface ViewArticleProps {
-    pageNum: number
-}
+export const ViewArticle: React.FC<BaseProps> = props => {
 
-export const ViewArticle: React.FC<ViewArticleProps> = props => {
+    const {currentPage, articleAllSize} = useSelector<Reducers, ArticleState>(
+        ({articleStatus}) => articleStatus
+    )
 
-    const {pageNum} = props;
-
-    const url = server.address + api.article + "/pagination?page=" + pageNum;
+    const url = server.address + api.article + "/pagination?page=" + currentPage;
 
     const {data, loading, error} = useRetryAxios<List<ArticleBean>>({
         url: url,
@@ -25,13 +28,20 @@ export const ViewArticle: React.FC<ViewArticleProps> = props => {
 
     useEffect(() => {
         error && console.log(error)
-    },[error])
+    }, [error])
 
-    return(
-        <Skeleton loading={loading}>
-            {
-                data && <ArticleTable src={data}/>
-            }
-        </Skeleton >
+    return (
+        <>
+            <Skeleton loading={loading}>
+                {
+                    data && <ArticleTable src={data}/>
+                }
+            </Skeleton>
+            <Pagination
+                simple
+                defaultCurrent={currentPage}
+                total={articleAllSize}
+            />
+        </>
     )
 }

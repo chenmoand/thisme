@@ -1,9 +1,10 @@
 import * as React from "react";
 import {useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {useMediaQuery} from 'react-responsive'
-import {WebType} from "@/redux/status/webStatus";
+import {useDispatch, useSelector} from "react-redux";
 import {whiteLogo} from "@/log";
+import {useRetryAxios, useWebSize} from "@/fuction";
+import {IDispatch, Reducers} from "@/redux/interface";
+import {server} from "@/assets/json";
 
 interface ConfigurationProps {
     isLogoLog?: boolean
@@ -21,41 +22,53 @@ const Configuration: React.FC<ConfigurationProps> = props => {
 
     useEffect(() => isLogoLog && whiteLogo(), [isLogoLog]);
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<IDispatch>();
 
-    dispatch({type: 'WEBTYPE', content: useWebSize()});
+    const size = useWebSize();
+
+    const articleAllSize = useSelector<Reducers, number>(
+        ({articleStatus}) => articleStatus.articleAllSize
+    )
+
+    dispatch({type: 'WEBTYPE', content: size});
 
     return (
         <>
+            {/*可能使用useXXX的副作用最好的解决方法是这个*/}
+            {articleAllSize || <DoArticleSize dispatch={dispatch}/>}
             {children}
         </>
     )
 };
 
-// 对webSize进行操作
-// 旧组件形式以剔除
-function useWebSize() {
-
-    const isDesktopOrLaptop = useMediaQuery({query: '(min-device-width: 1224px)'}),
-        isBigScreen = useMediaQuery({query: '(min-device-width: 1824px)'}),
-        isTabletOrMobile = useMediaQuery({query: '(max-width: 844px)'});
-
-    // 原先的是触发两次, 现在触发一次setWebType
-    // 总之这这个设计的并不大好
-    let webType: WebType = WebType.SMALL;
-
-    // 判断页面大小
-    if (isDesktopOrLaptop) {
-        webType = isBigScreen ?
-            // 台式电脑
-            WebType.BIG :
-            // 笔记本
-            WebType.IN;
-    }
-
-    isTabletOrMobile && (webType = WebType.SMALL);
-
-    return webType;
-}
 
 export default Configuration;
+
+interface DoArticleSizeProps {
+    dispatch: IDispatch
+}
+
+const DoArticleSize: React.FC<DoArticleSizeProps> = ({dispatch}) => {
+
+    const url = server.address + "/api/article/size"
+
+    const {data, error} = useRetryAxios<number>({
+        url: url,
+        retry: 3,
+        timeout: 1500,
+        method: "get"
+    })
+
+    if (data) {
+        dispatch({type: "ARTICLE_ALL_SIZE", content: data})
+    }
+
+    if (error) {
+        console.error(error);
+    }
+
+    return (
+        <>
+        </>
+    );
+};

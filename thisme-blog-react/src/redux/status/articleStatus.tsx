@@ -1,17 +1,16 @@
-import {Map} from "immutable";
 import {BaseReducer} from "@/redux/interface";
 import {ArticleBean} from "@/component/article";
 
 //文章基本状态
 export interface ArticleState {
-    maxPage: number
+    articleAllSize: number
     currentPage: number,
     currentArticle: ArticleBean,
 }
 
 
 const init: ArticleState = {
-    maxPage: 0,
+    articleAllSize: undefined,
     currentPage: 1,
     currentArticle: undefined
 };
@@ -24,7 +23,7 @@ const ArticleStatus: BaseReducer<ArticleState> = (state = init, action) => {
             return {...state, currentPage: content};
         case 'CURRENT_ARTICLE':
             return {...state, currentArticle: content}
-        case 'MAX_PAGE':
+        case 'ARTICLE_ALL_SIZE':
             return {...state, maxPage: content}
         default:
             return state;
