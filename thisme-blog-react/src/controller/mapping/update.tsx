@@ -1,8 +1,8 @@
 import * as React from "react";
-import {FileMarkdown} from "@/component/editor/markdown";
 import {MyselfCard} from "@/component/card";
 import {BodyTemplate} from "@/component/template";
-import update from "@/assets/markdown/update.md";
+import {Markdown} from "@/component/editor/markdown";
+import {update} from "@/assets/markdown";
 
 const Update: React.FC = props => {
     return (
@@ -13,7 +13,7 @@ const Update: React.FC = props => {
                     <div className={"router"}  style={{
                         padding: 7
                     }}>
-                        <FileMarkdown source={update}/>
+                        <Markdown source={update}/>
                     </div>
                 }
                 right={

@@ -1,8 +1,8 @@
 import * as React from "react";
 import {BodyTemplate} from "@/component/template";
-import {FileMarkdown} from "@/component/editor/markdown";
 import {MyselfCard} from "@/component/card";
-import about from "@/assets/markdown/about.md";
+import {Markdown} from "@/component/editor/markdown";
+import {about} from "@/assets/markdown";
 
 
 const About: React.FC = props => {
@@ -15,7 +15,7 @@ const About: React.FC = props => {
                         className={"router"}
                         style={{padding: 7}}
                     >
-                        <FileMarkdown source={about}/>
+                        <Markdown source={about}/>
                     </div>
                 }
                 right={

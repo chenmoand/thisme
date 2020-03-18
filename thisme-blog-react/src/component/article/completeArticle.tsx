@@ -1,9 +1,9 @@
 import * as React from "react";
 import {Card, Tag} from "antd";
 import {dayjs} from "@/component/util";
-import Markdown from "@/component/editor/markdown";
 import {ArticleBean} from "@/component/article";
 import {BaseProps} from "@/component/interface";
+import {Markdown} from "@/component/editor/markdown";
 
 
 interface CompleteArticleProps extends BaseProps {

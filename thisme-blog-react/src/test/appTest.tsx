@@ -4,6 +4,7 @@ import {ArticleBean, ArticleTable, CompleteArticle} from "@/component/article";
 import {useAxios} from "use-axios-client";
 import {api, server} from "@/assets/json";
 import {ViewArticle} from "@/component/article/viewArticle";
+import ArticleTest from "@/test/articleTest";
 
 
 const article: ArticleBean = {
@@ -43,8 +44,9 @@ const AppTest: React.FC = () => {
 
     return (
         <div className={"hahah"}>
+            <ArticleTest src={article}/>
 
-            <ViewArticle pageNum={1}/>
+            {/*<ViewArticle pageNum={1}/>*/}
             {/*<CompleteArticle article={article}/>*/}
             {/*{data && <ArticleTable src={data}/>}*/}
         </div>

@@ -2,10 +2,10 @@ import React from "react";
 import {List} from "immutable";
 import {Collapse} from 'antd';
 import {NavLink} from "react-router-dom";
-import Markdown from "@/component/editor/markdown";
 import {ArticleBean} from "@/component/article";
 import {useDispatch} from "react-redux";
 import {IDispatch} from "@/redux/interface";
+import {Markdown} from "@/component/editor/markdown";
 
 const {Panel} = Collapse;
 
