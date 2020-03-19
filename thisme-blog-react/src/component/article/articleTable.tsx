@@ -2,10 +2,12 @@ import React from "react";
 import {List} from "immutable";
 import {Collapse} from 'antd';
 import {NavLink} from "react-router-dom";
+
 import {ArticleBean} from "@/component/article";
 import {useDispatch} from "react-redux";
 import {IDispatch} from "@/redux/interface";
 import {Markdown} from "@/component/editor/markdown";
+import {FormOutlined} from "@ant-design/icons";
 
 const {Panel} = Collapse;
 
@@ -29,6 +31,7 @@ function mapToPanel(array: List<ArticleBean>, callback: (ArticleBean) => void) {
                     {value.title}
                 </NavLink>
             }
+            disabled={true}
             key={key}
         >
             <Markdown
@@ -53,6 +56,7 @@ const ArticleTable: React.FC<ArticleTableProps> = props => {
         <Collapse
             defaultActiveKey={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
             // onChange={callback}
+            expandIcon={() => <FormOutlined />}
             expandIconPosition={'left'}
         >
             {mapToPanel(src, setCurrentArticle)}
