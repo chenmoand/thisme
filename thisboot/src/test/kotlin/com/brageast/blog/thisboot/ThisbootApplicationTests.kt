@@ -1,21 +1,31 @@
 package com.brageast.blog.thisboot
 
 import com.brageast.blog.thisboot.entity.Article
-import com.brageast.blog.thisboot.util.HttpResult
 import com.brageast.blog.thisboot.entity.User
 import com.brageast.blog.thisboot.service.ArticleService
 import com.brageast.blog.thisboot.service.UserService
+import com.brageast.blog.thisboot.util.HttpResult
 import com.brageast.blog.thisboot.util.basalObjectMapper
 import com.brageast.blog.thisboot.util.loggerOf
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
+import org.springframework.restdocs.RestDocumentationContextProvider
+import org.springframework.restdocs.RestDocumentationExtension
+import org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation.documentationConfiguration
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService
+import org.springframework.test.context.junit.jupiter.SpringExtension
+import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
 
+
 @SpringBootTest
+@ExtendWith(RestDocumentationExtension::class, SpringExtension::class)
 class ThisbootApplicationTests {
 
 
@@ -23,6 +33,25 @@ class ThisbootApplicationTests {
 //    lateinit var userRepository: UserRepository
 
     val log = loggerOf<ThisbootApplicationTests>()
+
+    lateinit var webTestClient: WebTestClient
+
+    @Autowired
+    lateinit var context: ApplicationContext
+
+    @BeforeEach
+    fun setUp(applicationContext: ApplicationContext,
+              restDocumentation: RestDocumentationContextProvider) {
+        this.webTestClient = WebTestClient.bindToApplicationContext(applicationContext)
+                .configureClient()
+                .filter(documentationConfiguration(restDocumentation))
+                .build()
+    }
+
+    @Test
+    fun buildDocs() {
+
+    }
 
 
     @Bean
@@ -74,10 +103,10 @@ class ThisbootApplicationTests {
     fun contextLoads() {
         // 免费的MongoDb 太慢了, 慢到Flux 都不打印
         val all = articleService.findAll()
-        all.doOnError{
+        all.doOnError {
             log.error(it.message, it)
         }.subscribe(::print)
-        Flux.just(1,3,4,5,6)/*.then()*/.subscribe(::println)
+        Flux.just(1, 3, 4, 5, 6)/*.then()*/.subscribe(::println)
     }
 
     @Autowired

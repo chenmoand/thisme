@@ -17,7 +17,7 @@ export const ViewArticle: React.FC<BaseProps> = () => {
         ({articleStatus}) => articleStatus
     );
 
-    let url = server.address + api.article + "/pagination?page=" + currentPage;
+    const url = server.address + api.article + "/pagination?page=" + currentPage;
 
     const {data, loading, error} = useRetryAxios<List<ArticleBean>>({
         url: url,

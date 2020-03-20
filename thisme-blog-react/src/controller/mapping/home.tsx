@@ -1,13 +1,15 @@
 import * as React from "react";
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
+
 import "@/assets/style/home.less"
+
 import {BodyTemplate} from "@/component/template";
 import {MyselfCard} from "@/component/card";
 import {ViewArticle} from "@/component/article/viewArticle";
 import {useRetryAxios} from "@/fuction";
 import {server} from "@/assets/json";
-import {useDispatch} from "react-redux";
 import {IDispatch} from "@/redux/interface";
-import {useEffect} from "react";
 
 
 const Home: React.FC = () => {
