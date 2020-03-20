@@ -30,7 +30,7 @@ const BodyTemplate: React.FC<BodyStyleProps> = props => {
                 <Col offset={webType ? 1 : 0}
                      span={webType ? 6 : 0}
                 >
-                    {right && children}
+                    {right || children}
                 </Col>
                 <Col span={webType ? 1 : 2}/>
             </Row>
