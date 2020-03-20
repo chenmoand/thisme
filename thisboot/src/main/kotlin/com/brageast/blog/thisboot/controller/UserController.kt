@@ -13,26 +13,26 @@ import java.security.Principal
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 class UserController(
         val userService: UserService
 ) {
 
-    @GetMapping(value = ["/users"])
+    @GetMapping
     @PreAuthorize("hasAuthority('ADMIN')")
     fun getAllUser() = userService.findAll()
 
-    @GetMapping(value = ["/users/{id}"])
+    @GetMapping("/{id}")
     fun getUserById(@PathVariable id: ObjectId) = userService.findById(id)
 
 
     /**
      * 注册用户
      */
-    @PostMapping(value = ["/users"])
+    @PostMapping
     fun addUser(user: User) = userService.insert(user)
 
-    @PutMapping(value = ["/users"])
+    @PutMapping
     @PreAuthorize("hasAuthority('ADMIN')")
     fun updateUser(user: User) = userService.update(user)
 
@@ -40,7 +40,7 @@ class UserController(
      * 指定ID查看用户信息
      */
     @PreAuthorize("hasAuthority('ADMIN')")
-    @DeleteMapping(value = ["/users/{id}"])
+    @DeleteMapping(value = ["/{id}"])
     fun deleteByUserId(@PathVariable id: ObjectId) = userService.deleteById(id)
 
 
@@ -48,7 +48,7 @@ class UserController(
      * 查看当前用户信息
      */
     @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = ["/users/current"])
+    @RequestMapping(value = ["/current"])
     fun getCurrentUserInfo(token: Principal) = userService.findByName(token.name)
 
 }

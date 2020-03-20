@@ -2,7 +2,7 @@
   "ip": "127.0.0.1",
   "port": 8080,
   "domain": "brageast.com",
-  "address": "http://39.105.170.250:233",
+  "address": "http://39.105.170.250:8080",
   "version": "1.0-beta",
   "repository": "https://github.com/chenmoand/thisme"
 }

@@ -21,24 +21,24 @@ class ArticleController(
     @GetMapping("/size")
     fun getAllArticleSize(): Mono<Long> = articleService.getSize()
 
-    @GetMapping("pagination")
+    @GetMapping("/pagination")
     fun getPageArticle(@RequestParam(defaultValue = "1") page: Int,
                        @RequestParam(defaultValue = "10") size: Int
     ): Flux<Article> = articleService.findWithPagination(page, size)
 
-    @GetMapping("/articles/{articleId}")
+    @GetMapping("/{articleId}")
     fun getArticle(@PathVariable articleId: ObjectId): Mono<Article> = articleService.findById(articleId)
 
-    @PostMapping("/articles")
+    @PostMapping
     @PreAuthorize("hasAuthority('ADMIN')")
     fun addArticle(@RequestBody article: Article): Mono<Article> = articleService.insert(article)
 
 
-    @DeleteMapping("/articles/{id}")
+    @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     fun deleteArticle(@PathVariable id: ObjectId): Mono<Void> = articleService.deleteById(id)
 
-    @PutMapping("/articles")
+    @PutMapping("/")
     @PreAuthorize("hasAuthority('ADMIN')")
     fun updateArticle(@RequestBody article: Article): Mono<Article> = articleService.updateOrInsert(article)
 }
