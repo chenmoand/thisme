@@ -14,7 +14,7 @@ export interface BodyStyleProps {
 
 const BodyTemplate: React.FC<BodyStyleProps> = props => {
 
-    const {left, right, title} = props;
+    const {left, right, title, children} = props;
 
     const webType = useSelector<Reducers, boolean>(({webStatus}) => viewSize(webStatus.webType));
 
@@ -30,7 +30,7 @@ const BodyTemplate: React.FC<BodyStyleProps> = props => {
                 <Col offset={webType ? 1 : 0}
                      span={webType ? 6 : 0}
                 >
-                    {right}
+                    {right && children}
                 </Col>
                 <Col span={webType ? 1 : 2}/>
             </Row>
