@@ -26,11 +26,9 @@ const EasterEggs: React.FC<EasterEggsProps> = props => {
             content={
                 <>
                     点击下方按钮可以切换到{webType ? "手机" : "电脑"}页面<br/>
-                    <span style={
-                        {
-                            color: "red"
-                        }
-                    }>注
+                    <span style={{
+                        color: "red"
+                    }}>注
                     </span>
                     : 可能会导致页面抽搐<br/>
                     <Button

@@ -18,7 +18,7 @@ import {Reducers} from "@/redux/interface";
  */
 export const BodyController: React.FC<BaseProps> = props => {
 
-    const routes = useSelector<Reducers, RouteState>(state => state.routeStatus)
+    const routes = useSelector<Reducers, RouteState>(state => state.routeStatus);
 
     const {className, style} = props;
 

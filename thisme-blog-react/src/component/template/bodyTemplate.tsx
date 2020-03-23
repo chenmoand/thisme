@@ -1,12 +1,12 @@
 import * as React from "react";
 import {Col, Row} from "antd";
-import {connect, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {viewSize} from "@/redux/status/webStatus";
-import {Title} from "@/component/util";
+import {Div, Title} from "@/component/util";
 import {Reducers} from "@/redux/interface";
-import {ArticleBean} from "@/component/article";
+import {BaseProps} from "@/component/interface";
 
-export interface BodyStyleProps {
+export interface BodyStyleProps extends BaseProps {
     left?: React.ReactNode,
     right?: React.ReactNode,
     title: string,
@@ -14,27 +14,35 @@ export interface BodyStyleProps {
 
 const BodyTemplate: React.FC<BodyStyleProps> = props => {
 
-    const {left, right, title, children} = props;
+    const {left, right, title, children, className, style} = props;
 
     const webType = useSelector<Reducers, boolean>(({webStatus}) => viewSize(webStatus.webType));
 
+    function _select<T>(a: T, b: T): T {
+        return webType ? a : b;
+    }
+
     return (
-        <div style={{marginBottom: 103.4}}>
-            <Row justify={"start"} >
+        <Div className={className}
+             style={{
+                 marginBottom: 103.4,
+                 ...style
+             }}>
+            <Row justify={"start"}>
                 <Col offset={2}
-                     span={webType ? 14 : 20}
+                     span={_select(14, 20)}
                 >
                     <Title src={title}/>
                     {left}
                 </Col>
-                <Col offset={webType ? 1 : 0}
-                     span={webType ? 6 : 0}
+                <Col offset={_select(1, 0)}
+                     span={_select(6, 0)}
                 >
                     {right || children}
                 </Col>
-                <Col span={webType ? 1 : 2}/>
+                <Col span={_select(1, 2)}/>
             </Row>
-        </div>
+        </Div>
     )
 };
 

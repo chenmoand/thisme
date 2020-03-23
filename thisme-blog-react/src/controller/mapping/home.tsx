@@ -16,7 +16,7 @@ const Home: React.FC = () => {
 
     const dispatch = useDispatch<IDispatch>();
 
-    const setSize = data =>  dispatch({type: "ARTICLE_ALL_SIZE", content: data})
+    const setSize = data => dispatch({type: "ARTICLE_ALL_SIZE", content: data});
 
     const {data, error} = useRetryAxios<number>({
         url: server.address + "/api/articles/size",
@@ -25,25 +25,23 @@ const Home: React.FC = () => {
         method: "get"
     });
 
-    useEffect(()=> {
+    useEffect(() => {
         data && setSize(data)
-    }, [data])
+    }, [data]);
 
     error && console.error(error);
 
 
     return (
-        <div className={"router-home"}>
-            <BodyTemplate
-                title={"沉默的个人小站"}
-                left={<ViewArticle />}
-                right={
-                    <>
-                        <MyselfCard />
-                    </>
-                }
-            />
-        </div>
+        <BodyTemplate
+            className={"router-home"}
+            title={"沉默的个人小站"}
+            left={
+                <ViewArticle/>
+            }
+        >
+            <MyselfCard/>
+        </BodyTemplate>
     );
 };
 

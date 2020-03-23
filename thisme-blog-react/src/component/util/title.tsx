@@ -19,8 +19,7 @@ const Title: React.FC<TitleProps> = props => {
     const {src, html, style, className} = props;
     // 保证src是有内容的在试图修改标题
     useEffect(() => {
-        // @ts-ignore idea抽风报错本来不需要这样的
-        src && (document.title = src + " - " + server.domain);
+        if(src) document.title = src + " - " + server.domain
     }, [src]);
     return (
         <span

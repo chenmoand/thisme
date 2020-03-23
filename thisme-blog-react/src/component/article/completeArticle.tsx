@@ -1,9 +1,10 @@
 import * as React from "react";
-import {Card, Tag} from "antd";
+import {Button, Card, Tag} from "antd";
 import {dayjs} from "@/component/util";
 import {ArticleBean} from "@/component/article";
 import {BaseProps} from "@/component/interface";
 import {Markdown} from "@/component/editor/markdown";
+import {NavLink} from "react-router-dom";
 
 
 interface CompleteArticleProps extends BaseProps {
@@ -21,20 +22,26 @@ export const CompleteArticle: React.FC<CompleteArticleProps> = props => {
             className={"complete-article"}
             style={style}
             title={
-                <>
-                    <h3 style={{margin: 0}}>
-                        <Tag color={"red"}
-                             style={{verticalAlign: "middle"}}>
-                            {articleType}
-                        </Tag>
-                        {title}
-                    </h3>
-
-
-                </>
+                <h3 style={{margin: 0}}>
+                    <Tag color={"red"}
+                         style={{verticalAlign: "middle"}}>
+                        {articleType}
+                    </Tag>
+                    {title}
+                </h3>
             }
         >
             <Markdown source={articleToMarkdown(article)}/>
+            <Button
+                danger
+                style={{
+                    float: "right"
+                }}
+            >
+                <NavLink to={"/"}>
+                    返回首页
+                </NavLink>
+            </Button>
         </Card>
     );
 };

@@ -1,7 +1,10 @@
 package com.brageast.util;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Objects;
 
 public final class ClassUtil {
 
@@ -18,12 +21,16 @@ public final class ClassUtil {
     private ClassUtil() {
     }
 
-    public static <T> T runConstructor(Class<T> cls, Object... parameters) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    @NotNull
+    public static <T> T runConstructor(@NotNull Class<T> cls, Object... parameters) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Objects.requireNonNull(cls, "cls Can not be null");
         final Class[] parametersClass = ParameterUtil.getParametersClass(parameters);
         final Constructor<T> declaredConstructor = cls.getDeclaredConstructor(parametersClass);
         return runConstructor(declaredConstructor, parameters);
     }
-    public static <T> T runConstructor(Constructor<T> constructor, Object... parameters) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    @NotNull
+    public static <T> T runConstructor(@NotNull Constructor<T> constructor, Object... parameters) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+        Objects.requireNonNull(constructor, "constructor Can not be null");
         return constructor.newInstance(parameters);
     }
 
