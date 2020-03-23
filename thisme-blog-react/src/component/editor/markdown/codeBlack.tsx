@@ -21,7 +21,7 @@ const CodeBlack: React.FC<CodeBlackProps> = props => {
 
     const webType = useSelector<Reducers, boolean>(
         ({webStatus}) => viewSize(webStatus.webType)
-    )
+    );
 
     const {value, language} = props;
 

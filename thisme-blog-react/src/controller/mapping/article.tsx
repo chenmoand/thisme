@@ -1,6 +1,6 @@
 import * as React from "react";
-import {useEffect, useState} from "react";
 import {Skeleton} from "antd";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RouteComponentProps, useParams} from "react-router";
 
@@ -57,7 +57,6 @@ const Article: React.FC<ArticleProps> = () => {
                 </Skeleton>
             }
         >
-            占位
         </BodyTemplate>
     );
 };

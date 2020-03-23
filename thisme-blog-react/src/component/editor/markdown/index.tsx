@@ -1,5 +1,5 @@
-import {BaseProps} from "@/component/interface";
 import * as React from "react";
+import {BaseProps} from "@/component/interface";
 import {Div} from "@/component/util";
 
 import "@/assets/style/markdown.less"

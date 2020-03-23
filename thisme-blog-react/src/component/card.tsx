@@ -51,26 +51,3 @@ export const MyselfCard: React.FC<BaseProps> = props => {
         </div>
     );
 };
-
-
-interface LabelCardProps extends BaseProps {
-    src: string[]
-}
-
-export const LabelCard: React.FC<LabelCardProps> = props => {
-
-    const {className, style} = props;
-
-    return (
-        <div className={"card-label"}>
-            <Card
-                className={className}
-                style={style}
-                loading={true}
-            >
-
-            </Card>
-        </div>
-    );
-};
-

@@ -1,13 +1,14 @@
 import {useLazyAxios} from "use-axios-client";
 import {Config} from "use-axios-client/bin/useBaseAxios";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {useMediaQuery} from "react-responsive";
 import {WebType} from "@/redux/status/webStatus";
+import {axios} from "@/component/util";
 
 export interface AxiosConfig extends Config {
-    retry?: number
+    retry: number
 }
 
 /**
@@ -42,9 +43,46 @@ function useRetryAxios<Data>(config: AxiosConfig) {
     }
 }
 
+
+interface ConditionAxiosConfig extends  AxiosConfig{
+    condition: boolean
+}
+
+
+// 这个方法有BUG
+function useConditionAxios<Data>(config: ConditionAxiosConfig) {
+    const [order, setOrder] = useState(0);
+    const [data, setData] = useState<Data>();
+    const [err, setErr] = useState<string>();
+    const { condition, retry } = config;
+    const [loding, setLoding] = useState(order >= retry && data == undefined);
+
+
+    useEffect(() => {
+        if (condition && order < retry && loding) {
+            axios(config).then(res => {
+                setOrder(retry);
+                setLoding(false);
+                setData(res.data);
+            })
+            .catch(err => {
+                setOrder(order + 1);
+                err && setErr(err);
+            })
+        }
+    }, [order, config]);
+
+    return {
+        loding,
+        data,
+        err
+    }
+
+}
+
 // 对webSize进行操作
 // 旧组件形式以剔除
-function useWebSize() {
+function useWebSize(): WebType {
 
     const isDesktopOrLaptop = useMediaQuery({query: '(min-device-width: 1224px)'}),
         isBigScreen = useMediaQuery({query: '(min-device-width: 1824px)'}),
@@ -82,5 +120,5 @@ const ConnectRouter = (mapStateToProps, mapDisPatchToProps, Component) => {
 };
 
 export {
-    useRetryAxios, useWebSize, ConnectRouter
+    useRetryAxios, useWebSize, ConnectRouter, useConditionAxios
 }

@@ -5,24 +5,22 @@ import {Markdown} from "@/component/editor/markdown";
 import {about} from "@/assets/markdown";
 
 
-const About: React.FC = props => {
+const About: React.FC = () => {
     return (
-        <div className={"about"}>
-            <BodyTemplate
-                title={"关于我"}
-                left={
-                    <div
-                        className={"router"}
-                        style={{padding: 7}}
-                    >
-                        <Markdown source={about}/>
-                    </div>
-                }
-                right={
-                    <MyselfCard/>
-                }
-            />
-        </div>
+        <BodyTemplate
+            className={"about"}
+            title={"关于我"}
+            left={
+                <Markdown
+                    className={"router"}
+                    // style={{padding: 7}}
+                    source={about}
+                />
+            }
+        >
+            <MyselfCard/>
+        </BodyTemplate>
+
     );
 };
 

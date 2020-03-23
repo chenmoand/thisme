@@ -1,5 +1,5 @@
-import {MarkdownAttribute} from "@/assets/markdown";
 import * as React from "react";
+import {MarkdownAttribute} from "@/assets/markdown";
 import {Markdown} from "@/component/editor/markdown";
 
 
@@ -12,9 +12,12 @@ const FileMarkdown: React.FC<FileMarkdownProps> = props => {
     const {source} = props;
 
     return (
-        <>
-            <Markdown source={source.text}/>
-        </>
+        <Markdown
+            source={source.text}
+        >
+
+        </Markdown>
+
     )
 };
 
