@@ -44,3 +44,6 @@ File -> open
 | [```update.md```](./doc/update.md) | 这个项目的更新记录 |
 | [```犯蠢记录.md```](./doc/犯蠢记录.md) | 如名字那样,就是犯蠢 |
 | [```recording.md```](./doc/recording.md) | 一个随手笔记的Markdown文件 |
+
+
+> 感谢[![jetbrains](./doc/img/jetbrains.png)](https://www.jetbrains.com/?from=thisme)公司提供的开源支持, IDEA YES!!!👍
