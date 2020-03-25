@@ -11,7 +11,7 @@ class GitHubServiceImpl(
         val webClient: WebClient
 ) : GitHubService {
 
-    override fun getAccessToken(code: String): Mono<HashMap<String, String>> {
+    override fun getAccessToken(code: String): Mono<Map<String, String>> {
         return Mono.just(hashMapOf<String, String>())
                 .zipWith(webClient.post()
                         .uri("https://github.com/login/oauth/access_token")
@@ -40,6 +40,10 @@ class GitHubServiceImpl(
 
                     return@zipWith map
                 }
+    }
+
+    override fun getUserInfo(token: String) {
+
     }
 
 }

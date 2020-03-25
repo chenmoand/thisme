@@ -39,19 +39,20 @@ class IndexController(
     fun doLogin(): Mono<String> = Mono.just("login/index")
 
     @PostMapping("/register")
-    fun register(user: User, model: Model): Mono<String> {
-        userService.insert(user).subscribe {
-            // Mono.empty() 方法创建的实例似乎不会走subscribe方法, 所以出此下策
-            it ?: model.addAttribute("status", "注册失败")
-        }
-        model.addAttribute("status", "注册成功")
-        return Mono.just("login/register.html")
+    @PreAuthorize("isAnonymous()")
+    fun register(user: User, model: Model): Mono<String> = userService.insert(user).map {
+        if(it == null)
+            model.addAttribute("status", "注册失败")
+        else
+            model.addAttribute("status", "注册成功")
+        return@map "login/register.html"
     }
 
     // https://github.com/login/oauth/authorize?client_id=98e07a1e606d561ed02a
-    @GetMapping(path = ["/github"]/*, headers= ["Content-Type=application/json"]*/)
     @ResponseBody
-    fun github(code: String): Mono<HashMap<String, String>> {
+    @GetMapping(path = ["/github"]/*, headers= ["Content-Type=application/json"]*/)
+    @PreAuthorize("isAnonymous()")
+    fun github(code: String): Mono<Map<String, String>> {
         return gitHubService.getAccessToken(code)
     }
 }
