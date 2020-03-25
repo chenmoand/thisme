@@ -2,6 +2,8 @@
 
 package com.brageast.blog.thisboot.util
 
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.bson.types.ObjectId
 import org.slf4j.Logger
@@ -9,7 +11,15 @@ import org.slf4j.LoggerFactory
 import org.springframework.data.mongodb.core.query.Criteria
 import org.springframework.data.mongodb.core.query.Query
 
-val basalObjectMapper by lazy { ObjectMapper() }
+/**
+ * note: Spring有Bean我只是单独声明了一个
+ *
+ */
+val basalObjectMapper by lazy {
+    ObjectMapper().apply {
+        this.setSerializationInclusion(JsonInclude.Include.NON_EMPTY)
+    }
+}
 
 fun Any.toJSON(): String? = basalObjectMapper.writeValueAsString(this)
 

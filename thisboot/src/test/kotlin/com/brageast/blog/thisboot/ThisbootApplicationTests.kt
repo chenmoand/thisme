@@ -22,6 +22,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 
 @SpringBootTest
@@ -152,6 +153,10 @@ class AverageTest {
 
     @Test
     fun onDate() {
+        Mono.just("")
+                .zipWith(Mono.just("")) { t , t2 ->
+                    return@zipWith t2
+                }
 
     }
 
