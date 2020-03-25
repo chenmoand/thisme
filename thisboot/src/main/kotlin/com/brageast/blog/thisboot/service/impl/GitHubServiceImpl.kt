@@ -1,7 +1,6 @@
 package com.brageast.blog.thisboot.service.impl
 
 import com.brageast.blog.thisboot.service.GitHubService
-import com.brageast.blog.thisboot.util.toBean
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import org.springframework.stereotype.Service
@@ -15,7 +14,7 @@ class GitHubServiceImpl(
         val mapper: ObjectMapper
 ) : GitHubService {
 
-    override fun getAccessToken(code: String): Mono<Map<String, String>> = webClient
+    override fun getAccessToken(code: String) = webClient
             .post()
             .uri("https://github.com/login/oauth/access_token")
             .header("Content-Type", "application/json;charset=utf-8")
@@ -45,6 +44,7 @@ class GitHubServiceImpl(
 
     override fun getUserInfo(token: String) = webClient
             .get()
+            .uri("https://api.github.com/user")
             .header("Authorization", "token $token")
             .exchange()
             .flatMap {

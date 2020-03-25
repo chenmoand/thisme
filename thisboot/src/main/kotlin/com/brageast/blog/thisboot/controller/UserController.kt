@@ -10,6 +10,7 @@ import org.springframework.web.reactive.function.server.ServerResponse
 import reactor.core.publisher.Mono
 import java.net.URI
 import java.security.Principal
+import javax.validation.Valid
 
 @CrossOrigin
 @RestController
@@ -26,15 +27,13 @@ class UserController(
     fun getUserById(@PathVariable id: ObjectId) = userService.findById(id)
 
 
-    /**
-     * 注册用户
-     */
+    // 不会跳转得注册用户
     @PostMapping
-    fun addUser(user: User) = userService.insert(user)
+    fun addUser(@Valid user: User) = userService.insert(user)
 
     @PutMapping
     @PreAuthorize("hasAuthority('ADMIN')")
-    fun updateUser(user: User) = userService.update(user)
+    fun updateUser(@Valid user: User) = userService.update(user)
 
     /**
      * 指定ID查看用户信息
@@ -47,8 +46,8 @@ class UserController(
     /**
      * 查看当前用户信息
      */
-    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = ["/current"])
+    @PreAuthorize("isAuthenticated()")
     fun getCurrentUserInfo(token: Principal) = userService.findByName(token.name)
 
 }

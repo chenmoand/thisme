@@ -38,7 +38,7 @@ class ArticleController(
     @PreAuthorize("hasAuthority('ADMIN')")
     fun deleteArticle(@PathVariable id: ObjectId): Mono<Void> = articleService.deleteById(id)
 
-    @PutMapping("/")
+    @PutMapping
     @PreAuthorize("hasAuthority('ADMIN')")
     fun updateArticle(@RequestBody article: Article): Mono<Article> = articleService.updateOrInsert(article)
 }
