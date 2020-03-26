@@ -7,18 +7,20 @@ import org.springframework.security.core.userdetails.UserDetails
 
 class SimpleUserDetails(val user: User) : UserDetails {
 
-    private val isNotExpired: Boolean = Unit.let lambda@{
-        var joinTime = user.joinTime
-        if (joinTime != null) {
-            val accountExpiredTime = user.accountExpiredTime ?: return@lambda true
-            return@lambda joinTime.before(accountExpiredTime)
-        }
-        return@lambda false
+    private val isNotExpired: Boolean = user.run {
+        if(joinTime != null && accountExpiredTime != null)
+            // IDEA 的最新版Kotlin插件各种报错
+            // 我都判断不是null还在一个劲的报加!!
+            joinTime!!.before(accountExpiredTime)
+        else true
     }
 
     private val isNotBan = !user.ban
 
-    override fun getAuthorities(): MutableCollection<out GrantedAuthority> = user.authorities.map { SimpleGrantedAuthority(it) }.toMutableList()
+    override fun getAuthorities(): MutableCollection<out GrantedAuthority> = user
+            .authorities.map {
+                SimpleGrantedAuthority(it)
+            }.toMutableList()
 
     override fun isEnabled(): Boolean = isNotBan
 

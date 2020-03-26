@@ -18,6 +18,7 @@ import org.springframework.restdocs.RestDocumentationContextProvider
 import org.springframework.restdocs.RestDocumentationExtension
 import org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation.documentationConfiguration
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.web.reactive.function.client.WebClient
@@ -133,6 +134,17 @@ class ThisbootApplicationTests {
                 .bodyToMono(Any::class.java)
         println(get.block())
 
+    }
+
+    @Autowired
+    lateinit var bCryptPasswordEncoder: BCryptPasswordEncoder
+
+    @Test
+    fun onUser() {
+        val encode = bCryptPasswordEncoder.encode("123456")
+        println(encode)
+        val matches = bCryptPasswordEncoder.matches("123456", encode)
+        println(matches)
     }
 
 }

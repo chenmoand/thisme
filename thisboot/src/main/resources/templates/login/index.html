@@ -98,7 +98,7 @@
                            required>
                 </div>
                 <div class="f_row-2 last">
-                    <input type="password" name="password" placeholder="Confirm Password" id="password2"
+                    <input type="password" name="confirm-password" placeholder="Confirm Password" id="password2"
                            class="input-field" required>
                 </div>
                 <input class="submit-w3" type="submit" value="Register">
@@ -154,8 +154,8 @@
     };
 
     function validatePassword() {
-        var pass2 = document.getElementById("password2").value;
-        var pass1 = document.getElementById("password1").value;
+        const pass2 = document.getElementById("password2").value;
+        const pass1 = document.getElementById("password1").value;
         if (pass1 != pass2) {
             document.getElementById("password2").setCustomValidity("密码不匹配");
         } else {
