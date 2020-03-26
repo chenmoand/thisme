@@ -20,7 +20,7 @@ module.exports = {
     entry: ['react-hot-loader/patch', './src/mode/dev'],
     output: {
         path: resolve('../build'),
-        filename: devMode ? '[name].js' : '[name].[hash].js'
+        filename: devMode ? 'js/[name].js' : 'js/[name].[hash].js'
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -82,14 +82,25 @@ module.exports = {
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 use: [
-                    'url-loader?limit=10000',
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            name: "images/[name].[hash].[ext]"
+                        }
+                    },
                     'img-loader'
                 ]
             },
             {
                 test: /\.(ttf|eto|woff|woff2)$/i,
                 use: [
-                    'file-loader'
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: devMode ? "fonts/[name].[ext]" : "fonts/[contenthash].[ext]"
+                        }
+                    }
                 ]
             },
             {
@@ -110,8 +121,8 @@ module.exports = {
             template: './static/index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: devMode ? '[name].css' : '[name].[hash].css',
-            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+            filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
+            chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash].css',
             ignoreOrder: false,
         }),
         new AntdDayjsWebpackPlugin(),

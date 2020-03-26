@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "web": "cd thisme-blog-react && yarn build:dev && gh-pages -d build",
-    "ci": "cd thisme-blog-react && yarn build:prod && cd .. &&node ./script/ci",
+    "ci": "cd thisme-blog-react && yarn build:prod && cd .. &&node ./script/nci",
     "deploy:yarn": "yarn global add webpack webpack-cli webpack-dev-server && yarn && cd thisme-blog-react && yarn",
     "deploy:npm": "npm install -g webpack webpack-cli webpack-dev-server && npm install && cd thisme-blog-react && npm install"
   },

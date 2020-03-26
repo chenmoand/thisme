@@ -24,11 +24,9 @@ class IndexController(
         val gitHubService: GitHubService
 ) {
 
-    @GetMapping(
-            "/", "/index.html", "/index",
-            "/about/**", "/update/**",
-            "/article/**", "/directory/**", "/error"
-    ) // 将部分URL处理交给前端, 这么做也算是黑魔法把
+    // 将部分URL处理交给前端, 这么做也算是黑魔法把
+    @GetMapping("/", "/index.html", "/index", "/about/**",
+            "/update/**", "/article/**", "/directory/**", "/error")
     fun doIndex(): Mono<String> = Mono.just("index.html")
 
     // 用户登陆
@@ -40,13 +38,14 @@ class IndexController(
     @PreAuthorize("isAnonymous()")
     fun register(@Valid user: User, model: Model): Mono<String> = Mono
             .just("login/callback.html")
-            .zipWith(userService.insert(user).hasElement()) {
-                str, has ->
+            .zipWith(userService
+                    .insert(user)
+                    .hasElement()
+            ) { str, has ->
                 if (has)
                     model.addAttribute("status", "注册成功")
                 else
                     model.addAttribute("status", "注册失败")
-
                 return@zipWith str
             }
 
@@ -54,6 +53,7 @@ class IndexController(
     @ResponseBody
     @GetMapping(path = ["/github"])
     @PreAuthorize("isAnonymous()")
+    //TODO 暂未完成
     fun github(code: String): Mono<Map<String, String>> = gitHubService
             .getAccessToken(code)
             .filter {
