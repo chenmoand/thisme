@@ -9,11 +9,11 @@
     <!--/*@thymesVar id="status" type="java.lang.String"*/-->
     <span th:text="${status}"></span>
     三秒后将自动跳转, 如果跳转失败请点击
-    <a th:href="@{/}">here</a>
+    <a th:href="@{/login}">here</a>
 
     <script>
         setTimeout(() => {
-            window.location.href = window.location.origin;
+            window.location.href = window.location.origin + "/login";
         },3000);
     </script>
 </body>

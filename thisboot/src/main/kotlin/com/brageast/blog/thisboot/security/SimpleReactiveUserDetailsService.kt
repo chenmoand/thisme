@@ -11,18 +11,21 @@ class SimpleReactiveUserDetailsService(
         private val userRepository: UserRepository
 ) : ReactiveUserDetailsService {
 
-    // TODO 没有缓存, 暂时用HashMap当作缓存, 用户删除可会出现问题
-    private val userDetailsMap by lazy { ConcurrentHashMap<String, UserDetails>(32) }
+    // TODO WebFlux对缓存支持的并不好, 暂时用ConcurrentHashMap当作缓存, 用户删除可会出现问题
+    private val userDetailsMap by lazy { ConcurrentHashMap<String, UserDetails>() }
 
     override fun findByUsername(username: String): Mono<UserDetails> {
-        var userDetails: UserDetails = userDetailsMap[username]
-                ?: return userRepository.findByName(username).map {
+
+        val userDetail = userDetailsMap[username]
+
+        return if (userDetail == null) userRepository
+                .findByName(username)
+                .map {
                     val simpleUserDetails = SimpleUserDetails(it)
                     userDetailsMap[username] = simpleUserDetails
                     simpleUserDetails
                 }
-
-        return Mono.just(userDetails)
+        else Mono.just(userDetail)
     }
 
 }

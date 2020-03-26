@@ -29,6 +29,7 @@ class UserController(
 
     // 不会跳转得注册用户
     @PostMapping
+    @PreAuthorize("isAnonymous()")
     fun addUser(@Valid user: User) = userService.insert(user)
 
     @PutMapping

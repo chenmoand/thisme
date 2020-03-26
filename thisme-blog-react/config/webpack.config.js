@@ -7,7 +7,8 @@ const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const path = require('path');
-const devMode = process.env.NODE_ENV !== 'production';
+
+const devMode = process.env.NODE_ENV === 'development';
 
 const resolve = str => path.resolve(__dirname, str);
 
@@ -19,7 +20,7 @@ module.exports = {
     entry: ['react-hot-loader/patch', './src/mode/dev'],
     output: {
         path: resolve('../build'),
-        filename: '[name].[hash].js'
+        filename: devMode ? '[name].js' : '[name].[hash].js'
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],

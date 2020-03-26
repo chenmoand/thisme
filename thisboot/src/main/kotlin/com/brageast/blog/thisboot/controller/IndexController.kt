@@ -34,27 +34,33 @@ class IndexController(
     // 用户登陆
     @GetMapping("/login")
     @PreAuthorize("isAnonymous()") // 没登陆可以访问, 防止多次登陆
-    fun doLogin(): Mono<String> = Mono.just("login/index")
+    fun doLogin(): Mono<String> = Mono.just("login/index.html")
 
     @PostMapping("/register")
     @PreAuthorize("isAnonymous()")
-    fun register(@Valid user: User, model: Model): Mono<String> = userService
-            .insert(user).map {
-                if (it == null)
-                    model.addAttribute("status", "注册失败")
-                else
+    fun register(@Valid user: User, model: Model): Mono<String> = Mono
+            .just("login/callback.html")
+            .zipWith(userService.insert(user).hasElement()) {
+                str, has ->
+                if (has)
                     model.addAttribute("status", "注册成功")
-                return@map "login/register.html"
+                else
+                    model.addAttribute("status", "注册失败")
+
+                return@zipWith str
             }
 
     // https://github.com/login/oauth/authorize?client_id=98e07a1e606d561ed02a
     @ResponseBody
-    @GetMapping(path = ["/github"]/*, headers= ["Content-Type=application/json"]*/)
+    @GetMapping(path = ["/github"])
     @PreAuthorize("isAnonymous()")
-    fun github(code: String): Mono<out Map<String, String>> {
-        return gitHubService.getAccessToken(code)
-                .flatMap {
-                    gitHubService.getUserInfo(it["access_token"] ?: "")
-                }
-    }
+    fun github(code: String): Mono<Map<String, String>> = gitHubService
+            .getAccessToken(code)
+            .filter {
+                it.startsWith("access_token=")
+            }
+            .elementAt(0)
+            .flatMap {
+                gitHubService.getUserInfo(it.split('=')[1])
+            }
 }

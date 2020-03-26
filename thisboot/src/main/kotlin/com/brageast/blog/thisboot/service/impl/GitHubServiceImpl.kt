@@ -33,13 +33,8 @@ class GitHubServiceImpl(
                 // 在编写得时候为什么不给个默认得String得方式, 太坑了
                 resp.bodyToMono<String>()
             }
-            .map { result ->
-                val map = hashMapOf<String, String>()
-                for (s in result.split('&')) {
-                    val split = s.split('=')
-                    map[split[0]] = split[1]
-                }
-                return@map map
+            .flatMapIterable { result ->
+                result.split('&')
             }
 
     override fun getUserInfo(token: String) = webClient

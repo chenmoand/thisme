@@ -23,35 +23,29 @@ class UserServiceImpl(
     override fun findByName(name: String) = userRepository.findByName(name)
 
     @Transactional
-    override fun insert(user: User): Mono<User> {
-        var mono: Mono<User> = Mono.empty()
-
-        userRepository.existsByName(user.name).subscribe { exists ->
-            // 确保这个用户不存在, 否正会导致重写另一个用户
-            if (exists == null || !exists) {
-                val encodePassword = bCryptPasswordEncoder.encode(user.password)
-                user.password = encodePassword
-                mono =  userRepository.save(user)
+    override fun insert(user: User): Mono<User> = userRepository
+            .existsByName(user.name)
+            .flatMap {
+                if (!it) {
+                    val encodePassword = bCryptPasswordEncoder.encode(user.password)
+                    user.password = encodePassword
+                    return@flatMap userRepository.save(user)
+                }
+                return@flatMap Mono.empty<User>()
             }
-        }
-        return mono
-    }
+
 
     override fun existsByName(name: String): Mono<Boolean> = userRepository.existsByName(name)
 
     @Transactional
     override fun update(user: User): Mono<User> {
-        val userId = user.userId ?: return insert(user)
-
-        var sub: User? = null;
-
-        findById(userId).subscribe { sub = it }
-
-        val _user = sub?: return Mono.empty()
+        val userId = user.userId ?: return Mono.empty()
 
         // mongodb 的保存和更新是一个, 我不得不先查询一次, 在确定是否加密密码
         // 可能我知识的浅薄, 还是mongodb 不适合存储用户信息, LOL
-        return if (_user.password != user.password) insert(user) else userRepository.save(user)
+        return findById(userId).flatMap {
+            if (it.password != user.password) insert(user) else userRepository.save(user)
+        }
 
     }
 

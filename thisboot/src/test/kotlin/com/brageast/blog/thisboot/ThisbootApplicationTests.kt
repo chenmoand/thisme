@@ -73,9 +73,9 @@ class ThisbootApplicationTests {
                 author = "祁凯",
                 content = """
                     ``` java
-                        public static void main(String[] args) {
-                            System.out.print("看我扎不扎你就完了");
-                        }
+                    public static void main(String[] args) {
+                        System.out.print("看我扎不扎你就完了");
+                    }
                     ```
                     
                     > 卧槽祁凯居然跟邢道荣发生了这样的关系
@@ -88,10 +88,8 @@ class ThisbootApplicationTests {
                     * 祁凯被上将邢道荣翻牌子了
                     
                     ``` javascript
-                        console.log("emmm, 哇卡哇卡我")
+                    console.log("emmm, 哇卡哇卡我")
                     ```
-                    
-                    
                 """.trimIndent()
         )
         var intRange = 1..10
@@ -153,10 +151,6 @@ class AverageTest {
 
     @Test
     fun onDate() {
-        Mono.just("")
-                .zipWith(Mono.just("")) { t , t2 ->
-                    return@zipWith t2
-                }
 
     }
 
