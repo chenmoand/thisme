@@ -23,7 +23,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
-import reactor.core.publisher.Mono
 
 
 @SpringBootTest
@@ -67,36 +66,45 @@ class ThisbootApplicationTests {
     @Test
     fun addArticle() {
         val article = Article(
-                title = "长坂坡祁连山祁凯VS上将邢道荣",
-                label = listOf("测试"),
-                classify = "测试",
-                describe = "长坂坡祁连山祁凯VS上将邢道荣鹿死谁手, 让我们拭目以待",
-                author = "祁凯",
+                title = "Hello world !!!",
+                label = listOf("hello world"),
+                classify = "hello world",
+                describe = "你好 世界 博客 第一 (篇) 正式 **(雾)** 文章",
+                author = "chenmo",
                 content = """
-                    ``` java
-                    public static void main(String[] args) {
-                        System.out.print("看我扎不扎你就完了");
-                    }
-                    ```
-                    
-                    > 卧槽祁凯居然跟邢道荣发生了这样的关系
-                    
-                    ``` NEW ``` 祁凯挑战i邢道荣发生了VAN♂的事情, 居然化干戈为玉帛了
-                    
-                    ## 总结
-                    
-                    * 这是一个神奇的MarkDown
-                    * 祁凯被上将邢道荣翻牌子了
-                    
-                    ``` javascript
-                    console.log("emmm, 哇卡哇卡我")
-                    ```
+                    # 你好, 世界
+
+                这是博客第一篇正式文章???
+                
+                ``` java
+                public static void main(){
+                    System.out.print("Hello world");
+                }
+                ```
+                
+                ``` kotlin
+                fun main() {
+                    print("Hello world")	
+                }
+                ```
+                
+                ``` go
+                func main() {
+                    fmt.print("hello world")
+                }
+                ```
+                
+                ```javascript
+                console.log("hello world")
+                ```
+                
+                **注**: 这居然是我手动发送得请求;
                 """.trimIndent()
         )
-        var intRange = 1..10
+        /*var intRange = 1..10
         intRange.forEach { _ ->
+        }*/
             articleService.insert(article).block()
-        }
     }
 
     @Test

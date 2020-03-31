@@ -12,7 +12,7 @@ class SimpleReactiveUserDetailsService(
 ) : ReactiveUserDetailsService {
 
     // TODO WebFlux对缓存支持的并不好, 暂时用ConcurrentHashMap当作缓存, 用户删除可会出现问题
-    private val userDetailsMap by lazy { ConcurrentHashMap<String, UserDetails>() }
+    private val userDetailsMap= ConcurrentHashMap<String, UserDetails>()
 
     override fun findByUsername(username: String): Mono<UserDetails> {
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.ResponseBody
 import reactor.core.publisher.Mono
+import reactor.kotlin.core.publisher.toMono
 import javax.validation.Valid
 
 
@@ -27,17 +28,17 @@ class IndexController(
     // 将部分URL处理交给前端, 这么做也算是黑魔法把
     @GetMapping("/", "/index.html", "/index", "/about/**",
             "/update/**", "/article/**", "/directory/**", "/error")
-    fun doIndex(): Mono<String> = Mono.just("index.html")
+    fun doIndex(): Mono<String> = "index.html".toMono()
 
     // 用户登陆
     @GetMapping("/login")
     @PreAuthorize("isAnonymous()") // 没登陆可以访问, 防止多次登陆
-    fun doLogin(): Mono<String> = Mono.just("login/index.html")
+    fun doLogin(): Mono<String> = "login/index.html".toMono()
 
     @PostMapping("/register")
     @PreAuthorize("isAnonymous()")
-    fun register(@Valid user: User, model: Model): Mono<String> = Mono
-            .just("login/callback.html")
+    fun register(@Valid user: User, model: Model): Mono<String> = "login/callback.html"
+            .toMono()
             .zipWith(userService
                     .insert(user)
                     .hasElement()

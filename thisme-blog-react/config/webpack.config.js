@@ -86,7 +86,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 8192,
-                            name: "images/[name].[hash].[ext]"
+                            name: "/images/[name].[hash].[ext]"
                         }
                     },
                     'img-loader'
@@ -98,7 +98,7 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: devMode ? "fonts/[name].[ext]" : "fonts/[contenthash].[ext]"
+                            name: devMode ? "/fonts/[name].[ext]" : "/fonts/[contenthash].[ext]"
                         }
                     }
                 ]
@@ -121,8 +121,8 @@ module.exports = {
             template: './static/index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
-            chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash].css',
+            filename: devMode ? '/css/[name].css' : '/css/[name].[hash].css',
+            chunkFilename: devMode ? '/css/[id].css' : '/css/[id].[hash].css',
             ignoreOrder: false,
         }),
         new AntdDayjsWebpackPlugin(),

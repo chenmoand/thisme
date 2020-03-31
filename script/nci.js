@@ -57,17 +57,18 @@ readCache();
 (function () {
     for (let file of buildCache) {
         const inPath = infile + file;
-        const value = fs.readFileSync(inPath).toString("utf-8");
-        let toPath = staticDir + file;
-        if (isTemplates(file)) {
-            toPath = templatesDir + file;
-            if (!fs.existsSync(toPath)) {
-                console.log(`正在拷贝Buid文件 [${inPath} -> ${toPath}]`);
-                fs.writeFileSync(path, value, () => {/*不干事情*/});
-                continue;
+        fs.readFile(inPath, (err ,data) => {
+            let toPath = staticDir + file;
+            if (isTemplates(file)) {
+                toPath = templatesDir + file;
+                if (!fs.existsSync(toPath)) {
+                    console.log(`正在拷贝Buid文件 [${inPath} -> ${toPath}]`);
+                    fs.writeFileSync(path, data, () => {/*不干事情*/});
+                    return;
+                }
             }
-        }
-        console.log(`正在拷贝Buid文件 [${inPath} -> ${toPath}]`);
-        fs.writeFileSync(toPath, value, () => {/*不干事情*/});
+            console.log(`正在拷贝Buid文件 [${inPath} -> ${toPath}]`);
+            fs.writeFileSync(toPath, data, () => {/*不干事情*/});
+        });
     }
 }());

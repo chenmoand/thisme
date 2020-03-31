@@ -1,0 +1,15 @@
+POST http://39.105.170.250:8080/api/article
+Content-Type: application/json
+
+{
+  "title": "Hello world",
+  "label": [
+    "hello world"
+  ],
+  "classify": "hello world",
+  "describe": "你好 世界 博客 第一 (篇) 正式 (雾) 文章",
+  "author": "chenmo",
+  "content": ""
+}
+
+###
