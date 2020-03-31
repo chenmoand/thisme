@@ -25,9 +25,9 @@ File -> open
 | 名称                                           | 介绍                               |
 | ---------------------------------------------- | ---------------------------------- |
 | [```thisboot```](./thisboot)                   | Springboot + WebFlux+ mongodb 项目 |
-| ```simple-react-app```   | 以删除,此模块并没有什嘛用楚             |
+| ```simple-react-app```   | 脚手架[已删除] |
 | [```thisme-blog-react```](./thisme-blog-react) | React + Redux + Router ... 的项目  |
-| [```thiscli```](./Ktmd)                           | 一个用kotlin写cli的小玩意          |
+| thiscli                           | 指令后端[已删除]  |
 
 ###  指令列表
 
