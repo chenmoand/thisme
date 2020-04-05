@@ -6,7 +6,7 @@ import {viewSize} from "@/redux/status/webStatus";
 import {Reducers} from "@/redux/interface";
 
 
-const {  Paragraph } = Typography;
+const {Paragraph} = Typography;
 
 interface CodeBlackProps {
     value: string,
@@ -37,8 +37,7 @@ const CodeBlack: React.FC<CodeBlackProps> = props => {
             </SyntaxHighlighter>
             <Paragraph
                 style={{
-                    position: "absolute",
-                    top: "6%",
+                    position: "absolute", top: "6%",
                     left: webType ? "95%" : "90%",
                 }}
                 copyable={{text: value}}

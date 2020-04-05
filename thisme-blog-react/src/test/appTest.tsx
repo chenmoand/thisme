@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Map} from "immutable";
+import {List, Map} from "immutable";
 import {ArticleBean} from "@/component/article";
 import {server} from "@/assets/json";
 import ArticleTest from "@/test/articleTest";
@@ -14,7 +14,7 @@ const article: ArticleBean = {
     describe: "javajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava" +
         "javajavajavajavajavajavajavajavajavajavajavajavajavajavajava",
-    label: ["java"],
+    label: List.of("java"),
     replys: null,
     createdDate: new Date(),
     title: "我乃上将祁凯可斩上将华雄 | NICE TO NE",

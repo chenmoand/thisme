@@ -30,8 +30,10 @@ const BodyBottom: React.FC = props => {
                     @ 2019 · ChenMo 版权所有<br/>冀ICP备18025254号-1
                 </span>
             </Row>
-            <BackTop className={"ant-back-top-inner"}>
-                UP
+            <BackTop>
+                <div className={"ant-back-top-inner"}>
+                    UP
+                </div>
             </BackTop>
         </div>
     )
