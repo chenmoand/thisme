@@ -6,7 +6,7 @@ import "@/assets/style/home.less"
 
 import {BodyTemplate} from "@/component/template";
 import {MyselfCard} from "@/component/card";
-import {ViewArticle} from "@/component/article/viewArticle";
+import {ViewArticle} from "../../component/article/ViewArticle";
 import {useRetryAxios} from "@/fuction";
 import {server} from "@/assets/json";
 import {IDispatch} from "@/redux/interface";

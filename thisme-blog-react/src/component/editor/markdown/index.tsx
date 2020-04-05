@@ -6,9 +6,9 @@ import "@/assets/style/markdown.less"
 
 // @ts-ignore
 import * as ReactMarkdown from "react-markdown/with-html";
-import CodeBlack from "./codeBlack";
+import CodeBlack from "./CodeBlack";
 
-export { default as FileMarkDown } from "./fileMarkdown";
+export { default as FileMarkDown } from "./FileMarkdown";
 
 
 interface MarkdownProps extends BaseProps{

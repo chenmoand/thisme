@@ -2,8 +2,8 @@ import React from "react";
 
 import "@/assets/style/article.less"
 
-export {default as CompleteArticle} from "./completeArticle";
-export {default as ArticleTable} from "./articleTable";
+export {default as CompleteArticle} from "./CompleteArticle";
+export {default as ArticleTable} from "./ArticleTable";
 
 /**
  * 文章属性

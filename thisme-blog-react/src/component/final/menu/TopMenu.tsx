@@ -5,8 +5,8 @@ import {useSelector} from "react-redux";
 import "@/assets/style/menu.less"
 import {Reducers} from "@/redux/interface";
 import {viewSize} from "@/redux/status/webStatus";
-import ViewTopMenu from "@/component/final/menu/viewTopMenu";
-import EasterEggs from "@/component/final/menu/easterEggs";
+import ViewTopMenu from "./ViewTopMenu";
+import EasterEggs from "./EasterEggs";
 
 
 const TopMenu: React.FC = () => {
