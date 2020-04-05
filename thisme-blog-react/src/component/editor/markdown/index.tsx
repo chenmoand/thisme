@@ -33,9 +33,9 @@ export const Markdown: React.FC<MarkdownProps> = props => {
                 skipHtml={false}
                 source={source}
                 renderers={{code: CodeBlack}}
-                plugins={[
-                    [require('remark-toc'), {heading: "文章目录"}],
-                ]}
+                // plugins={[
+                //     [require('remark-toc'), {heading: "文章目录"}],
+                // ]}
                 escapeHtml={false}
             />
         </Div>

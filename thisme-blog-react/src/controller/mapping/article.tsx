@@ -12,6 +12,7 @@ import {BodyTemplate} from "@/component/template";
 import {axios} from "@/component/util";
 import {AxiosResponse} from "axios";
 import ArticleReply from "@/component/article/ArticleReply";
+import ArticleToc from "@/component/article/ArticleToc";
 
 
 interface ArticleProps extends RouteComponentProps, BaseProps {
@@ -58,9 +59,8 @@ const Article: React.FC<ArticleProps> = () => {
                 </Skeleton>
             }
         >
-            <ArticleReply replys={undefined}>
-                
-            </ArticleReply>
+            <ArticleToc src={currentArticle ? currentArticle.content : ""} />
+            <ArticleReply replys={undefined} />
         </BodyTemplate>
     );
 };
