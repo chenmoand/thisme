@@ -23,6 +23,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
+import java.io.File
 
 
 @SpringBootTest
@@ -72,7 +73,7 @@ class ThisbootApplicationTests {
                 describe = "你好 世界 博客 第一 (篇) 正式 **(雾)** 文章",
                 author = "chenmo",
                 content = """
-                    # 你好, 世界
+                # 你好, 世界
 
                 这是博客第一篇正式文章???
                 
@@ -150,9 +151,10 @@ class ThisbootApplicationTests {
     @Test
     fun onUser() {
         val encode = bCryptPasswordEncoder.encode("123456")
-        println(encode)
+        log.info(encode)
         val matches = bCryptPasswordEncoder.matches("123456", encode)
-        println(matches)
+        log.info(matches.toString())
+
     }
 
 }

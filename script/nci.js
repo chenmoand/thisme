@@ -24,8 +24,12 @@ function allFile(child = '/') {
     return files;
 }
 
+// 文件URL缓存
 const buildCache = [];
 
+/**
+ * 读取缓存目录JSON不管这个build.json
+ */
 function readCache() {
     if (fs.existsSync(cachefile)) {
         const str = fs.readFileSync(cachefile).toString("utf-8");
@@ -67,7 +71,7 @@ readCache();
                     return;
                 }
             }
-            console.log(`正在拷贝Buid文件 [${inPath} -> ${toPath}]`);
+            console.log(`正在拷贝Build文件 [${inPath} -> ${toPath}]`);
             fs.writeFileSync(toPath, data, () => {/*不干事情*/});
         });
     }
