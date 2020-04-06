@@ -5,7 +5,7 @@ import 'dayjs/locale/zh-cn';
 
 import '@/assets/style/globle-index.less';
 import {BodyController} from '@/controller/router';
-import {Bottom, Configuration} from '@/component/final';
+import {BodyBottom, Configuration} from '@/component/final';
 import {TopMenu} from "@/component/final/menu";
 
 
@@ -25,7 +25,7 @@ const App: React.FC = () => {
         >
             <TopMenu />
             <BodyController/>
-            <Bottom/>
+            <BodyBottom/>
         </Configuration>
     )
 };

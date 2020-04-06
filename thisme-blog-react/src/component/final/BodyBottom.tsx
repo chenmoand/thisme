@@ -2,13 +2,10 @@ import * as React from "react";
 import {BackTop, Divider, Row} from "antd";
 import {server} from "@/assets/json";
 
-const BodyBottom: React.FC = props => {
+const BodyBottom: React.FC = () => {
     return (
-        <div className={"page-bottom"}
-        >
-            <Row
-                justify={"center"}
-            >
+        <div className={"page-bottom"}>
+            <Row justify={"center"}>
                 <Divider
                     style={{
                         height: 2, marginTop: 0,
