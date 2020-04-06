@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server  --config ./config/devServer.config",
     "build:dev": "webpack --config ./config/webpack.dev.config && node ./config/copyConfig",
-    "build:prod": "webpack --config ./config/webpack.prod.config && node ./config/copyConfig"
+    "build:prod": "webpack -p --profile --config ./config/webpack.prod.config && node ./config/copyConfig"
   },
   "dependencies": {
     "@ant-design/icons": "^4.0.3",
@@ -72,6 +72,7 @@
     "redux-logger": "^3.0.6",
     "style-loader": "^1.1.3",
     "typescript": "^3.6.3",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^2.1.0",
     "webpack": "^4.40.2",
     "webpack-bundle-analyzer": "^3.6.0",

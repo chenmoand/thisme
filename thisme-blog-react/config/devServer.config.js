@@ -1,5 +1,8 @@
 const config = require('./webpack.config');
 const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 
 const path = require('path');
 const resolve = str => path.resolve(__dirname, str);
@@ -86,7 +89,12 @@ const devServer = {
         ]
     },
     plugins: [
-        ...config.plugins,
+        new LodashModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: './static/index.html'
+        }),
+        new AntdDayjsWebpackPlugin(),
         new OpenBrowserPlugin({
             url: 'http://localhost:8888'
         }),

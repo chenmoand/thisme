@@ -1,6 +1,7 @@
 const config = require('./webpack.config');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const prodConfig = {
     entry: ['react-hot-loader/patch', './src/mode/prod'],
@@ -8,6 +9,9 @@ const prodConfig = {
     plugins: [
         ...config.plugins,
         new CleanWebpackPlugin(),
+        new UglifyJsPlugin({
+            test: /\.js(\?.*)?$/i,
+        }),
         new CompressionPlugin({
             filename: '[path].br[query]',
             algorithm: 'brotliCompress',
