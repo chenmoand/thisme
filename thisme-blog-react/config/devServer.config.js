@@ -1,13 +1,17 @@
 const config = require('./webpack.config');
 const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+// const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 
 const path = require('path');
 const resolve = str => path.resolve(__dirname, str);
 
 const devServer = {
+    entry: [
+        'react-hot-loader/patch',
+        './src/mode/dev'
+    ],
     mode: 'development',
     devServer: {
         host: 'localhost',
@@ -16,6 +20,13 @@ const devServer = {
         port: 8888,
         contentBase: 'static/index.html',
 
+    },
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        alias: {
+            'react-dom': '@hot-loader/react-dom',
+            '@': path.join(__dirname, '..', 'src'),
+        }
     },
     module: {
         rules: [
@@ -89,7 +100,7 @@ const devServer = {
         ]
     },
     plugins: [
-        new LodashModuleReplacementPlugin(),
+        // new LodashModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './static/index.html'

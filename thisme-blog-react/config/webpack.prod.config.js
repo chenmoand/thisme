@@ -4,7 +4,10 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const prodConfig = {
-    entry: ['react-hot-loader/patch', './src/mode/prod'],
+    entry: [
+        // 'react-hot-loader/patch',
+        './src/mode/prod'
+    ],
     mode: 'production',
     plugins: [
         ...config.plugins,

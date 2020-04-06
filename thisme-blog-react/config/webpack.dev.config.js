@@ -3,6 +3,10 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 const devConfig = {
+    entry: [
+        // 'react-hot-loader/patch',
+        './src/mode/dev'
+    ],
     mode: 'production',
     plugins: [
         ...config.plugins,

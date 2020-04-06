@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+// const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 
@@ -17,7 +17,6 @@ const resolve = str => path.resolve(__dirname, str);
  * @author chenmo
  */
 module.exports = {
-    entry: ['react-hot-loader/patch', './src/mode/dev'],
     output: {
         path: resolve('../build'),
         filename: devMode ? 'js/[name].js' : 'js/[name].[hash].js'
@@ -25,7 +24,7 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         alias: {
-            'react-dom': '@hot-loader/react-dom',
+            // 'react-dom': '@hot-loader/react-dom',
             '@': path.join(__dirname, '..', 'src'),
         }
     },
@@ -45,7 +44,7 @@ module.exports = {
                             ],
                             cacheDirectory: true,
                             plugins: [
-                                'react-hot-loader/babel',
+                                // 'react-hot-loader/babel',
                                 [
                                     "import",
                                     {
@@ -115,7 +114,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new LodashModuleReplacementPlugin(),
+        // new LodashModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './static/index.html'
