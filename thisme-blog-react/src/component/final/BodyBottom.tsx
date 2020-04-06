@@ -27,7 +27,7 @@ const BodyBottom: React.FC = props => {
                     <a href="/">
                         Brageast.com
                     </a>
-                    @ 2019 · ChenMo 版权所有<br/>冀ICP备18025254号-1
+                    @ 2020 · ChenMo 版权所有<br/>冀ICP备18025254号-1
                 </span>
             </Row>
             <BackTop>

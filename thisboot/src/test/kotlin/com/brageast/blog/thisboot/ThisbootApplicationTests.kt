@@ -23,7 +23,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
-import java.io.File
 
 
 @SpringBootTest
@@ -67,45 +66,59 @@ class ThisbootApplicationTests {
     @Test
     fun addArticle() {
         val article = Article(
-                title = "Hello world !!!",
-                label = listOf("hello world"),
-                classify = "hello world",
-                describe = "你好 世界 博客 第一 (篇) 正式 **(雾)** 文章",
+                title = "Test MarkDown !!!",
+                label = listOf("test"),
+                classify = "test",
+                describe = "测试文章, 仅限于测试 [QWQ]",
                 author = "chenmo",
                 content = """
-                # 你好, 世界
+                # 一级标题
 
-                这是博客第一篇正式文章???
+                ## 二级标题
                 
-                ``` java
-                public static void main(){
-                    System.out.print("Hello world");
-                }
-                ```
+                **markdown** ```markdown```
                 
-                ``` kotlin
-                fun main() {
-                    print("Hello world")	
-                }
-                ```
+                ### 三级标题
                 
-                ``` go
-                func main() {
-                    fmt.print("hello world")
-                }
-                ```
+                Test test
                 
-                ```javascript
-                console.log("hello world")
-                ```
+                Test test
                 
-                **注**: 这居然是我手动发送得请求;
+                Test test
+                
+                Test test
+                
+                Test test
+                
+                Test test
+                
+                Test test
+                
+                Test test
+                
+                Test test
+                
+                Test test
+                
+                Test test
+                
+                ### 三级标题2
+                
+                Test testTest testTest test
+                
+                Test testTest testTest test
+                
+                Test testTest testTest test
+                
+                Test testTest testTest test
+                
+                Test testTest testTest test
+                
+                Test testTest testTest test
                 """.trimIndent()
         )
-        /*var intRange = 1..10
-        intRange.forEach { _ ->
-        }*/
-            articleService.insert(article).block()
+
+        articleService.insert(article).block()
     }
 
     @Test
