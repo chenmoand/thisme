@@ -15,20 +15,20 @@ import DevStore from "@/mode/dev/DevStore";
  * @author chenmo
  */
 const Init: React.FC = () => {
-
-    const HotApp = hot(App)
-
     return (
         <Provider store={DevStore}>
             <ConfigProvider locale={zhCN}>
                 <Router>
-                    <HotApp/>
+                    <App />
                 </Router>
             </ConfigProvider>
         </Provider>
     )
 };
+
+const HotInit = hot(Init)
+
 ReactDOM.render(
-    <Init/>,
+    <HotInit/>,
     document.getElementById('init')
 );

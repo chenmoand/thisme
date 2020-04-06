@@ -6,6 +6,11 @@ import '@/assets/style/globle-index.less';
 import {BodyController} from '@/controller/router';
 import {BodyBottom, Configuration} from '@/component/final';
 import {TopMenu} from "@/component/final/menu";
+import {useEffect} from "react";
+import {whiteLogo} from "@/log";
+import {useDispatch} from "react-redux";
+import {IDispatch} from "@/redux/interface";
+import {useWebSize} from "@/fuction";
 
 
 dayjs.locale('zh-cn');
@@ -18,14 +23,18 @@ dayjs.locale('zh-cn');
  */
 const App: React.FC = () => {
 
+    useEffect(() => whiteLogo(), []);
+
+    const dispatch = useDispatch<IDispatch>();
+
+    dispatch({type: 'WEBTYPE', content: useWebSize()});
+
     return (
-        <Configuration
-            isLogoLog={true}
-        >
+        <>
             <TopMenu />
             <BodyController/>
             <BodyBottom/>
-        </Configuration>
+        </>
     )
 };
 

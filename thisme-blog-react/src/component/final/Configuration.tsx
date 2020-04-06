@@ -12,6 +12,7 @@ interface ConfigurationProps {
 
 /**
  * 用于初始化配置
+ * 不推荐用
  * @param props
  */
 const Configuration: React.FC<ConfigurationProps> = props => {
