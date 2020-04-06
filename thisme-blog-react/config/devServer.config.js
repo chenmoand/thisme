@@ -1,4 +1,3 @@
-const config = require('./webpack.config');
 const OpenBrowserPlugin = require('@juexro/open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -19,7 +18,6 @@ const devServer = {
         inline: true,
         port: 8888,
         contentBase: 'static/index.html',
-
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -113,4 +111,4 @@ const devServer = {
 };
 
 
-module.exports = {...config, ...devServer };
+module.exports = devServer;

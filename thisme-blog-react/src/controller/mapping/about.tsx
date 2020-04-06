@@ -20,7 +20,6 @@ const About: React.FC = () => {
         >
             <MyselfCard/>
         </BodyTemplate>
-
     );
 };
 

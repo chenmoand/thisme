@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {hot} from 'react-hot-loader/root';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 
@@ -34,4 +33,4 @@ const App: React.FC = () => {
  * 热加载, 直接修改App.tsx并不会体现热加载
  * 请在子组件上书写, 唯一缺陷是对Markdown的一个组件会拖慢热加载速度
  */
-export default hot(App);
+export default App;

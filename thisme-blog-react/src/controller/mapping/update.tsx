@@ -10,16 +10,10 @@ const Update: React.FC = () => {
             className={"update"}
             title={"更新列表"}
             left={
-                <div className={"router"} style={{
-                    padding: 7
-                }}>
-                    <Markdown source={update}/>
-                </div>
-            }
-            right={
-                <MyselfCard/>
+                <Markdown className={"router"} source={update}/>
             }
         >
+            <MyselfCard/>
         </BodyTemplate>
     );
 };
