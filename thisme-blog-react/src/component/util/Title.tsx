@@ -13,7 +13,11 @@ interface TitleProps {
 /**
  * src 是要设置的标题
  * html 会显示src内容
+ *
+ * note:
+ *     这个组件类已废弃
  * @param props
+ *
  */
 const Title: React.FC<TitleProps> = props => {
     const {src, html, style, className} = props;

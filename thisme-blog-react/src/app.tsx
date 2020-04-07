@@ -4,7 +4,7 @@ import 'dayjs/locale/zh-cn';
 
 import '@/assets/style/globle-index.less';
 import {BodyController} from '@/controller/router';
-import {BodyBottom, Configuration} from '@/component/final';
+import {BodyBottom} from '@/component/final';
 import {TopMenu} from "@/component/final/menu";
 import {useEffect} from "react";
 import {whiteLogo} from "@/log";

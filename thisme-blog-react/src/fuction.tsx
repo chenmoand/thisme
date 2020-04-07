@@ -1,11 +1,11 @@
-import {useLazyAxios} from "use-axios-client";
-import {Config} from "use-axios-client/bin/useBaseAxios";
-import {useEffect, useState} from "react";
 import {connect} from "react-redux";
+import {useEffect, useState} from "react";
+import {useLazyAxios} from "use-axios-client";
 import {withRouter} from "react-router-dom";
 import {useMediaQuery} from "react-responsive";
+import {Config} from "use-axios-client/bin/useBaseAxios";
+
 import {WebType} from "@/redux/status/webStatus";
-import {axios} from "@/component/util";
 
 export interface AxiosConfig extends Config {
     retry: number
@@ -18,16 +18,14 @@ export interface AxiosConfig extends Config {
 function useRetryAxios<Data>(config: AxiosConfig) {
     const [order, setOrder] = useState(0);
 
-    const _url = config.url;
+    const {retry, url} = config;
 
-    const [url, setUrl] = useState(_url);
+    const [URL, setURL] = useState(url);
 
-    if(_url != url) {
+    if (URL != url) {
         setOrder(0);
-        setUrl(_url);
+        setURL(url);
     }
-
-    const {retry} = config;
 
     const [getData, {data, error, loading}] = useLazyAxios<Data>(config);
 
@@ -36,47 +34,31 @@ function useRetryAxios<Data>(config: AxiosConfig) {
         setOrder(order + 1);
     }
 
-    return {
-        data,
-        error,
-        loading
+    return {data, error, loading}
+}
+
+interface TitleConfig {
+    prefix?: string,
+    content: string,
+    suffix?: string
+}
+
+
+function useTitle(value: string | TitleConfig) {
+    let titleValue = '';
+    let defaultSuffix = " ✔ ChenMo `s Blog";
+
+    if (typeof value === "string") {
+        titleValue = value + defaultSuffix;
+    } else if (typeof value === "object") {
+        let cof = value as TitleConfig;
+
+        titleValue = cof.prefix + cof.content + (cof.suffix || defaultSuffix);
     }
-}
-
-
-interface ConditionAxiosConfig extends  AxiosConfig{
-    condition: boolean
-}
-
-
-// 这个方法有BUG
-function useConditionAxios<Data>(config: ConditionAxiosConfig) {
-    const [order, setOrder] = useState(0);
-    const [data, setData] = useState<Data>();
-    const [err, setErr] = useState<string>();
-    const { condition, retry } = config;
-    const [loding, setLoding] = useState(order >= retry && data == undefined);
-
 
     useEffect(() => {
-        if (condition && order < retry && loding) {
-            axios(config).then(res => {
-                setOrder(retry);
-                setLoding(false);
-                setData(res.data);
-            })
-            .catch(err => {
-                setOrder(order + 1);
-                err && setErr(err);
-            })
-        }
-    }, [order, config]);
-
-    return {
-        loding,
-        data,
-        err
-    }
+        document.title = titleValue
+    }, [titleValue]);
 
 }
 
@@ -120,5 +102,5 @@ const ConnectRouter = (mapStateToProps, mapDisPatchToProps, Component) => {
 };
 
 export {
-    useRetryAxios, useWebSize, ConnectRouter, useConditionAxios
+    useRetryAxios, useWebSize, ConnectRouter, useTitle, TitleConfig
 }

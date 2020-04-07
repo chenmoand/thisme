@@ -2,19 +2,22 @@ import * as React from "react";
 import {Col, Row} from "antd";
 import {useSelector} from "react-redux";
 import {viewSize} from "@/redux/status/webStatus";
-import {Div, Title} from "@/component/util";
+import {Div} from "@/component/util";
 import {Reducers} from "@/redux/interface";
 import {BaseProps} from "@/component/interface";
+import {TitleConfig, useTitle} from "@/fuction";
 
 export interface BodyStyleProps extends BaseProps {
     left?: React.ReactNode,
     right?: React.ReactNode,
-    title: string,
+    title: string | TitleConfig,
 }
 
 const BodyTemplate: React.FC<BodyStyleProps> = props => {
 
     const {left, right, title, children, className, style} = props;
+
+    useTitle(title);
 
     const webType = useSelector<Reducers, boolean>(({webStatus}) => viewSize(webStatus.webType));
 
@@ -32,7 +35,6 @@ const BodyTemplate: React.FC<BodyStyleProps> = props => {
                 <Col offset={2}
                      span={_select(14, 20)}
                 >
-                    <Title src={title}/>
                     {left}
                 </Col>
                 <Col offset={_select(1, 0)}
