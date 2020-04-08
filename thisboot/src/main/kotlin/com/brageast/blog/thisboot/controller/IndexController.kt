@@ -28,16 +28,16 @@ class IndexController(
     // 将部分URL处理交给前端, 这么做也算是黑魔法把
     @GetMapping("/", "/index.html", "/index", "/about/**",
             "/update/**", "/article/**", "/directory/**", "/error")
-    fun doIndex(): Mono<String> = "index.html".toMono()
+    fun doIndex(): Mono<String> = "index".toMono()
 
     // 用户登陆
     @GetMapping("/login")
     @PreAuthorize("isAnonymous()") // 没登陆可以访问, 防止多次登陆
-    fun doLogin(): Mono<String> = "login/index.html".toMono()
+    fun doLogin(): Mono<String> = "login/index".toMono()
 
     @PostMapping("/register")
     @PreAuthorize("isAnonymous()")
-    fun register(@Valid user: User, model: Model): Mono<String> = "login/callback.html"
+    fun register(@Valid user: User, model: Model): Mono<String> = "login/callback"
             .toMono()
             .zipWith(userService
                     .insert(user)

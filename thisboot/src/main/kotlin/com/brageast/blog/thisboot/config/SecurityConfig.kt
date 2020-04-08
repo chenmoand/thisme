@@ -1,23 +1,16 @@
 package com.brageast.blog.thisboot.config
 
 import com.brageast.blog.thisboot.annotation.EnableAuthenticationManager
-import com.brageast.blog.thisboot.util.loggerOf
-import org.springframework.boot.autoconfigure.security.reactive.PathRequest
 import org.springframework.context.annotation.Bean
-import org.springframework.security.authorization.AuthorizationDecision
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
 import org.springframework.security.config.web.server.ServerHttpSecurity
 import org.springframework.security.web.server.SecurityWebFilterChain
-import org.springframework.security.web.server.csrf.WebSessionServerCsrfTokenRepository
-import reactor.core.publisher.Mono
-import reactor.kotlin.core.publisher.toMono
 
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
 @EnableAuthenticationManager
 class SecurityConfig {
-
 
     /**
      * web安全配置
@@ -31,7 +24,6 @@ class SecurityConfig {
         csrf().disable()
 
         formLogin().loginPage("/login")
-
 
         httpBasic().disable()
 

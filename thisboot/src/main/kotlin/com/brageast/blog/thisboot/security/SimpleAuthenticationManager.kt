@@ -16,7 +16,7 @@ class SimpleAuthenticationManager {
      * 密码加密器
      */
     @Bean
-    fun bCryptPasswordEncoder() = BCryptPasswordEncoder()
+    fun passwordEncoder() = BCryptPasswordEncoder()
 
     @Bean
     fun userDetailsRepositoryReactiveAuthenticationManager(reactiveUserDetailsService: ReactiveUserDetailsService, bCryptPasswordEncoder: BCryptPasswordEncoder): UserDetailsRepositoryReactiveAuthenticationManager {
