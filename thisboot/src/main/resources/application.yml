@@ -1,16 +1,6 @@
 debug: false
 spring:
-  thymeleaf:
-    cache: false
-    prefix: classpath:/templates/
-    suffix: .html
-    enabled: true
-    check-template: false
-#    enable-spring-el-compiler: true
-  data:
-    mongodb:
-      database: test
-      uri: mongodb+srv://chenmo:chenmoand@cluster0-jbhpo.mongodb.net/test?retryWrites=true&w=majority
-server:
-  compression:
-    enabled: true
+  profiles:
+    # 默认使用dev模式
+    # dev属于私人设置
+    active: dev
