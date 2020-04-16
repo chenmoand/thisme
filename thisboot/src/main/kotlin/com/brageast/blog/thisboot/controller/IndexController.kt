@@ -3,6 +3,7 @@ package com.brageast.blog.thisboot.controller
 import com.brageast.blog.thisboot.entity.User
 import com.brageast.blog.thisboot.service.GitHubService
 import com.brageast.blog.thisboot.service.UserService
+import com.brageast.blog.thisboot.util.loggerOf
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -25,7 +26,9 @@ class IndexController(
         val gitHubService: GitHubService
 ) {
 
-    // 将部分URL处理交给前端, 这么做也算是黑魔法把
+    val log = loggerOf<IndexController>()
+
+
     @GetMapping("/", "/index.html", "/index", "/about/**",
             "/update/**", "/article/**", "/directory/**", "/error")
     fun doIndex(): Mono<String> = "index".toMono()
@@ -50,18 +53,28 @@ class IndexController(
                 return@zipWith str
             }
 
-    // https://github.com/login/oauth/authorize?client_id=98e07a1e606d561ed02a
+
+    /**
+     * TODO 暂未完成
+     * @url https://github.com/login/oauth/authorize?client_id=98e07a1e606d561ed02a
+     *
+     */
     @ResponseBody
     @GetMapping(path = ["/github"])
     @PreAuthorize("isAnonymous()")
-    //TODO 暂未完成
-    fun github(code: String): Mono<Map<String, String>> = gitHubService
-            .getAccessToken(code)
-            .filter {
-                it.startsWith("access_token=")
-            }
-            .elementAt(0)
-            .flatMap {
-                gitHubService.getUserInfo(it.split('=')[1])
-            }
+    fun github(code: String) {
+        val info = gitHubService
+                .getAccessToken(code)
+                .filter {
+                    it.startsWith("access_token=")
+                }
+                .elementAt(0)
+                .flatMap {
+                    gitHubService.getUserInfo(it.split('=')[1])
+                }
+        info.subscribe {
+            log.info(it.toString())
+        }
+
+    }
 }

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import {Title} from "@/component/util";
+// import {Title} from "@/component/util";
 import {ConnectRouter} from "@/fuction";
 
 /**
@@ -12,7 +12,7 @@ const Rou:React.FC = props => {
     // console.log(props);
     return(
         <div>
-            <Title src={"测试哈哈哈"} html/>
+
         </div>
     )
 };

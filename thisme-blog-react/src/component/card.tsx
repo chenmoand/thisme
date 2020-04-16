@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Avatar, Card} from "antd";
 import crooped from "@/assets/img/cropped.jpg"
-import {listToComponent} from "@/component/util";
+import {arrayAsComponent} from "@/component/util";
 import {GithubOutlined, ZhihuOutlined, MailOutlined} from "@ant-design/icons";
 import {api} from "@/assets/json";
 import {BaseProps} from "@/component/interface";
@@ -31,7 +31,7 @@ export const MyselfCard: React.FC<BaseProps> = props => {
                     <img alt={"背景"} src={crooped}/>
                 }
                 actions={
-                    listToComponent(CardActions, data =>
+                    arrayAsComponent(CardActions, data =>
                         (
                             <a href={data.href}>
                                 {data.type}

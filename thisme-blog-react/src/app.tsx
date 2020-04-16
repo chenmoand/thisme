@@ -7,13 +7,29 @@ import {BodyController} from '@/controller/router';
 import {BodyBottom} from '@/component/final';
 import {TopMenu} from "@/component/final/menu";
 import {useEffect} from "react";
-import {whiteLogo} from "@/log";
 import {useDispatch} from "react-redux";
 import {IDispatch} from "@/redux/interface";
 import {useWebSize} from "@/fuction";
+import {server} from "@/assets/json";
 
 
 dayjs.locale('zh-cn');
+
+const whiteLogo = (): void => {
+
+    console.info(`ThisMe version: ${server.version} React version: ${React.version}`);
+
+    console.info("%cThisMe : %c 代码托管于" + server.repository,
+        "background: black;\n" +
+        "            font-family: \"Arial Black\", serif;\n" +
+        "            color: #ffd498;\n" +
+        "            padding: 6px;",
+        "background: brown;\n" +
+        "            font-family: \"Arial Black\", serif;\n" +
+        "            color: #fff;\n" +
+        "            padding: 6px;"
+    );
+};
 
 
 /**

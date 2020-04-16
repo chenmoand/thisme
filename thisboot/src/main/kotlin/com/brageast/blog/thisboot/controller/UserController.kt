@@ -4,11 +4,7 @@ import com.brageast.blog.thisboot.entity.User
 import com.brageast.blog.thisboot.service.UserService
 import org.bson.types.ObjectId
 import org.springframework.security.access.prepost.PreAuthorize
-import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.reactive.function.server.ServerResponse
-import reactor.core.publisher.Mono
-import java.net.URI
 import java.security.Principal
 import javax.validation.Valid
 
@@ -47,7 +43,7 @@ class UserController(
     /**
      * 查看当前用户信息
      */
-    @RequestMapping(value = ["/current"])
+    @GetMapping(value = ["/current"])
     @PreAuthorize("isAuthenticated()")
     fun getCurrentUserInfo(token: Principal) = userService.findByName(token.name)
 
