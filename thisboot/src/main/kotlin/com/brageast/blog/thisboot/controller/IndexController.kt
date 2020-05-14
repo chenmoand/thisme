@@ -47,9 +47,9 @@ class IndexController(
                     .hasElement()
             ) { str, has ->
                 if (has)
-                    model.addAttribute("status", "注册失败")
-                else
                     model.addAttribute("status", "注册成功")
+                else
+                    model.addAttribute("status", "注册失败")
                 return@zipWith str
             }
 
