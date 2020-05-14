@@ -1,8 +1,8 @@
 {
-  "ip": "127.0.0.1",
-  "port": 8080,
-  "domain": "brageast.com",
-  "address": "http://39.105.170.250:8080",
+  "ip": "39.105.170.250",
+  "port": 8848,
+  "domain": "blog.brageast.com",
+  "address": "http://39.105.170.250:8848",
   "version": "1.0-beta",
   "repository": "https://github.com/chenmoand/thisme"
 }
