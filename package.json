@@ -12,7 +12,7 @@
     "deploy:npm": "npm install -g webpack webpack-cli webpack-dev-server && npm install && cd thisme-blog-react && npm install"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "gh-pages": "^2.1.1"
   },
   "devDependencies": {}
